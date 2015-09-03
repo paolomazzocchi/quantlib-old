@@ -1,0 +1,6 @@
+
+SUBDIRS = \
+    constructors \
+    factories \
+    register
+

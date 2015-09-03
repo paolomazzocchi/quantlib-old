@@ -55,16 +55,9 @@ QuantLib-SWIG/R/src/symbols.rds
 QuantLib-SWIG/R.Rcheck
 QuantLib-SWIG/Ruby/extension.mak
 QuantLib-SWIG/Ruby/quantlib_wrap.cpp
-ObjectHandler/Docs/auto.pages/
 ObjectHandler/build/
 ObjectHandler/gensrc/build/
 ObjectHandler/lib/
-ObjectHandler/oh/loop/loop_*.hpp
-ObjectHandler/oh/valueobjects/vo_*.hpp
-ObjectHandler/ohxl/functions/*.cpp
-!ObjectHandler/ohxl/functions/manual.cpp
-ObjectHandler/ohxl/register/register_*.cpp
-ObjectHandler/ohxl/functions/*.hpp
 QuantLibAddin/Addins/Cpp/*.cpp
 QuantLibAddin/Addins/Cpp/*.hpp
 !QuantLibAddin/Addins/Cpp/init.cpp
