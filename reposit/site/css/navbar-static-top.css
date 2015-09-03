@@ -1,7 +1,24 @@
-body {
-  min-height: 2000px;
-}
 
 .navbar-static-top {
-  margin-bottom: 19px;
+    background-color: #95befe;
 }
+
+.navbar .nav > li > a {
+color: white;
+}
+
+.navbar .nav > li > a:hover {
+  color: #074BB4 ;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 70px;
+    height: 70px;
+    padding-top: 0;
+}
+
+h1 {
+    color: #074BB4;
+}
+
