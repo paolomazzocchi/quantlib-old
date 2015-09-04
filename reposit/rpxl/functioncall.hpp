@@ -25,7 +25,7 @@
 #define ohxl_functioncall_hpp
 
 #include <xlsdk/xlsdkdefines.hpp>
-#include <rpxl/ohxldefines.hpp>
+#include <rpxl/rpxldefines.hpp>
 #include <rpxl/xloper.hpp>
 #include <boost/shared_ptr.hpp>
 

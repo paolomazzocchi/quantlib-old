@@ -25,7 +25,7 @@
 #ifndef ohxl_conversions_vectortooper_hpp
 #define ohxl_conversions_vectortooper_hpp
 
-#include <rpxl/ohxldefines.hpp>
+#include <rpxl/rpxldefines.hpp>
 #include <rpxl/conversions/scalartooper.hpp>
 #include <rpxl/functioncall.hpp>
 #include <vector>

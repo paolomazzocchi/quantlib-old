@@ -15,7 +15,7 @@
 */
 
 #include <rp/enumerations/typefactory.hpp>
-#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/repositxl.hpp>
 #include <rpxl/register/register_all.hpp>
 #include <rpxl/functions/export.hpp>
 #include <rpxl/utilities/xlutilities.hpp>

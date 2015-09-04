@@ -27,7 +27,7 @@
 
 #include <rp/repository.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
-#include <rpxl/ohxldefines.hpp>
+#include <rpxl/rpxldefines.hpp>
 #include <rpxl/objectwrapperxl.hpp>
 #include <rpxl/functioncall.hpp>
 

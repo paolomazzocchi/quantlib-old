@@ -14,7 +14,7 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/repositxl.hpp>
 #include <rpxl/utilities/xlutilities.hpp>
 #include <ExampleObjects/accountexample.hpp>
 

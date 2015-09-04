@@ -21,7 +21,7 @@
     \brief Class RangeReference - Parse range references in string format
 */
 
-#include <rpxl/ohxldefines.hpp>
+#include <rpxl/rpxldefines.hpp>
 #include <boost/regex.hpp>
 #include <string>
 

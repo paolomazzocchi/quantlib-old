@@ -24,7 +24,7 @@
 #ifndef ohxl_loop_hpp
 #define ohxl_loop_hpp
 
-#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/repositxl.hpp>
 #include <rpxl/utilities/xlutilities.hpp>
 
 // The max number of failed loop iterations to be logged.  This is for
