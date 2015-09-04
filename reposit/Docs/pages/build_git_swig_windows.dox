@@ -29,19 +29,19 @@
 
 This document explains how to build the reposit C++ and Excel binaries on Windows.
 
-\section build_git_swig_windows_sec_1b Compiler
+\section build_git_swig_windows_sec_2 Compiler
 
 The only supported compiler is Visual Studio 2008, also known as VC9.  The only supported configuration is Release, 32 bit.
 
-\section build_git_swig_windows_sec_2 Build Directory
+\section build_git_swig_windows_sec_3 Build Directory
 
 Create a directory on your hard drive where you will do the build.  This document refers to your build directory as $REPOSIT_DIR but you do not need an environment variable by that name.
 
-\section build_git_swig_windows_sec_2a Boost
+\section build_git_swig_windows_sec_4 Boost
 
 Build Boost and configure VC9 to find it.
 
-\section build_git_swig_windows_sec_3 PCRE
+\section build_git_swig_windows_sec_5 PCRE
 
 Download pcre-8.35.zip to $REPOSIT_DIR and uncompress:
 
@@ -67,7 +67,7 @@ Build the solution:
 $REPOSIT_DIR\pcre-8.35\build\PCRE.sln
 \endverbatim
 
-\section build_git_swig_windows_sec_4 SWIG
+\section build_git_swig_windows_sec_6 SWIG
 
 Open a git bash prompt in $REPOSIT_DIR and clone the repo:
 
@@ -102,6 +102,34 @@ The Excel VBA Framework is working:
 $REPOSIT_DIR\quantlib\QuantLibXL2\session_file.EUR-s-static.bat
 $REPOSIT_DIR\quantlib\QuantLibXL2\Data2\XLS\EUR\EURSwap.xlsx
 \endverbatim
+
+\section build_git_swig_windows_sec_8 Adding new functions to the addin
+
+Here is an example of how to export additional QuantLib functions to
+QuantLibXL.  We are going to copy the definition of function
+InterestRateIndex::name() out of the QuantLib header file into the SWIG
+interface file.
+
+Edit this file:
+
+\verbatim
+$REPOSIT_DIR\\quantlib\QuantLib\ql\indexes\interestrateindex.hpp
+\endverbatim
+
+From class InterestRateIndex, copy this line:
+
+\verbatim
+std::string name() const;
+\endverbatim
+
+And paste it into this file:
+
+\verbatim
+$REPOSIT_DIR\quantlib\QuantLibAddin2\swig\functions\indexes.i
+\endverbatim
+
+Rebuild the project.  You should find that function qlInterestRateIndexName()
+is now available in the Excel addin.
 
 */
 
