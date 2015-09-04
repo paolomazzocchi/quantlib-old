@@ -18,18 +18,18 @@
 */
 
 /*! \file
-    \brief #includes for all functionality in ObjectHandler
+    \brief #includes for all functionality in reposit
 */
 
 #ifndef oh_objecthandlerxl_hpp
 #define oh_objecthandlerxl_hpp
 
-#include <oh/objecthandler.hpp>
-#include <ohxl/configuration.hpp>
-#include <ohxl/objectwrapperxl.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/conversions/all.hpp>
-#include <ohxl/functioncall.hpp>
+#include <rp/reposit.hpp>
+#include <rpxl/configuration.hpp>
+#include <rpxl/objectwrapperxl.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/conversions/all.hpp>
+#include <rpxl/functioncall.hpp>
 
 #endif
 

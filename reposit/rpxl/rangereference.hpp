@@ -21,11 +21,11 @@
     \brief Class RangeReference - Parse range references in string format
 */
 
-#include <ohxl/ohxldefines.hpp>
+#include <rpxl/ohxldefines.hpp>
 #include <boost/regex.hpp>
 #include <string>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! A utility class for parsing range references in string format.
     /*! The constructor to this class accepts strings returned from
@@ -114,7 +114,7 @@ namespace ObjectHandler {
         //! Assign an error message to this range.
         void setErrorMessage(const std::string &errorMessage);
         //! Retrieve the error message associated with this range.
-        /*! This function is wrapped by end user function ohRangeRetrieveError().
+        /*! This function is wrapped by end user function rpRangeRetrieveError().
         */
         const std::string errorMessage() const { return errorMessage_; }
         //@}

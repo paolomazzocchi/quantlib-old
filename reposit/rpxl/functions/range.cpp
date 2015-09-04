@@ -16,21 +16,21 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/utilities.hpp>
-#include <oh/exception.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/conversions/all.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/callingrange.hpp>
-#include <oh/range.hpp>
-#include <oh/valueobjects/vo_range.hpp>
+#include <rp/utilities.hpp>
+#include <rp/exception.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/conversions/all.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/callingrange.hpp>
+#include <rp/range.hpp>
+#include <rp/valueobjects/vo_range.hpp>
 
 #include <sstream>
 
 #define XLL_DEC extern "C"
 #define SET_SESSION_ID
 
-XLL_DEC char *ohRange(
+XLL_DEC char *rpRange(
         char *ObjectId,
         FP *Values,
         OPER *Permanent,
@@ -39,16 +39,16 @@ XLL_DEC char *ohRange(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohRange"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("rpRange"));
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -57,27 +57,27 @@ XLL_DEC char *ohRange(
         // convert input datatypes to C++ datatypes
 
         std::vector<std::vector<double> > ValuesCpp =
-            ObjectHandler::fpToMatrix<double>(*Values);
+            reposit::fpToMatrix<double>(*Values);
 
-        bool PermanentCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*Permanent), "Permanent", false);
+        bool PermanentCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*Permanent), "Permanent", false);
 
         // Strip the Excel cell update counter suffix from Object IDs
         
-        std::string ObjectIdStrip = ObjectHandler::CallingRange::getStub(ObjectId);
+        std::string ObjectIdStrip = reposit::CallingRange::getStub(ObjectId);
 
         // Construct the Value Object
 
-        boost::shared_ptr<ObjectHandler::ValueObject> valueObject(
-            new ObjectHandler::ValueObjects::ohRange(
+        boost::shared_ptr<reposit::ValueObject> valueObject(
+            new reposit::ValueObjects::rpRange(
                 ObjectIdStrip,
                 ValuesCpp,
                 PermanentCpp));
 
         // Construct the Object
         
-        boost::shared_ptr<ObjectHandler::Object> object(
-            new ObjectHandler::Range(
+        boost::shared_ptr<reposit::Object> object(
+            new reposit::Range(
                 valueObject,
                 ValuesCpp,
                 PermanentCpp));
@@ -85,19 +85,19 @@ XLL_DEC char *ohRange(
         // Store the Object in the Repository
 
         std::string returnValue =
-            ObjectHandler::RepositoryXL::instance().storeObject(ObjectIdStrip, object, *Overwrite, valueObject);
+            reposit::RepositoryXL::instance().storeObject(ObjectIdStrip, object, *Overwrite, valueObject);
 
         // Convert and return the return value
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 

@@ -24,9 +24,9 @@
 #ifndef ohxl_configuration_hpp
 #define ohxl_configuration_hpp
 
-#include <oh/singleton.hpp>
+#include <rp/singleton.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Global configuration information specific to the Excel session.
     class Configuration : public Singleton<Configuration> {
@@ -41,7 +41,7 @@ namespace ObjectHandler {
             \code
                 Configuration::instance().init();
             \endcode
-            Failure to do so will lead to runtime errors later as ObjectHandler
+            Failure to do so will lead to runtime errors later as reposit
             functions attempt to access the configuration information.
         */
         void init();

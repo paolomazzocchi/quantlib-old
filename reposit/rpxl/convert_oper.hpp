@@ -25,19 +25,19 @@
 #ifndef oh_convert_oper_hpp
 #define oh_convert_oper_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
-#include <oh/property.hpp>
-#include <ohxl/xloper.hpp>
+#include <rp/property.hpp>
+#include <rpxl/xloper.hpp>
 #include <string>
 #include <typeinfo> // for typeid, std::type_info
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Perform datatype conversions of OPERs
     /*! This class implements a thin wrapper around the Excel OPER datatype,
         supporting datatype conversions and other functionality required by 
-        ObjectHandler.
+        reposit.
 
         This class is intended solely for use with OPERs that have been received
         as arguments to an Addin function, i.e. where memory management of the

@@ -17,10 +17,10 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/utilities.hpp>
-#include <ohxl/utilities/xlutilities.hpp>
-#include <ohxl/conversions/vectortooper.hpp>
-#include <ohxl/convert_oper.hpp>
+#include <rp/utilities.hpp>
+#include <rpxl/utilities/xlutilities.hpp>
+#include <rpxl/conversions/vectortooper.hpp>
+#include <rpxl/convert_oper.hpp>
 
 DLL_API void freeOper(XLOPER *px) {
     if ((px->xltype == (xltypeStr | xlbitDLLFree))              // If this is a string allocated by the DLL
@@ -51,8 +51,8 @@ DLL_API bool isList(const OPER *xValue) {
 }
 
 DLL_API void splitOper(const OPER *xFrom, OPER *xTo) {
-    std::string text = ObjectHandler::ConvertOper(*xFrom);
-    std::vector<std::string> vec = ObjectHandler::split(text, ",;", false);
-    ObjectHandler::vectorToOper(vec, *xTo);
+    std::string text = reposit::ConvertOper(*xFrom);
+    std::vector<std::string> vec = reposit::split(text, ",;", false);
+    reposit::vectorToOper(vec, *xTo);
 }
 

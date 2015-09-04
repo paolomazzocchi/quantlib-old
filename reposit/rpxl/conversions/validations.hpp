@@ -24,11 +24,11 @@
 #ifndef ohxl_conversions_validations_hpp
 #define ohxl_conversions_validations_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
 #include <string>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Determine whether the given range contains an error value.
     DLL_API void validateRange(const OPER *xRange, const std::string &name);

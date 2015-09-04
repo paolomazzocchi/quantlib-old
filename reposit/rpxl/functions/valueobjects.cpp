@@ -19,14 +19,14 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/utilities.hpp>
-#include <oh/exception.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/conversions/all.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/callingrange.hpp>
-#include <oh/loop/loop_valueobjects.hpp>
-#include <ohxl/loop.hpp>
+#include <rp/utilities.hpp>
+#include <rp/exception.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/conversions/all.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/callingrange.hpp>
+#include <rp/loop/loop_valueobjects.hpp>
+#include <rpxl/loop.hpp>
 
 #include <sstream>
 
@@ -39,16 +39,16 @@ XLL_DEC OPER *ohObjectPropertyNames(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohObjectPropertyNames"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohObjectPropertyNames"));
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -56,7 +56,7 @@ XLL_DEC OPER *ohObjectPropertyNames(
 
         // convert input datatypes to Object references
 
-        OH_GET_OBJECT(ObjectIdObj, ObjectId, ObjectHandler::Object)
+        RP_GET_OBJECT(ObjectIdObj, ObjectId, reposit::Object)
 
         // invoke the member function
 
@@ -65,14 +65,14 @@ XLL_DEC OPER *ohObjectPropertyNames(
         // convert and return the return value
 
         static OPER xRet;
-        ObjectHandler::vectorToOper(returnValue, xRet);
+        reposit::vectorToOper(returnValue, xRet);
         return &xRet;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -84,16 +84,16 @@ XLL_DEC OPER *ohObjectPropertyValues(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohObjectPropertyValues"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohObjectPropertyValues"));
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -101,28 +101,28 @@ XLL_DEC OPER *ohObjectPropertyValues(
 
         // convert input datatypes to Object references
 
-        OH_GET_OBJECT(ObjectIdObj, ObjectId, ObjectHandler::Object)
+        RP_GET_OBJECT(ObjectIdObj, ObjectId, reposit::Object)
 
         // loop on the input parameter and populate the return vector
 
         static XLOPER returnValue;
 
-        ObjectHandler::ohObjectPropertyValuesBind bindObject = 
-            boost::bind((ObjectHandler::ohObjectPropertyValuesSignature)
-                &ObjectHandler::Object::propertyValue,
+        reposit::ohObjectPropertyValuesBind bindObject = 
+            boost::bind((reposit::ohObjectPropertyValuesSignature)
+                &reposit::Object::propertyValue,
                 ObjectIdObj,
                 _1);
-        ObjectHandler::loop
-            <ObjectHandler::ohObjectPropertyValuesBind, std::string, ObjectHandler::property_t>
+        reposit::loop
+            <reposit::ohObjectPropertyValuesBind, std::string, reposit::property_t>
             (functionCall, bindObject, PropertyName, returnValue);
 
         return &returnValue;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 

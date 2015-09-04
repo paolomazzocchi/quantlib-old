@@ -17,12 +17,12 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/objectwrapperxl.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/callingrange.hpp>
+#include <rpxl/objectwrapperxl.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/callingrange.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     ObjectWrapperXL::ObjectWrapperXL(
         const std::string &id,

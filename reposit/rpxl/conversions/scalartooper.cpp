@@ -18,14 +18,14 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/conversions/scalartooper.hpp>
-#include <ohxl/conversions/vectortooper.hpp>
-#include <ohxl/conversions/matrixtooper.hpp>
+#include <rpxl/conversions/scalartooper.hpp>
+#include <rpxl/conversions/vectortooper.hpp>
+#include <rpxl/conversions/matrixtooper.hpp>
 #include <vector>
 #include <string>
-#include <oh/property.hpp>
+#include <rp/property.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     DLL_API void scalarToOper(const long &value, OPER &xLong, bool expandVector) {
         xLong.xltype = xltypeNum;
@@ -93,7 +93,7 @@ namespace ObjectHandler {
         bool m_expand;
     };
 
-    DLL_API void scalarToOper(const ObjectHandler::property_t &value, OPER &xVariant, bool expandVector) {
+    DLL_API void scalarToOper(const reposit::property_t &value, OPER &xVariant, bool expandVector) {
         VariantToOper variantToOper(xVariant, expandVector);
         boost::apply_visitor(variantToOper, value);
     }

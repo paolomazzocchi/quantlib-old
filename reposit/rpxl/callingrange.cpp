@@ -18,17 +18,17 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/callingrange.hpp>
-#include <oh/exception.hpp>
-#include <ohxl/convert_oper.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/xloper.hpp>
+#include <rpxl/callingrange.hpp>
+#include <rp/exception.hpp>
+#include <rpxl/convert_oper.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/xloper.hpp>
 #include <iomanip>
 #include <sstream>
 #include <cmath>
 
-namespace ObjectHandler {
+namespace reposit {
 
     int CallingRange::keyCount_ = 0;
     const int CallingRange::KEY_WIDTH = 5;
@@ -45,8 +45,8 @@ namespace ObjectHandler {
             key_ = getKeyCount();
             XLOPER xRet;
             Excel(xlfSetName, &xRet, 2, TempStrStl(key_), FunctionCall::instance().callerReference());
-            //OH_REQUIRE(xRet.xltype == xltypeBool && xRet.val.boolean, "Error on call to xlfSetName");
-            OH_REQUIRE(xRet.xltype == xltypeBool && xRet.val.xbool, "Error on call to xlfSetName");
+            //RP_REQUIRE(xRet.xltype == xltypeBool && xRet.val.boolean, "Error on call to xlfSetName");
+            RP_REQUIRE(xRet.xltype == xltypeBool && xRet.val.xbool, "Error on call to xlfSetName");
         } else {
             key_ = "VBA";
         }
@@ -62,7 +62,7 @@ namespace ObjectHandler {
         static const int KEY_BASE = 16;
         static const double KEY_MAX = pow((double)KEY_BASE, KEY_WIDTH);
 
-        OH_REQUIRE(keyCount_ < KEY_MAX, "CallingRange::getKeyCount() : max key value exceeded");
+        RP_REQUIRE(keyCount_ < KEY_MAX, "CallingRange::getKeyCount() : max key value exceeded");
         std::ostringstream s;
         s << '_' << std::setw(KEY_WIDTH) << std::setfill('0') << std::setbase(KEY_BASE) << keyCount_++;
         return s.str();
@@ -180,14 +180,14 @@ namespace ObjectHandler {
             if (callerType_ == CallerType::Cell) {
                 return anonPrefix + key_;
             } else {
-                OH_FAIL("Null string specified for object ID");
+                RP_FAIL("Null string specified for object ID");
             }
         }
 
-        OH_REQUIRE(objectID.find(counterDelimiter, 0) == std::string::npos,
+        RP_REQUIRE(objectID.find(counterDelimiter, 0) == std::string::npos,
             objectID << " is an invalid ID: cannot contain " << counterDelimiter);
         std::string ID = boost::algorithm::to_upper_copy(objectID);
-        OH_REQUIRE(ID.rfind(ANONPREFIX, ANONPREFIX.size() - 1) == std::string::npos,
+        RP_REQUIRE(ID.rfind(ANONPREFIX, ANONPREFIX.size() - 1) == std::string::npos,
             objectID << " is an invalid ID: cannot start with " << anonPrefix);
 
         return objectID;

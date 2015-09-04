@@ -25,14 +25,14 @@
 #ifndef ohxl_callingrange_hpp
 #define ohxl_callingrange_hpp
 
-#include <oh/iless.hpp>
-#include <ohxl/objectwrapperxl.hpp>
-#include <ohxl/functioncall.hpp>
+#include <rp/iless.hpp>
+#include <rpxl/objectwrapperxl.hpp>
+#include <rpxl/functioncall.hpp>
 #include <string>
 #include <map>
 #include <boost/weak_ptr.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Processing for the host cell of an Object.
     /*! The CallingRange constructor assigns a hidden Excel name to the cell which

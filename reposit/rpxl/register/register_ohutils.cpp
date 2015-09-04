@@ -34,7 +34,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -56,7 +56,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -79,7 +79,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -101,7 +101,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -114,17 +114,17 @@ void registerOhutils(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 11, &xDll,
             // function code name
-            TempStrNoSize("\x14""ohRangeRetrieveError"),
+            TempStrNoSize("\x14""rpRangeRetrieveError"),
             // parameter codes
             TempStrNoSize("\x02""RR"),
             // function display name
-            TempStrNoSize("\x14""ohRangeRetrieveError"),
+            TempStrNoSize("\x14""rpRangeRetrieveError"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x05""Range"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -146,7 +146,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -169,7 +169,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -192,13 +192,13 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
             TempStrNoSize("\x00"""),
             // function description
-            TempStrNoSize("\x4C""Concrete implementation of ohRangeRetrieveError().  This function is hidden."),
+            TempStrNoSize("\x4C""Concrete implementation of rpRangeRetrieveError().  This function is hidden."),
             // parameter descriptions
             TempStrNoSize("\x11""range to query.  "));
 
@@ -214,7 +214,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -236,7 +236,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -259,7 +259,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -283,7 +283,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -318,7 +318,7 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -340,13 +340,13 @@ void registerOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
             TempStrNoSize("\x00"""),
             // function description
-            TempStrNoSize("\x2C""returns the version number of ObjectHandler."),
+            TempStrNoSize("\x2C""returns the version number of reposit."),
             // parameter descriptions
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
@@ -376,7 +376,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -402,7 +402,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -429,7 +429,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -455,7 +455,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -472,17 +472,17 @@ void unregisterOhutils(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 11, &xDll,
             // function code name
-            TempStrNoSize("\x14""ohRangeRetrieveError"),
+            TempStrNoSize("\x14""rpRangeRetrieveError"),
             // parameter codes
             TempStrNoSize("\x02""RR"),
             // function display name
-            TempStrNoSize("\x14""ohRangeRetrieveError"),
+            TempStrNoSize("\x14""rpRangeRetrieveError"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x05""Range"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -493,7 +493,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             TempStrNoSize("\x11""range to query.  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
-            TempStrNoSize("\x14""ohRangeRetrieveError"));
+            TempStrNoSize("\x14""rpRangeRetrieveError"));
         Excel4(xlfUnregister, 0, 1, &xlRegID);
 
         Excel(xlfRegister, 0, 12, &xDll,
@@ -508,7 +508,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -535,7 +535,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -562,13 +562,13 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
             TempStrNoSize("\x00"""),
             // function description
-            TempStrNoSize("\x4C""Concrete implementation of ohRangeRetrieveError().  This function is hidden."),
+            TempStrNoSize("\x4C""Concrete implementation of rpRangeRetrieveError().  This function is hidden."),
             // parameter descriptions
             TempStrNoSize("\x11""range to query.  "));
 
@@ -588,7 +588,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -614,7 +614,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -641,7 +641,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -669,7 +669,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -708,7 +708,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -734,13 +734,13 @@ void unregisterOhutils(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
             TempStrNoSize("\x00"""),
             // function description
-            TempStrNoSize("\x2C""returns the version number of ObjectHandler."),
+            TempStrNoSize("\x2C""returns the version number of reposit."),
             // parameter descriptions
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 

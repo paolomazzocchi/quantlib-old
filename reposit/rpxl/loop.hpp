@@ -24,14 +24,14 @@
 #ifndef ohxl_loop_hpp
 #define ohxl_loop_hpp
 
-#include <ohxl/objecthandlerxl.hpp>
-#include <ohxl/utilities/xlutilities.hpp>
+#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/utilities/xlutilities.hpp>
 
 // The max number of failed loop iterations to be logged.  This is for
 // a 0-based array and will be displayed to user as ERROR_LIMIT+1
 #define ERROR_LIMIT 9
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Execute one iteration of the loop function
     template<class LoopFunction, class InputType, class OutputType>
@@ -41,7 +41,7 @@ namespace ObjectHandler {
                 XLOPER &xIn, 
                 XLOPER &xOut,
                 bool expandVector) {
-            InputType inputItem = ObjectHandler::convert2<InputType>(ConvertOper(xIn));
+            InputType inputItem = reposit::convert2<InputType>(ConvertOper(xIn));
             OutputType returnItem = loopFunction(inputItem);
             scalarToOper(returnItem, xOut, expandVector);
         }
@@ -55,7 +55,7 @@ namespace ObjectHandler {
                 XLOPER &xIn, 
                 XLOPER &xOut,
                 bool expandVector) {
-            InputType inputItem = ObjectHandler::convert2<InputType>(ConvertOper(xIn));
+            InputType inputItem = reposit::convert2<InputType>(ConvertOper(xIn));
             loopFunction(inputItem);
             scalarToOper(true, xOut, expandVector);
         }

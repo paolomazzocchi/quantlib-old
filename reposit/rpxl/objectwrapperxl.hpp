@@ -24,9 +24,9 @@
 #ifndef oh_objectwrapperxl_hpp
 #define oh_objectwrapperxl_hpp
 
-#include <oh/objectwrapper.hpp>
+#include <rp/objectwrapper.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     class CallingRange;
 

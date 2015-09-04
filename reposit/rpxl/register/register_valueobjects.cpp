@@ -34,7 +34,7 @@ void registerValueobjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -42,7 +42,7 @@ void registerValueobjects(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x2E""retrieve the property names of a given object."),
             // parameter descriptions
-            TempStrNoSize("\x2B""id of existing ObjectHandler::Object object"),
+            TempStrNoSize("\x2B""id of existing reposit::Object object"),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
         Excel(xlfRegister, 0, 13, &xDll,
@@ -57,7 +57,7 @@ void registerValueobjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -65,7 +65,7 @@ void registerValueobjects(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x36""retrieve the value(s) of one or more named properties."),
             // parameter descriptions
-            TempStrNoSize("\x2B""id of existing ObjectHandler::Object object"),
+            TempStrNoSize("\x2B""id of existing reposit::Object object"),
             TempStrNoSize("\x1F""property name(s) to be queried."),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
@@ -95,7 +95,7 @@ void unregisterValueobjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -103,7 +103,7 @@ void unregisterValueobjects(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x2E""retrieve the property names of a given object."),
             // parameter descriptions
-            TempStrNoSize("\x2B""id of existing ObjectHandler::Object object"),
+            TempStrNoSize("\x2B""id of existing reposit::Object object"),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
@@ -122,7 +122,7 @@ void unregisterValueobjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -130,7 +130,7 @@ void unregisterValueobjects(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x36""retrieve the value(s) of one or more named properties."),
             // parameter descriptions
-            TempStrNoSize("\x2B""id of existing ObjectHandler::Object object"),
+            TempStrNoSize("\x2B""id of existing reposit::Object object"),
             TempStrNoSize("\x1F""property name(s) to be queried."),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 

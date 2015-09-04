@@ -14,8 +14,8 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/objecthandlerxl.hpp>
-#include <ohxl/utilities/xlutilities.hpp>
+#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/utilities/xlutilities.hpp>
 #include <ExampleObjects/accountexample.hpp>
 
 /* Use BOOST_MSVC instead of _MSC_VER since some other vendors (Metrowerks,
@@ -23,7 +23,7 @@
 */
 #ifdef BOOST_MSVC
 #  define BOOST_LIB_DIAGNOSTIC
-#  include <oh/auto_link.hpp>
+#  include <rp/auto_link.hpp>
 #  include <xlsdk/auto_link.hpp>
 #  undef BOOST_LIB_DIAGNOSTIC
 #endif
@@ -80,14 +80,14 @@ DLLEXPORT void xlAutoFree(XLOPER *px) {
 
 DLLEXPORT double *addin2GetBalance(char *objectID, OPER *trigger) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("addin2GetBalance"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("addin2GetBalance"));
 
-        OH_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
+        RP_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
 
         static double ret;
         ret = accountObject->balance();
@@ -95,7 +95,7 @@ DLLEXPORT double *addin2GetBalance(char *objectID, OPER *trigger) {
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }
@@ -103,25 +103,25 @@ DLLEXPORT double *addin2GetBalance(char *objectID, OPER *trigger) {
 
 DLLEXPORT char *addin2GetType(char *objectID, OPER *trigger) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("addin2GetType"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("addin2GetType"));
 
         AccountExample::Account::Type accountTypeEnum =
-            ObjectHandler::Create<AccountExample::Account::Type>()(objectID);
+            reposit::Create<AccountExample::Account::Type>()(objectID);
 
         std::ostringstream s;
         s << accountTypeEnum;
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(s.str(), ret);
+        reposit::stringToChar(s.str(), ret);
         return ret;
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }

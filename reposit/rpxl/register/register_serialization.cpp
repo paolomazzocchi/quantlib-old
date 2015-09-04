@@ -34,7 +34,7 @@ void registerSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -60,7 +60,7 @@ void registerSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -84,7 +84,7 @@ void registerSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -110,7 +110,7 @@ void registerSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -148,7 +148,7 @@ void unregisterSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -178,7 +178,7 @@ void unregisterSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -206,7 +206,7 @@ void unregisterSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -236,7 +236,7 @@ void unregisterSerialization(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file

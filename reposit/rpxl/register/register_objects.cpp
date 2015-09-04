@@ -34,7 +34,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -57,7 +57,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -80,7 +80,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -103,7 +103,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -126,7 +126,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -149,7 +149,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -172,7 +172,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -195,7 +195,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -218,7 +218,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -241,7 +241,7 @@ void registerObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -278,7 +278,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -305,7 +305,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -332,7 +332,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -359,7 +359,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -386,7 +386,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -413,7 +413,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -440,7 +440,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -467,7 +467,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -494,7 +494,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -521,7 +521,7 @@ void unregisterObjects(const XLOPER &xDll) {
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file

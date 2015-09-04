@@ -14,36 +14,36 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/enumerations/typefactory.hpp>
-#include <ohxl/objecthandlerxl.hpp>
-#include <ohxl/register/register_all.hpp>
-#include <ohxl/functions/export.hpp>
-#include <ohxl/utilities/xlutilities.hpp>
+#include <rp/enumerations/typefactory.hpp>
+#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/register/register_all.hpp>
+#include <rpxl/functions/export.hpp>
+#include <rpxl/utilities/xlutilities.hpp>
 #include <ExampleObjects/accountexample.hpp>
-#include <ohxl/objectwrapperxl.hpp>
+#include <rpxl/objectwrapperxl.hpp>
 
 /* Use BOOST_MSVC instead of _MSC_VER since some other vendors (Metrowerks,
    for example) also #define _MSC_VER
 */
 #ifdef BOOST_MSVC
 #  define BOOST_LIB_DIAGNOSTIC
-#  include <oh/auto_link.hpp>
+#  include <rp/auto_link.hpp>
 #  undef BOOST_LIB_DIAGNOSTIC
 #endif
 #include <sstream>
 
 DLLEXPORT int xlAutoOpen() {
 
-    // Instantiate the ObjectHandler Repository
-    static ObjectHandler::RepositoryXL repositoryXL;
+    // Instantiate the reposit Repository
+    static reposit::RepositoryXL repositoryXL;
     // Instantiate the Enumerated Type Registry
-    static ObjectHandler::EnumTypeRegistry enumTypeRegistry;
+    static reposit::EnumTypeRegistry enumTypeRegistry;
     // Instantiate the Enumerated Class Registry
-    static ObjectHandler::EnumClassRegistry enumClassRegistry;
+    static reposit::EnumClassRegistry enumClassRegistry;
     // Instantiate the Enumerated Pair Registry
-    static ObjectHandler::EnumPairRegistry enumPairRegistry;
+    static reposit::EnumPairRegistry enumPairRegistry;
 	//Instantiate the Processor Factory
-	static ObjectHandler::ProcessorFactory processorFactory;
+	static reposit::ProcessorFactory processorFactory;
     // Instantiate the Serialization Factory
     static AccountExample::SerializationFactory factory;
 
@@ -53,7 +53,7 @@ DLLEXPORT int xlAutoOpen() {
 
         Excel(xlGetName, &xDll, 0);
 
-        ObjectHandler::Configuration::instance().init();
+        reposit::Configuration::instance().init();
 
         registerOhFunctions(xDll);
         AccountExample::registerEnumeratedTypes();
@@ -135,7 +135,7 @@ DLLEXPORT int xlAutoClose() {
 
         AccountExample::unregisterEnumeratedTypes();
         unregisterOhFunctions(xDll);
-        ObjectHandler::RepositoryXL::instance().clear();
+        reposit::RepositoryXL::instance().clear();
 
         Excel(xlFree, 0, 1, &xDll);
         return 1;
@@ -169,29 +169,29 @@ DLLEXPORT char *ohCustomer(
         long *age,
         bool *permanent) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("ohCustomer"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("ohCustomer"));
 
-        boost::shared_ptr<ObjectHandler::ValueObject> valueObject(
+        boost::shared_ptr<reposit::ValueObject> valueObject(
             new AccountExample::CustomerValueObject(objectID, name, *age, *permanent));
 
-        boost::shared_ptr<ObjectHandler::Object> object(
+        boost::shared_ptr<reposit::Object> object(
             new AccountExample::CustomerObject(valueObject, name, *age, *permanent));
 
         std::string returnValue = 
-            ObjectHandler::RepositoryXL::instance().storeObject(objectID, object);
+            reposit::RepositoryXL::instance().storeObject(objectID, object);
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }
@@ -205,43 +205,43 @@ DLLEXPORT char *ohAccount(
         OPER *balance,
         bool *permanent) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("ohAccount"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("ohAccount"));
 
-        OH_GET_REFERENCE(customerRef, customer,
+        RP_GET_REFERENCE(customerRef, customer,
             AccountExample::CustomerObject, AccountExample::Customer)
 
-        double balanceDouble = ObjectHandler::convert2<double>(
-            ObjectHandler::ConvertOper(*balance), "balance", 100.00);
+        double balanceDouble = reposit::convert2<double>(
+            reposit::ConvertOper(*balance), "balance", 100.00);
 
-        ObjectHandler::property_t balanceProperty =
-            ObjectHandler::convert2<ObjectHandler::property_t>(
-                ObjectHandler::ConvertOper(*balance), "balance");
+        reposit::property_t balanceProperty =
+            reposit::convert2<reposit::property_t>(
+                reposit::ConvertOper(*balance), "balance");
 
         AccountExample::Account::Type typeEnum =
-            ObjectHandler::Create<AccountExample::Account::Type>()(type);
+            reposit::Create<AccountExample::Account::Type>()(type);
 
-        boost::shared_ptr<ObjectHandler::ValueObject> valueObject(
+        boost::shared_ptr<reposit::ValueObject> valueObject(
             new AccountExample::AccountValueObject(objectID, customer, type, *number, balanceProperty, *permanent));
 
-        boost::shared_ptr<ObjectHandler::Object> object(
+        boost::shared_ptr<reposit::Object> object(
             new AccountExample::AccountObject(valueObject, customerRef, typeEnum, *number, balanceDouble, *permanent));
 
     
         std::string returnValue = 
-            ObjectHandler::RepositoryXL::instance().storeObject(objectID, object, true);
+            reposit::RepositoryXL::instance().storeObject(objectID, object, true);
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }
@@ -249,14 +249,14 @@ DLLEXPORT char *ohAccount(
 
 DLLEXPORT short int *ohAccountSetBalance(char *objectID, double *balance) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("ohAccountSetBalance"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("ohAccountSetBalance"));
 
-        OH_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
+        RP_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
         accountObject->setBalance(*balance);
 
         static short int ret = TRUE;
@@ -264,7 +264,7 @@ DLLEXPORT short int *ohAccountSetBalance(char *objectID, double *balance) {
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }
@@ -272,14 +272,14 @@ DLLEXPORT short int *ohAccountSetBalance(char *objectID, double *balance) {
 
 DLLEXPORT double *ohAccountBalance(char *objectID, OPER *trigger) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("ohAccountBalance"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("ohAccountBalance"));
 
-        OH_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
+        RP_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
 
         static double ret;
         ret = accountObject->balance();
@@ -287,7 +287,7 @@ DLLEXPORT double *ohAccountBalance(char *objectID, OPER *trigger) {
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }
@@ -295,23 +295,23 @@ DLLEXPORT double *ohAccountBalance(char *objectID, OPER *trigger) {
 
 DLLEXPORT char *ohAccountCustomerName(char *objectID, OPER *trigger) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("ohAccountCustomerName"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("ohAccountCustomerName"));
 
-        OH_GET_REFERENCE(accountRef, objectID,
+        RP_GET_REFERENCE(accountRef, objectID,
             AccountExample::AccountObject, AccountExample::Account)
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(accountRef->customerName(), ret);
+        reposit::stringToChar(accountRef->customerName(), ret);
         return ret;
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }
@@ -319,22 +319,22 @@ DLLEXPORT char *ohAccountCustomerName(char *objectID, OPER *trigger) {
 
 DLLEXPORT char *ohAccountType(char *objectID, OPER *trigger) {
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>
-            (new ObjectHandler::FunctionCall("ohAccountType"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>
+            (new reposit::FunctionCall("ohAccountType"));
 
-        OH_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
+        RP_GET_OBJECT(accountObject, objectID, AccountExample::AccountObject)
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(accountObject->type(), ret);
+        reposit::stringToChar(accountObject->type(), ret);
         return ret;
 
     } catch (const std::exception &e) {
 
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
 
     }

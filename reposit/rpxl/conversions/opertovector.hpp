@@ -24,12 +24,12 @@
 #ifndef ohxl_conversions_opertovector_hpp
 #define ohxl_conversions_opertovector_hpp
 
-#include <ohxl/convert_oper.hpp>
-#include <ohxl/utilities/xlutilities.hpp>
+#include <rpxl/convert_oper.hpp>
+#include <rpxl/utilities/xlutilities.hpp>
 #include <vector>
 #include <boost/shared_ptr.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Helper template wrapper for operToVectorImpl
     /*! \li Accept an OPER as input and wrap this in class ConvertOper
@@ -87,7 +87,7 @@ namespace ObjectHandler {
 
             if (xVector.missing()) return std::vector<T>();
 
-            OH_REQUIRE(!xVector.error(), "input value has type=error");
+            RP_REQUIRE(!xVector.error(), "input value has type=error");
 
             const OPER *xMulti;
             Xloper xCoerce;     // Freed automatically
@@ -111,7 +111,7 @@ namespace ObjectHandler {
 
             return ret;
         } catch (const std::exception &e) {
-            OH_FAIL("operToVectorImpl: error converting parameter '" << paramName 
+            RP_FAIL("operToVectorImpl: error converting parameter '" << paramName 
                 << "' to type '" << typeid(T).name() << "' : " << e.what());
         }
     }

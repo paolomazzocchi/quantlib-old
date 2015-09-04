@@ -24,10 +24,10 @@
 #ifndef ohxl_conversions_opertomatrix_hpp
 #define ohxl_conversions_opertomatrix_hpp
 
-#include <ohxl/convert_oper.hpp>
+#include <rpxl/convert_oper.hpp>
 #include <vector>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Helper template wrapper for operToMatrixImpl
     /*! Accept an OPER as input and wrap this in class ConvertOper.
@@ -51,7 +51,7 @@ namespace ObjectHandler {
         try {
             if (xMatrix.missing()) return std::vector<std::vector<T> >();
 
-            OH_REQUIRE(!xMatrix.error(), "input value has type=error");
+            RP_REQUIRE(!xMatrix.error(), "input value has type=error");
 
             const OPER *xMulti;
             Xloper xCoerce;  // Freed automatically
@@ -76,7 +76,7 @@ namespace ObjectHandler {
 
             return ret;
         } catch (const std::exception &e) {
-            OH_FAIL("operToMatrixImpl: error converting parameter '" << paramName 
+            RP_FAIL("operToMatrixImpl: error converting parameter '" << paramName 
                 << "' to type '" << typeid(T).name() << "' : " << e.what());
         }
     }

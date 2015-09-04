@@ -18,21 +18,21 @@
 */
 
 #include <xlsdk/xlsdkdefines.hpp>
-#include <ohxl/objecthandlerxl.hpp>
-#include <ohxl/register/register_all.hpp>
-#include <ohxl/functions/export.hpp>
-#include <ohxl/conversions/all.hpp>
-#include <ohxl/utilities/xlutilities.hpp>
+#include <rpxl/objecthandlerxl.hpp>
+#include <rpxl/register/register_all.hpp>
+#include <rpxl/functions/export.hpp>
+#include <rpxl/conversions/all.hpp>
+#include <rpxl/utilities/xlutilities.hpp>
 #include <sstream>
 
-// Instantiate the ObjectHandler Repository
-ObjectHandler::RepositoryXL repositoryXL;
+// Instantiate the reposit Repository
+reposit::RepositoryXL repositoryXL;
 // Instantiate the Enumerated Type Registry
-ObjectHandler::EnumTypeRegistry enumTypeRegistry;
+reposit::EnumTypeRegistry enumTypeRegistry;
 // Instantiate the Enumerated Class Registry
-ObjectHandler::EnumClassRegistry enumClassRegistry;
+reposit::EnumClassRegistry enumClassRegistry;
 // Instantiate the Enumerated Pair Registry
-ObjectHandler::EnumPairRegistry enumPairRegistry;
+reposit::EnumPairRegistry enumPairRegistry;
 
 DLLEXPORT int xlAutoOpen() {
 
@@ -42,7 +42,7 @@ DLLEXPORT int xlAutoOpen() {
 
         Excel(xlGetName, &xDll, 0);
 
-        ObjectHandler::Configuration::instance().init();
+        reposit::Configuration::instance().init();
         registerOhFunctions(xDll);
 
         Excel(xlFree, 0, 1, &xDll);
@@ -51,7 +51,7 @@ DLLEXPORT int xlAutoOpen() {
     } catch (const std::exception &e) {
 
         std::ostringstream err;
-        err << "Error loading ObjectHandler: " << e.what();
+        err << "Error loading reposit: " << e.what();
         Excel(xlcAlert, 0, 1, TempStrStl(err.str()));
         Excel(xlFree, 0, 1, &xDll);
         return 0;
@@ -69,7 +69,7 @@ DLLEXPORT int xlAutoClose() {
     static XLOPER xDll;
 
     try {
-        // empty the ObjectHandler repository
+        // empty the reposit repository
         //Excel(xlUDF, 0, 1, TempStrNoSize("\x1c""ohRepositoryDeleteAllObjects"));
 
         // Get the DLL name.
@@ -77,7 +77,7 @@ DLLEXPORT int xlAutoClose() {
         // Unregister the addin functions.
         unregisterOhFunctions(xDll);
         // Clear the state of the Repository.
-        ObjectHandler::RepositoryXL::instance().clear();
+        reposit::RepositoryXL::instance().clear();
         // Release the DLL name.
         Excel(xlFree, 0, 1, &xDll);
 
@@ -87,7 +87,7 @@ DLLEXPORT int xlAutoClose() {
 
         Excel(xlFree, 0, 1, &xDll);
         std::ostringstream err;
-        err << "Error unloading ObjectHandler: " << e.what();
+        err << "Error unloading reposit: " << e.what();
         Excel(xlcAlert, 0, 1, TempStrStl(err.str()));
         return 0;
 
@@ -117,7 +117,7 @@ DLLEXPORT XLOPER *xlAddInManagerInfo(XLOPER *xlAction) {
     // long name for the XLL. Any other value should result in the
     // return of a #VALUE! error.
     if (1 == xlReturn.val.w) {
-        ObjectHandler::scalarToOper(std::string("ObjectHandler 1.7.0"), xlLongName);
+        reposit::scalarToOper(std::string("reposit 1.7.0"), xlLongName);
     } else {
         xlLongName.xltype = xltypeErr;
         xlLongName.val.err = xlerrValue;

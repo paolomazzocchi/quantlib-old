@@ -26,7 +26,7 @@
 
 #include <xlsdk/xlsdkdefines.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Perform RAII for Excel's XLOPER datatype.
     /*! This class implements a thin wrapper for an Excel XLOPER value.

@@ -17,8 +17,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlsdk", "xlsdk\xlsdk_vc10.v
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExampleXllDynamic1", "Examples\xl\ExampleXllDynamic1_vc10.vcxproj", "{BB902802-D59B-466F-ABB6-23368860D803}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "docs", "Docs\docs_vc10.vcxproj", "{74479EEA-CD1C-487E-8D31-F3EBF506ED40}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExampleObjects", "Examples\ExampleObjects\ExampleObjects_vc10.vcxproj", "{548C1A2B-E5E8-417F-B9E2-BD2D72757FBC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "apr", "..\log4cxx\msvc\apr_vc10.vcxproj", "{A5EEE6C6-C626-4F88-B0BD-551BE9C577C5}"
@@ -110,16 +108,6 @@ Global
 		{BB902802-D59B-466F-ABB6-23368860D803}.Release (static runtime)|Win32.ActiveCfg = Release|Win32
 		{BB902802-D59B-466F-ABB6-23368860D803}.Release|Win32.ActiveCfg = Release|Win32
 		{BB902802-D59B-466F-ABB6-23368860D803}.Release|Win32.Build.0 = Release|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.All|Win32.ActiveCfg = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.All|Win32.Build.0 = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Debug (static runtime)|Win32.ActiveCfg = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Debug (static runtime)|Win32.Build.0 = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Debug|Win32.ActiveCfg = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Debug|Win32.Build.0 = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Release (static runtime)|Win32.ActiveCfg = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Release (static runtime)|Win32.Build.0 = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Release|Win32.ActiveCfg = All|Win32
-		{74479EEA-CD1C-487E-8D31-F3EBF506ED40}.Release|Win32.Build.0 = All|Win32
 		{548C1A2B-E5E8-417F-B9E2-BD2D72757FBC}.All|Win32.ActiveCfg = Release|Win32
 		{548C1A2B-E5E8-417F-B9E2-BD2D72757FBC}.All|Win32.Build.0 = Release|Win32
 		{548C1A2B-E5E8-417F-B9E2-BD2D72757FBC}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32

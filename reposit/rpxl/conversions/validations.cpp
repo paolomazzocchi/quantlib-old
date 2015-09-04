@@ -18,11 +18,11 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/conversions/validations.hpp>
-#include <oh/exception.hpp>
+#include <rpxl/conversions/validations.hpp>
+#include <rp/exception.hpp>
 #include <sstream>
 
-namespace ObjectHandler {
+namespace reposit {
 
     bool validateMulti(const OPER *xMulti) {
         for (int i=0; i<xMulti->val.array.rows * xMulti->val.array.columns; ++i)
@@ -32,8 +32,8 @@ namespace ObjectHandler {
     }
 
     DLL_API void validateRange(const OPER *xRange, const std::string &parameterName) {
-        OH_REQUIRE(!(xRange->xltype & xltypeErr), "Parameter '" << parameterName << "' has error value");
-        OH_REQUIRE(!(xRange->xltype & xltypeMulti) || validateMulti(xRange), 
+        RP_REQUIRE(!(xRange->xltype & xltypeErr), "Parameter '" << parameterName << "' has error value");
+        RP_REQUIRE(!(xRange->xltype & xltypeMulti) || validateMulti(xRange), 
             "Parameter '" << parameterName << "' has error value");
     }
 

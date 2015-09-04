@@ -18,10 +18,10 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/convert_oper.hpp>
-#include <ohxl/callingrange.hpp>
+#include <rpxl/convert_oper.hpp>
+#include <rpxl/callingrange.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     ConvertOper::ConvertOper(const OPER &xIn, const bool &decayVectorToScalar) {
 
@@ -29,7 +29,7 @@ namespace ObjectHandler {
             if (xIn.val.array.rows == 1 && xIn.val.array.columns == 1) {
                 oper_ = &xIn.val.array.lparray[0];
             } else {
-                OH_FAIL("input value is vector or matrix, expected scalar");
+                RP_FAIL("input value is vector or matrix, expected scalar");
             }
         } else {
             oper_ = &xIn;
@@ -100,7 +100,7 @@ namespace ObjectHandler {
         else if(missing() || error())
             return typeid(empty_property_tag);
         else
-            OH_FAIL("ConvertOper: unexpected datatype: " << oper_->xltype);
+            RP_FAIL("ConvertOper: unexpected datatype: " << oper_->xltype);
     }
 
     ConvertOper::operator property_t() const {
@@ -116,7 +116,7 @@ namespace ObjectHandler {
         } else if (oper_->xltype & xltypeStr) {
             return strConv(oper_);
         } else {
-            OH_FAIL("ConvertOper: unexpected datatype: " << oper_->xltype);
+            RP_FAIL("ConvertOper: unexpected datatype: " << oper_->xltype);
         }
     }
 
@@ -144,7 +144,7 @@ namespace ObjectHandler {
         } else if (oper_->xltype & xltypeMulti) {
             return Array;
         } else {
-            OH_FAIL("unknown type");
+            RP_FAIL("unknown type");
         }
     }*/
 

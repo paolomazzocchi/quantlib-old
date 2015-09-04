@@ -25,12 +25,12 @@
 #ifndef ohxl_conversions_vectortooper_hpp
 #define ohxl_conversions_vectortooper_hpp
 
-#include <ohxl/ohxldefines.hpp>
-#include <ohxl/conversions/scalartooper.hpp>
-#include <ohxl/functioncall.hpp>
+#include <rpxl/ohxldefines.hpp>
+#include <rpxl/conversions/scalartooper.hpp>
+#include <rpxl/functioncall.hpp>
 #include <vector>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Wrapper for the other vectorToOper.
     /*! Extracts the begin and end iterators of the input vector.

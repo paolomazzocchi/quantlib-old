@@ -72,8 +72,8 @@ namespace reposit {
 
     SerializationFactory::SerializationFactory() {
         instance_ = this;
-        registerCreator("ohRange", createRange);
-        registerCreator("ohGroup", createGroup);
+        registerCreator("rpRange", createRange);
+        registerCreator("rpGroup", createGroup);
 
 	    ProcessorPtr processor(new DefaultProcessor());
         ProcessorFactory::instance().storeProcessor("DefaultProcessor", processor);

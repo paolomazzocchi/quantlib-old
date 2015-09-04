@@ -24,7 +24,7 @@
 #ifndef ohxl_utilities_hpp
 #define ohxl_utilities_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
 
 //! Free any memory associated with the XLOPER.

@@ -17,12 +17,12 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/configuration.hpp>
-#include <oh/exception.hpp>
+#include <rpxl/configuration.hpp>
+#include <rp/exception.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
-#include <ohxl/xloper.hpp>
+#include <rpxl/xloper.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     void Configuration::init() {
         Xloper xWorkspace;
@@ -32,12 +32,12 @@ namespace ObjectHandler {
         initialized_ = true;
     }
     const char &Configuration::rowCharacter() {
-        OH_REQUIRE(initialized_, "Configuration not initialized");
+        RP_REQUIRE(initialized_, "Configuration not initialized");
         return rowCharacter_; 
     }
 
     const char &Configuration::colCharacter() { 
-        OH_REQUIRE(initialized_, "Configuration not initialized");
+        RP_REQUIRE(initialized_, "Configuration not initialized");
         return colCharacter_; 
     }
 

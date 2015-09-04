@@ -24,10 +24,10 @@
 #ifndef ohxl_conversions_matrixtooper_hpp
 #define ohxl_conversions_matrixtooper_hpp
 
-#include <ohxl/conversions/scalartooper.hpp>
+#include <rpxl/conversions/scalartooper.hpp>
 #include <vector>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Convert type std::vector<std::vector<T> > to an Excel OPER.
     template <class T>

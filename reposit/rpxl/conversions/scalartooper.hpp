@@ -25,12 +25,12 @@
 #ifndef ohxl_conversions_scalartooper_hpp
 #define ohxl_conversions_scalartooper_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
 #include <string>
-#include <oh/property.hpp>
+#include <rp/property.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Convert a long to an OPER.
     DLL_API void scalarToOper(const long &value, OPER &xLong, bool expandVector = true);

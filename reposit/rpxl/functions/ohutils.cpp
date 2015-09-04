@@ -19,13 +19,13 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/utilities.hpp>
-#include <oh/exception.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/conversions/all.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/callingrange.hpp>
-#include <oh/utilities.hpp>
+#include <rp/utilities.hpp>
+#include <rp/exception.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/conversions/all.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/callingrange.hpp>
+#include <rp/utilities.hpp>
 
 #include <sstream>
 
@@ -37,16 +37,16 @@ XLL_DEC char *ohBoostVersion(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohBoostVersion"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohBoostVersion"));
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -54,19 +54,19 @@ XLL_DEC char *ohBoostVersion(
 
         // invoke the utility function
 
-        std::string returnValue = ObjectHandler::boostVersion();
+        std::string returnValue = reposit::boostVersion();
 
         // convert and return the return value
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -77,14 +77,14 @@ XLL_DEC char *ohStringConcatenate(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohStringConcatenate"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohStringConcatenate"));
 
 
         // initialize the session ID (if enabled)
@@ -94,26 +94,26 @@ XLL_DEC char *ohStringConcatenate(
         // convert input datatypes to C++ datatypes
 
         std::vector<std::string> SubstringsCpp =
-            ObjectHandler::operToVector<std::string>(
+            reposit::operToVector<std::string>(
                 *Substrings, "Substrings");
 
         // invoke the utility function
 
-        std::string returnValue = ObjectHandler::concatenate(
+        std::string returnValue = reposit::concatenate(
                 SubstringsCpp,
                 Delimiter);
 
         // convert and return the return value
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -125,14 +125,14 @@ XLL_DEC OPER *ohStringSplit(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohStringSplit"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohStringSplit"));
 
 
         // initialize the session ID (if enabled)
@@ -141,12 +141,12 @@ XLL_DEC OPER *ohStringSplit(
 
         // convert input datatypes to C++ datatypes
 
-        bool ConcatenateDelimCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*ConcatenateDelim), "ConcatenateDelim", false);
+        bool ConcatenateDelimCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*ConcatenateDelim), "ConcatenateDelim", false);
 
         // invoke the utility function
 
-        std::vector<std::string> returnValue = ObjectHandler::split(
+        std::vector<std::string> returnValue = reposit::split(
                 String,
                 Delimiters,
                 ConcatenateDelimCpp);
@@ -154,14 +154,14 @@ XLL_DEC OPER *ohStringSplit(
         // convert and return the return value
 
         static OPER xRet;
-        ObjectHandler::vectorToOper(returnValue, xRet);
+        reposit::vectorToOper(returnValue, xRet);
         return &xRet;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -171,16 +171,16 @@ XLL_DEC char *ohVbaError(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohVbaError"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohVbaError"));
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -188,19 +188,19 @@ XLL_DEC char *ohVbaError(
 
         // invoke the utility function
 
-        std::string returnValue = ObjectHandler::RepositoryXL::instance().vbaError();
+        std::string returnValue = reposit::RepositoryXL::instance().vbaError();
 
         // convert and return the return value
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -210,16 +210,16 @@ XLL_DEC char *ohVersion(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohVersion"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohVersion"));
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -227,19 +227,19 @@ XLL_DEC char *ohVersion(
 
         // invoke the utility function
 
-        std::string returnValue = ObjectHandler::version();
+        std::string returnValue = reposit::version();
 
         // convert and return the return value
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 

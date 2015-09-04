@@ -19,13 +19,13 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/exception.hpp>
-#include <oh/utilities.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/callingrange.hpp>
-#include <ohxl/rangereference.hpp>
-#include <ohxl/convert_oper.hpp>
+#include <rp/exception.hpp>
+#include <rp/utilities.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/callingrange.hpp>
+#include <rpxl/rangereference.hpp>
+#include <rpxl/convert_oper.hpp>
 #include <boost/algorithm/string.hpp>
 /* Use BOOST_MSVC instead of _MSC_VER since some other vendors (Metrowerks,
 for example) also #define _MSC_VER
@@ -43,7 +43,7 @@ using boost::shared_ptr;
 using std::string;
 using std::endl;
 
-namespace ObjectHandler {
+namespace reposit {
 
     // Below are three structures which must be declared as static variables rather than
     // class members because std::map cannot be exported across DLL boundaries.
@@ -65,7 +65,7 @@ namespace ObjectHandler {
             RepositoryXL *ret = dynamic_cast<RepositoryXL*>(instance_);
             if (ret) return *ret;
         }
-        OH_FAIL("Attempt to reference uninitialized RepositoryXL object");
+        RP_FAIL("Attempt to reference uninitialized RepositoryXL object");
     }
 
     void RepositoryXL::clear() {
@@ -95,7 +95,7 @@ namespace ObjectHandler {
             } else {
                 objectWrapperXL = boost::static_pointer_cast<ObjectWrapperXL>(result->second);
                 if (objectWrapperXL->callerKey() != callingRange->key()) {
-                    OH_REQUIRE(overwrite, "Cannot create object with ID '" << objectID <<
+                    RP_REQUIRE(overwrite, "Cannot create object with ID '" << objectID <<
                         "' in cell " << callingRange->addressString() <<
                         " because an object with that ID already resides in cell " <<
                         objectWrapperXL->callerAddress());
@@ -160,7 +160,7 @@ namespace ObjectHandler {
 
     string RepositoryXL::retrieveError(const XLOPER *xRangeRef) {
 
-        OH_REQUIRE(xRangeRef->xltype == xltypeRef || xRangeRef->xltype == xltypeSRef,
+        RP_REQUIRE(xRangeRef->xltype == xltypeRef || xRangeRef->xltype == xltypeSRef,
             "Input parameter is not a range reference.");
         Xloper xRangeText;
         Excel(xlfReftext, &xRangeText, 1, xRangeRef);
@@ -224,7 +224,7 @@ namespace ObjectHandler {
         } else {
             // Calling range already named - return associated CallingRange object
             RangeMap::const_iterator i = callingRanges_.find(callerName);
-            OH_REQUIRE(i != callingRanges_.end(), "No calling range named " << callerName);
+            RP_REQUIRE(i != callingRanges_.end(), "No calling range named " << callerName);
             return i->second;
         }
     }
@@ -301,7 +301,7 @@ namespace ObjectHandler {
                     ret.push_back(!objectWrapperXL->getCallingRange()->valid());
                 }
                 else {
-                    OH_FAIL( "Unable to retrieve object with ID " << *i);
+                    RP_FAIL( "Unable to retrieve object with ID " << *i);
                 }
         }
         return ret;
@@ -324,7 +324,7 @@ namespace ObjectHandler {
                     ret.push_back(objectWrapperXL->getCallingRange()->getUpdateCount());
                 }
                 else {
-                    OH_FAIL( "Unable to retrieve object with ID " << *i);
+                    RP_FAIL( "Unable to retrieve object with ID " << *i);
                 }
         }
 

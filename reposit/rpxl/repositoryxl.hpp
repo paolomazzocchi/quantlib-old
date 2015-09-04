@@ -25,13 +25,13 @@
 #ifndef ohxl_repositoryxl_hpp
 #define ohxl_repositoryxl_hpp
 
-#include <oh/repository.hpp>
+#include <rp/repository.hpp>
 #include <xlsdk/xlsdkdefines.hpp>
-#include <ohxl/ohxldefines.hpp>
-#include <ohxl/objectwrapperxl.hpp>
-#include <ohxl/functioncall.hpp>
+#include <rpxl/ohxldefines.hpp>
+#include <rpxl/objectwrapperxl.hpp>
+#include <rpxl/functioncall.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Excel-specific enhancements to the Repository class.
     /*! Extends the base Repository class to work with ObjectWrapperXL instead of

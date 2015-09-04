@@ -25,11 +25,11 @@
 #define ohxl_functioncall_hpp
 
 #include <xlsdk/xlsdkdefines.hpp>
-#include <ohxl/ohxldefines.hpp>
-#include <ohxl/xloper.hpp>
+#include <rpxl/ohxldefines.hpp>
+#include <rpxl/xloper.hpp>
 #include <boost/shared_ptr.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! The dimensions of the calling range.
     struct CallerDimensions {

@@ -52,7 +52,7 @@ namespace AccountExample {
             SerializationFactory *ret = dynamic_cast<SerializationFactory*>(instance_);
             if (ret) return *ret;
         }
-        OH_FAIL("Attempt to reference uninitialized SerializationFactory object");
+        RP_FAIL("Attempt to reference uninitialized SerializationFactory object");
     }
 */
 

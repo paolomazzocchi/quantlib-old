@@ -17,13 +17,13 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ohxl/rangereference.hpp>
-#include <ohxl/configuration.hpp>
-#include <oh/exception.hpp>
-#include <oh/utilities.hpp>
+#include <rpxl/rangereference.hpp>
+#include <rpxl/configuration.hpp>
+#include <rp/exception.hpp>
+#include <rp/utilities.hpp>
 #include <boost/lexical_cast.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     boost::regex RangeReference::regexStandard_;
     boost::regex RangeReference::regexSpecial_;
@@ -34,7 +34,7 @@ namespace ObjectHandler {
 
         if (!regexesInitialized_) initializeRegexes();
 
-        OH_REQUIRE(initStandard() || initSpecial(),
+        RP_REQUIRE(initStandard() || initSpecial(),
             "The string '" << address << "' is not a valid range reference");
     }
 

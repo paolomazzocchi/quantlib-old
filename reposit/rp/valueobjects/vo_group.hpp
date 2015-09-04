@@ -20,7 +20,7 @@
 #ifndef rp_vo_group_hpp
 #define rp_vo_group_hpp
 
-#include <oh/valueobject.hpp>
+#include <rp/valueobject.hpp>
 #include <string>
 #include <vector>
 #include <set>

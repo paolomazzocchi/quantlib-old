@@ -24,17 +24,17 @@ void registerRange(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 15, &xDll,
             // function code name
-            TempStrNoSize("\x07""ohRange"),
+            TempStrNoSize("\x07""rpRange"),
             // parameter codes
             TempStrNoSize("\x07""CCKPPL#"),
             // function display name
-            TempStrNoSize("\x07""ohRange"),
+            TempStrNoSize("\x07""rpRange"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x2B""ObjectId,Values,Permanent,Trigger,Overwrite"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -64,17 +64,17 @@ void unregisterRange(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 15, &xDll,
             // function code name
-            TempStrNoSize("\x07""ohRange"),
+            TempStrNoSize("\x07""rpRange"),
             // parameter codes
             TempStrNoSize("\x07""CCKPPL#"),
             // function display name
-            TempStrNoSize("\x07""ohRange"),
+            TempStrNoSize("\x07""rpRange"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x2B""ObjectId,Values,Permanent,Trigger,Overwrite"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -89,7 +89,7 @@ void unregisterRange(const XLOPER &xDll) {
             TempStrNoSize("\x10""overwrite flag  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
-            TempStrNoSize("\x07""ohRange"));
+            TempStrNoSize("\x07""rpRange"));
         Excel4(xlfUnregister, 0, 1, &xlRegID);
 
 

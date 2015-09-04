@@ -17,15 +17,15 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/exception.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/xloper.hpp>
-#include <ohxl/convert_oper.hpp>
+#include <rp/exception.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/xloper.hpp>
+#include <rpxl/convert_oper.hpp>
 #include <sstream>
 #include <string>
 
-namespace ObjectHandler {
+namespace reposit {
 
     FunctionCall *FunctionCall::instance_ = 0;
 
@@ -33,7 +33,7 @@ namespace ObjectHandler {
             functionName_(functionName), 
             callerDimensions_(CallerDimensions::Uninitialized),
             error_(false) {
-        OH_REQUIRE(!instance_, "Multiple attempts to initialize global FunctionCall object");
+        RP_REQUIRE(!instance_, "Multiple attempts to initialize global FunctionCall object");
         instance_ = this;
 
         Excel(xlfCaller, &xCaller_, 0);
@@ -62,7 +62,7 @@ namespace ObjectHandler {
     }
 
     FunctionCall &FunctionCall::instance() {
-        OH_REQUIRE(instance_, "Attempt to reference uninitialized FunctionCall object");
+        RP_REQUIRE(instance_, "Attempt to reference uninitialized FunctionCall object");
         return *instance_;
     }
 

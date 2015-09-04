@@ -24,17 +24,17 @@ void registerGroup(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 15, &xDll,
             // function code name
-            TempStrNoSize("\x07""ohGroup"),
+            TempStrNoSize("\x07""rpGroup"),
             // parameter codes
             TempStrNoSize("\x07""CCPPPL#"),
             // function display name
-            TempStrNoSize("\x07""ohGroup"),
+            TempStrNoSize("\x07""rpGroup"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x31""ObjectId,ObjectIdList,Permanent,Trigger,Overwrite"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -50,17 +50,17 @@ void registerGroup(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 12, &xDll,
             // function code name
-            TempStrNoSize("\x0B""ohGroupList"),
+            TempStrNoSize("\x0B""rpGroupList"),
             // parameter codes
             TempStrNoSize("\x04""PCP#"),
             // function display name
-            TempStrNoSize("\x0B""ohGroupList"),
+            TempStrNoSize("\x0B""rpGroupList"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x10""ObjectId,Trigger"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -68,22 +68,22 @@ void registerGroup(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x3A""Return the list of object IDs contained in a Group object."),
             // parameter descriptions
-            TempStrNoSize("\x2A""id of existing ObjectHandler::Group object"),
+            TempStrNoSize("\x2A""id of existing reposit::Group object"),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
         Excel(xlfRegister, 0, 12, &xDll,
             // function code name
-            TempStrNoSize("\x0B""ohGroupSize"),
+            TempStrNoSize("\x0B""rpGroupSize"),
             // parameter codes
             TempStrNoSize("\x04""NCP#"),
             // function display name
-            TempStrNoSize("\x0B""ohGroupSize"),
+            TempStrNoSize("\x0B""rpGroupSize"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x10""ObjectId,Trigger"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""1"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -91,7 +91,7 @@ void registerGroup(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x3C""Return the number of object IDs contained in a Group object."),
             // parameter descriptions
-            TempStrNoSize("\x2A""id of existing ObjectHandler::Group object"),
+            TempStrNoSize("\x2A""id of existing reposit::Group object"),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
 
@@ -110,17 +110,17 @@ void unregisterGroup(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 15, &xDll,
             // function code name
-            TempStrNoSize("\x07""ohGroup"),
+            TempStrNoSize("\x07""rpGroup"),
             // parameter codes
             TempStrNoSize("\x07""CCPPPL#"),
             // function display name
-            TempStrNoSize("\x07""ohGroup"),
+            TempStrNoSize("\x07""rpGroup"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x31""ObjectId,ObjectIdList,Permanent,Trigger,Overwrite"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -135,22 +135,22 @@ void unregisterGroup(const XLOPER &xDll) {
             TempStrNoSize("\x10""overwrite flag  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
-            TempStrNoSize("\x07""ohGroup"));
+            TempStrNoSize("\x07""rpGroup"));
         Excel4(xlfUnregister, 0, 1, &xlRegID);
 
         Excel(xlfRegister, 0, 12, &xDll,
             // function code name
-            TempStrNoSize("\x0B""ohGroupList"),
+            TempStrNoSize("\x0B""rpGroupList"),
             // parameter codes
             TempStrNoSize("\x04""PCP#"),
             // function display name
-            TempStrNoSize("\x0B""ohGroupList"),
+            TempStrNoSize("\x0B""rpGroupList"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x10""ObjectId,Trigger"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -158,26 +158,26 @@ void unregisterGroup(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x3A""Return the list of object IDs contained in a Group object."),
             // parameter descriptions
-            TempStrNoSize("\x2A""id of existing ObjectHandler::Group object"),
+            TempStrNoSize("\x2A""id of existing reposit::Group object"),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
-            TempStrNoSize("\x0B""ohGroupList"));
+            TempStrNoSize("\x0B""rpGroupList"));
         Excel4(xlfUnregister, 0, 1, &xlRegID);
 
         Excel(xlfRegister, 0, 12, &xDll,
             // function code name
-            TempStrNoSize("\x0B""ohGroupSize"),
+            TempStrNoSize("\x0B""rpGroupSize"),
             // parameter codes
             TempStrNoSize("\x04""NCP#"),
             // function display name
-            TempStrNoSize("\x0B""ohGroupSize"),
+            TempStrNoSize("\x0B""rpGroupSize"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x10""ObjectId,Trigger"),
             // function type (0 = hidden, 1 = worksheet)
             TempStrNoSize("\x01""0"),
             // function category
-            TempStrNoSize("\x0D""ObjectHandler"),
+            TempStrNoSize("\x0D""reposit"),
             // shortcut text (command macros only)
             TempStrNoSize("\x00"""),
             // path to help file
@@ -185,11 +185,11 @@ void unregisterGroup(const XLOPER &xDll) {
             // function description
             TempStrNoSize("\x3C""Return the number of object IDs contained in a Group object."),
             // parameter descriptions
-            TempStrNoSize("\x2A""id of existing ObjectHandler::Group object"),
+            TempStrNoSize("\x2A""id of existing reposit::Group object"),
             TempStrNoSize("\x1D""dependency tracking trigger  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
-            TempStrNoSize("\x0B""ohGroupSize"));
+            TempStrNoSize("\x0B""rpGroupSize"));
         Excel4(xlfUnregister, 0, 1, &xlRegID);
 
 

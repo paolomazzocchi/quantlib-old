@@ -17,13 +17,13 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/utilities.hpp>
-#include <oh/exception.hpp>
-#include <ohxl/repositoryxl.hpp>
-#include <ohxl/conversions/all.hpp>
-#include <ohxl/functioncall.hpp>
-#include <ohxl/callingrange.hpp>
-#include <oh/serializationfactory.hpp>
+#include <rp/utilities.hpp>
+#include <rp/exception.hpp>
+#include <rpxl/repositoryxl.hpp>
+#include <rpxl/conversions/all.hpp>
+#include <rpxl/functioncall.hpp>
+#include <rpxl/callingrange.hpp>
+#include <rp/serializationfactory.hpp>
 
 #include <sstream>
 
@@ -39,19 +39,19 @@ XLL_DEC OPER *ohObjectLoad(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohObjectLoad"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohObjectLoad"));
 
         if (functionCall->calledByFunctionWizard())
             return 0;
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -59,18 +59,18 @@ XLL_DEC OPER *ohObjectLoad(
 
         // convert input datatypes to C++ datatypes
 
-        std::string PatternCpp = ObjectHandler::convert2<std::string>(
-            ObjectHandler::ConvertOper(*Pattern), "Pattern", ".*\\.xml");
+        std::string PatternCpp = reposit::convert2<std::string>(
+            reposit::ConvertOper(*Pattern), "Pattern", ".*\\.xml");
 
-        bool RecurseCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*Recurse), "Recurse", false);
+        bool RecurseCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*Recurse), "Recurse", false);
 
-        bool OverwriteCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*Overwrite), "Overwrite", false);
+        bool OverwriteCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*Overwrite), "Overwrite", false);
 
         // invoke the utility function
 
-        std::vector<std::string> returnValue = ObjectHandler::SerializationFactory::instance().loadObject(
+        std::vector<std::string> returnValue = reposit::SerializationFactory::instance().loadObject(
                 Directory,
                 PatternCpp,
                 RecurseCpp,
@@ -79,14 +79,14 @@ XLL_DEC OPER *ohObjectLoad(
         // convert and return the return value
 
         static OPER xRet;
-        ObjectHandler::vectorToOper(returnValue, xRet);
+        reposit::vectorToOper(returnValue, xRet);
         return &xRet;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -98,19 +98,19 @@ XLL_DEC OPER *ohObjectLoadString(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohObjectLoadString"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohObjectLoadString"));
 
         if (functionCall->calledByFunctionWizard())
             return 0;
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -118,26 +118,26 @@ XLL_DEC OPER *ohObjectLoadString(
 
         // convert input datatypes to C++ datatypes
 
-        bool OverwriteCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*Overwrite), "Overwrite", false);
+        bool OverwriteCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*Overwrite), "Overwrite", false);
 
         // invoke the utility function
 
-        std::vector<std::string> returnValue = ObjectHandler::SerializationFactory::instance().loadObjectString(
+        std::vector<std::string> returnValue = reposit::SerializationFactory::instance().loadObjectString(
                 Xml,
                 OverwriteCpp);
 
         // convert and return the return value
 
         static OPER xRet;
-        ObjectHandler::vectorToOper(returnValue, xRet);
+        reposit::vectorToOper(returnValue, xRet);
         return &xRet;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -151,19 +151,19 @@ XLL_DEC long *ohObjectSave(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohObjectSave"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohObjectSave"));
 
         if (functionCall->calledByFunctionWizard())
             return 0;
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -172,19 +172,19 @@ XLL_DEC long *ohObjectSave(
         // convert input datatypes to C++ datatypes
 
         std::vector<std::string> ObjectListCpp =
-            ObjectHandler::operToVector<std::string>(
+            reposit::operToVector<std::string>(
                 *ObjectList, "ObjectList");
 
-        bool OverwriteCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*Overwrite), "Overwrite", false);
+        bool OverwriteCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*Overwrite), "Overwrite", false);
 
-        bool IncludeGroupsCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*IncludeGroups), "IncludeGroups", true);
+        bool IncludeGroupsCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*IncludeGroups), "IncludeGroups", true);
 
         // invoke the utility function
 
         static long returnValue;
-        returnValue = ObjectHandler::SerializationFactory::instance().saveObject(
+        returnValue = reposit::SerializationFactory::instance().saveObject(
                 ObjectListCpp,
                 Filename,
                 OverwriteCpp,
@@ -195,10 +195,10 @@ XLL_DEC long *ohObjectSave(
         return &returnValue;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
@@ -210,19 +210,19 @@ XLL_DEC char *ohObjectSaveString(
 
     // declare a shared pointer to the Function Call object
 
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
+    boost::shared_ptr<reposit::FunctionCall> functionCall;
 
     try {
 
         // instantiate the Function Call object
 
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("ohObjectSaveString"));
+        functionCall = boost::shared_ptr<reposit::FunctionCall>(
+            new reposit::FunctionCall("ohObjectSaveString"));
 
         if (functionCall->calledByFunctionWizard())
             return 0;
 
-        ObjectHandler::validateRange(Trigger, "Trigger");
+        reposit::validateRange(Trigger, "Trigger");
 
         // initialize the session ID (if enabled)
 
@@ -231,34 +231,34 @@ XLL_DEC char *ohObjectSaveString(
         // convert input datatypes to C++ datatypes
 
         std::vector<std::string> ObjectListCpp =
-            ObjectHandler::operToVector<std::string>(
+            reposit::operToVector<std::string>(
                 *ObjectList, "ObjectList");
 
-        bool OverwriteCpp = ObjectHandler::convert2<bool>(
-            ObjectHandler::ConvertOper(*Overwrite), "Overwrite", false);
+        bool OverwriteCpp = reposit::convert2<bool>(
+            reposit::ConvertOper(*Overwrite), "Overwrite", false);
 
         // convert input datatypes to Object references
 
-        std::vector<boost::shared_ptr<ObjectHandler::Object> > ObjectListObj =
-            ObjectHandler::getObjectVector<ObjectHandler::Object>(ObjectListCpp);
+        std::vector<boost::shared_ptr<reposit::Object> > ObjectListObj =
+            reposit::getObjectVector<reposit::Object>(ObjectListCpp);
 
         // invoke the utility function
 
-        std::string returnValue = ObjectHandler::SerializationFactory::instance().saveObjectString(
+        std::string returnValue = reposit::SerializationFactory::instance().saveObjectString(
                 ObjectListObj,
                 OverwriteCpp);
 
         // convert and return the return value
 
         static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
+        reposit::stringToChar(returnValue, ret);
         return ret;
 
     } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
+        reposit::RepositoryXL::instance().logError(e.what(), functionCall);
         return 0;
     } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
+        reposit::RepositoryXL::instance().logError("unkown error type", functionCall);
         return 0;
     }
 
