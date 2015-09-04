@@ -1,0 +1,226 @@
+
+/*
+ Copyright (C) 2006, 2007, 2008 Eric Ehlers
+
+ This file is part of QuantLib, a free-software/open-source library
+ for financial quantitative analysts and developers - http://quantlib.org/
+
+ QuantLib is free software developed by the QuantLib Group; you can
+ redistribute it and/or modify it under the terms of the QuantLib License;
+ either version 1.0, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ QuantLib License for more details.
+
+ You should have received a copy of the QuantLib License along with this
+ program; if not, please email quantlib-dev@lists.sf.net
+
+ The QuantLib License is also available at <http://quantlib.org/license.shtml>
+ The members of the QuantLib Group are listed in the QuantLib License
+*/
+
+/*! \page license Copyright and License
+
+<dl>
+<dt>\ref license_object_repository</dt>
+<dd><dl>
+<dt>\ref license_object_copyright</dt>
+<dt>\ref license_object_license</dt>
+</dl></dd>
+<dt>\ref license_swig_repository</dt>
+<dd><dl>
+<dt>\ref license_swig_copyright</dt>
+<dt>\ref license_swig_license</dt>
+</dl></dd>
+</dl>
+
+\section license_object_repository Object Repository
+
+\subsection license_object_copyright Copyright
+\verbatim
+reposit is
+    Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+        2012, 2013, 2014 Eric Ehlers
+    Copyright (C) 2004, 2005, 2006, 2007, 2008 Ferdinando Ametrano
+
+    Copyright (C) 2000, 2001, 2002, 2003 RiskMap srl
+    Copyright (C) 2003, 2004, 2005, 2006 StatPro Italia srl
+    Copyright (C) 2005, 2006, 2008 Plamen Neykov
+    Copyright (C) 2008 Luigi Ballabio
+    Copyright (C) 2008 Nazcatech sprl Belgium
+\endverbatim
+
+\subsection license_object_license License
+reposit is released under the QuantLib license:
+\verbatim
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+- Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+- Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+- Neither the names of the copyright holders nor the names of the
+  QuantLib Group and its contributors may be used to endorse or
+  promote products derived from this software without specific prior
+  written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+\endverbatim
+
+\section license_swig_repository SWIG module
+
+\subsection license_swig_copyright Copyright
+
+\verbatim
+SWIG Copyright and Authors
+--------------------------
+
+Copyright (c) 1995-2011 The SWIG Developers
+Copyright (c) 2005-2006 Arizona Board of Regents (University of Arizona).
+Copyright (c) 1998-2005 University of Chicago.
+Copyright (c) 1995-1998 The University of Utah and the Regents of the University of California
+
+Portions also copyrighted by:
+ Network Applied Communication Laboratory, Inc
+ Information-technology Promotion Agency, Japan
+
+Active SWIG Developers:
+ William Fulton (wsf@fultondesigns.co.uk)               (SWIG core, Java, C#, Windows, Cygwin)
+ Olly Betts (olly@survex.com)                           (PHP)
+ Joseph Wang (joequant@gmail.com)                       (R)
+ Xavier Delacour (xavier.delacour@gmail.com)            (Octave)
+ David Nadlinger (code@klickverbot.at)                  (D)
+
+Past SWIG developers and major contributors include:
+ Dave Beazley (dave-swig@dabeaz.com)                    (SWIG core, Python, Tcl, Perl)
+ Henning Thielemann (swig@henning-thielemann.de)        (Modula3)
+ Matthias Köppe (mkoeppe@mail.math.uni-magdeburg.de)    (Guile, MzScheme)
+ Luigi Ballabio (luigi.ballabio@fastwebnet.it)          (STL wrapping)
+ Mikel Bancroft (mikel@franz.com)                       (Allegro CL)
+ Surendra Singhi (efuzzyone@netscape.net)               (CLISP, CFFI)
+ Marcelo Matus (mmatus@acms.arizona.edu)                (SWIG core, Python, UTL[python,perl,tcl,ruby])
+ Art Yerkes (ayerkes@speakeasy.net)                     (Ocaml)
+ Lyle Johnson (lyle@users.sourceforge.net)              (Ruby)
+ Charlie Savage (cfis@interserv.com)                    (Ruby)
+ Thien-Thi Nguyen (ttn@glug.org)                        (build/test/misc)
+ Richard Palmer (richard@magicality.org)                (PHP)
+ Sam Liddicott - Ananova Ltd (saml@liddicott.com)       (PHP)
+ Tim Hockin - Sun Microsystems (thockin@sun.com)        (PHP)
+ Kevin Ruland                                           (PHP)
+ Shibukawa Yoshiki                                      (Japanese Translation)
+ Jason Stewart (jason@openinformatics.com)              (Perl5)
+ Loic Dachary                                           (Perl5)
+ David Fletcher                                         (Perl5)
+ Gary Holt                                              (Perl5)
+ Masaki Fukushima                                       (Ruby)
+ Scott Michel (scottm@cs.ucla.edu)                      (Java directors)
+ Tiger Feng (songyanf@cs.uchicago.edu)                  (SWIG core)
+ Mark Rose (mrose@stm.lbl.gov)                          (Directors)
+ Jonah Beckford (beckford@usermail.com)                 (CHICKEN)
+ Ahmon Dancy (dancy@franz.com)                          (Allegro CL)
+ Dirk Gerrits                                           (Allegro CL)
+ Neil Cawse                                             (C#)
+ Harco de Hilster                                       (Java)
+ Alexey Dyachenko (dyachenko@fromru.com)                (Tcl)
+ Bob Techentin                                          (Tcl)
+ Martin Froehlich <MartinFroehlich@ACM.org>             (Guile)
+ Marcio Luis Teixeira <marciot@holly.colostate.edu>     (Guile)
+ Duncan Temple Lang                                     (R)
+ Miklos Vajna <vmiklos@frugalware.org>                  (PHP directors)
+ Mark Gossage (mark@gossage.cjb.net)                    (Lua)
+ Raman Gopalan (ramangopalan@gmail.com)                 (eLua)
+ Gonzalo Garramuno (ggarra@advancedsl.com.ar)           (Ruby, Ruby's UTL)
+ John Lenz                                              (Guile, MzScheme updates, Chicken module, runtime system)
+ Ian Lance Taylor                                       (Go)
+ Vadim Zeitlin                                          (PCRE)
+ Stefan Zager (szager@gmail.com)			(Python)
+
+Past contributors include:
+ James Michael DuPont, Clark McGrew, Dustin Mitchell, Ian Cooke, Catalin Dumitrescu, Baran
+ Kovuk, Oleg Tolmatcev, Tal Shalif, Lluis Padro, Chris Seatory, Igor Bely, Robin Dunn,
+ Edward Zimmermann, David Ascher, Dominique Dumont, Pier Giorgio Esposito, Hasan Baran Kovuk,
+ Klaus Wiederänders, Richard Beare, Hans Oesterholt.
+ (See CHANGES and CHANGES.current and the bug tracker for a more complete list).
+
+Past students:
+ Songyan Feng (Chicago).
+ Xinghua Shi (Chicago).
+ Jing Cao (Chicago).
+ Aquinas Hobor (Chicago).
+
+Historically, the following people contributed to early versions of SWIG.
+Peter Lomdahl, Brad Holian, Shujia Zhou, Niels Jensen, and Tim Germann
+at Los Alamos National Laboratory were the first users. Patrick
+Tullmann at the University of Utah suggested the idea of automatic
+documentation generation. John Schmidt and Kurtis Bleeker at the
+University of Utah tested out the early versions.  Chris Johnson
+supported SWIG's developed at the University of Utah. John Buckman,
+Larry Virden, and Tom Schwaller provided valuable input on the first
+releases and improving the portability of SWIG. David Fletcher and
+Gary Holt have provided a great deal of input on improving SWIG's
+Perl5 implementation. Kevin Butler contributed the first Windows NT
+port.
+
+Early bug reports and patches:
+Adam Hupp, Arthur Smyles, Brad Clements, Brett Williams, Buck Hodges,
+Burkhard Kloss, Chia-Liang Kao, Craig Files, Dennis Marsa, Dieter Baron,
+Drake Diedrich, Fleur Diana Dragan, Gary Pennington, Geoffrey Hort, Gerald Williams,
+Greg Anderson, Greg Kochanski, Greg Troxel, Henry Rowley, Irina Kotlova,
+Israel Taller, James Bailey, Jim Fulton, Joel Reed, Jon Travis,
+Junio Hamano, Justin Heyes-Jones, Karl Forner, Keith Davidson,
+Krzysztof Kozminski, Larry Virden, Luke J Crook, Magnus Ljung, Marc Zonzon,
+Mark Howson, Micahel Scharf, Michel Sanner, Mike Romberg, Mike Simons,
+Mike Weiblen, Paul Brannan, Ram Bhamidipaty, Reinhard Fobbe, Rich Wales,
+Richard Salz, Roy Lecates, Rudy Albachten, Scott Drummonds
+Scott Michel, Shaun Lowry, Steve Galser, Tarn Weisner Burton,
+Thomas Weidner, Tony Seward, Uwe Steinmann, Vadim Chugunov, Wyss Clemens,
+Zhong Ren.
+\endverbatim
+
+\subsection license_swig_license License
+
+\verbatim
+SWIG is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version. See the LICENSE-GPL file for
+the full terms of the GNU General Public license version 3.
+
+Portions of SWIG are also licensed under the terms of the licenses
+in the file LICENSE-UNIVERSITIES. You must observe the terms of
+these licenses, as well as the terms of the GNU General Public License,
+when you distribute SWIG.
+
+The SWIG library and examples, under the Lib and Examples top level 
+directories, are distributed under the following terms:
+
+  You may copy, modify, distribute, and make derivative works based on
+  this software, in source code or object code form, without
+  restriction. If you distribute the software to others, you may do
+  so according to the terms of your choice. This software is offered as
+  is, without warranty of any kind.
+
+See the COPYRIGHT file for a list of contributors to SWIG and their
+copyright notices.
+\endverbatim
+
+*/
+

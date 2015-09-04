@@ -1,0 +1,107 @@
+
+/*
+ Copyright (C) 2014 Eric Ehlers
+
+ This file is part of QuantLib, a free-software/open-source library
+ for financial quantitative analysts and developers - http://quantlib.org/
+
+ QuantLib is free software developed by the QuantLib Group; you can
+ redistribute it and/or modify it under the terms of the QuantLib License;
+ either version 1.0, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ QuantLib License for more details.
+
+ You should have received a copy of the QuantLib License along with this
+ program; if not, please email quantlib-dev@lists.sf.net
+
+ The QuantLib License is also available at <http://quantlib.org/license.shtml>
+ The members of the QuantLib Group are listed in the QuantLib License
+*/
+
+/*! \page build_git_swig_windows Building reposit On Windows From A git Clone
+
+<div align="center"><small><a href="installation.html">back to installation index</a></small></div>
+
+\section build_git_swig_windows_sec_1 Overview
+
+This document explains how to build the reposit C++ and Excel binaries on Windows.
+
+\section build_git_swig_windows_sec_1b Compiler
+
+The only supported compiler is Visual Studio 2008, also known as VC9.  The only supported configuration is Release, 32 bit.
+
+\section build_git_swig_windows_sec_2 Build Directory
+
+Create a directory on your hard drive where you will do the build.  This document refers to your build directory as $REPOSIT_DIR but you do not need an environment variable by that name.
+
+\section build_git_swig_windows_sec_2a Boost
+
+Build Boost and configure VC9 to find it.
+
+\section build_git_swig_windows_sec_3 PCRE
+
+Download pcre-8.35.zip to $REPOSIT_DIR and uncompress:
+
+\verbatim
+$REPOSIT_DIR\pcre-8.35
+\endverbatim
+
+You need cmake in order to build the PCRE project files.  Create a new directory:
+
+\verbatim
+$REPOSIT_DIR\pcre-8.35\build
+\endverbatim
+
+And open a DOS prompt in that directory and do:
+
+\verbatim
+"C:\Program Files (x86)\CMake\bin\cmake.exe" $REPOSIT_DIR\pcre-8.35
+\endverbatim
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\pcre-8.35\build\PCRE.sln
+\endverbatim
+
+\section build_git_swig_windows_sec_4 SWIG
+
+Open a git bash prompt in $REPOSIT_DIR and clone the repo:
+
+\verbatim
+git clone https://github.com/eehlers/swig.git
+\endverbatim
+
+\section build_git_swig_windows_sec_7 QuantLibXL
+
+Open a git bash prompt in $REPOSIT_DIR and clone the repo:
+
+\verbatim
+git clone https://github.com/eehlers/quantlib.git
+\endverbatim
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\quantlib\QuantLibXL2\QuantLibXL_full_vc9.sln
+\endverbatim
+
+Start Excel and load the addin and workbook:
+
+\verbatim
+$REPOSIT_DIR\quantlib\QuantLibXL2\xll\QuantLibXL-vc90-mt-1_7_0.xll
+$REPOSIT_DIR\quantlib\QuantLibXL2\Workbooks\EquityOption.xlsx
+\endverbatim
+
+The Excel VBA Framework is working:
+
+\verbatim
+$REPOSIT_DIR\quantlib\QuantLibXL2\session_file.EUR-s-static.bat
+$REPOSIT_DIR\quantlib\QuantLibXL2\Data2\XLS\EUR\EURSwap.xlsx
+\endverbatim
+
+*/
+
