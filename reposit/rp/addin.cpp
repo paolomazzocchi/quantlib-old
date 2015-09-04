@@ -18,27 +18,27 @@
 */
 
 #if defined(HAVE_CONFIG_H)     // Dynamically created by configure
-#include <oh/config.hpp>
+#include <rp/config.hpp>
 #endif
-#include <oh/addin.hpp>
-#include <oh/utilities.hpp>
-#include <oh/repository.hpp>
-#include <oh/serializationfactory.hpp>
+#include <rp/addin.hpp>
+#include <rp/utilities.hpp>
+#include <rp/repository.hpp>
+#include <rp/serializationfactory.hpp>
 
-std::string ObjectHandler::ohVersion() {
-    return ObjectHandler::version();
+std::string reposit::ohVersion() {
+    return reposit::version();
 }
 
-void ObjectHandler::ohDeleteObject(const std::string &objectID) {
-    ObjectHandler::Repository::instance().deleteObject(objectID);
+void reposit::ohDeleteObject(const std::string &objectID) {
+    reposit::Repository::instance().deleteObject(objectID);
 }
 
-std::string ObjectHandler::ohObjectSaveString(const std::string &objectId) {
-    OH_GET_OBJECT(x, objectId, ObjectHandler::Object)
-    return ObjectHandler::SerializationFactory::instance().saveObjectString(x);
+std::string reposit::ohObjectSaveString(const std::string &objectId) {
+    RP_GET_OBJECT(x, objectId, reposit::Object)
+    return reposit::SerializationFactory::instance().saveObjectString(x);
 }
 
-void ObjectHandler::ohLoadObjectString(const std::string &xml, bool overwriteExisting) {
-    ObjectHandler::SerializationFactory::instance().loadObjectString(xml, overwriteExisting);
+void reposit::ohLoadObjectString(const std::string &xml, bool overwriteExisting) {
+    reposit::SerializationFactory::instance().loadObjectString(xml, overwriteExisting);
 }
 

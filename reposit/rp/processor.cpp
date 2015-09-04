@@ -21,9 +21,9 @@
 /*! \file
 \brief Class ProcessorFactory - A Singleton class
 */
-#include <oh/processor.hpp>
+#include <rp/processor.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     ProcessorFactory *ProcessorFactory::instance_;
 
@@ -34,12 +34,12 @@ namespace ObjectHandler {
     }
 
     ProcessorFactory &ProcessorFactory::instance() {
-        OH_REQUIRE(instance_, "Attempt to reference uninitialized ProcessorFactory object");
+        RP_REQUIRE(instance_, "Attempt to reference uninitialized ProcessorFactory object");
         return *instance_;
     }
 
     bool ProcessorFactory::storeProcessor(std::string name, ProcessorPtr& ptr){
-        OH_REQUIRE(ptr, "Attempt to reference undefined Processor object");
+        RP_REQUIRE(ptr, "Attempt to reference undefined Processor object");
         processorMap_[name] = ptr;
         return true;
     }

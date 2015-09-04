@@ -25,9 +25,9 @@
 #ifndef oh_serialization_factory_hpp
 #define oh_serialization_factory_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/object.hpp>
-#include <oh/valueobject.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/object.hpp>
+#include <rp/valueobject.hpp>
 #include <map>
 #include <string>
 #include <list>
@@ -35,9 +35,9 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
-    typedef std::pair<std::string, boost::shared_ptr<ObjectHandler::Object> > StrObjectPair;
+    typedef std::pair<std::string, boost::shared_ptr<reposit::Object> > StrObjectPair;
     typedef std::set<std::string> Category;
     typedef std::list<StrObjectPair> HandlesList;
 
@@ -111,14 +111,14 @@ namespace ObjectHandler {
         //@{
         //! Recreate an Object from its ValueObject
         boost::shared_ptr<Object> recreateObject( 
-            boost::shared_ptr<ObjectHandler::ValueObject> valueObject) const ;
+            boost::shared_ptr<reposit::ValueObject> valueObject) const ;
         //! Recreate an Object from its ValueObject and store it in the Repository
         /*! This function calls recreateObject to recreate the Object from its
             ValueObject then stores the newly created Object in the Repository
             with a call to Repository::storeObject().
         */
         StrObjectPair restoreObject(
-            const boost::shared_ptr<ObjectHandler::ValueObject> &valueObject,
+            const boost::shared_ptr<reposit::ValueObject> &valueObject,
             bool overwriteExisting) const;
         //@}
 
@@ -129,12 +129,12 @@ namespace ObjectHandler {
             bool overwriteExisting,
             std::vector<std::string> &processedIDs);
         /*virtual std::string processObject(
-            const boost::shared_ptr<ObjectHandler::ValueObject> &valueObject,
+            const boost::shared_ptr<reposit::ValueObject> &valueObject,
             bool overwriteExisting);*/
         virtual void register_out(boost::archive::xml_oarchive &ar,
-            std::vector<boost::shared_ptr<ObjectHandler::ValueObject> >& valueObjects) = 0;
+            std::vector<boost::shared_ptr<reposit::ValueObject> >& valueObjects) = 0;
         virtual void register_in(boost::archive::xml_iarchive &ar,
-            std::vector<boost::shared_ptr<ObjectHandler::ValueObject> >& valueObjects) = 0;
+            std::vector<boost::shared_ptr<reposit::ValueObject> >& valueObjects) = 0;
 
         //! A pointer to the SerializationFactory instance, used to support the Singleton pattern.
         static SerializationFactory *instance_;

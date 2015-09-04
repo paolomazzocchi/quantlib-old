@@ -31,11 +31,11 @@
 #include <map>
 #include <set>
 #include <algorithm>
-#include <oh/property.hpp>
-#include <oh/utilities.hpp>
+#include <rp/property.hpp>
+#include <rp/utilities.hpp>
 #include <boost/serialization/access.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Capture the values of the arguments passed to the Object constructor.
     /*! For each class derived from Object there is a corresponding ValueObject

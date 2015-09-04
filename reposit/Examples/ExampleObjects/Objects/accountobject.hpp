@@ -19,23 +19,23 @@
 #ifndef example_account_object_hpp
 #define example_account_object_hpp
 
-#include <oh/libraryobject.hpp>
+#include <rp/libraryobject.hpp>
 #include <ExampleObjects/Library/account.hpp>
 
 namespace AccountExample {
 
-    class AccountObject : public ObjectHandler::LibraryObject<Account> {
+    class AccountObject : public reposit::LibraryObject<Account> {
 
     public:
 
         AccountObject(
-            const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+            const boost::shared_ptr<reposit::ValueObject>& properties,
             const boost::shared_ptr<Customer>& customer,
             const Account::Type &type,
             const long &number,
             const double &balance,
             bool permanent)
-            : ObjectHandler::LibraryObject<Account>(properties, permanent) {
+            : reposit::LibraryObject<Account>(properties, permanent) {
 
             libraryObject_ = boost::shared_ptr<Account>(
                 new Account(customer, type, number, balance));

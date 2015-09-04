@@ -30,9 +30,9 @@
 #include <list>
 
 #include <boost/shared_ptr.hpp>
-#include <oh/objectwrapper.hpp>
+#include <rp/objectwrapper.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     typedef std::pair<std::string, boost::shared_ptr<Object> > StrObjectPair;
     typedef std::set<std::string> Category;

@@ -26,17 +26,17 @@
 #ifndef oh_property_hpp
 #define oh_property_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/exception.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/exception.hpp>
 #include <string>
 #include <vector>
 #include <boost/variant.hpp>
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/variant.hpp>
-#include <oh/conversions/convert2.hpp>
+#include <rp/conversions/convert2.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Placeholder for a null value
     struct empty_property_tag {
@@ -131,11 +131,11 @@ namespace ObjectHandler {
                 const property_t::vector& vct = boost::get<property_t::vector>(c);
                 std::vector<value_t> ret;
                 for(property_t::vector::const_iterator i = vct.begin(); i != vct.end(); ++i) {
-                    ret.push_back(ObjectHandler::convert2<value_t, property_t>(*i)); //implicit property_t constructor call!
+                    ret.push_back(reposit::convert2<value_t, property_t>(*i)); //implicit property_t constructor call!
                 }
                 return ret;
             } catch(const std::exception &e) {
-                OH_FAIL("vector property: unable to convert parameter '" << parameterName 
+                RP_FAIL("vector property: unable to convert parameter '" << parameterName 
                     << "' to type '" << typeid(value_t).name() << "' - " << e.what());
             }
         }
@@ -152,13 +152,13 @@ namespace ObjectHandler {
                     std::vector<value_t> rowOut;
                     const property_t::vector& rowIn = boost::get<property_t::vector>(*i);
                     for(property_t::vector::const_iterator j = rowIn.begin(); j != rowIn.end(); ++j) {
-                        rowOut.push_back(ObjectHandler::convert2<value_t, property_t>(*j)); //implicit property_t constructor call!
+                        rowOut.push_back(reposit::convert2<value_t, property_t>(*j)); //implicit property_t constructor call!
                     }
                     ret.push_back(rowOut);                
                 }
                 return ret;
             } catch(const std::exception &e) {
-                OH_FAIL("property matrix: unable to convert parameter '" << parameterName 
+                RP_FAIL("property matrix: unable to convert parameter '" << parameterName 
                     << "' to type '" << typeid(value_t).name() << "' - " << e.what());
             }
         }

@@ -20,13 +20,13 @@
 */
 
 #if defined(HAVE_CONFIG_H)     // Dynamically created by configure
-#include <oh/config.hpp>
+#include <rp/config.hpp>
 #endif
 
-#include <oh/repository.hpp>
-#include <oh/serializationfactory.hpp>
-#include <oh/exception.hpp>
-#include <oh/group.hpp>
+#include <rp/repository.hpp>
+#include <rp/serializationfactory.hpp>
+#include <rp/exception.hpp>
+#include <rp/group.hpp>
 #include <boost/regex.hpp>
 #include <ostream>
 #include <sstream>
@@ -36,7 +36,7 @@ using std::set;
 using std::string;
 using std::endl;
 
-namespace ObjectHandler {
+namespace reposit {
 
     Repository *Repository::instance_;
 
@@ -53,7 +53,7 @@ namespace ObjectHandler {
     }
 
     Repository &Repository::instance() {
-        OH_REQUIRE(instance_,
+        RP_REQUIRE(instance_,
                    "Attempt to reference uninitialized Repository object");
         return *instance_;
     }
@@ -63,7 +63,7 @@ namespace ObjectHandler {
                                    const shared_ptr<Object> &object,
                                    bool overwrite,
                                    boost::shared_ptr<ValueObject>) {
-        OH_REQUIRE(overwrite || !objectExists(objectID),
+        RP_REQUIRE(overwrite || !objectExists(objectID),
                    "Cannot store object with ID '" << objectID <<
                    "' because an object with that ID already exists");
 
@@ -88,8 +88,8 @@ namespace ObjectHandler {
     shared_ptr<Object> Repository::retrieveObjectImpl(const string &objectID) {
 
         ObjectMap::const_iterator result = objectMap_.find(formatID(objectID));
-        OH_REQUIRE(result != objectMap_.end(),
-                   "ObjectHandler error: attempt to retrieve object "
+        RP_REQUIRE(result != objectMap_.end(),
+                   "reposit error: attempt to retrieve object "
                    "with unknown ID '" << objectID << "'");
         if(result->second->dirty()) {
             result->second->recreate();
@@ -101,8 +101,8 @@ namespace ObjectHandler {
     Repository::getObjectWrapper(const string &objectID) const {
 
         ObjectMap::const_iterator result = objectMap_.find(objectID);
-        OH_REQUIRE(result != objectMap_.end(),
-                   "ObjectHandler error: attempt to retrieve object "
+        RP_REQUIRE(result != objectMap_.end(),
+                   "reposit error: attempt to retrieve object "
                    "with unknown ID '" << objectID << "'");
 
         return result->second;
@@ -124,14 +124,14 @@ namespace ObjectHandler {
 
     void Repository::deleteObject(const string &objectID) {
         string realID = formatID(objectID);
-        OH_REQUIRE(objectExists(realID),
+        RP_REQUIRE(objectExists(realID),
                    "Cannot delete '" << realID << "' because no Object with "
                    "that ID is present in the Repository");
         objectMap_.erase(realID);
     }
 
     void Repository::deleteObject(const std::vector<string> &objectIDs) {
-        OH_REQUIRE(!objectIDs.empty(),
+        RP_REQUIRE(!objectIDs.empty(),
                    "List of Object IDs for deletion is empty");
         std::vector<string>::const_iterator i;
         for (i = objectIDs.begin(); i != objectIDs.end(); ++i)
@@ -155,7 +155,7 @@ namespace ObjectHandler {
 
     void Repository::dump(std::ostream& out) {
 
-        out << "dump of all objects in ObjectHandler:" << endl << endl;
+        out << "dump of all objects in reposit:" << endl << endl;
         ObjectMap::const_iterator i;
         for (i=objectMap_.begin(); i!=objectMap_.end(); ++i) {
                 shared_ptr<Object> object = i->second->object();
@@ -226,7 +226,7 @@ namespace ObjectHandler {
                 ObjectMap::const_iterator result = objectMap_.find(realID);
                 ret.push_back(result->second->creationTime());
             } else {
-                OH_FAIL("Unable to retrieve object with ID "<<*i);
+                RP_FAIL("Unable to retrieve object with ID "<<*i);
             }
         }
         return ret;
@@ -244,7 +244,7 @@ namespace ObjectHandler {
                     ObjectMap::const_iterator result = objectMap_.find(realID);
                     ret.push_back( result->second->updateTime());
                 } else {
-                    OH_FAIL("Unable to retrieve object with ID "<<*i);
+                    RP_FAIL("Unable to retrieve object with ID "<<*i);
                 }
         }
         return ret;
@@ -271,7 +271,7 @@ namespace ObjectHandler {
 			}
 			return vecRelationObs;
         } else {
-            OH_FAIL( "Unable to retrieve object with ID "<<objectID);
+            RP_FAIL( "Unable to retrieve object with ID "<<objectID);
         }
     }
 
@@ -299,7 +299,7 @@ namespace ObjectHandler {
                 ObjectMap::const_iterator result = objectMap_.find(realID);
                 ret.push_back(result->second->object()->permanent());
             } else {
-                OH_FAIL("Unable to retrieve object with ID "<<*i);
+                RP_FAIL("Unable to retrieve object with ID "<<*i);
             }
         }
         return ret;
@@ -319,7 +319,7 @@ namespace ObjectHandler {
                 ret.push_back(result->second->object()->properties()->className());
 
             } else {
-                OH_FAIL("Unable to retrieve object with ID "<<*i);
+                RP_FAIL("Unable to retrieve object with ID "<<*i);
             }
         }
         return ret;

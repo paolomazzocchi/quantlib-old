@@ -22,27 +22,27 @@
     \brief Class ObjectWrapper - Ensure that Object references are up to date.
 */
 
-#ifndef oh_objectwrapper_hpp
-#define oh_objectwrapper_hpp
+#ifndef rp_objectwrapper_hpp
+#define rp_objectwrapper_hpp
 
 #include <ostream>
-#include <oh/object.hpp>
-#include <oh/observable.hpp>
-#include <oh/serializationfactory.hpp>
-#include <oh/utilities.hpp>
+#include <rp/object.hpp>
+#include <rp/observable.hpp>
+#include <rp/serializationfactory.hpp>
+#include <rp/utilities.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Container to ensure that Object references are updated.
     /*! ObjectWrapper holds a reference to an Object.  Before returning the reference
-        the ObjectHandler client application, the ObjectWrapper ensures that the state
+        the reposit client application, the ObjectWrapper ensures that the state
         of the Object is updated as necessary to reflect any changes in its precedents.
         There is a 1:1 relationship between Object and ObjectWrapper instances.
 
         ObjectWrapper inherits from Observer and Observable.  ObjectWrapper registers as
         an Observer of its Object's precedents.  If any of those precedents changes,
         the ObjectWrapper is notified and sets its Dirty property to true.  If the
-        ObjectHandler client application attempts to retrieve a Dirty Object, the
+        reposit client application attempts to retrieve a Dirty Object, the
         ObjectWrapper first recreates the Object, ensuring that its state reflects
         any changes in the precedents.
     */
@@ -119,7 +119,7 @@ namespace ObjectHandler {
             dirty_ = false;
             updateTime_ = getTime();
         } catch (const std::exception &e) {
-            OH_FAIL("Error in function ObjectWrapper::recreate() : " << e.what());
+            RP_FAIL("Error in function ObjectWrapper::recreate() : " << e.what());
         }
     }
 

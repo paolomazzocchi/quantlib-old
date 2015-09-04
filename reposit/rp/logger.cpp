@@ -18,14 +18,14 @@
 */
 
 #if defined(HAVE_CONFIG_H)     // Dynamically created by configure
-    #include <oh/config.hpp>
+    #include <rp/config.hpp>
 #endif
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
 
-#include <oh/logger.hpp>
-#include <oh/exception.hpp>
+#include <rp/logger.hpp>
+#include <rp/exception.hpp>
 #include <log4cxx/helpers/exception.h>
 /* Use BOOST_MSVC instead of _MSC_VER since some other vendors (Metrowerks,
 for example) also #define _MSC_VER
@@ -43,7 +43,7 @@ for example) also #define _MSC_VER
 using namespace log4cxx;
 
 
-namespace ObjectHandler {
+namespace reposit {
 
     Logger::Logger() {
 
@@ -55,10 +55,10 @@ namespace ObjectHandler {
                
 
         } catch (helpers::Exception &e) {
-            //OH_FAIL("Logger::Logger: error initializing: " + e.getMessage());
+            //RP_FAIL("Logger::Logger: error initializing: " + e.getMessage());
             std::string str = "Logger::Logger: error initializing: ";
             str += e.what();
-            OH_FAIL(str);
+            RP_FAIL(str);
         }
 
     }
@@ -82,7 +82,7 @@ namespace ObjectHandler {
 
             // If a parent directory has been specified then ensure it exists.
             if ( !path.branch_path().empty() ) {
-                OH_REQUIRE(boost::filesystem::exists(path.branch_path()),
+                RP_REQUIRE(boost::filesystem::exists(path.branch_path()),
                            "Invalid parent path : " << logFileName);
             }
             // deprecated branch_path() observer has been used above for boost 1.35
@@ -104,10 +104,10 @@ namespace ObjectHandler {
                 filename_ = logFileName;
 
             } catch (helpers::Exception &e) {
-                //OH_FAIL("Logger::logSetFile: unable to set logfile: " + e.getMessage());
+                //RP_FAIL("Logger::logSetFile: unable to set logfile: " + e.getMessage());
                 std::string str = "Logger::logSetFile: unable to set logfile: ";
                 str += e.what();
-                OH_FAIL(str);
+                RP_FAIL(str);
             }
 
 
@@ -126,10 +126,10 @@ namespace ObjectHandler {
                 }
                 setLevel(logLevel);
             } catch (helpers::Exception &e) {
-                //OH_FAIL("Logger::logSetFile: unable to set logfile: " + e.getMessage());
+                //RP_FAIL("Logger::logSetFile: unable to set logfile: " + e.getMessage());
                 std::string str = "Logger::logSetFile: unable to set logfile: ";
                 str += e.what();
-                OH_FAIL(str);
+                RP_FAIL(str);
             }
     }
 
@@ -163,13 +163,13 @@ namespace ObjectHandler {
                     _logger->setLevel(Level::getDebug());
                     break;
                 default:
-                    OH_FAIL("Logger::setLogLevel: invalid logLevel: " << logLevel);
+                    RP_FAIL("Logger::setLogLevel: invalid logLevel: " << logLevel);
             }
         } catch (helpers::Exception &e) {
-            //OH_FAIL("Logger::Logger: error initializing: " + e.getMessage());
+            //RP_FAIL("Logger::Logger: error initializing: " + e.getMessage());
             std::string str = "Logger::Logger: error initializing: ";
             str += e.what();
-            OH_FAIL(str);
+            RP_FAIL(str);
         }
     }
 
@@ -214,7 +214,7 @@ namespace ObjectHandler {
             return filename_;
         }
         catch(...){
-            OH_FAIL("Logger::LogFile: unable to get logfile.");
+            RP_FAIL("Logger::LogFile: unable to get logfile.");
         }
     }
 

@@ -21,25 +21,25 @@
 */
 
 /*! \file
-    \brief ObjectHandler utilities
+    \brief reposit utilities
 */
 
 #ifndef oh_utilities_hpp
 #define oh_utilities_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/exception.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/exception.hpp>
 #include <string>
 #include <vector>
 #include <boost/lexical_cast.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! \name Diagnostics
     //@{
     //! Return the Boost version number as a string.
     std::string boostVersion();
-    //! Return the ObjectHandler version number as a string.
+    //! Return the reposit version number as a string.
     std::string version();
     //@}
 
@@ -81,7 +81,7 @@ namespace ObjectHandler {
     */
     void logObject(const std::string &objectID);
     //! Write all Objects to the log file.
-    /*! Takes no action if the ObjectHandler
+    /*! Takes no action if the reposit
         repository is empty.
     */
     void logAllObjects();

@@ -21,13 +21,13 @@
 #ifndef example_account_valueobject_hpp
 #define example_account_valueobject_hpp
 
-#include <oh/valueobject.hpp>
+#include <rp/valueobject.hpp>
 #include <vector>
 #include <string>
 
 namespace AccountExample {
 
-    class AccountValueObject : public ObjectHandler::ValueObject {
+    class AccountValueObject : public reposit::ValueObject {
         friend class boost::serialization::access;
 
     public:
@@ -38,17 +38,17 @@ namespace AccountExample {
             const std::string &customer,
             const std::string &type,
             const long &number,
-            const ObjectHandler::property_t& balance,
+            const reposit::property_t& balance,
             bool permanent)
-            : ObjectHandler::ValueObject(objectID, "Account", permanent),
+            : reposit::ValueObject(objectID, "Account", permanent),
             customer_(customer), type_(type), number_(number), balance_(balance) {
             precedentIDs_.insert(customer);
         }
 
         const std::set<std::string>& getSystemPropertyNames() const;
         std::vector<std::string> getPropertyNamesVector() const;
-        ObjectHandler::property_t getSystemProperty(const std::string &name) const;
-        void setSystemProperty(const std::string& name, const ObjectHandler::property_t& value);
+        reposit::property_t getSystemProperty(const std::string &name) const;
+        void setSystemProperty(const std::string& name, const reposit::property_t& value);
 
     private:
 
@@ -56,7 +56,7 @@ namespace AccountExample {
         std::string customer_;
         std::string type_;
         long number_;
-        ObjectHandler::property_t balance_;
+        reposit::property_t balance_;
 
         template<class Archive>
         void serialize(Archive& ar, const unsigned int) {

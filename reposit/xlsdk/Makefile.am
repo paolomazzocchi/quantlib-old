@@ -1,4 +1,6 @@
 
+SUBDIRS = x64
+
 EXTRA_DIST = \
     auto_link.hpp \
     framewrk.cpp \

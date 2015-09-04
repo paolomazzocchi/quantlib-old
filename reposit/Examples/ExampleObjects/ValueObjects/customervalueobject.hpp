@@ -20,7 +20,7 @@
 #ifndef example_customer_valueobject_hpp
 #define example_customer_valueobject_hpp
 
-#include <oh/valueobject.hpp>
+#include <rp/valueobject.hpp>
 #include <boost/serialization/void_cast.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <vector>
@@ -28,7 +28,7 @@
 
 namespace AccountExample {
 
-    class CustomerValueObject : public ObjectHandler::ValueObject {
+    class CustomerValueObject : public reposit::ValueObject {
         friend class boost::serialization::access;
 
     public:
@@ -39,12 +39,12 @@ namespace AccountExample {
             const std::string &name, 
             const long &age,
             bool permanent)
-            : ObjectHandler::ValueObject(objectID, "Customer", permanent), name_(name), age_(age) {}
+            : reposit::ValueObject(objectID, "Customer", permanent), name_(name), age_(age) {}
 
         const std::set<std::string>& getSystemPropertyNames() const;
         std::vector<std::string> getPropertyNamesVector() const;
-        ObjectHandler::property_t getSystemProperty(const std::string& name) const;
-        void setSystemProperty(const std::string& name, const ObjectHandler::property_t& value);
+        reposit::property_t getSystemProperty(const std::string& name) const;
+        void setSystemProperty(const std::string& name, const reposit::property_t& value);
 
     private:
 

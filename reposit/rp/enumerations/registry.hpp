@@ -22,17 +22,17 @@
     \brief Class Registry - A registry of enumerated types and classes
 */
 
-#ifndef oh_registry_hpp
-#define oh_registry_hpp
+#ifndef rp_registry_hpp
+#define rp_registry_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/exception.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/exception.hpp>
 #include <string>
 #include <vector>
 #include <map>
 #include <boost/shared_ptr.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! A pair of strings.
     /*! Derived class EnumPairRegistry instantiates base template class Registry
@@ -122,7 +122,7 @@ namespace ObjectHandler {
 
         AllTypeMap &allTypeMap = getAllTypesMap();
         typename AllTypeMap::const_iterator map = allTypeMap.find(id);
-        OH_REQUIRE(map != allTypeMap.end(), "Registry::getTypeElements: invalid enum id: " + id);
+        RP_REQUIRE(map != allTypeMap.end(), "Registry::getTypeElements: invalid enum id: " + id);
         std::vector<std::string> ret;
         for(typename TypeMap::const_iterator i = map->second->begin(); i != map->second->end(); ++i)
             ret.push_back(i->first);
@@ -135,7 +135,7 @@ namespace ObjectHandler {
 
         AllTypeMap &allTypeMap = getAllTypesMap();
         AllTypeMap::const_iterator map = allTypeMap.find(id);
-        OH_REQUIRE(map != allTypeMap.end(), "Registry::getTypeElements: invalid enum id: " + id);
+        RP_REQUIRE(map != allTypeMap.end(), "Registry::getTypeElements: invalid enum id: " + id);
         std::vector<std::string> ret;
         for(TypeMap::const_iterator i = map->second->begin(); i != map->second->end(); ++i) {
             std::ostringstream s;

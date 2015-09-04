@@ -17,8 +17,8 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef oh_vo_group_hpp
-#define oh_vo_group_hpp
+#ifndef rp_vo_group_hpp
+#define rp_vo_group_hpp
 
 #include <oh/valueobject.hpp>
 #include <string>
@@ -27,21 +27,21 @@
 #include <boost/serialization/map.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 
-namespace ObjectHandler { namespace ValueObjects {
+namespace reposit { namespace ValueObjects {
 
-    class ohGroup : public ObjectHandler::ValueObject {
+    class rpGroup : public reposit::ValueObject {
         friend class boost::serialization::access;
     public:
-        ohGroup() {}
-        ohGroup(
+        rpGroup() {}
+        rpGroup(
             const std::string& ObjectId,
             const std::vector<std::string>& ObjectIdList,
             bool Permanent);
 
         const std::set<std::string>& getSystemPropertyNames() const;
         std::vector<std::string> getPropertyNamesVector() const;
-        ObjectHandler::property_t getSystemProperty(const std::string&) const;
-        void setSystemProperty(const std::string& name, const ObjectHandler::property_t& value);
+        reposit::property_t getSystemProperty(const std::string&) const;
+        void setSystemProperty(const std::string& name, const reposit::property_t& value);
 
     protected:
 
@@ -51,7 +51,7 @@ namespace ObjectHandler { namespace ValueObjects {
         
         template<class Archive>
         void serialize(Archive& ar, const unsigned int) {
-        boost::serialization::void_cast_register<ohGroup, ObjectHandler::ValueObject>(this, this);
+        boost::serialization::void_cast_register<rpGroup, reposit::ValueObject>(this, this);
             ar  & boost::serialization::make_nvp("ObjectId", objectId_)
                 & boost::serialization::make_nvp("ClassName", className_)
                 & boost::serialization::make_nvp("ObjectIdList", ObjectIdList_)
@@ -62,7 +62,7 @@ namespace ObjectHandler { namespace ValueObjects {
 
 
 
-    inline const std::set<std::string> &ohGroup::getSystemPropertyNames() const {
+    inline const std::set<std::string> &rpGroup::getSystemPropertyNames() const {
         static std::set<std::string> ret;
         if (ret.empty()) {
         ret.insert("ObjectIdList");
@@ -71,17 +71,17 @@ namespace ObjectHandler { namespace ValueObjects {
         return ret;
     }
 
-    inline std::vector<std::string> ohGroup::getPropertyNamesVector() const {
+    inline std::vector<std::string> rpGroup::getPropertyNamesVector() const {
         std::vector<std::string> ret;
         ret.push_back("ObjectIdList");
         ret.push_back("Permanent");
-        for (std::map<std::string, ObjectHandler::property_t>::const_iterator i = userProperties.begin();
+        for (std::map<std::string, reposit::property_t>::const_iterator i = userProperties.begin();
             i != userProperties.end(); ++i)
             ret.push_back(i->first);
         return ret;
     }
 
-    inline ObjectHandler::property_t ohGroup::getSystemProperty(const std::string& name) const {
+    inline reposit::property_t rpGroup::getSystemProperty(const std::string& name) const {
         std::string nameUpper = boost::algorithm::to_upper_copy(name);
         if(strcmp(nameUpper.c_str(), "OBJECTID")==0)
             return objectId_;
@@ -92,36 +92,31 @@ namespace ObjectHandler { namespace ValueObjects {
         else if(strcmp(nameUpper.c_str(), "PERMANENT")==0)
             return Permanent_;
         else
-            OH_FAIL("Error: attempt to retrieve non-existent Property: '" + name + "'");
+            RP_FAIL("Error: attempt to retrieve non-existent Property: '" + name + "'");
     }
 
-    inline void ohGroup::setSystemProperty(const std::string& name, const ObjectHandler::property_t& value) {
+    inline void rpGroup::setSystemProperty(const std::string& name, const reposit::property_t& value) {
         std::string nameUpper = boost::algorithm::to_upper_copy(name);
         if(strcmp(nameUpper.c_str(), "OBJECTID")==0)
             objectId_ = boost::get<std::string>(value);
         else if(strcmp(nameUpper.c_str(), "CLASSNAME")==0)
             className_ = boost::get<std::string>(value);
         else if(strcmp(nameUpper.c_str(), "OBJECTIDLIST")==0)
-            ObjectIdList_ = ObjectHandler::vector::convert2<std::string>(value, nameUpper);
+            ObjectIdList_ = reposit::vector::convert2<std::string>(value, nameUpper);
         else if(strcmp(nameUpper.c_str(), "PERMANENT")==0)
-            Permanent_ = ObjectHandler::convert2<bool>(value);
+            Permanent_ = reposit::convert2<bool>(value);
         else
-            OH_FAIL("Error: attempt to set non-existent Property: '" + name + "'");
+            RP_FAIL("Error: attempt to set non-existent Property: '" + name + "'");
     }
 
-    inline ohGroup::ohGroup(
+    inline rpGroup::rpGroup(
             const std::string& ObjectId,
             const std::vector<std::string>& ObjectIdList,
             bool Permanent) :
-        ObjectHandler::ValueObject(ObjectId, "ohGroup", Permanent),
+        reposit::ValueObject(ObjectId, "rpGroup", Permanent),
         ObjectIdList_(ObjectIdList),
         Permanent_(Permanent) {
-                  
-
-            
     }
-
-
 
 } }
 

@@ -18,10 +18,10 @@
 */
 
 #if defined(HAVE_CONFIG_H)     // Dynamically created by configure
-    #include <oh/config.hpp>
+    #include <rp/config.hpp>
 #endif
 
-#include <oh/property.hpp>
+#include <rp/property.hpp>
 #include <ExampleObjects/Serialization/creators.hpp>
 #include <ExampleObjects/Objects/customerobject.hpp>
 #include <ExampleObjects/Objects/accountobject.hpp>
@@ -29,35 +29,35 @@
 
 namespace AccountExample {
 
-    boost::shared_ptr<ObjectHandler::Object> createAccount(
-        const boost::shared_ptr<ObjectHandler::ValueObject> &valueObject) {
+    boost::shared_ptr<reposit::Object> createAccount(
+        const boost::shared_ptr<reposit::ValueObject> &valueObject) {
 
-        std::string customer = ObjectHandler::convert2<std::string>(valueObject->getProperty("Customer"));
-        bool permanent = ObjectHandler::convert2<bool>(valueObject->getProperty("Permanent"));
-        std::string type = ObjectHandler::convert2<std::string>(valueObject->getProperty("Type"));
-        long number = ObjectHandler::convert2<long>(valueObject->getProperty("Number"));
-        ObjectHandler::property_t balance = valueObject->getProperty("Balance");
+        std::string customer = reposit::convert2<std::string>(valueObject->getProperty("Customer"));
+        bool permanent = reposit::convert2<bool>(valueObject->getProperty("Permanent"));
+        std::string type = reposit::convert2<std::string>(valueObject->getProperty("Type"));
+        long number = reposit::convert2<long>(valueObject->getProperty("Number"));
+        reposit::property_t balance = valueObject->getProperty("Balance");
 
-        OH_GET_REFERENCE(customerRef, customer,
+        RP_GET_REFERENCE(customerRef, customer,
             AccountExample::CustomerObject, AccountExample::Customer)
 
-        Account::Type typeEnum = ObjectHandler::Create<Account::Type>()(type);
+        Account::Type typeEnum = reposit::Create<Account::Type>()(type);
 
-        double accountBalance = ObjectHandler::convert2<double>(balance, "Balance", 100.00);
+        double accountBalance = reposit::convert2<double>(balance, "Balance", 100.00);
 
-        boost::shared_ptr<ObjectHandler::Object> object(
+        boost::shared_ptr<reposit::Object> object(
             new AccountObject(valueObject, customerRef, typeEnum, number, accountBalance, permanent));
         return object;
     }
 
-    boost::shared_ptr<ObjectHandler::Object> createCustomer(
-        const boost::shared_ptr<ObjectHandler::ValueObject> &valueObject) {
+    boost::shared_ptr<reposit::Object> createCustomer(
+        const boost::shared_ptr<reposit::ValueObject> &valueObject) {
 
-        bool permanent = ObjectHandler::convert2<bool>(valueObject->getProperty("Permanent"));
-        std::string name = ObjectHandler::convert2<std::string>(valueObject->getProperty("name"));
-        long age = ObjectHandler::convert2<long>(valueObject->getProperty("age"));
+        bool permanent = reposit::convert2<bool>(valueObject->getProperty("Permanent"));
+        std::string name = reposit::convert2<std::string>(valueObject->getProperty("name"));
+        long age = reposit::convert2<long>(valueObject->getProperty("age"));
 
-        boost::shared_ptr<ObjectHandler::Object> object(
+        boost::shared_ptr<reposit::Object> object(
             new CustomerObject(valueObject, name, age, permanent));
         return object;
     }

@@ -21,15 +21,15 @@
     \brief is_less comparison functors and less predicates
 */
 
-#ifndef oh_less_hpp
-#define oh_less_hpp
+#ifndef rp_less_hpp
+#define rp_less_hpp
 
 #include <boost/algorithm/string/compare.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <algorithm>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! std::string specialized case insensitive version of less
     /*!

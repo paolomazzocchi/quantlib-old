@@ -24,10 +24,10 @@
 #ifndef oh_singleton_hpp
 #define oh_singleton_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 #include <boost/shared_ptr.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Basic support for the singleton pattern.
     /*! The typical use of this class is:

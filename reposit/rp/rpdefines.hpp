@@ -19,11 +19,11 @@
 */
 
 /*! \file
-    \brief Preprocessor directives for ObjectHandler compilation
+    \brief Preprocessor directives for reposit compilation
 */
 
-#ifndef oh_defines_hpp
-#define oh_defines_hpp
+#ifndef rp_defines_hpp
+#define rp_defines_hpp
 
 #include <boost/config.hpp>
 #include <boost/version.hpp>
@@ -34,15 +34,15 @@
 
 //! Version string.
 #ifdef _DEBUG
-    #define OBJHANDLER_VERSION "1.7.0-debug"
+    #define REPOSIT_VERSION "1.7.0-debug"
 #else
-    #define OBJHANDLER_VERSION "1.7.0"
+    #define REPOSIT_VERSION "1.7.0"
 #endif
 
 //! Version hexadecimal number.
-#define OBJHANDLER_HEX_VERSION 0x010700f0
+#define REPOSIT_HEX_VERSION 0x010700f0
 //! Version string for output lib name.
-#define OBJHANDLER_LIB_VERSION "1_7_0"
+#define REPOSIT_LIB_VERSION "1_7_0"
 
 #include <cctype>
 #if defined(BOOST_NO_STDC_NAMESPACE)
@@ -84,85 +84,85 @@
 #endif
 
 //! Get a boost shared pointer to a class derived from Object.
-#define OH_GET_OBJECT( NAME, ID, OBJECT_CLASS ) \
+#define RP_GET_OBJECT( NAME, ID, OBJECT_CLASS ) \
     boost::shared_ptr<OBJECT_CLASS > NAME; \
-    ObjectHandler::Repository::instance().retrieveObject(NAME, ID);
+    reposit::Repository::instance().retrieveObject(NAME, ID);
 
-//! Like OH_GET_OBJECT but only attempt retrieval if id supplied.
-#define OH_GET_OBJECT_DEFAULT( NAME, ID, OBJECT_CLASS ) \
+//! Like RP_GET_OBJECT but only attempt retrieval if id supplied.
+#define RP_GET_OBJECT_DEFAULT( NAME, ID, OBJECT_CLASS ) \
     boost::shared_ptr<OBJECT_CLASS > NAME; \
     if (!ID.empty()) { \
-        ObjectHandler::Repository::instance().retrieveObject(NAME, ID); \
+        reposit::Repository::instance().retrieveObject(NAME, ID); \
     }
 
 //! Get a shared pointer to the library object referenced by an Object.
-#define OH_GET_REFERENCE( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
-    OH_GET_OBJECT(NAME ## temp, ID, OBJECT_CLASS ) \
+#define RP_GET_REFERENCE( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
+    RP_GET_OBJECT(NAME ## temp, ID, OBJECT_CLASS ) \
     boost::shared_ptr<LIBRARY_CLASS> NAME; \
     NAME ## temp->getLibraryObject(NAME);
 
-//! Like OH_GET_REFERENCE but only attempt retrieval if id supplied.
-#define OH_GET_REFERENCE_DEFAULT( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
+//! Like RP_GET_REFERENCE but only attempt retrieval if id supplied.
+#define RP_GET_REFERENCE_DEFAULT( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
     boost::shared_ptr<LIBRARY_CLASS> NAME; \
     if (!ID.empty()) { \
-        OH_GET_OBJECT(NAME ## temp, ID, OBJECT_CLASS ) \
+        RP_GET_OBJECT(NAME ## temp, ID, OBJECT_CLASS ) \
         NAME ## temp->getLibraryObject(NAME); \
     }
 
 //! Get a direct reference to the underlying object wrapped by the Object.
-#define OH_GET_UNDERLYING( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
-    OH_GET_REFERENCE(NAME ## temp, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
+#define RP_GET_UNDERLYING( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
+    RP_GET_REFERENCE(NAME ## temp, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
     const LIBRARY_CLASS &NAME = *(NAME ## temp.get());
 
-//! Like OH_GET_UNDERLYING but without const qualifier.
-#define OH_GET_UNDERLYING_NONCONST( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
-    OH_GET_REFERENCE(NAME ## temp, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
+//! Like RP_GET_UNDERLYING but without const qualifier.
+#define RP_GET_UNDERLYING_NONCONST( NAME, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
+    RP_GET_REFERENCE(NAME ## temp, ID, OBJECT_CLASS, LIBRARY_CLASS ) \
     LIBRARY_CLASS &NAME = *(NAME ## temp.get());
 
 //! Log the given message.
-#define OH_LOG_MESSAGE(message) \
+#define RP_LOG_MESSAGE(message) \
 do { \
-    std::ostringstream _oh_msg_stream; \
-    _oh_msg_stream << message; \
-    ObjectHandler::logWriteMessage(_oh_msg_stream.str()); \
+    std::ostringstream _rp_msg_stream; \
+    _rp_msg_stream << message; \
+    reposit::logWriteMessage(_rp_msg_stream.str()); \
 } while (false)
 
 //! Log the given error message.
-#define OH_LOG_ERROR(message) \
+#define RP_LOG_ERROR(message) \
 do { \
-    std::ostringstream _oh_msg_stream; \
-    _oh_msg_stream << message; \
-    ObjectHandler::logWriteMessage(_oh_msg_stream.str(), 1); \
+    std::ostringstream _rp_msg_stream; \
+    _rp_msg_stream << message; \
+    reposit::logWriteMessage(_rp_msg_stream.str(), 1); \
 } while (false)
 
 //! An empty constructor for a class derived from Object.
-#define OH_OBJ_CTOR(derived_class, base_class) \
+#define RP_OBJ_CTOR(derived_class, base_class) \
 derived_class( \
-const boost::shared_ptr<ObjectHandler::ValueObject>& properties, \
+const boost::shared_ptr<reposit::ValueObject>& properties, \
 bool permanent) \
 : base_class(properties, permanent) {}
 
 //! An empty class derived from Object.
-#define OH_OBJ_CLASS(derived_class, base_class) \
+#define RP_OBJ_CLASS(derived_class, base_class) \
 class derived_class : \
 public base_class { \
 protected: \
-OH_OBJ_CTOR(derived_class, base_class) \
+RP_OBJ_CTOR(derived_class, base_class) \
 }
 
 //! An empty constructor for a class derived from LibraryObject.
-#define OH_LIB_CTOR(derived_class, base_class) \
+#define RP_LIB_CTOR(derived_class, base_class) \
 derived_class( \
-const boost::shared_ptr<ObjectHandler::ValueObject>& properties, \
+const boost::shared_ptr<reposit::ValueObject>& properties, \
 bool permanent) \
-: ObjectHandler::LibraryObject<base_class>(properties, permanent) {}
+: reposit::LibraryObject<base_class>(properties, permanent) {}
 
 //! An empty class derived from LibraryObject.
-#define OH_LIB_CLASS(derived_class, base_class) \
+#define RP_LIB_CLASS(derived_class, base_class) \
 class derived_class : \
-public ObjectHandler::LibraryObject<base_class> { \
+public reposit::LibraryObject<base_class> { \
 protected: \
-OH_LIB_CTOR(derived_class, base_class) \
+RP_LIB_CTOR(derived_class, base_class) \
 }
 
 #endif

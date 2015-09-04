@@ -18,34 +18,34 @@
 */
 
 /*! \file
-    \brief Class Exception - A simple Exception class for ObjectHandler
+    \brief Class Exception - A simple Exception class for reposit
 */
 
-#ifndef oh_exception_hpp
-#define oh_exception_hpp
+#ifndef rp_exception_hpp
+#define rp_exception_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 #include <exception>
 #include <string>
 #include <sstream>
 
 //! Raise an exception with the given message.
-#define OH_FAIL(message) \
+#define RP_FAIL(message) \
 do { \
-    std::ostringstream _oh_msg_stream; \
-    _oh_msg_stream << message; \
-    throw ObjectHandler::Exception(_oh_msg_stream.str()); \
+    std::ostringstream _rp_msg_stream; \
+    _rp_msg_stream << message; \
+    throw reposit::Exception(_rp_msg_stream.str()); \
 } while (false)
 
 //! Raise an exception if the given condition evaluates to false.
-#define OH_REQUIRE(condition,message) \
+#define RP_REQUIRE(condition,message) \
 if (!(condition)) { \
-    std::ostringstream _oh_msg_stream; \
-    _oh_msg_stream << message; \
-    throw ObjectHandler::Exception(_oh_msg_stream.str()); \
+    std::ostringstream _rp_msg_stream; \
+    _rp_msg_stream << message; \
+    throw reposit::Exception(_rp_msg_stream.str()); \
 } else
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Simple implementation of an exception.
     /*! Inherits from std::exception, supports an error message string. */

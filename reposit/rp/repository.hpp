@@ -25,15 +25,15 @@
 #ifndef oh_repository_hpp
 #define oh_repository_hpp
 
-#include <oh/objectwrapper.hpp>
-#include <oh/ohdefines.hpp>
-#include <oh/iless.hpp>
+#include <rp/objectwrapper.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/iless.hpp>
 #include <map>
 
-//! ObjectHandler
-/*! Namespace for ObjectHandler functionality.
+//! reposit
+/*! Namespace for reposit functionality.
 */
-namespace ObjectHandler {
+namespace reposit {
 
 	//! Forward declarations
 	class Group;
@@ -90,7 +90,7 @@ namespace ObjectHandler {
                             const std::string &id) {
             boost::shared_ptr<Object> object = retrieveObjectImpl(id);
             ret = boost::dynamic_pointer_cast<T>(object);
-            OH_REQUIRE(ret, "Error retrieving object with id '"
+            RP_REQUIRE(ret, "Error retrieving object with id '"
                 << id << "' - unable to convert reference to type '"
                 << typeid(T).name() << "' found instead '"
                 << typeid(*object).name() << "'");

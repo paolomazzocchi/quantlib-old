@@ -18,20 +18,20 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/enumerations/enumregistry.hpp>
+#include <rp/enumerations/enumregistry.hpp>
 
 // This file contains implementations of the three concrete instances of
 // the abstract base class Registry.  Each derived class instantiates its own
 // instance of the AllTypeMap structure where the enumerations are stored.
 
-namespace ObjectHandler {
+namespace reposit {
 
     // EnumTypeRegistry
 
     EnumTypeRegistry *EnumTypeRegistry::instance_;
 
     EnumTypeRegistry &EnumTypeRegistry::instance() {
-        OH_REQUIRE(instance_, "Attempt to reference uninitialized EnumTypeRegistry object");
+        RP_REQUIRE(instance_, "Attempt to reference uninitialized EnumTypeRegistry object");
         return *instance_;
     }
 
@@ -45,7 +45,7 @@ namespace ObjectHandler {
     EnumClassRegistry *EnumClassRegistry::instance_;
 
     EnumClassRegistry &EnumClassRegistry::instance() {
-        OH_REQUIRE(instance_, "Attempt to reference uninitialized EnumClassRegistry object");
+        RP_REQUIRE(instance_, "Attempt to reference uninitialized EnumClassRegistry object");
         return *instance_;
     }
 
@@ -59,7 +59,7 @@ namespace ObjectHandler {
     EnumPairRegistry *EnumPairRegistry::instance_;
 
     EnumPairRegistry &EnumPairRegistry::instance() {
-        OH_REQUIRE(instance_, "Attempt to reference uninitialized EnumPairRegistry object");
+        RP_REQUIRE(instance_, "Attempt to reference uninitialized EnumPairRegistry object");
         return *instance_;
     }
 

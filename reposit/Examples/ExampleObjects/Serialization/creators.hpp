@@ -23,16 +23,16 @@
 #ifndef example_creators_hpp
 #define example_creators_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/object.hpp>
-#include <oh/valueobject.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/object.hpp>
+#include <rp/valueobject.hpp>
 
 namespace AccountExample {
 
-    boost::shared_ptr<ObjectHandler::Object> createCustomer(
-        const boost::shared_ptr<ObjectHandler::ValueObject>&);
-    boost::shared_ptr<ObjectHandler::Object> createAccount(
-        const boost::shared_ptr<ObjectHandler::ValueObject>&);
+    boost::shared_ptr<reposit::Object> createCustomer(
+        const boost::shared_ptr<reposit::ValueObject>&);
+    boost::shared_ptr<reposit::Object> createAccount(
+        const boost::shared_ptr<reposit::ValueObject>&);
 
 }
 

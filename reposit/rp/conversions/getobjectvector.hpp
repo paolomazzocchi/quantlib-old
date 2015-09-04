@@ -21,13 +21,13 @@
     \brief Helper functions to facilitate retrieval of Object lists
 */
 
-#ifndef oh_getobjectlist_hpp
-#define oh_getobjectlist_hpp
+#ifndef rp_getobjectlist_hpp
+#define rp_getobjectlist_hpp
 
-#include <oh/repository.hpp>
-#include <oh/group.hpp>
+#include <rp/repository.hpp>
+#include <rp/group.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     // Convert a vector of strings to a vector of objects.
     //template <class ObjectClass>
@@ -39,7 +39,7 @@ namespace ObjectHandler {
 
     //    for (std::vector<std::string>::const_iterator i = objectIDs.begin();
     //            i != objectIDs.end(); ++i) {
-    //        OH_GET_OBJECT(objectPointer, *i, ObjectClass);
+    //        RP_GET_OBJECT(objectPointer, *i, ObjectClass);
     //        ret.push_back(objectPointer);
     //    }
     //    return ret;
@@ -52,7 +52,7 @@ namespace ObjectHandler {
             const int &nestingLevel = 0,
 			bool includeGroups = false) {
 
-        OH_REQUIRE(nestingLevel < 10, "getObjectVector - nesting level exceeds 10. "
+        RP_REQUIRE(nestingLevel < 10, "getObjectVector - nesting level exceeds 10. "
             "(Possible infinite recursion?)");
 
         std::vector<boost::shared_ptr<ObjectClass> > ret;
@@ -80,7 +80,7 @@ namespace ObjectHandler {
 				if(includeGroups) {
 					boost::shared_ptr<ObjectClass> objectDerived =
 						boost::dynamic_pointer_cast<ObjectClass>(object);
-					OH_REQUIRE(objectDerived, "Error converting Group with id '"
+					RP_REQUIRE(objectDerived, "Error converting Group with id '"
 						<< objectId << "' - unable to convert to type '"
 						<< typeid(ObjectClass).name() << "'");
 					ret.push_back(objectDerived);				
@@ -88,7 +88,7 @@ namespace ObjectHandler {
             } else {
                 boost::shared_ptr<ObjectClass> objectDerived =
                     boost::dynamic_pointer_cast<ObjectClass>(object);
-                OH_REQUIRE(objectDerived, "Error retrieving object with id '"
+                RP_REQUIRE(objectDerived, "Error retrieving object with id '"
                     << objectId << "' - unable to convert reference to type '"
                     << typeid(ObjectClass).name() << "'");
                 ret.push_back(objectDerived);
@@ -108,7 +108,7 @@ namespace ObjectHandler {
 
     //    for (std::vector<std::string>::const_iterator i = objectIDs.begin();
     //            i != objectIDs.end(); ++i) {
-    //        OH_GET_REFERENCE(objectPointer, *i, ObjectClass, LibraryClass);
+    //        RP_GET_REFERENCE(objectPointer, *i, ObjectClass, LibraryClass);
     //        ret.push_back(objectPointer);
     //    }
     //    return ret;
@@ -120,7 +120,7 @@ namespace ObjectHandler {
             const std::vector<std::string> &objectIDs,
             const int &nestingLevel = 0) {
 
-        OH_REQUIRE(nestingLevel < 10, "getLibraryObjectVector - nesting level exceeds 10. "
+        RP_REQUIRE(nestingLevel < 10, "getLibraryObjectVector - nesting level exceeds 10. "
             "(Possible infinite recursion?)");
 
         std::vector<boost::shared_ptr<LibraryClass> > ret;
@@ -149,7 +149,7 @@ namespace ObjectHandler {
             } else {
                 boost::shared_ptr<ObjectClass> objectDerived =
                     boost::dynamic_pointer_cast<ObjectClass>(object);
-                OH_REQUIRE(objectDerived, "Error retrieving object with id '"
+                RP_REQUIRE(objectDerived, "Error retrieving object with id '"
                     << objectId << "' - unable to convert reference to type '"
                     << typeid(ObjectClass).name() << "'");
 

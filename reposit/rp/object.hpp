@@ -23,21 +23,21 @@
     \brief Class Object - Define interface for Objects to be stored in the Repository
 */
 
-#ifndef oh_object_hpp
-#define oh_object_hpp
+#ifndef rp_object_hpp
+#define rp_object_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/valueobject.hpp>
-#include <oh/exception.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/valueobject.hpp>
+#include <rp/exception.hpp>
 #include <boost/shared_ptr.hpp>
 #include <vector>
 #include <string>
 #include <sstream>
 #include <iomanip>
 
-namespace ObjectHandler {
+namespace reposit {
 
-    //! Interface for Objects to be stored in the ObjectHandler Repository.
+    //! Interface for Objects to be stored in the reposit Repository.
     /*! Objects are constructed by the client and passed to
         Repository::storeObject() for storage in the Repository.
 
@@ -138,7 +138,7 @@ namespace ObjectHandler {
     inline property_t Object::propertyValue(const std::string &propertyName) const {
         if (mProps)
             return mProps->getProperty(propertyName);
-        OH_FAIL("ObjectHandler error: attempt to retrieve property "
+        RP_FAIL("reposit error: attempt to retrieve property "
             << "with unknown name '" << propertyName << "'");
     }
 

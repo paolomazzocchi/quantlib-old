@@ -1,5 +1,7 @@
 
-LDFLAGS = -lboost_serialization -lboost_system -lboost_filesystem
+SUBDIRS = Enumerations Library Objects Serialization ValueObjects
+
+LDFLAGS = -lboost_filesystem -lboost_serialization -lboost_regex -lboost_system
 
 noinst_LTLIBRARIES = libExampleObjects.la
 

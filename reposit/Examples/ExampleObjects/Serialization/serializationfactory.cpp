@@ -18,15 +18,15 @@
 */
 
 #if defined(HAVE_CONFIG_H)     // Dynamically created by configure
-#include <oh/config.hpp>
+#include <rp/config.hpp>
 #endif
 
 #include <ExampleObjects/Serialization/serializationfactory.hpp>
 #include <ExampleObjects/Serialization/creators.hpp>
 #include <ExampleObjects/ValueObjects/accountvalueobject.hpp>
 #include <ExampleObjects/ValueObjects/customervalueobject.hpp>
-#include <oh/repository.hpp>
-#include <oh/valueobjects/vo_range.hpp>
+#include <rp/repository.hpp>
+#include <rp/valueobjects/vo_range.hpp>
 
 #include <set>
 #include <fstream>
@@ -57,16 +57,16 @@ namespace AccountExample {
 */
 
     void SerializationFactory::register_out(boost::archive::xml_oarchive &ar,
-        std::vector<boost::shared_ptr<ObjectHandler::ValueObject> >& valueObjects) {
-        ar.register_type<ObjectHandler::ValueObjects::ohRange>();
+        std::vector<boost::shared_ptr<reposit::ValueObject> >& valueObjects) {
+        ar.register_type<reposit::ValueObjects::rpRange>();
         ar.register_type<AccountExample::AccountValueObject>();
         ar.register_type<AccountExample::CustomerValueObject>();
         ar << boost::serialization::make_nvp("object_list", valueObjects);
     }
 
     void SerializationFactory::register_in(boost::archive::xml_iarchive &ar,
-        std::vector<boost::shared_ptr<ObjectHandler::ValueObject> >& valueObjects) {
-        ar.register_type<ObjectHandler::ValueObjects::ohRange>();
+        std::vector<boost::shared_ptr<reposit::ValueObject> >& valueObjects) {
+        ar.register_type<reposit::ValueObjects::rpRange>();
         ar.register_type<AccountExample::AccountValueObject>();
         ar.register_type<AccountExample::CustomerValueObject>();
         ar >> boost::serialization::make_nvp("object_list", valueObjects);

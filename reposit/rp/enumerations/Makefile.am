@@ -1,6 +1,6 @@
 
 AM_CPPFLAGS = -I${top_srcdir}
-includedir = $(prefix)/include/oh/enumerations
+includedir = $(prefix)/include/rp/enumerations
 
 noinst_LTLIBRARIES = libEnumerations.la
 

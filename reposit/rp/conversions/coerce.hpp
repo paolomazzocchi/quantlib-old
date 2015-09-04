@@ -24,13 +24,13 @@
 #ifndef oh_conversions_coerce_hpp
 #define oh_conversions_coerce_hpp
 
-#include <oh/exception.hpp>
+#include <rp/exception.hpp>
 #include <sstream>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Base class in support of datatype coercion.
-    /*! ObjectHandler supports the concept of coercion - a function expects an 
+    /*! reposit supports the concept of coercion - a function expects an 
         argument of a given datatype, the user inputs a value of some other type and
         if possible the value is converted automatically.
 
@@ -50,7 +50,7 @@ namespace ObjectHandler {
         */
         TypeOut operator()(const TypeIn &in) {
 
-            OH_REQUIRE(!inputMissing(in), "Unable to coerce value from type '"
+            RP_REQUIRE(!inputMissing(in), "Unable to coerce value from type '"
                 << typeid(TypeIn).name() << "' to type '" << typeid(TypeOut).name()
                 << "' - the input value is null");
 
@@ -61,7 +61,7 @@ namespace ObjectHandler {
                     return out;
             }
 
-            OH_FAIL("Unable to coerce value from type '" << typeid(TypeIn).name()
+            RP_FAIL("Unable to coerce value from type '" << typeid(TypeIn).name()
                 << "' to type '" << typeid(TypeOut).name() << "' - all conversions failed");
         }
 

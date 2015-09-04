@@ -22,14 +22,14 @@
     \brief EnumRegistry Classes - Concrete implementations of class Registry
 */
 
-#ifndef oh_enumregistry_hpp
-#define oh_enumregistry_hpp
+#ifndef rp_enumregistry_hpp
+#define rp_enumregistry_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/singleton.hpp>
-#include <oh/enumerations/registry.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/singleton.hpp>
+#include <rp/enumerations/registry.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! A concrete instantiation of the Registry class, for enumerated types.
     class DLL_API EnumTypeRegistry : public Registry<std::string> {

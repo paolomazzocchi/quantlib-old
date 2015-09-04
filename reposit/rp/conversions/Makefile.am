@@ -1,5 +1,5 @@
 
-includedir = $(prefix)/include/oh/conversions
+includedir = $(prefix)/include/rp/conversions
 
 include_HEADERS = \
     coerce.hpp \

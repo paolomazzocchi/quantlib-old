@@ -18,23 +18,23 @@
 
 #include <boost/bind.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     // ohObjectPropertyValues
 
     typedef     boost::_bi::bind_t<
-                ObjectHandler::property_t,
+                reposit::property_t,
                 boost::_mfi::cmf1<
-                    ObjectHandler::property_t,
-                    ObjectHandler::Object,
+                    reposit::property_t,
+                    reposit::Object,
                     const std::string&>,
                 boost::_bi::list2<
-                    boost::_bi::value<boost::shared_ptr<ObjectHandler::Object> >,
+                    boost::_bi::value<boost::shared_ptr<reposit::Object> >,
                     boost::arg<1> > >
                 ohObjectPropertyValuesBind;
 
-    typedef     ObjectHandler::property_t 
-                (ObjectHandler::Object::* ohObjectPropertyValuesSignature)(
+    typedef     reposit::property_t 
+                (reposit::Object::* ohObjectPropertyValuesSignature)(
                     const std::string&) const;
 
 }

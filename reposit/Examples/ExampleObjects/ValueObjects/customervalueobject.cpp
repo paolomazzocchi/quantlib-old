@@ -18,7 +18,7 @@
 */
 
 #include <ExampleObjects/ValueObjects/customervalueobject.hpp>
-#include <oh/exception.hpp>
+#include <rp/exception.hpp>
 #include <iostream>
 #include <string>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -45,13 +45,13 @@ namespace AccountExample {
 	std::vector<std::string> CustomerValueObject::getPropertyNamesVector() const {
         std::vector<std::string> ret(mPropertyNames,
             mPropertyNames + sizeof(mPropertyNames)/sizeof(const char*));
-        for (std::map<std::string, ObjectHandler::property_t>::const_iterator i
+        for (std::map<std::string, reposit::property_t>::const_iterator i
             = userProperties.begin(); i != userProperties.end(); ++i)
             ret.push_back(i->first);
         return ret;
 	}
 
-    ObjectHandler::property_t CustomerValueObject::getSystemProperty(const std::string& name) const {
+    reposit::property_t CustomerValueObject::getSystemProperty(const std::string& name) const {
         std::string nameUpper = boost::algorithm::to_upper_copy(name);
         if (strcmp(nameUpper.c_str(), "OBJECTID")==0)
             return objectId_;
@@ -65,10 +65,10 @@ namespace AccountExample {
         else if (strcmp(nameUpper.c_str(), "AGE")==0)
             return age_;
         else 
-            OH_FAIL("Error: attempt to retrieve non-existent Property: '" + name + "'");
+            RP_FAIL("Error: attempt to retrieve non-existent Property: '" + name + "'");
     }
 
-    void CustomerValueObject::setSystemProperty(const std::string& name, const ObjectHandler::property_t& value) {
+    void CustomerValueObject::setSystemProperty(const std::string& name, const reposit::property_t& value) {
         std::string nameUpper = boost::algorithm::to_upper_copy(name);
         if (strcmp(nameUpper.c_str(), "OBJECTID")==0)
             objectId_ = boost::get<std::string>(value);
@@ -81,7 +81,7 @@ namespace AccountExample {
         else if (strcmp(nameUpper.c_str(), "AGE")==0)
             age_ = boost::get<long>(value);
         else 
-            OH_FAIL("Error: attempt to retrieve non-existent Property: '" + name + "'");
+            RP_FAIL("Error: attempt to retrieve non-existent Property: '" + name + "'");
     }
 
 }

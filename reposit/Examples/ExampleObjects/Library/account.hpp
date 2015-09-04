@@ -61,7 +61,7 @@ namespace AccountExample {
           case Account::Savings:
             return out << "Savings";
           default:
-              OH_FAIL("unknown account type");
+              RP_FAIL("unknown account type");
         }
     }
 

@@ -24,10 +24,10 @@
 #ifndef oh_range_hpp
 #define oh_range_hpp
 
-#include <oh/object.hpp>
+#include <rp/object.hpp>
 #include <vector>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Container for a matrix of doubles
     /*! This class was implemented to facilitate serialization of a range of

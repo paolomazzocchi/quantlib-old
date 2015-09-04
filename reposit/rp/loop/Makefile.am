@@ -1,5 +1,5 @@
 
-includedir = $(prefix)/include/oh/loop
+includedir = $(prefix)/include/rp/loop
 
 include_HEADERS = \
     loop_valueobjects.hpp

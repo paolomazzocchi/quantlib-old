@@ -21,13 +21,13 @@
 */
 
 #if defined(HAVE_CONFIG_H)     // Dynamically created by configure
-#include <oh/config.hpp>
+#include <rp/config.hpp>
 #endif
-#include <oh/utilities.hpp>
-#ifdef OH_INCLUDE_LOG4CXX
-#include <oh/logger.hpp>
+#include <rp/utilities.hpp>
+#ifdef RP_INCLUDE_LOG4CXX
+#include <rp/logger.hpp>
 #endif
-#include <oh/repository.hpp>
+#include <rp/repository.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <sstream>
@@ -43,19 +43,19 @@ using boost::algorithm::token_compress_off;
 using boost::algorithm::token_compress_on;
 using boost::algorithm::is_any_of;
 
-namespace ObjectHandler {
+namespace reposit {
 
     std::string boostVersion() {
         return BOOST_LIB_VERSION;
     }
 
     std::string version() {
-        return OBJHANDLER_VERSION;
+        return REPOSIT_VERSION;
     }
 
     std::string logSetFile(const std::string &logFileName,
                            const int &logLevel) {
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         Logger::instance().setFile(logFileName, logLevel);
         return logFileName;
 #else
@@ -65,7 +65,7 @@ namespace ObjectHandler {
 
     DLL_API void logWriteMessage(const std::string &message,
                                  const int &level) {
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         Logger::instance().writeMessage(message, level);
 #else
         std::cout << "LOG - " << message << std::endl;
@@ -73,13 +73,13 @@ namespace ObjectHandler {
     }
 
     void logSetLevel(const int &logLevel) {
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         Logger::instance().setLevel(logLevel);
 #endif
     }
 
     const std::string logFile(){
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         return Logger::instance().file();
 #else
         return std::string();
@@ -87,7 +87,7 @@ namespace ObjectHandler {
     }
 
     const int logLevel(){
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         return Logger::instance().level();
 #else
         return 0;
@@ -96,7 +96,7 @@ namespace ObjectHandler {
 
     void logSetConsole(const int &console,
                       const int &logLevel) {
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
             Logger::instance().setConsole(console, logLevel);
 #endif
     }
@@ -104,7 +104,7 @@ namespace ObjectHandler {
     void logObject(const std::string &objectID) {
         std::ostringstream msg;
         Repository::instance().dumpObject(objectID, msg);
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         Logger::instance().writeMessage(msg.str());
 #else
         std::cout << "LOG - " << msg.str() << std::endl;
@@ -114,7 +114,7 @@ namespace ObjectHandler {
     void logAllObjects() {
         std::ostringstream msg;
         Repository::instance().dump(msg);
-#ifdef OH_INCLUDE_LOG4CXX
+#ifdef RP_INCLUDE_LOG4CXX
         Logger::instance().writeMessage(msg.str());
 #else
         std::cout << "LOG - " << msg.str() << std::endl;
@@ -284,7 +284,7 @@ namespace ObjectHandler {
         tm = *localtime(&(tp.time ));
 
         long years = tm.tm_year + 1900; 
-        OH_REQUIRE((years>= 1900 && years <= 2200), "year outside valid range");
+        RP_REQUIRE((years>= 1900 && years <= 2200), "year outside valid range");
 
         /*
         unsigned long long l = tp.millitm 
@@ -329,7 +329,7 @@ namespace ObjectHandler {
                 break;
             }
         }
-        OH_REQUIRE(b, "year outside valid range");
+        RP_REQUIRE(b, "year outside valid range");
 
         days = YearOffset[yearOffset - 1];
         days *= MILLISECS_PER_DAY;
@@ -355,7 +355,7 @@ namespace ObjectHandler {
         unsigned long long monthoffset = days/30;
         size = 13;
         b = false;
-        OH_REQUIRE(days != 0, "day outside valid range");
+        RP_REQUIRE(days != 0, "day outside valid range");
         for(; monthoffset < size; ++monthoffset){
 
             if(days <= pMonth[monthoffset]){
@@ -364,7 +364,7 @@ namespace ObjectHandler {
                 break;
             }
         }
-        OH_REQUIRE(b, "month outside valid range");
+        RP_REQUIRE(b, "month outside valid range");
         totalMSecond -= days * MILLISECS_PER_DAY;
 
         days -=  pMonth[monthoffset - 1];

@@ -18,19 +18,19 @@
 */
 
 /*! \file
-    \brief Some functions for C++ addins that link ObjectHandler.
+    \brief Some functions for C++ addins that link reposit.
 */
 
-#ifndef oh_addins_hpp
-#define oh_addins_hpp
+#ifndef rp_addins_hpp
+#define rp_addins_hpp
 
 #include <string>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! \name Addins
     //@{
-    //! Return the ObjectHandler version number as a string.
+    //! Return the reposit version number as a string.
     std::string ohVersion();
     //! Delete an object.
     void ohDeleteObject(const std::string &objectID);

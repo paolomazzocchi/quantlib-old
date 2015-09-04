@@ -17,21 +17,21 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef oh_objecthandler_hpp
-#define oh_objecthandler_hpp
+#ifndef rp_reposit_hpp
+#define rp_reposit_hpp
 
-#include <oh/ohdefines.hpp>
-#include <oh/object.hpp>
-#include <oh/libraryobject.hpp>
-#include <oh/repository.hpp>
-#include <oh/utilities.hpp>
-#include <oh/exception.hpp>
-#include <oh/property.hpp>
-#include <oh/group.hpp>
-#include <oh/range.hpp>
-#include <oh/serializationfactory.hpp>
-#include <oh/enumerations/typefactory.hpp>
-#include <oh/processor.hpp>
+#include <rp/rpdefines.hpp>
+#include <rp/object.hpp>
+#include <rp/libraryobject.hpp>
+#include <rp/repository.hpp>
+#include <rp/utilities.hpp>
+#include <rp/exception.hpp>
+#include <rp/property.hpp>
+#include <rp/group.hpp>
+#include <rp/range.hpp>
+#include <rp/serializationfactory.hpp>
+#include <rp/enumerations/typefactory.hpp>
+#include <rp/processor.hpp>
 
 #endif
 

@@ -15,7 +15,7 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <oh/enumerations/typefactory.hpp>
+#include <rp/enumerations/typefactory.hpp>
 #include <ExampleObjects/Enumerations/accountenumerations.hpp>
 #include <ExampleObjects/Library/account.hpp>
 
@@ -23,7 +23,7 @@ namespace AccountExample {
 
     void registerEnumeratedTypes() {
 
-        ObjectHandler::Create<Account::Type> create;
+        reposit::Create<Account::Type> create;
         create.registerType("Current", new Account::Type(Account::Current));
         create.registerType("Savings", new Account::Type(Account::Savings));
 
@@ -31,7 +31,7 @@ namespace AccountExample {
 
     void unregisterEnumeratedTypes() {
 
-        ObjectHandler::Create<Account::Type>().unregisterTypes();
+        reposit::Create<Account::Type>().unregisterTypes();
 
     }
 

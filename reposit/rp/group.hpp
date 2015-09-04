@@ -22,13 +22,13 @@
     \brief class Group - A collection of Objects
 */
 
-#ifndef oh_group_hpp
-#define oh_group_hpp
+#ifndef rp_group_hpp
+#define rp_group_hpp
 
-#include <oh/object.hpp>
+#include <rp/object.hpp>
 #include <vector>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! A collection of Objects.
     /*! This class was implemented to facilitate serialization and handling of
@@ -41,14 +41,14 @@ namespace ObjectHandler {
               bool permanent)
         : Object(properties, permanent), list_(list)
         {
-            OH_REQUIRE(!list.empty(), "Input list is empty");
+            RP_REQUIRE(!list.empty(), "Input list is empty");
         }
         Group(const boost::shared_ptr<ValueObject>& properties,
-              const std::vector<boost::shared_ptr<ObjectHandler::Group> >& g,
+              const std::vector<boost::shared_ptr<reposit::Group> >& g,
               bool permanent)
         : Object(properties, permanent)
         {
-            OH_REQUIRE(!g.empty(), "Group list is empty");
+            RP_REQUIRE(!g.empty(), "Group list is empty");
             list_ = g[0]->list();
             for (size_t i=1; i<g.size(); ++i) {
                 const std::vector<std::string>& newList = g[i]->list();

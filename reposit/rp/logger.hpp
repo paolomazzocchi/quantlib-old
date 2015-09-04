@@ -21,10 +21,10 @@
     \brief Logger class wrapper for logging framework
 */
 
-#ifndef oh_logger_hpp
-#define oh_logger_hpp
+#ifndef rp_logger_hpp
+#define rp_logger_hpp
 
-#include <oh/singleton.hpp>
+#include <rp/singleton.hpp>
 
 // Some older builds of log4cxx did not include file log4cxxdefines.h.
 // If the #include below fails, it means either that you have the wrong
@@ -40,11 +40,11 @@
 #include <log4cxx/fileappender.h>
 #include <log4cxx/consoleappender.h>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Wrapper for the logging framework.
     /*! Native exceptions generated within the logging framework
-        are propagated as exceptions of ObjectHandler's Exception
+        are propagated as exceptions of reposit's Exception
         class (derived from std::exception).
     */
     class Logger : public Singleton<Logger> {

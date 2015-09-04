@@ -17,11 +17,11 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef oh_vo_all_hpp
-#define oh_vo_all_hpp
+#ifndef rp_vo_all_hpp
+#define rp_vo_all_hpp
 
-#include <oh/valueobjects/vo_group.hpp>
-#include <oh/valueobjects/vo_range.hpp>
+#include <rp/valueobjects/vo_group.hpp>
+#include <rp/valueobjects/vo_range.hpp>
 
 #endif
 

@@ -1,13 +1,13 @@
 
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([ObjectHandler], [1.7.0],
+AC_INIT([reposit], [1.7.0],
         [quantlib-dev@lists.sourceforge.net],
-        [ObjectHandler])
+        [reposit])
 AC_PREREQ(2.50)
-AC_CONFIG_SRCDIR([oh/objecthandler.hpp])
+AC_CONFIG_SRCDIR([rp/reposit.hpp])
 AC_CONFIG_AUX_DIR([config])
-AC_CONFIG_HEADERS([oh/config.hpp])
+AC_CONFIG_HEADERS([rp/config.hpp])
 AM_INIT_AUTOMAKE([foreign])
 
 AC_COPYRIGHT([
@@ -57,30 +57,17 @@ AS_IF([test "x$with_log4cxx" != xno],
         [log4cxx/logger.h],
         [HAVE_LOG4CXX=1],
         [AC_MSG_ERROR([log4cxx test failed (--without-log4cxx to disable)])])])
-AM_CONDITIONAL([OH_LINK_LOG4CXX], [test "$HAVE_LOG4CXX" -eq 1])
-AS_IF([test "$HAVE_LOG4CXX" -eq 1], AC_DEFINE([OH_INCLUDE_LOG4CXX], [1], [Support for logging]))
+AM_CONDITIONAL([RP_LINK_LOG4CXX], [test "$HAVE_LOG4CXX" -eq 1])
+AS_IF([test "$HAVE_LOG4CXX" -eq 1], AC_DEFINE([RP_INCLUDE_LOG4CXX], [1], [Support for logging]))
 
 # Check for tools needed for building documentation
 
 AC_PATH_PROG([DOXYGEN], [doxygen])
 AC_PATH_PROG([SED], [sed])
 
-# Configure and validate the path to gensrc
-
-AC_ARG_WITH([gensrc],
-            AC_HELP_STRING([--with-gensrc=/path/to/gensrc],
-                           [Specify the path to gensrc]),
-            [gensrc_path=${withval}],
-            [AC_MSG_ERROR([You must specify the location of gensrc: "./configure --with-gensrc=path/to/gensrc"])])
-AC_CHECK_FILE([${gensrc_path}/gensrc.py], [],
-            [AC_MSG_ERROR([Unable to locate script gensrc.py in specified gensrc directory])])
-AC_ARG_VAR(gensrc_dir, path to gensrc)
-AC_SUBST(gensrc_dir, [${gensrc_path}])
-
 # Done, output the configured files
 
 AC_CONFIG_FILES([
-    Docs/Makefile
     Examples/ExampleObjects/Enumerations/Makefile
     Examples/ExampleObjects/Library/Makefile
     Examples/ExampleObjects/Objects/Makefile
@@ -89,14 +76,14 @@ AC_CONFIG_FILES([
     Examples/ExampleObjects/Makefile
     Examples/C++/Makefile
     Examples/xl/Makefile
-    gensrc/Makefile
+    Examples/Makefile
     Makefile
-    oh/conversions/Makefile
-    oh/enumerations/Makefile
-    oh/loop/Makefile
-    oh/valueobjects/Makefile
-    oh/Makefile
-    ohxl/Makefile
+    rp/conversions/Makefile
+    rp/enumerations/Makefile
+    rp/loop/Makefile
+    rp/valueobjects/Makefile
+    rp/Makefile
+    rpxl/Makefile
     xlsdk/Makefile
     xlsdk/x64/Makefile ])
 AC_OUTPUT

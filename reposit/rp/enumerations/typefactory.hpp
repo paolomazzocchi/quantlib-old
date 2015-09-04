@@ -22,14 +22,14 @@
     \brief Class RegistryManager - Manage access to an Enumeration Registry
 */
 
-#ifndef oh_typefactory_hpp
-#define oh_typefactory_hpp
+#ifndef rp_typefactory_hpp
+#define rp_typefactory_hpp
 
-#include <oh/enumerations/enumregistry.hpp>
-#include <oh/exception.hpp>
+#include <rp/enumerations/enumregistry.hpp>
+#include <rp/exception.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Convert a std::string to uppercase.
     inline std::string uppercase(const std::string &s) {
@@ -70,7 +70,7 @@ namespace ObjectHandler {
             for (i = typeMap->begin(); i != typeMap->end(); ++i)
                 if (uppercase(i->first) == idUpper)
                     return i->second;
-            OH_FAIL("Unknown id for Type: " << id);
+            RP_FAIL("Unknown id for Type: " << id);
         }
 
         //! Determine whether a given type has been registered.
@@ -114,7 +114,7 @@ namespace ObjectHandler {
             if(!typeMap) {
                 typename RegistryClass::AllTypeMap::const_iterator i =
                     RegistryClass::instance().getAllTypesMap().find(typeid(T).name());
-                OH_REQUIRE(i != RegistryClass::instance().getAllTypesMap().end(),
+                RP_REQUIRE(i != RegistryClass::instance().getAllTypesMap().end(),
                     "Error retrieving Enumeration from Registry - the type '"
                     << typeid(T).name() << "' is not available!");
                 typeMap = i->second;
@@ -128,7 +128,7 @@ namespace ObjectHandler {
         RegistryManager.  The () operator returns the required type, e.g.
         \code
         Account::Type accountTypeEnumeration =
-            ObjectHandler::Create<Account::Type>()("Savings");
+            reposit::Create<Account::Type>()("Savings");
         \endcode
     */
     template<typename T>
@@ -155,7 +155,7 @@ namespace ObjectHandler {
                 returnValue.push_back(Create<T>()(*i));
             return returnValue;
         } catch (const std::exception &e) {
-            OH_FAIL("vectorStringToEnum: error converting parameter '" << paramName 
+            RP_FAIL("vectorStringToEnum: error converting parameter '" << paramName 
                 << "' to type '" << typeid(T).name() << "' : " << e.what());
         }
     }

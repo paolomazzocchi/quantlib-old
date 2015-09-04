@@ -18,24 +18,24 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef oh_autolink_hpp
-#define oh_autolink_hpp
+#ifndef rp_autolink_hpp
+#define rp_autolink_hpp
 
-#include <oh/ohdefines.hpp>
+#include <rp/rpdefines.hpp>
 
 // select toolset:
 #if (_MSC_VER < 1400)
 #  error "unsupported Microsoft compiler"
 #elif (_MSC_VER == 1400)
-#  define OBJHANDLER_LIB_TOOLSET "vc80"
+#  define REPOSIT_LIB_TOOLSET "vc80"
 #elif (_MSC_VER == 1500)
-#  define OBJHANDLER_LIB_TOOLSET "vc90"
+#  define REPOSIT_LIB_TOOLSET "vc90"
 #elif (_MSC_VER == 1600)
-#  define OBJHANDLER_LIB_TOOLSET "vc100"
+#  define REPOSIT_LIB_TOOLSET "vc100"
 #elif (_MSC_VER == 1700)
-#  define OBJHANDLER_LIB_TOOLSET "vc110"
+#  define REPOSIT_LIB_TOOLSET "vc110"
 #elif (_MSC_VER == 1800)
-#  define OBJHANDLER_LIB_TOOLSET "vc120"
+#  define REPOSIT_LIB_TOOLSET "vc120"
 #else
 #  error "unknown Microsoft compiler"
 #endif
@@ -44,48 +44,48 @@
 
 // select architecture:
 #ifdef _M_X64
-#  define OBJHANDLER_LIB_PLATFORM "-x64"
+#  define REPOSIT_LIB_PLATFORM "-x64"
 #else
-#  define OBJHANDLER_LIB_PLATFORM 
+#  define REPOSIT_LIB_PLATFORM 
 #endif
 
 // select thread opt:
 #ifdef _MT
-#  define OBJHANDLER_LIB_THREAD_OPT "-mt"
+#  define REPOSIT_LIB_THREAD_OPT "-mt"
 #else
-#  define OBJHANDLER_LIB_THREAD_OPT
+#  define REPOSIT_LIB_THREAD_OPT
 #endif
 
 // select linkage opt:
 #ifdef _DLL
 #  if defined(_DEBUG)
-#    define OBJHANDLER_LIB_RT_OPT "-gd"
+#    define REPOSIT_LIB_RT_OPT "-gd"
 #  else
-#    define OBJHANDLER_LIB_RT_OPT
+#    define REPOSIT_LIB_RT_OPT
 #  endif
 #else
 #  if defined(_DEBUG)
-#    define OBJHANDLER_LIB_RT_OPT "-sgd"
+#    define REPOSIT_LIB_RT_OPT "-sgd"
 #  else
-#    define OBJHANDLER_LIB_RT_OPT "-s"
+#    define REPOSIT_LIB_RT_OPT "-s"
 #  endif
 #endif
 
-// select OH lib
+// select RP lib
 #if defined(XLL_STATIC)
-#  define OBJHANDLER_LIB_TYPE "-xllib"
+#  define REPOSIT_LIB_TYPE "-xllib"
 #elif defined(XLL_IMPORTS)
-#  define OBJHANDLER_LIB_TYPE "-xll"
+#  define REPOSIT_LIB_TYPE "-xll"
 #else
-#  define OBJHANDLER_LIB_TYPE ""
+#  define REPOSIT_LIB_TYPE ""
 #endif
 
 
-#define OBJHANDLER_LIB_NAME "ObjectHandler" OBJHANDLER_LIB_TYPE "-" OBJHANDLER_LIB_TOOLSET OBJHANDLER_LIB_PLATFORM OBJHANDLER_LIB_THREAD_OPT OBJHANDLER_LIB_RT_OPT "-" OBJHANDLER_LIB_VERSION ".lib"
+#define REPOSIT_LIB_NAME "reposit" REPOSIT_LIB_TYPE "-" REPOSIT_LIB_TOOLSET REPOSIT_LIB_PLATFORM REPOSIT_LIB_THREAD_OPT REPOSIT_LIB_RT_OPT "-" REPOSIT_LIB_VERSION ".lib"
 
-#pragma comment(lib, OBJHANDLER_LIB_NAME)
+#pragma comment(lib, REPOSIT_LIB_NAME)
 #ifdef BOOST_LIB_DIAGNOSTIC
-#  pragma message("Will (need to) link to lib file: " OBJHANDLER_LIB_NAME)
+#  pragma message("Will (need to) link to lib file: " REPOSIT_LIB_NAME)
 #endif
 
 #endif

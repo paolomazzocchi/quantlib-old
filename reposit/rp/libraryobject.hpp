@@ -21,12 +21,12 @@
     \brief A customization of the Object class, suitable for most applications
 */
 
-#ifndef oh_libraryobject_hpp
-#define oh_libraryobject_hpp
+#ifndef rp_libraryobject_hpp
+#define rp_libraryobject_hpp
 
-#include <oh/object.hpp>
+#include <rp/object.hpp>
 
-namespace ObjectHandler {
+namespace reposit {
 
     //! Customizes the Object class for most typical uses.
     /*! LibraryObject is a template class, the template argument specifying the
@@ -49,7 +49,7 @@ namespace ObjectHandler {
         template <class LibraryDerivedClass>
         void getLibraryObject(boost::shared_ptr<LibraryDerivedClass> &ret) const {
             ret = boost::dynamic_pointer_cast<LibraryDerivedClass>(libraryObject_);
-            OH_REQUIRE(ret, "Error retrieving library object - unable to convert reference"
+            RP_REQUIRE(ret, "Error retrieving library object - unable to convert reference"
                     << " from type " << std::endl << "    " << typeid(LibraryClass).name()
                     << " to type "   << std::endl << "    " << typeid(LibraryDerivedClass).name());
         }

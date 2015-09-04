@@ -23,16 +23,16 @@
     \brief observer/observable pattern
 */
 
-#ifndef oh_observable_hpp
-#define oh_observable_hpp
+#ifndef rp_observable_hpp
+#define rp_observable_hpp
 
-#include <oh/exception.hpp>
+#include <rp/exception.hpp>
 
 #include <boost/shared_ptr.hpp>
 
 #include <set>
 
-namespace ObjectHandler {
+namespace reposit {
 
     class Observer;
 
@@ -135,7 +135,7 @@ namespace ObjectHandler {
                 successful = false;
             }
         }
-       OH_REQUIRE(successful,
+       RP_REQUIRE(successful,
                   "could not notify one or more observers: " << errMsg);
     }
 

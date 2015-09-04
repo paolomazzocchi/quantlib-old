@@ -1,5 +1,5 @@
 
-includedir = $(prefix)/include/oh/valueobjects
+includedir = $(prefix)/include/rp/valueobjects
 
 include_HEADERS = \
     vo_all.hpp \
