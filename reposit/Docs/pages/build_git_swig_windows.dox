@@ -122,7 +122,7 @@ From class InterestRateIndex, copy this line:
 std::string name() const;
 \endverbatim
 
-And paste it into this file:
+And paste it into this file, into the public section of the declaration of class InterestRateIndex:
 
 \verbatim
 $REPOSIT_DIR\quantlib\QuantLibAddin2\swig\functions\indexes.i

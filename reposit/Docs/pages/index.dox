@@ -21,11 +21,11 @@
  The members of the QuantLib Group are listed in the QuantLib License
 */
 
-/*! \mainpage ObjectHandler
+/*! \mainpage reposit
 
 \section idx_overview Overview
 
-%ObjectHandler implements a repository in which objects may be instantiated,
+%reposit implements a repository in which objects may be instantiated,
 queried, updated, and destroyed, facilitating deployment of object oriented
 functionality to procedural platforms such as spreadsheets.  Core functionality
 is implemented in platform neutral C++ and an interface to Microsoft Excel is
@@ -33,9 +33,9 @@ supported.
 
 \section idx_quantlib QuantLib
 
-%ObjectHandler is a subproject of the <a href="http://quantlib.org">QuantLib</a>
+%reposit is a subproject of the <a href="http://quantlib.org">QuantLib</a>
 C++ analytics library and shares the QuantLib project structure with regard to
-distribution and licensing.  The mailing list for %ObjectHandler is
+distribution and licensing.  The mailing list for %reposit is
 <a href="https://lists.sourceforge.net/lists/listinfo/quantlib-users">quantlib-users@lists.sf.net</a>.
 The list archives may be searched
 <a href="https://sourceforge.net/p/quantlib/mailman/quantlib-users/">here</a>.
