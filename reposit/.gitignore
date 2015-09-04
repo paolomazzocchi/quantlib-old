@@ -6,11 +6,8 @@ config/
 configure
 gensrc/.time-stamp
 libtool
-oh/config.hpp
-oh/config.hpp.in
-oh/stamp-h1
+rp/config.hpp
+rp/config.hpp.in
+rp/stamp-h1
 ipch
-Docs/.time-stamp-html
 Examples/C++/account.xml
-Docs/.time-stamp-online
-Docs/html-online
