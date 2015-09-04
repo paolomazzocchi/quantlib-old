@@ -114,11 +114,11 @@ void registerOhutils(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 11, &xDll,
             // function code name
-            TempStrNoSize("\x14""rpRangeRetrieveError"),
+            TempStrNoSize("\x14""ohRangeRetrieveError"),
             // parameter codes
             TempStrNoSize("\x02""RR"),
             // function display name
-            TempStrNoSize("\x14""rpRangeRetrieveError"),
+            TempStrNoSize("\x14""ohRangeRetrieveError"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x05""Range"),
             // function type (0 = hidden, 1 = worksheet)
@@ -198,7 +198,7 @@ void registerOhutils(const XLOPER &xDll) {
             // path to help file
             TempStrNoSize("\x00"""),
             // function description
-            TempStrNoSize("\x4C""Concrete implementation of rpRangeRetrieveError().  This function is hidden."),
+            TempStrNoSize("\x4C""Concrete implementation of ohRangeRetrieveError().  This function is hidden."),
             // parameter descriptions
             TempStrNoSize("\x11""range to query.  "));
 
@@ -472,11 +472,11 @@ void unregisterOhutils(const XLOPER &xDll) {
 
         Excel(xlfRegister, 0, 11, &xDll,
             // function code name
-            TempStrNoSize("\x14""rpRangeRetrieveError"),
+            TempStrNoSize("\x14""ohRangeRetrieveError"),
             // parameter codes
             TempStrNoSize("\x02""RR"),
             // function display name
-            TempStrNoSize("\x14""rpRangeRetrieveError"),
+            TempStrNoSize("\x14""ohRangeRetrieveError"),
             // comma-delimited list of parameter names
             TempStrNoSize("\x05""Range"),
             // function type (0 = hidden, 1 = worksheet)
@@ -493,7 +493,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             TempStrNoSize("\x11""range to query.  "));
 
         Excel4(xlfRegisterId, &xlRegID, 2, &xDll,
-            TempStrNoSize("\x14""rpRangeRetrieveError"));
+            TempStrNoSize("\x14""ohRangeRetrieveError"));
         Excel4(xlfUnregister, 0, 1, &xlRegID);
 
         Excel(xlfRegister, 0, 12, &xDll,
@@ -568,7 +568,7 @@ void unregisterOhutils(const XLOPER &xDll) {
             // path to help file
             TempStrNoSize("\x00"""),
             // function description
-            TempStrNoSize("\x4C""Concrete implementation of rpRangeRetrieveError().  This function is hidden."),
+            TempStrNoSize("\x4C""Concrete implementation of ohRangeRetrieveError().  This function is hidden."),
             // parameter descriptions
             TempStrNoSize("\x11""range to query.  "));
 

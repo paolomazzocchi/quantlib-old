@@ -60,7 +60,7 @@
 #pragma comment (linker, "/export:" EXPORT_PREFIX "ohFilter")
 #pragma comment (linker, "/export:" EXPORT_PREFIX "ohFunctionCount")
 #pragma comment (linker, "/export:" EXPORT_PREFIX "ohPack")
-#pragma comment (linker, "/export:" EXPORT_PREFIX "rpRangeRetrieveError")
+#pragma comment (linker, "/export:" EXPORT_PREFIX "ohRangeRetrieveError")
 #pragma comment (linker, "/export:" EXPORT_PREFIX "ohRemoveInvalidColumns")
 #pragma comment (linker, "/export:" EXPORT_PREFIX "ohRemoveInvalidRows")
 #pragma comment (linker, "/export:" EXPORT_PREFIX "ohRetrieveErrorImpl")
