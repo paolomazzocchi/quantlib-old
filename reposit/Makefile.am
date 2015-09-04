@@ -8,20 +8,20 @@ EXTRA_DIST = \
     Contributors.txt \
     LICENSE.TXT \
     NEWS.txt \
-    ObjectHandler.nsi \
-    ObjectHandler_vc8.sln \
-    ObjectHandler_vc9.sln \
-    ObjectHandler_vc10.sln \
-    ObjectHandler_vc11.sln \
-    ObjectHandler_vc12.sln \
-    ohlib_vc8.vcproj \
-    ohlib_vc9.vcproj \
-    ohlib_vc10.vcxproj \
-    ohlib_vc10.vcxproj.filters \
-    ohlib_vc11.vcxproj \
-    ohlib_vc11.vcxproj.filters \
-    ohlib_vc12.vcxproj \
-    ohlib_vc12.vcxproj.filters \
+    reposit.nsi \
+    reposit_vc8.sln \
+    reposit_vc9.sln \
+    reposit_vc10.sln \
+    reposit_vc11.sln \
+    reposit_vc12.sln \
+    rplib_vc8.vcproj \
+    rplib_vc9.vcproj \
+    rplib_vc10.vcxproj \
+    rplib_vc10.vcxproj.filters \
+    rplib_vc11.vcxproj \
+    rplib_vc11.vcxproj.filters \
+    rplib_vc12.vcxproj \
+    rplib_vc12.vcxproj.filters \
     README.txt \
     TODO.txt
 

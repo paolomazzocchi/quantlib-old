@@ -1,5 +1,5 @@
 
-#SUBDIRS = conversions functions ohxll ohxllib register utilities
+#SUBDIRS = conversions functions rpxll rpxllib register utilities
 
 EXTRA_DIST = \
     callingrange.cpp \

@@ -18,108 +18,108 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oh\exception.hpp">
+    <ClInclude Include="rp\exception.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\group.hpp">
+    <ClInclude Include="rp\group.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\iless.hpp">
+    <ClInclude Include="rp\iless.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\libraryobject.hpp">
+    <ClInclude Include="rp\libraryobject.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\object.hpp">
+    <ClInclude Include="rp\object.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\objecthandler.hpp">
+    <ClInclude Include="rp\objecthandler.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\objectwrapper.hpp">
+    <ClInclude Include="rp\objectwrapper.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\observable.hpp">
+    <ClInclude Include="rp\observable.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\ohdefines.hpp">
+    <ClInclude Include="rp\rpdefines.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\processor.hpp">
+    <ClInclude Include="rp\processor.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\property.hpp">
+    <ClInclude Include="rp\property.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\range.hpp">
+    <ClInclude Include="rp\range.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\repository.hpp">
+    <ClInclude Include="rp\repository.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\serializationfactory.hpp">
+    <ClInclude Include="rp\serializationfactory.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\singleton.hpp">
+    <ClInclude Include="rp\singleton.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\valueobject.hpp">
+    <ClInclude Include="rp\valueobject.hpp">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="oh\conversions\coerce.hpp">
+    <ClInclude Include="rp\conversions\coerce.hpp">
       <Filter>conversions</Filter>
     </ClInclude>
-    <ClInclude Include="oh\conversions\convert2.hpp">
+    <ClInclude Include="rp\conversions\convert2.hpp">
       <Filter>conversions</Filter>
     </ClInclude>
-    <ClInclude Include="oh\conversions\getobjectvector.hpp">
+    <ClInclude Include="rp\conversions\getobjectvector.hpp">
       <Filter>conversions</Filter>
     </ClInclude>
-    <ClInclude Include="oh\auto_link.hpp">
+    <ClInclude Include="rp\auto_link.hpp">
       <Filter>utilities</Filter>
     </ClInclude>
-    <ClInclude Include="oh\logger.hpp">
+    <ClInclude Include="rp\logger.hpp">
       <Filter>utilities</Filter>
     </ClInclude>
-    <ClInclude Include="oh\utilities.hpp">
+    <ClInclude Include="rp\utilities.hpp">
       <Filter>utilities</Filter>
     </ClInclude>
-    <ClInclude Include="oh\enumerations\enumregistry.hpp">
+    <ClInclude Include="rp\enumerations\enumregistry.hpp">
       <Filter>enumerations</Filter>
     </ClInclude>
-    <ClInclude Include="oh\enumerations\registry.hpp">
+    <ClInclude Include="rp\enumerations\registry.hpp">
       <Filter>enumerations</Filter>
     </ClInclude>
-    <ClInclude Include="oh\enumerations\typefactory.hpp">
+    <ClInclude Include="rp\enumerations\typefactory.hpp">
       <Filter>enumerations</Filter>
     </ClInclude>
-    <ClInclude Include="oh\valueobjects\vo_all.hpp">
+    <ClInclude Include="rp\valueobjects\vo_all.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
-    <ClInclude Include="oh\valueobjects\vo_group.hpp">
+    <ClInclude Include="rp\valueobjects\vo_group.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
-    <ClInclude Include="oh\valueobjects\vo_range.hpp">
+    <ClInclude Include="rp\valueobjects\vo_range.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="oh\processor.cpp">
+    <ClCompile Include="rp\processor.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="oh\repository.cpp">
+    <ClCompile Include="rp\repository.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="oh\serializationfactory.cpp">
+    <ClCompile Include="rp\serializationfactory.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="oh\logger.cpp">
+    <ClCompile Include="rp\logger.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
-    <ClCompile Include="oh\utilities.cpp">
+    <ClCompile Include="rp\utilities.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
-    <ClCompile Include="oh\enumerations\enumregistry.cpp">
+    <ClCompile Include="rp\enumerations\enumregistry.cpp">
       <Filter>enumerations</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="ohlib"
+	Name="rplib"
 	ProjectGUID="{CD623FE5-3B3E-4511-80A9-A99D893349A4}"
 	TargetFrameworkVersion="131072"
 	>
@@ -16,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\oh\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\oh\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\rp\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\rp\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -49,10 +49,10 @@
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.pch"
-				AssemblerListingLocation=".\build\vc90\oh\$(ConfigurationName)/"
-				ObjectFile=".\build\vc90\oh\$(ConfigurationName)/"
-				ProgramDataBaseFileName=".\build\vc90\oh\$(ConfigurationName)/"
+				PrecompiledHeaderFile=".\build\vc90\rp\$(ConfigurationName)/rplib.pch"
+				AssemblerListingLocation=".\build\vc90\rp\$(ConfigurationName)/"
+				ObjectFile=".\build\vc90\rp\$(ConfigurationName)/"
+				ProgramDataBaseFileName=".\build\vc90\rp\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
@@ -71,7 +71,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="lib\ObjectHandler-vc90-mt-sgd-1_7_0.lib"
+				OutputFile="lib\reposit-vc90-mt-sgd-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -83,7 +83,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.bsc"
+				OutputFile=".\build\vc90\rp\$(ConfigurationName)/rplib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -94,8 +94,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\build\vc90\oh\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\oh\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\rp\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\rp\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -129,10 +129,10 @@
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.pch"
-				AssemblerListingLocation=".\build\vc90\oh\$(ConfigurationName)/"
-				ObjectFile=".\build\vc90\oh\$(ConfigurationName)/"
-				ProgramDataBaseFileName=".\build\vc90\oh\$(ConfigurationName)/"
+				PrecompiledHeaderFile=".\build\vc90\rp\$(ConfigurationName)/rplib.pch"
+				AssemblerListingLocation=".\build\vc90\rp\$(ConfigurationName)/"
+				ObjectFile=".\build\vc90\rp\$(ConfigurationName)/"
+				ProgramDataBaseFileName=".\build\vc90\rp\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4819"
@@ -150,7 +150,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="lib\ObjectHandler-vc90-mt-1_7_0.lib"
+				OutputFile="lib\reposit-vc90-mt-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -162,7 +162,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.bsc"
+				OutputFile=".\build\vc90\rp\$(ConfigurationName)/rplib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -173,8 +173,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\oh\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\oh\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\rp\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\rp\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -208,10 +208,10 @@
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.pch"
-				AssemblerListingLocation=".\build\vc90\oh\$(ConfigurationName)/"
-				ObjectFile=".\build\vc90\oh\$(ConfigurationName)/"
-				ProgramDataBaseFileName=".\build\vc90\oh\$(ConfigurationName)/"
+				PrecompiledHeaderFile=".\build\vc90\rp\$(ConfigurationName)/rplib.pch"
+				AssemblerListingLocation=".\build\vc90\rp\$(ConfigurationName)/"
+				ObjectFile=".\build\vc90\rp\$(ConfigurationName)/"
+				ProgramDataBaseFileName=".\build\vc90\rp\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4819"
@@ -229,7 +229,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="lib\ObjectHandler-vc90-mt-s-1_7_0.lib"
+				OutputFile="lib\reposit-vc90-mt-s-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -241,7 +241,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.bsc"
+				OutputFile=".\build\vc90\rp\$(ConfigurationName)/rplib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -252,8 +252,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\build\vc90\oh\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\oh\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\rp\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\rp\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -285,10 +285,10 @@
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.pch"
-				AssemblerListingLocation=".\build\vc90\oh\$(ConfigurationName)/"
-				ObjectFile=".\build\vc90\oh\$(ConfigurationName)/"
-				ProgramDataBaseFileName=".\build\vc90\oh\$(ConfigurationName)/"
+				PrecompiledHeaderFile=".\build\vc90\rp\$(ConfigurationName)/rplib.pch"
+				AssemblerListingLocation=".\build\vc90\rp\$(ConfigurationName)/"
+				ObjectFile=".\build\vc90\rp\$(ConfigurationName)/"
+				ProgramDataBaseFileName=".\build\vc90\rp\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
@@ -307,7 +307,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="lib\ObjectHandler-vc90-mt-gd-1_7_0.lib"
+				OutputFile="lib\reposit-vc90-mt-gd-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -319,7 +319,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\build\vc90\oh\$(ConfigurationName)/ohlib.bsc"
+				OutputFile=".\build\vc90\rp\$(ConfigurationName)/rplib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -336,79 +336,79 @@
 			Name="Classes"
 			>
 			<File
-				RelativePath="oh\exception.hpp"
+				RelativePath="rp\exception.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\group.hpp"
+				RelativePath=".\rp\group.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\iless.hpp"
+				RelativePath="rp\iless.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\libraryobject.hpp"
+				RelativePath="rp\libraryobject.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\object.hpp"
+				RelativePath="rp\object.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\objecthandler.hpp"
+				RelativePath="rp\objecthandler.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\objectwrapper.hpp"
+				RelativePath=".\rp\objectwrapper.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\observable.hpp"
+				RelativePath=".\rp\observable.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\ohdefines.hpp"
+				RelativePath="rp\rpdefines.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\processor.cpp"
+				RelativePath=".\rp\processor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\processor.hpp"
+				RelativePath=".\rp\processor.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\property.hpp"
+				RelativePath=".\rp\property.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\range.hpp"
+				RelativePath=".\rp\range.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\repository.cpp"
+				RelativePath="rp\repository.cpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\repository.hpp"
+				RelativePath="rp\repository.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\serializationfactory.cpp"
+				RelativePath=".\rp\serializationfactory.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\serializationfactory.hpp"
+				RelativePath=".\rp\serializationfactory.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\singleton.hpp"
+				RelativePath="rp\singleton.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\valueobject.hpp"
+				RelativePath="rp\valueobject.hpp"
 				>
 			</File>
 		</Filter>
@@ -416,15 +416,15 @@
 			Name="conversions"
 			>
 			<File
-				RelativePath="oh\conversions\coerce.hpp"
+				RelativePath="rp\conversions\coerce.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\conversions\convert2.hpp"
+				RelativePath="rp\conversions\convert2.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\conversions\getobjectvector.hpp"
+				RelativePath=".\rp\conversions\getobjectvector.hpp"
 				>
 			</File>
 		</Filter>
@@ -432,23 +432,23 @@
 			Name="utilities"
 			>
 			<File
-				RelativePath="oh\auto_link.hpp"
+				RelativePath="rp\auto_link.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\logger.cpp"
+				RelativePath="rp\logger.cpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\logger.hpp"
+				RelativePath="rp\logger.hpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\utilities.cpp"
+				RelativePath="rp\utilities.cpp"
 				>
 			</File>
 			<File
-				RelativePath="oh\utilities.hpp"
+				RelativePath="rp\utilities.hpp"
 				>
 			</File>
 		</Filter>
@@ -456,19 +456,19 @@
 			Name="enumerations"
 			>
 			<File
-				RelativePath=".\oh\enumerations\enumregistry.cpp"
+				RelativePath=".\rp\enumerations\enumregistry.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\enumerations\enumregistry.hpp"
+				RelativePath=".\rp\enumerations\enumregistry.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\enumerations\registry.hpp"
+				RelativePath=".\rp\enumerations\registry.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\enumerations\typefactory.hpp"
+				RelativePath=".\rp\enumerations\typefactory.hpp"
 				>
 			</File>
 		</Filter>
@@ -476,15 +476,15 @@
 			Name="valueobjects"
 			>
 			<File
-				RelativePath=".\oh\valueobjects\vo_all.hpp"
+				RelativePath=".\rp\valueobjects\vo_all.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\valueobjects\vo_group.hpp"
+				RelativePath=".\rp\valueobjects\vo_group.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\oh\valueobjects\vo_range.hpp"
+				RelativePath=".\rp\valueobjects\vo_range.hpp"
 				>
 			</File>
 		</Filter>

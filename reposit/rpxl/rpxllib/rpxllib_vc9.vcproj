@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
-	Name="ohxllib"
+	Version="9.00"
+	Name="rpxllib"
 	ProjectGUID="{66021664-4359-442C-ACC7-7C82F51C9D5A}"
+	RootNamespace="rpxllib"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -15,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
+			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -40,20 +42,21 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
 				PreprocessorDefinitions="_DEBUG;_LIB;XLL_STATIC;WIN32;LOG4CXX_STATIC"
-				MinimalRebuild="true"
+				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.pch"
-				AssemblerListingLocation="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ObjectFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ProgramDataBaseFileName="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 				DisableSpecificWarnings="4819"
 			/>
 			<Tool
@@ -69,7 +72,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\ObjectHandler-xllib-vc80-mt-gd-1_7_0.lib"
+				OutputFile="..\..\lib\reposit-xllib-vc90-mt-gd-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -81,7 +84,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.bsc"
+				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -92,8 +95,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
+			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -117,20 +120,23 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="2"
 				InlineFunctionExpansion="1"
 				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
 				PreprocessorDefinitions="NDEBUG;_LIB;XLL_STATIC;WIN32;LOG4CXX_STATIC"
 				StringPooling="true"
+				MinimalRebuild="false"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.pch"
-				AssemblerListingLocation="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ObjectFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ProgramDataBaseFileName="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
 				DisableSpecificWarnings="4819"
 			/>
 			<Tool
@@ -146,7 +152,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\ObjectHandler-xllib-vc80-mt-s-1_7_0.lib"
+				OutputFile="..\..\lib\reposit-xllib-vc90-mt-s-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -158,7 +164,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.bsc"
+				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -169,8 +175,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
+			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -194,20 +200,23 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="2"
 				InlineFunctionExpansion="1"
 				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
 				PreprocessorDefinitions="NDEBUG;_LIB;XLL_STATIC;WIN32;LOG4CXX_STATIC"
 				StringPooling="true"
+				MinimalRebuild="false"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.pch"
-				AssemblerListingLocation="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ObjectFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ProgramDataBaseFileName="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
 				DisableSpecificWarnings="4819"
 			/>
 			<Tool
@@ -223,7 +232,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\ObjectHandler-xllib-vc80-mt-1_7_0.lib"
+				OutputFile="..\..\lib\reposit-xllib-vc90-mt-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -235,7 +244,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.bsc"
+				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -246,8 +255,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc80\ohxllib\$(ConfigurationName)"
+			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -271,20 +280,21 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
 				PreprocessorDefinitions="_DEBUG;_LIB;XLL_STATIC;WIN32;LOG4CXX_STATIC"
-				MinimalRebuild="true"
+				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				RuntimeTypeInfo="true"
-				PrecompiledHeaderFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.pch"
-				AssemblerListingLocation="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ObjectFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
-				ProgramDataBaseFileName="..\..\build\vc80\ohxllib\$(ConfigurationName)/"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 				DisableSpecificWarnings="4819"
 			/>
 			<Tool
@@ -300,7 +310,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\ObjectHandler-xllib-vc80-mt-sgd-1_7_0.lib"
+				OutputFile="..\..\lib\reposit-xllib-vc90-mt-sgd-1_7_0.lib"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -312,7 +322,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc80\ohxllib\$(ConfigurationName)/ohxllib.bsc"
+				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -326,85 +336,85 @@
 	</References>
 	<Files>
 		<Filter
-			Name="oh"
+			Name="rp"
 			>
 			<Filter
 				Name="Classes"
 				>
 				<File
-					RelativePath="..\..\oh\exception.hpp"
+					RelativePath="..\..\rp\exception.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\group.hpp"
+					RelativePath="..\..\rp\group.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\iless.hpp"
+					RelativePath="..\..\rp\iless.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\libraryobject.hpp"
+					RelativePath="..\..\rp\libraryobject.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\object.hpp"
+					RelativePath="..\..\rp\object.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\objecthandler.hpp"
+					RelativePath="..\..\rp\objecthandler.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\objectwrapper.hpp"
+					RelativePath="..\..\rp\objectwrapper.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\observable.hpp"
+					RelativePath="..\..\rp\observable.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\ohdefines.hpp"
+					RelativePath="..\..\rp\rpdefines.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\processor.cpp"
+					RelativePath="..\..\rp\processor.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\processor.hpp"
+					RelativePath="..\..\rp\processor.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\property.hpp"
+					RelativePath="..\..\rp\property.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\range.hpp"
+					RelativePath="..\..\rp\range.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\repository.cpp"
+					RelativePath="..\..\rp\repository.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\repository.hpp"
+					RelativePath="..\..\rp\repository.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\serializationfactory.cpp"
+					RelativePath="..\..\rp\serializationfactory.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\serializationfactory.hpp"
+					RelativePath="..\..\rp\serializationfactory.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\singleton.hpp"
+					RelativePath="..\..\rp\singleton.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\valueobject.hpp"
+					RelativePath="..\..\rp\valueobject.hpp"
 					>
 				</File>
 			</Filter>
@@ -412,23 +422,23 @@
 				Name="utilities"
 				>
 				<File
-					RelativePath="..\..\oh\auto_link.hpp"
+					RelativePath="..\..\rp\auto_link.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\logger.cpp"
+					RelativePath="..\..\rp\logger.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\logger.hpp"
+					RelativePath="..\..\rp\logger.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\utilities.cpp"
+					RelativePath="..\..\rp\utilities.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\utilities.hpp"
+					RelativePath="..\..\rp\utilities.hpp"
 					>
 				</File>
 			</Filter>
@@ -436,15 +446,15 @@
 				Name="conversions"
 				>
 				<File
-					RelativePath="..\..\oh\conversions\coerce.hpp"
+					RelativePath="..\..\rp\conversions\coerce.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\conversions\convert2.hpp"
+					RelativePath="..\..\rp\conversions\convert2.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\conversions\getobjectvector.hpp"
+					RelativePath="..\..\rp\conversions\getobjectvector.hpp"
 					>
 				</File>
 			</Filter>
@@ -452,19 +462,19 @@
 				Name="enumerations"
 				>
 				<File
-					RelativePath="..\..\oh\enumerations\enumregistry.cpp"
+					RelativePath="..\..\rp\enumerations\enumregistry.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\enumerations\enumregistry.hpp"
+					RelativePath="..\..\rp\enumerations\enumregistry.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\enumerations\registry.hpp"
+					RelativePath="..\..\rp\enumerations\registry.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\enumerations\typefactory.hpp"
+					RelativePath="..\..\rp\enumerations\typefactory.hpp"
 					>
 				</File>
 			</Filter>
@@ -472,15 +482,15 @@
 				Name="valueobjects"
 				>
 				<File
-					RelativePath="..\..\oh\valueobjects\vo_all.hpp"
+					RelativePath="..\..\rp\valueobjects\vo_all.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\valueobjects\vo_group.hpp"
+					RelativePath="..\..\rp\valueobjects\vo_group.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\oh\valueobjects\vo_range.hpp"
+					RelativePath="..\..\rp\valueobjects\vo_range.hpp"
 					>
 				</File>
 			</Filter>
@@ -676,7 +686,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\ohxldefines.hpp"
+					RelativePath="..\rpxldefines.hpp"
 					>
 				</File>
 				<File

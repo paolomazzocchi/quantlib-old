@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>ohxll</ProjectName>
+    <ProjectName>rpxll</ProjectName>
     <ProjectGuid>{04D7369F-47BC-46B0-A374-41635A9656D8}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -66,29 +66,29 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\xll\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EmbedManifest>
     <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</EmbedManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\xll\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</EmbedManifest>
     <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</EmbedManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\xll\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\xll\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ObjectHandler-xll-vc110-mt-1_7_0</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ObjectHandler-xll-vc110-x64-mt-1_7_0</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">reposit-xll-vc110-mt-1_7_0</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">reposit-xll-vc110-x64-mt-1_7_0</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.xll</TargetExt>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.xll</TargetExt>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.xll</TargetExt>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.xll</TargetExt>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ObjectHandler-xll-vc110-mt-gd-1_7_0</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ObjectHandler-xll-vc110-x64-mt-gd-1_7_0</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">reposit-xll-vc110-mt-gd-1_7_0</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">reposit-xll-vc110-x64-mt-gd-1_7_0</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -96,7 +96,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\xll/ohxll.tlb</TypeLibraryName>
+      <TypeLibraryName>.\xll/rpxll.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -109,10 +109,10 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeaderOutputFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/ohxll.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/rpxll.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -128,17 +128,17 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\lib;..\..\..\log4cxx\msvc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\ohxll.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\rpxll.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>..\..\lib\ObjectHandler-xll-vc110-mt-gd-1_7_0.lib</ImportLibrary>
+      <ImportLibrary>..\..\lib\reposit-xll-vc110-mt-gd-1_7_0.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\xll/ohxll.bsc</OutputFile>
+      <OutputFile>.\xll/rpxll.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -146,7 +146,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <TypeLibraryName>.\xll/ohxll.tlb</TypeLibraryName>
+      <TypeLibraryName>.\xll/rpxll.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -159,10 +159,10 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeaderOutputFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/ohxll.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/rpxll.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -178,16 +178,16 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\lib;..\..\..\log4cxx\msvc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\ohxll.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\rpxll.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>..\..\lib\ObjectHandler-xll-vc110-x64-mt-gd-1_7_0.lib</ImportLibrary>
+      <ImportLibrary>..\..\lib\reposit-xll-vc110-x64-mt-gd-1_7_0.lib</ImportLibrary>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\xll/ohxll.bsc</OutputFile>
+      <OutputFile>.\xll/rpxll.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -196,7 +196,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\xll/ohxll.tlb</TypeLibraryName>
+      <TypeLibraryName>.\xll/rpxll.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -211,10 +211,10 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeaderOutputFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/ohxll.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/rpxll.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -228,11 +228,11 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\lib;..\..\..\log4cxx\msvc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\ohxll.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\rpxll.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>..\..\lib\ObjectHandler-xll-vc110-mt-1_7_0.lib</ImportLibrary>
+      <ImportLibrary>..\..\lib\reposit-xll-vc110-mt-1_7_0.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
@@ -240,7 +240,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\xll/ohxll.bsc</OutputFile>
+      <OutputFile>.\xll/rpxll.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -248,7 +248,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <TypeLibraryName>.\xll/ohxll.tlb</TypeLibraryName>
+      <TypeLibraryName>.\xll/rpxll.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
@@ -263,10 +263,10 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeaderOutputFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/ohxll.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/rpxll.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -280,56 +280,56 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\lib;..\..\..\log4cxx\msvc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>..\..\build\vc110\ohxll\$(Platform)\$(Configuration)\ohxll.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\build\vc110\rpxll\$(Platform)\$(Configuration)\rpxll.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>..\..\lib\ObjectHandler-xll-vc110-x64-mt-1_7_0.lib</ImportLibrary>
+      <ImportLibrary>..\..\lib\reposit-xll-vc110-x64-mt-1_7_0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\xll/ohxll.bsc</OutputFile>
+      <OutputFile>.\xll/rpxll.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\oh\exception.hpp" />
-    <ClInclude Include="..\..\oh\group.hpp" />
-    <ClInclude Include="..\..\oh\iless.hpp" />
-    <ClInclude Include="..\..\oh\libraryobject.hpp" />
-    <ClInclude Include="..\..\oh\object.hpp" />
-    <ClInclude Include="..\..\oh\objecthandler.hpp" />
-    <ClInclude Include="..\..\oh\objectwrapper.hpp" />
-    <ClInclude Include="..\..\oh\observable.hpp" />
-    <ClInclude Include="..\..\oh\ohdefines.hpp" />
-    <ClInclude Include="..\..\oh\processor.hpp" />
-    <ClInclude Include="..\..\oh\property.hpp" />
-    <ClInclude Include="..\..\oh\range.hpp" />
-    <ClInclude Include="..\..\oh\repository.hpp" />
-    <ClInclude Include="..\..\oh\serializationfactory.hpp" />
-    <ClInclude Include="..\..\oh\singleton.hpp" />
-    <ClInclude Include="..\..\oh\valueobject.hpp" />
-    <ClInclude Include="..\..\oh\conversions\coerce.hpp" />
-    <ClInclude Include="..\..\oh\conversions\convert2.hpp" />
-    <ClInclude Include="..\..\oh\conversions\getobjectvector.hpp" />
-    <ClInclude Include="..\..\oh\auto_link.hpp" />
-    <ClInclude Include="..\..\oh\logger.hpp" />
-    <ClInclude Include="..\..\oh\utilities.hpp" />
-    <ClInclude Include="..\..\oh\enumerations\enumregistry.hpp" />
-    <ClInclude Include="..\..\oh\enumerations\registry.hpp" />
-    <ClInclude Include="..\..\oh\enumerations\typefactory.hpp" />
-    <ClInclude Include="..\..\oh\valueobjects\vo_all.hpp" />
-    <ClInclude Include="..\..\oh\valueobjects\vo_group.hpp" />
-    <ClInclude Include="..\..\oh\valueobjects\vo_range.hpp" />
+    <ClInclude Include="..\..\rp\exception.hpp" />
+    <ClInclude Include="..\..\rp\group.hpp" />
+    <ClInclude Include="..\..\rp\iless.hpp" />
+    <ClInclude Include="..\..\rp\libraryobject.hpp" />
+    <ClInclude Include="..\..\rp\object.hpp" />
+    <ClInclude Include="..\..\rp\objecthandler.hpp" />
+    <ClInclude Include="..\..\rp\objectwrapper.hpp" />
+    <ClInclude Include="..\..\rp\observable.hpp" />
+    <ClInclude Include="..\..\rp\rpdefines.hpp" />
+    <ClInclude Include="..\..\rp\processor.hpp" />
+    <ClInclude Include="..\..\rp\property.hpp" />
+    <ClInclude Include="..\..\rp\range.hpp" />
+    <ClInclude Include="..\..\rp\repository.hpp" />
+    <ClInclude Include="..\..\rp\serializationfactory.hpp" />
+    <ClInclude Include="..\..\rp\singleton.hpp" />
+    <ClInclude Include="..\..\rp\valueobject.hpp" />
+    <ClInclude Include="..\..\rp\conversions\coerce.hpp" />
+    <ClInclude Include="..\..\rp\conversions\convert2.hpp" />
+    <ClInclude Include="..\..\rp\conversions\getobjectvector.hpp" />
+    <ClInclude Include="..\..\rp\auto_link.hpp" />
+    <ClInclude Include="..\..\rp\logger.hpp" />
+    <ClInclude Include="..\..\rp\utilities.hpp" />
+    <ClInclude Include="..\..\rp\enumerations\enumregistry.hpp" />
+    <ClInclude Include="..\..\rp\enumerations\registry.hpp" />
+    <ClInclude Include="..\..\rp\enumerations\typefactory.hpp" />
+    <ClInclude Include="..\..\rp\valueobjects\vo_all.hpp" />
+    <ClInclude Include="..\..\rp\valueobjects\vo_group.hpp" />
+    <ClInclude Include="..\..\rp\valueobjects\vo_range.hpp" />
     <ClInclude Include="..\callingrange.hpp" />
     <ClInclude Include="..\configuration.hpp" />
     <ClInclude Include="..\convert_oper.hpp" />
     <ClInclude Include="..\functioncall.hpp" />
     <ClInclude Include="..\objecthandlerxl.hpp" />
     <ClInclude Include="..\objectwrapperxl.hpp" />
-    <ClInclude Include="..\ohxldefines.hpp" />
+    <ClInclude Include="..\rpxldefines.hpp" />
     <ClInclude Include="..\rangereference.hpp" />
     <ClInclude Include="..\repositoryxl.hpp" />
     <ClInclude Include="..\xloper.hpp" />
@@ -347,12 +347,12 @@
     <ClInclude Include="..\utilities\xlutilities.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\oh\processor.cpp" />
-    <ClCompile Include="..\..\oh\repository.cpp" />
-    <ClCompile Include="..\..\oh\serializationfactory.cpp" />
-    <ClCompile Include="..\..\oh\logger.cpp" />
-    <ClCompile Include="..\..\oh\utilities.cpp" />
-    <ClCompile Include="..\..\oh\enumerations\enumregistry.cpp" />
+    <ClCompile Include="..\..\rp\processor.cpp" />
+    <ClCompile Include="..\..\rp\repository.cpp" />
+    <ClCompile Include="..\..\rp\serializationfactory.cpp" />
+    <ClCompile Include="..\..\rp\logger.cpp" />
+    <ClCompile Include="..\..\rp\utilities.cpp" />
+    <ClCompile Include="..\..\rp\enumerations\enumregistry.cpp" />
     <ClCompile Include="..\callingrange.cpp" />
     <ClCompile Include="..\configuration.cpp" />
     <ClCompile Include="..\convert_oper.cpp" />
@@ -388,9 +388,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\log4cxx\msvc\log4cxx_vc11.vcxproj">
       <Project>{fa6eb34e-6be0-46f5-aa4c-704b49be63d2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\gensrc\ohgensrc_vc11.vcxproj">
-      <Project>{88be5568-6e55-41c5-a251-670fafb44336}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\xlsdk\xlsdk_vc11.vcxproj">
       <Project>{4bd77a1e-aae9-47a4-81fe-2308e5a460af}</Project>
