@@ -42,3 +42,11 @@ h2 {
     color: #074BB4;
 }
 
+.btn-primary {
+    background: #95befe;
+    border-color: #95befe;
+    color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #074BB4;
+}
