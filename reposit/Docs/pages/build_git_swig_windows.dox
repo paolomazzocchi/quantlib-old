@@ -21,9 +21,9 @@
  The members of the QuantLib Group are listed in the QuantLib License
 */
 
-/*! \page build_git_swig_windows Building reposit On Windows From A git Clone
+/*! \page build_git_swig_windows Build - Compiling reposit On Windows From A git Clone
 
-<div align="center"><small><a href="installation.html">back to installation index</a></small></div>
+<div align="center"><small><a href="build_overview.html">back to installation index</a></small></div>
 
 \section build_git_swig_windows_sec_1 Overview
 
@@ -75,13 +75,86 @@ Open a git bash prompt in $REPOSIT_DIR and clone the repo:
 git clone https://github.com/eehlers/swig.git
 \endverbatim
 
-\section build_git_swig_windows_sec_7 QuantLibXL
+\section build_git_swig_windows_sec_7 reposit
 
 Open a git bash prompt in $REPOSIT_DIR and clone the repo:
 
 \verbatim
 git clone https://github.com/eehlers/quantlib.git
 \endverbatim
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\quantlib\reposit\reposit_vc9.sln
+\endverbatim
+
+<br>
+<table border="1" bgcolor="lightsteelblue">
+<tr>
+<td><b>NB:</b> Each of the remaining builds is optional.  If you are only interested in building QuantLibXL, you can
+<a href=#build_git_swig_windows_sec_11>skip ahead to that section</a>.
+</td>
+</tr>
+</table>
+
+\section build_git_swig_windows_sec_8 Example - SimpleLib
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\swig\Examples\reposit\simple\simple.sln
+\endverbatim
+
+Run the executable:
+
+\verbatim
+$REPOSIT_DIR\swig\Examples\reposit\simple\Release\MainSimpleLibAddin.exe
+\endverbatim
+
+Start Excel and load the addin and workbook:
+
+\verbatim
+$REPOSIT_DIR\swig\Examples\reposit\simple\Release\AddinXl.xll
+$REPOSIT_DIR\swig\Examples\reposit\simple\AddinXl\AddinXl.xlsx
+\endverbatim
+
+\section build_git_swig_windows_sec_9 Example - ComplexLib
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\swig\Examples\reposit\complex\complex.sln
+\endverbatim
+
+Run the executable:
+
+\verbatim
+$REPOSIT_DIR\swig\Examples\reposit\complex\Release\MainComplexLibAddin.exe
+\endverbatim
+
+Start Excel and load the addin and workbook:
+
+\verbatim
+$REPOSIT_DIR\swig\Examples\reposit\complex\Release\AddinXl.xll
+$REPOSIT_DIR\swig\Examples\reposit\complex\ComplexLibXL\Workbooks\AddinXl.xlsx
+\endverbatim
+
+\section build_git_swig_windows_sec_10 QuantLibAddin
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\quantlib\QuantLibAdin\QuantLibAddin_vc9.sln
+\endverbatim
+
+Run the executable:
+
+\verbatim
+$REPOSIT_DIR\quantlib\QuantLibAddin2\Release\MainQuantLibAddin.exe
+\endverbatim
+
+\section build_git_swig_windows_sec_11 QuantLibXL
 
 Build the solution:
 
@@ -103,7 +176,7 @@ $REPOSIT_DIR\quantlib\QuantLibXL2\session_file.EUR-s-static.bat
 $REPOSIT_DIR\quantlib\QuantLibXL2\Data2\XLS\EUR\EURSwap.xlsx
 \endverbatim
 
-\section build_git_swig_windows_sec_8 Adding new functions to the addin
+\section build_git_swig_windows_sec_12 Adding new functions to the addin
 
 Here is an example of how to export additional QuantLib functions to
 QuantLibXL.  We are going to copy the definition of function

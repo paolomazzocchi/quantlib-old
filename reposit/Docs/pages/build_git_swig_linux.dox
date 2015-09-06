@@ -21,9 +21,9 @@
  The members of the QuantLib Group are listed in the QuantLib License
 */
 
-/*! \page build_git_swig_linux Building reposit On Linux From A git Clone
+/*! \page build_git_swig_linux Build - Compiling reposit On Linux From A git Clone
 
-<div align="center"><small><a href="installation.html">back to installation index</a></small></div>
+<div align="center"><small><a href="build_overview.html">back to installation index</a></small></div>
 
 \section build_git_swig_linux_sec_1 Overview
 
