@@ -151,7 +151,9 @@ Configure and build QuantLibAddin.
 \verbatim
 cd $REPOSIT_DIR/quantlib/QuantLibAddin2
 ./autogen.sh
-./configure --prefix=$REPOSIT_DIR/install \
+./configure \
+    --enable-addin-cpp \
+    --prefix=$REPOSIT_DIR/install \
     --with-boost-include=$REPOSIT_DIR/install/include \
     --with-boost-lib=$REPOSIT_DIR/install/lib \
     --with-swig=$REPOSIT_DIR/swig
