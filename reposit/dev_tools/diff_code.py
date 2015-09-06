@@ -7,6 +7,7 @@ import glob
 import shutil
 
 ROOT_DIR = 'C:/Users/erik/Documents/repos/reposit/quantlib'
+#ROOT_DIR = '/media/windows/linux/repos/reposit/quantlib'
 
 SUB_DIRS = (
     'QuantLibAddin2/qlo',
