@@ -368,10 +368,6 @@
 				>
 			</File>
 			<File
-				RelativePath="rp\rpdefines.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\rp\processor.cpp"
 				>
 			</File>
@@ -393,6 +389,10 @@
 			</File>
 			<File
 				RelativePath="rp\repository.hpp"
+				>
+			</File>
+			<File
+				RelativePath="rp\rpdefines.hpp"
 				>
 			</File>
 			<File
@@ -431,6 +431,14 @@
 		<Filter
 			Name="utilities"
 			>
+			<File
+				RelativePath=".\rp\addin.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\rp\addin.hpp"
+				>
+			</File>
 			<File
 				RelativePath="rp\auto_link.hpp"
 				>

@@ -33,12 +33,12 @@ void reposit::ohDeleteObject(const std::string &objectID) {
     reposit::Repository::instance().deleteObject(objectID);
 }
 
-std::string reposit::ohObjectSaveString(const std::string &objectId) {
-    RP_GET_OBJECT(x, objectId, reposit::Object)
-    return reposit::SerializationFactory::instance().saveObjectString(x);
-}
+//std::string reposit::ohObjectSaveString(const std::string &objectId) {
+//    RP_GET_OBJECT(x, objectId, reposit::Object)
+//    return reposit::SerializationFactory::instance().saveObjectString(x, true);
+//}
 
-void reposit::ohLoadObjectString(const std::string &xml, bool overwriteExisting) {
-    reposit::SerializationFactory::instance().loadObjectString(xml, overwriteExisting);
-}
+//void reposit::ohLoadObjectString(const std::string &xml, bool overwriteExisting) {
+//    reposit::SerializationFactory::instance().loadObjectString(xml, overwriteExisting);
+//}
 

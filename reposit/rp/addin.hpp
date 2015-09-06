@@ -35,9 +35,9 @@ namespace reposit {
     //! Delete an object.
     void ohDeleteObject(const std::string &objectID);
     //! Serialize an object to a string.
-    std::string ohObjectSaveString(const std::string &objectId);
+    //std::string ohObjectSaveString(const std::string &objectId);
     //! Deserialize an object from a string.
-    void ohLoadObjectString(const std::string &xml, bool overwriteExisting);
+    //void ohLoadObjectString(const std::string &xml, bool overwriteExisting);
     //@}
 }
 

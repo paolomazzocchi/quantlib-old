@@ -5,21 +5,22 @@ AM_CPPFLAGS = -I${top_srcdir}
 includedir = $(prefix)/include/rp
 
 include_HEADERS = \
+    addin.hpp \
     config.hpp \
     exception.hpp \
     group.hpp \
     iless.hpp \
     libraryobject.hpp \
     logger.hpp \
-    reposit.hpp \
     object.hpp \
     objectwrapper.hpp \
     observable.hpp \
-    rpdefines.hpp \
     processor.hpp \
     property.hpp \
     range.hpp \
+    reposit.hpp \
     repository.hpp \
+    rpdefines.hpp \
     serializationfactory.hpp \
     singleton.hpp \
     utilities.hpp \
@@ -35,6 +36,7 @@ LDFLAGS += -llog4cxx
 endif
 
 libreposit_la_SOURCES = \
+    addin.cpp \
     logger.cpp \
     processor.cpp \
     repository.cpp \
