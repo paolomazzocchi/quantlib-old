@@ -26,7 +26,6 @@
 #include <ql/handle.hpp>
 #include <ql/models/model.hpp>
 #include <ql/termstructures/yield/ratehelpers.hpp>
-#include <ql/math/optimization/levenbergmarquardt.hpp>
 
 namespace QuantLib {
 
@@ -89,10 +88,9 @@ namespace QuantLib {
 
         void calibrate(
             const std::vector<boost::shared_ptr<RateHelper> >&,
-            OptimizationMethod& method = LevenbergMarquardt(1e-8, 1e-8, 1e-8),
+            OptimizationMethod& method,
             const EndCriteria& endCriteria 
                              = EndCriteria(1000, 100, 1.0e-8, 0.3e-4, 0.3e-4),
-            const Constraint& constraint = NoConstraint(),
             const std::vector<Real>& weights = std::vector<Real>(),
             const std::vector<bool>& fixParameters = std::vector<bool>());
 
@@ -116,6 +114,7 @@ namespace QuantLib {
         virtual Real integrate_(Time t1,
                                 Time t2) const = 0;
         //@}
+        virtual Constraint constraint() const;
         boost::shared_ptr<IborIndex> index_;
         Handle<YieldTermStructure> baseCurve_;
         Date referenceDate_;
@@ -148,10 +147,6 @@ namespace QuantLib {
         Spread maximumValue() const;
         //! long term simple tenor basis
         Spread longTermValue() const { return basis_->d(); }
-        //// to constrained <- from unconstrained
-        //Array direct(const Array& x) const;
-        //// to unconstrained <- from constrained
-        //Array inverse(const Array& x) const;
       protected:
         //! \name TenorBasis Interface
         //@{
@@ -162,9 +157,9 @@ namespace QuantLib {
         //@{
         void generateArguments();
         //@}
+        virtual Constraint constraint() const;
         boost::shared_ptr<AbcdMathFunction> basis_, instBasis_;
         bool isSimple_;
-        //mutable Array y_;
     };
 
     class PolynomialTenorBasis : public TenorBasis {

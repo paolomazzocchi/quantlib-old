@@ -20,6 +20,7 @@
 
 #include <ql/experimental/tenorbasis/tenorbasis.hpp>
 #include <ql/indexes/iborindex.hpp>
+#include <ql/math/abcdmathfunction.hpp>
 
 
 using boost::shared_ptr;
@@ -129,6 +130,10 @@ namespace QuantLib {
         return baseCurve_;
     }
 
+    Constraint TenorBasis::constraint() const {
+        return NoConstraint();
+    }
+
     Real TenorBasis::integrate_(Date d1) const {
         Date d2 = cal_.advance(d1, tenor_, bdc_, eom_);
         return integrate_(d1, d2);
@@ -141,11 +146,10 @@ namespace QuantLib {
         return integrate_(t1, t2);
     }
 
-    void TenorBasis::calibrate(
+     void TenorBasis::calibrate(
                 const std::vector<boost::shared_ptr<RateHelper> >& helpers,
                 OptimizationMethod& method,
                 const EndCriteria& endCriteria,
-                const Constraint& constraint,
                 const std::vector<Real>& weights,
                 const std::vector<bool>& fixParameters) {
         TenorBasisYieldTermStructure yts(boost::shared_ptr<TenorBasis>(this, no_deletion));
@@ -155,11 +159,71 @@ namespace QuantLib {
             cHelpers[i] = helpers[i];
         }
         CalibratedModel::calibrate(cHelpers, method, endCriteria,
-                                   constraint, weights, fixParameters);
+                                   constraint(), weights, fixParameters);
     }
 
 
 
+
+    namespace {
+
+        // to constrained <- from unconstrained
+        std::vector<Real> direct(const std::vector<Real>& x) {
+            std::vector<Real> y(4);
+            y[2] = std::exp(x[2]);
+            y[3] = std::exp(-x[3] * x[3]);
+            y[0] = x[0] * x[0] - y[3];
+            y[1] = x[1] * x[1];
+            return y;
+        }
+
+        // to unconstrained <- from constrained
+        std::vector<Real> inverse(const std::vector<Real>& x) {
+            std::vector<Real> y(4);
+            y[2] = std::log(x[2]);
+            y[3] = std::sqrt((x[3] == 0 ? -std::log(QL_EPSILON) : -std::log(x[3])));
+            y[0] = std::sqrt(x[0] + x[3]);
+            y[1] = std::sqrt(x[1]);
+            return y;
+        }
+
+        class AbcdConstraint : public Constraint {
+          private:
+            class Impl : public Constraint::Impl {
+                Real tau_;
+                bool isSimple_;
+              public:
+                Impl(Real tau, bool isSimple) : tau_(tau), isSimple_(isSimple) {}
+                bool test(const Array& params) const {
+                    Real a = params[0];
+                    Real b = params[1];
+                    Real c = params[2];
+                    Real d = params[3];
+
+                    try {
+                        validateAbcdParameters(a,b,c,d);
+                        AbcdMathFunction f(a,b,c,d);
+                        vector<Real> v;
+                        if (isSimple_) {
+                            v = f.definiteDerivativeCoefficients(0.0, tau_);
+                            validateAbcdParameters(v[0]*tau_,v[1]*tau_,v[2],v[3]*tau_);
+                        } else {
+                            v = f.definiteIntegralCoefficients(0.0, tau_);
+                            validateAbcdParameters(a/tau_,b/tau_,c,d/tau_);
+                        }
+                        return true;
+                    } catch (...) {
+                        return false;
+                    }
+                }
+            };
+          public:
+            AbcdConstraint(Real tau, bool isSimple)
+            : Constraint(boost::shared_ptr<Constraint::Impl>(
+                                  new AbcdConstraint::Impl(tau, isSimple))) {}
+        };
+
+    }
 
     AbcdTenorBasis::AbcdTenorBasis(shared_ptr<IborIndex> iborIndex,
                                    const Handle<YieldTermStructure>& baseCurve,
@@ -167,38 +231,31 @@ namespace QuantLib {
                                    bool isSimple,
                                    const std::vector<Real>& coeff)
     : TenorBasis(4, iborIndex, baseCurve, referenceDate) {
-        //Array x(4);
-        //x[0] = coeff[0];
-        //x[1] = coeff[1];
-        //x[2] = coeff[2];
-        //x[3] = coeff[3];
-        //y_ = inverse(x);
-        //arguments_[0] = ConstantParameter(y_[0], NoConstraint());
-        //arguments_[1] = ConstantParameter(y_[1], NoConstraint());
-        //arguments_[2] = ConstantParameter(y_[2], NoConstraint());
-        //arguments_[3] = ConstantParameter(y_[3], NoConstraint());
-        arguments_[0] = ConstantParameter(coeff[0], NoConstraint());
-        arguments_[1] = ConstantParameter(coeff[1], NoConstraint());
-        arguments_[2] = ConstantParameter(coeff[2], NoConstraint());
-        arguments_[3] = ConstantParameter(coeff[3], NoConstraint());
+        //std::vector<Real> y = inverse(coeff);
+        std::vector<Real> y = coeff;
+        arguments_[0] = ConstantParameter(y[0], NoConstraint());
+        arguments_[1] = ConstantParameter(y[1], NoConstraint());
+        arguments_[2] = ConstantParameter(y[2], NoConstraint());
+        arguments_[3] = ConstantParameter(y[3], NoConstraint());
         isSimple_ = isSimple;
         generateArguments();
     }
 
+    Constraint AbcdTenorBasis::constraint() const {
+        return AbcdConstraint(tau_, isSimple_);
+    }
+
     void AbcdTenorBasis::generateArguments() {
-        //Array x(4);
-        //x[0] = arguments_[0](0.0);
-        //x[1] = arguments_[1](0.0);
-        //x[2] = arguments_[2](0.0);
-        //x[3] = arguments_[3](0.0);
-        //y_ = direct(x);
+        std::vector<Real> x(4);
+        x[0] = arguments_[0](0.0);
+        x[1] = arguments_[1](0.0);
+        x[2] = arguments_[2](0.0);
+        x[3] = arguments_[3](0.0);
+        //std::vector<Real> y = direct(x);
+        std::vector<Real> y = x;
         if (isSimple_) {
             basis_ = shared_ptr<AbcdMathFunction>(
-                //new AbcdMathFunction(y_[0], y_[1], y_[2], y_[3]));
-                new AbcdMathFunction(arguments_[0](0.0),
-                                     arguments_[1](0.0),
-                                     arguments_[2](0.0),
-                                     arguments_[3](0.0)));
+                new AbcdMathFunction(y[0], y[1], y[2], y[3]));
             vector<Real> c = basis_->definiteDerivativeCoefficients(0.0, tau_);
             c[0] *= tau_;
             c[1] *= tau_;
@@ -207,11 +264,7 @@ namespace QuantLib {
             instBasis_ = shared_ptr<AbcdMathFunction>(new AbcdMathFunction(c));
         } else {
             instBasis_ = shared_ptr<AbcdMathFunction>(
-                //new AbcdMathFunction(y_[0], y_[1], y_[2], y_[3]));
-                new AbcdMathFunction(arguments_[0](0.0),
-                                     arguments_[1](0.0),
-                                     arguments_[2](0.0),
-                                     arguments_[3](0.0)));
+                new AbcdMathFunction(y[0], y[1], y[2], y[3]));
             vector<Real> c = 
                            instBasis_->definiteIntegralCoefficients(0.0, tau_);
             c[0] /= tau_;
@@ -221,60 +274,6 @@ namespace QuantLib {
             basis_ = shared_ptr<AbcdMathFunction>(new AbcdMathFunction(c));
         }
     }
-
-    //// to constrained <- from unconstrained
-    //Array AbcdTenorBasis::direct(const Array& x) const {
-    //    // c <- ~c with c>0
-    //    //y_[2] = x[2]*x[2] + QL_EPSILON;
-    //    //y_[2] = std::abs(x[2]) + QL_EPSILON;
-    //    y_[2] = std::exp(x[2]);
-
-    //    // d <- ~d with d>=0
-    //    //y_[3] = x[3]*x[3];
-    //    //y_[3] = std::abs(x[3]);
-    //    //y_[3] = std::exp(x[3]);
-    //    y_[3] = std::exp(-x[3] * x[3]); // 1>=d>0
-
-    //    // a <- ~a with a+d>=0
-    //    y_[0] = x[0] * x[0] - y_[3];
-    //    //y_[0] = std::abs(x[0]) - y_[3];
-    //    //y_[0] = std::exp(x[0]) - y_[3];
-    //    //y_[0] = std::exp(-x[0]*x[0]) - y_[3]; // 1>=a>0
-
-    //    // b <- ~b with b>=0
-    //    y_[1] = x[1] * x[1];
-    //    //y_[1] = std::abs(x[1]);
-    //    //y_[1] = std::exp(x[1]);
-
-    //    return y_;
-    //}
-
-    //// to unconstrained <- from constrained
-    //Array AbcdTenorBasis::inverse(const Array& x) const {
-    //    // ~c <- c with c>0
-    //    //y_[2] = std::sqrt(x[2]); // arbitrary sign for y_
-    //    //y_[2] = x[2]; // arbitrary sign for y_
-    //    y_[2] = std::log(x[2]);
-
-    //    // ~d <- d with d>=0
-    //    //y_[3] = std::sqrt(x[3]); // arbitrary sign for y_
-    //    //y_[3] = x[3]; // arbitrary sign for y_
-    //    //y_[3] = (x[3]==0 ? QL_MIN_REAL : std::log(x[3]));
-    //    y_[3] = std::sqrt((x[3] == 0 ? -std::log(QL_EPSILON) : -std::log(x[3]))); // arbitrary sign for y_, 1>=d>0
-
-    //    // ~a <- a with a+d>=0
-    //    y_[0] = std::sqrt(x[0] + x[3]); // arbitrary sign for y_
-    //    //y_[0] = (x[0] + x[3]); // arbitrary sign for y_
-    //    //y_[0] = (x[0]+x[3]==0 ? QL_MIN_REAL : std::log(x[0]+x[3]));
-    //    //y_[0] = std::sqrt((x[0]+x[3]==0 ? -std::log(QL_EPSILON) : -std::log(x[0]+x[3]))); // arbitrary sign for y_, 1>=a>0
-
-    //    // ~b <- b with b>0
-    //    y_[1] = std::sqrt(x[1]); // arbitrary sign for y_
-    //    //y_[1] = x[1]; // arbitrary sign for y_
-    //    //y_[1] = std::log(x[1]);
-
-    //    return y_;
-    //}
 
     const vector<Real>& AbcdTenorBasis::coefficients() const {
         return basis_->coefficients();

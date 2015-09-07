@@ -18,9 +18,8 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef quantlib_abcdcalibration_hpp
-#define quantlib_abcdcalibration_hpp
-
+#ifndef quantlib_tenor_basis_calibration_hpp
+#define quantlib_tenor_basis_calibration_hpp
 
 #include <ql/math/optimization/endcriteria.hpp>
 #include <ql/math/optimization/projectedcostfunction.hpp>
