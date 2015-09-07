@@ -6,15 +6,17 @@ import os
 import glob
 import shutil
 
-ROOT_DIR = 'C:/Users/erik/Documents/repos/reposit/quantlib'
-#ROOT_DIR = '/media/windows/linux/repos/reposit/quantlib'
+#ROOT_DIR = 'C:/Users/erik/Documents/repos/reposit/quantlib'
+ROOT_DIR = '/media/windows/linux/repos/reposit/quantlib'
 
 SUB_DIRS = (
     'QuantLibAddin2/qlo',
+    'QuantLibAddin2/qlo/valueobjects',
     'QuantLibAddin2/qlo/serialization/create',
     'QuantLibAddin2/qlo/serialization/register',
-    'QuantLibXL2/qlxl/functions',
-    'QuantLibXL2/qlxl/register'
+    'QuantLibAddin2/AddinCpp',
+#    'QuantLibXL2/qlxl/functions',
+#    'QuantLibXL2/qlxl/register'
 )
 
 OUT_ROOT_DIR = './diffout'
@@ -40,6 +42,6 @@ for subDir in SUB_DIRS:
     os.makedirs(targetDir)
     for f in glob.glob(sourceDir + '/*.?pp'):
         fileName = os.path.basename(f)
-        print 'processing file ' + fileName
+        print 'processing file ' + subDir + '/' + fileName
         shutil.copy(f, targetDir + '/' + fileName)
 
