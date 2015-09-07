@@ -151,7 +151,7 @@ $REPOSIT_DIR\swig\Examples\reposit\complex\ComplexLibXL\Workbooks\AddinXl.xlsx
 Build the solution:
 
 \verbatim
-$REPOSIT_DIR\quantlib\QuantLibAdin\QuantLibAddin_vc9.sln
+$REPOSIT_DIR\quantlib\QuantLibAddin2\QuantLibAddin_vc9.sln
 \endverbatim
 
 Run the executable:
