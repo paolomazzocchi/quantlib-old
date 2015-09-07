@@ -75,6 +75,12 @@ Open a git bash prompt in $REPOSIT_DIR and clone the repo:
 git clone https://github.com/eehlers/swig.git
 \endverbatim
 
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\swig\swig_vc9.sln
+\endverbatim
+
 \section build_git_swig_windows_sec_7 reposit
 
 Open a git bash prompt in $REPOSIT_DIR and clone the repo:
