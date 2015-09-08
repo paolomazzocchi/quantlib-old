@@ -1,5 +1,5 @@
 
 These are temporary files for the Bermudan Swaptions project.
 
-To load the environment, load workbook BermudanSwaptions.xlam from the current directory.
+Run BermudanSwaptions.bat to load the environment.
 
