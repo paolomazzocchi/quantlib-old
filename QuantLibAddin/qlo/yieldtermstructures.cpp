@@ -5,6 +5,8 @@
  Copyright (C) 2005 Plamen Neykov
  Copyright (C) 2005, 2006 Eric Ehlers
  Copyright (C) 2006, 2007 Ferdinando Ametrano
+ Copyright (C) 2015 Riccardo Barone
+ Copyright (C) 2015 Paolo Mazzocchi
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -28,6 +30,7 @@
 #include <qlo/ratehelpers.hpp>
 
 #include <ql/time/date.hpp>
+#include <ql/termstructures/yield/compositediscountcurve.hpp>
 #include <ql/termstructures/yield/discountcurve.hpp>
 #include <ql/termstructures/yield/forwardcurve.hpp>
 #include <ql/termstructures/yield/zerocurve.hpp>
@@ -404,6 +407,24 @@ namespace QuantLibAddin {
             QL_FAIL("unknown traitsID: " << traitsID_);
  
     }
+
+    CompositeDiscountCurve::CompositeDiscountCurve(
+                  const shared_ptr<ObjectHandler::ValueObject>& prop,
+                  const QuantLib::Handle<QuantLib::YieldTermStructure>& first,
+                  const QuantLib::Handle<QuantLib::YieldTermStructure>& second,
+                  const QuantLib::Date& joinDate,
+                  bool allowExtrapolatedJunction,
+                  bool allowExtrapolation,
+                  bool perm)
+    : YieldTermStructure(prop, perm)
+      {
+          libraryObject_ = shared_ptr<QuantLib::Extrapolator>(new 
+              QuantLib::CompositeDiscountCurve(first,
+                                               second,
+                                               joinDate,
+                                               allowExtrapolatedJunction,
+                                               allowExtrapolation));
+      }
 
     #define RESOLVE_TEMPLATE(NAME) \
         if (traitsID_=="DISCOUNT") { \

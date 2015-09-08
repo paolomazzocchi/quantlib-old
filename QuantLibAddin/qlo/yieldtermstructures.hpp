@@ -5,6 +5,8 @@
  Copyright (C) 2006, 2007, 2009 Ferdinando Ametrano
  Copyright (C) 2005 Plamen Neykov
  Copyright (C) 2005 Aurelien Chanudet
+ Copyright (C) 2015 Riccardo Barone
+ Copyright (C) 2015 Paolo Mazzocchi
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -153,6 +155,17 @@ namespace QuantLibAddin {
         std::string traitsID_, interpolatorID_;
     };
 
+    class CompositeDiscountCurve : public YieldTermStructure {
+      public:
+        CompositeDiscountCurve(
+               const boost::shared_ptr<ObjectHandler::ValueObject>& properties,
+               const QuantLib::Handle<QuantLib::YieldTermStructure>& first,
+               const QuantLib::Handle<QuantLib::YieldTermStructure>& second,
+               const QuantLib::Date& joinDate,
+               bool allowExtrapolatedJunction,
+               bool allowExtrapolation,
+               bool permanent);
+    };
 
     // A pair indicating a combination of Traits / Interpolator.
     typedef std::pair<InterpolatedYieldCurve::Traits, InterpolatedYieldCurve::Interpolator> InterpolatedYieldCurvePair;

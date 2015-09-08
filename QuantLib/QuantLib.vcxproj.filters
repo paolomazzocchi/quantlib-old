@@ -1986,6 +1986,9 @@
     <ClInclude Include="ql\termstructures\yield\bootstraptraits.hpp">
       <Filter>termstructures\yield</Filter>
     </ClInclude>
+    <ClInclude Include="ql\termstructures\yield\compositediscountcurve.hpp">
+      <Filter>termstructures\yield</Filter>
+    </ClInclude>	
     <ClInclude Include="ql\termstructures\yield\discountcurve.hpp">
       <Filter>termstructures\yield</Filter>
     </ClInclude>
@@ -5018,6 +5021,9 @@
     </ClCompile>
     <ClCompile Include="ql\termstructures\yield\bondhelpers.cpp">
       <Filter>termstructures\yield</Filter>
+    </ClCompile>	  
+    <ClCompile Include="ql\termstructures\yield\compositediscountcurve.cpp">
+      <Filter>termstructures\yield</Filter>	  
     </ClCompile>
     <ClCompile Include="ql\termstructures\yield\fittedbonddiscountcurve.cpp">
       <Filter>termstructures\yield</Filter>
