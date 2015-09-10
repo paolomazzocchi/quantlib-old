@@ -7,8 +7,8 @@ import sys
 import glob
 import shutil
 
-#ROOT_DIR = 'C:/Users/erik/Documents/repos/reposit/quantlib'
-ROOT_DIR = '/media/windows/linux/repos/reposit/quantlib'
+ROOT_DIR = 'C:/Users/erik/Documents/repos/reposit/quantlib'
+#ROOT_DIR = '/media/windows/linux/repos/reposit/quantlib'
 
 SUB_DIRS = (
     'QuantLibAddin2/qlo',
@@ -33,6 +33,7 @@ def deriveDir():
 if not os.path.exists(ROOT_DIR):
     print "Error - the specified ROOT_DIR does not exist:\n\n" + \
         "    " + ROOT_DIR + "\n"
+    raw_input('press any key to exit')
     sys.exit(1)
 
 if not os.path.exists(OUT_ROOT_DIR):
@@ -51,4 +52,6 @@ for subDir in SUB_DIRS:
         shutil.copy(f, targetDir + '/' + fileName)
 
 print 'output directory is ' + outDir
+#if sys.platform == 'win32':
+raw_input('press any key to exit')
 
