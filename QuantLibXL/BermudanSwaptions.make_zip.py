@@ -31,6 +31,8 @@ class ZipFile:
         print sourcePath
         if targetPath is None:
             targetPath = self.root + sourcePath
+        else:
+            targetPath = self.root + targetPath
         self.zipFile.write(sourcePath, targetPath)
 
     def zipGlob(self, path, excludeFiles = None):
@@ -51,8 +53,11 @@ def prompt_exit(msg='', status=0):
 
 zipFile = ZipFile("zip\\BermudanSwaptions.zip", "BermudanSwaptions\\")
 zipFile.zip("BermudanSwaptions.xlam")
-zipFile.zip("BermudanSwaptions.README.txt")
+zipFile.zip("BermudanSwaptions.bat")
+zipFile.zip("BermudanSwaptions.README.TXT", "README.TXT")
 zipFile.zip("xll\\QuantLibXL-vc90-mt-s-1_7_0.xll")
 zipFile.zip("BermudanSwaptions\\GBP_Market_And_Trades.xlsx")
-zipFile.zip("BermudanSwaptions\\readme.txt")
+zipFile.zip("BermudanSwaptions\\README.TXT")
+
+raw_input('press any key to exit')
 

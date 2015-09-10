@@ -16,8 +16,8 @@ SUB_DIRS = (
     'QuantLibAddin2/qlo/serialization/create',
     'QuantLibAddin2/qlo/serialization/register',
     'QuantLibAddin2/AddinCpp',
-#    'QuantLibXL2/qlxl/functions',
-#    'QuantLibXL2/qlxl/register'
+    'QuantLibXL2/qlxl/functions',
+    'QuantLibXL2/qlxl/register'
 )
 
 OUT_ROOT_DIR = './diffout'
