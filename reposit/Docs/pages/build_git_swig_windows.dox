@@ -192,7 +192,7 @@ interface file.
 Edit this file:
 
 \verbatim
-$REPOSIT_DIR\\quantlib\QuantLib\ql\indexes\interestrateindex.hpp
+$REPOSIT_DIR\quantlib\QuantLib\ql\indexes\interestrateindex.hpp
 \endverbatim
 
 From class InterestRateIndex, copy this line:
