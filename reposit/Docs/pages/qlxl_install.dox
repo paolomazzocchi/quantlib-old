@@ -1,0 +1,82 @@
+
+/*
+ Copyright (C) 2006, 2007, 2008 Eric Ehlers
+
+ This file is part of QuantLib, a free-software/open-source library
+ for financial quantitative analysts and developers - http://quantlib.org/
+
+ QuantLib is free software developed by the QuantLib Group; you can
+ redistribute it and/or modify it under the terms of the QuantLib License;
+ either version 1.0, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ QuantLib License for more details.
+
+ You should have received a copy of the QuantLib License along with this
+ program; if not, please email quantlib-dev@lists.sf.net
+
+ The QuantLib License is also available at <http://quantlib.org/license.shtml>
+ The members of the QuantLib Group are listed in the QuantLib License
+*/
+
+/*! \page qlxl_install QuantLibXL Installation
+
+This document explains how to install an early prerelease binary of QuantLibXL
+1.7 built on the new reposit platform.  At present only 32-bit Excel is
+supported.
+
+Download 
+<a href="https://dl.dropboxusercontent.com/u/75778595/QuantLibXL-1.7.0-bin.zip">QuantLibXL-1.7.0-bin.zip</a>.
+
+Copy the zip file to your hard drive and uncompress it.
+
+\section qlxl_install_usage Usage
+
+To use QuantLibXL:
+\li Start Excel
+\li Load the addin.
+\verbatim
+xll\QuantLibXL-vc90-mt-s-1_7_0.xll
+\endverbatim
+\li Load an example workbook e.g:
+\verbatim
+Workbooks\EquityOption.xlsx
+\endverbatim
+\li Hit <tt>Ctrl-Alt-F9</tt> to force a full recalculation
+
+\section qlxl_install_demo1 Bermudan Swaption Demo
+
+Invoke the following DOS batch file:
+
+\verbatim
+Workbooks\BermudanSwaption.bat
+\endverbatim
+
+This batch file should:
+\li Start up a new instance of Excel
+\li Load the XLL
+\li Load example workbook BermudanSwaption.xlsm which replicates the behavior of the QuantLib Bermudan Swaption example.
+\li Hit Ctrl-Shift-X to exit the demo
+
+\section qlxl_install_demo2 GBP Market Demo
+
+Invoke the following DOS batch file:
+
+\verbatim
+Workbooks\BermudanSwaptions\init.bat
+\endverbatim
+
+This batch file should:
+\li Start up a new instance of Excel
+\li Load the XLL
+\li Load example workbook GBP_Market_And_Trades.xlsx which includes a GBP market environment (extracted from the Excel VBA Framework application) and an interest rate swap.
+\li Hit Ctrl-Shift-X to exit the demo
+
+\section qlxl_install_support Support
+
+For further help, please use the mailing list: https://lists.sourceforge.net/lists/listinfo/quantlib-users
+
+*/
+
