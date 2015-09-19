@@ -1,15 +1,21 @@
 
-%pragma(reposit) group="pricingengines";
+%group(pricingengines);
 
-%pragma(reposit) obj_include=%{
+%insert(pricingengines_lib_inc) %{
 #include <ql/pricingengines/vanilla/analyticeuropeanengine.hpp>
 #include <ql/pricingengines/swap/discountingswapengine.hpp>
 #include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
 #include <ql/pricingengines/swaption/treeswaptionengine.hpp>
 %}
 
-%pragma(reposit) add_include=%{
+%insert(pricingengines_cpp_inc) %{
 #include "qlo/obj_processes.hpp"
+%}
+
+%insert(pricingengines_scr_inc) %{
+#include <qlo/obj_processes.hpp>
+#include <qlo/obj_termstructures.hpp>
+#include <qlo/obj_models.hpp>
 %}
 
 %feature("rp:generate_countify") QuantLib::AnalyticEuropeanEngine::AnalyticEuropeanEngine;

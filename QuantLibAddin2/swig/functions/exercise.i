@@ -1,7 +1,7 @@
 
-%pragma(reposit) group="exercise";
+%group(exercise);
 
-%pragma(reposit) obj_include=%{
+%insert(exercise_lib_inc) %{
 #include <ql/exercise.hpp>
 %}
 

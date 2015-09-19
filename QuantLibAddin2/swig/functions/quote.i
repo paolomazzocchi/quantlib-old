@@ -1,12 +1,16 @@
 
-%pragma(reposit) group="quote";
-%pragma(reposit) override_obj="true";
+%group(quote);
+%override
 
-%pragma(reposit) obj_include=%{
+%insert(quote_lib_inc) %{
 #include <ql/quotes/simplequote.hpp>
 #include <ql/quotes/lastfixingquote.hpp>
 #include <ql/quotes/futuresconvadjustmentquote.hpp>
 #include <ql/math/comparison.hpp>
+%}
+
+%insert(quote_scr_inc) %{
+#include <qlo/objmanual_indexes.hpp>
 %}
 
 %feature("rp:generate_countify") QuantLibAddin::SimpleQuote::SimpleQuote;

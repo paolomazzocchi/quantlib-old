@@ -1,9 +1,14 @@
 
-%pragma(reposit) group="vanillaswaps";
+%group(vanillaswaps);
 
-%pragma(reposit) obj_include=%{
+%insert(vanillaswaps_lib_inc) %{
 #include <ql/instruments/vanillaswap.hpp>
 #include <qlo/obj_instruments.hpp>
+%}
+
+%insert(vanillaswaps_scr_inc) %{
+#include <qlo/obj_schedule.hpp>
+#include <qlo/objmanual_indexes.hpp>
 %}
 
 namespace QuantLib {

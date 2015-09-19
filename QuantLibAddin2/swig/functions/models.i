@@ -1,9 +1,14 @@
 
-%pragma(reposit) group="models";
+%group(models);
 
-%pragma(reposit) obj_include=%{
+%insert(models_lib_inc) %{
 #include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
 #include <ql/models/shortrate/onefactormodels/hullwhite.hpp>
+%}
+
+%insert(models_scr_inc) %{
+#include <qlo/objmanual_indexes.hpp>
+#include <qlo/obj_termstructures.hpp>
 %}
 
 namespace QuantLib {

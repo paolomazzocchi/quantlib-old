@@ -1,13 +1,18 @@
 
-%pragma(reposit) group="processes";
+%group(processes);
 
-%pragma(reposit) obj_include=%{
+%insert(processes_lib_inc) %{
 #include <ql/processes/blackscholesprocess.hpp>
 %}
 
-%pragma(reposit) add_include=%{
+%insert(processes_cpp_inc) %{
 #include "qlo/objmanual_quote.hpp"
 #include "qlo/obj_volatilities.hpp"
+%}
+
+%insert(processes_scr_inc) %{
+#include <qlo/obj_termstructures.hpp>
+#include <qlo/obj_volatilities.hpp>
 %}
 
 %feature("rp:generate_countify") QuantLib::BlackScholesMertonProcess::BlackScholesMertonProcess;
