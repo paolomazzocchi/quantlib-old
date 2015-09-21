@@ -72,7 +72,9 @@ Workbooks\BermudanSwaptions\init.bat
 This batch file should:
 \li Start up a new instance of Excel
 \li Load the XLL
-\li Load example workbook GBP_Market_And_Trades.xlsx which includes a GBP market environment (extracted from the Excel VBA Framework application) and an interest rate swap.
+\li Load example workbook GBP_Market_And_Trades.xlsx which includes a GBP
+market environment (extracted from the Excel VBA Framework application), an
+interest rate swap, and a bermudan swaption.
 
 Hit <tt>Ctrl-Shift-C</tt> to recalculate.  Hit <tt>Ctrl-Shift-X</tt> to exit the demo.
 
