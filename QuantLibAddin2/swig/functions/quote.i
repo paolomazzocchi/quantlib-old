@@ -1,16 +1,17 @@
 
-%pragma(reposit) group="quote";
-%pragma(reposit) override_obj="true";
+%group(quote);
+%override;
 
-%pragma(reposit) obj_include=%{
+%insert(quote_library_hpp) %{
 #include <ql/quotes/simplequote.hpp>
 #include <ql/quotes/lastfixingquote.hpp>
 #include <ql/quotes/futuresconvadjustmentquote.hpp>
 #include <ql/math/comparison.hpp>
 %}
 
-%feature("rp:generate_countify") QuantLibAddin::SimpleQuote::SimpleQuote;
-%feature("rp:generate_cpp") QuantLibAddin::SimpleQuote::SimpleQuote;
+%insert(quote_serialization_cpp) %{
+#include <qlo/objmanual_indexes.hpp>
+%}
 
 namespace QuantLibAddin {
 
@@ -24,6 +25,8 @@ namespace QuantLibAddin {
 
     class SimpleQuote : public Quote {
       public:
+        %generate(cpp, SimpleQuote);
+        %generate(countify, SimpleQuote);
         // NB: The parameter below must be called "Value" because there
         // is code which updates a property with that name in the value object.
         SimpleQuote(double Value);

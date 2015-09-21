@@ -1,16 +1,9 @@
 
-%pragma(reposit) group="termstructures";
+%group(termstructures);
 
-%pragma(reposit) obj_include=%{
+%insert(termstructures_library_hpp) %{
 #include <ql/termstructures/yield/flatforward.hpp>
 %}
-
-%feature("rp:generate_countify") QuantLib::FlatForward::FlatForward;
-%feature("rp:generate_countify") QuantLib::TermStructure::referenceDate;
-%feature("rp:generate_countify") QuantLib::YieldTermStructure::discount;
-%feature("rp:generate_cpp") QuantLib::FlatForward::FlatForward;
-%feature("rp:generate_cpp") QuantLib::TermStructure::referenceDate;
-%feature("rp:generate_cpp") QuantLib::YieldTermStructure::discount;
 
 namespace QuantLib {
 
@@ -18,21 +11,27 @@ namespace QuantLib {
 
     class TermStructure : public Extrapolator {
       public:
-        QuantLib::Date referenceDate();
+        %generate(cpp, referenceDate);
+        %generate(countify, referenceDate);
+        Date referenceDate();
     };
 
     class YieldTermStructure : public TermStructure {
       public:
-        QuantLib::DiscountFactor discount(
-            const QuantLib::Date& d,
+        %generate(cpp, discount);
+        %generate(countify, discount);
+        DiscountFactor discount(
+            const Date& d,
             bool extrapolate);
     };
 
     class FlatForward : public YieldTermStructure {
       public:
-        FlatForward(const QuantLib::Date& referenceDate,
-                    QuantLib::Rate forward,
-                    const QuantLib::DayCounter& dayCounter);
+        %generate(cpp, FlatForward);
+        %generate(countify, FlatForward);
+        FlatForward(const Date& referenceDate,
+                    Rate forward,
+                    const DayCounter& dayCounter);
     };
 }
 

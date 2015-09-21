@@ -1,11 +1,9 @@
 
-%pragma(reposit) group="daycounters";
+%group(daycounters);
 
-%pragma(reposit) obj_include=%{
+%insert(daycounters_library_hpp) %{
 #include <ql/time/daycounter.hpp>
 %}
-
-%feature("rp:loopParameter", "EndDate") QuantLib::DayCounter::yearFraction;
 
 namespace QuantLib {
 
@@ -13,11 +11,12 @@ namespace QuantLib {
 
     public:
 
-        QuantLib::Time yearFraction(
-            const QuantLib::Date& StartDate,
+        %loop(yearFraction, EndDate);
+        Time yearFraction(
+            const Date& StartDate,
             const Date& EndDate,
-            const QuantLib::Date& refPeriodStart,
-            const QuantLib::Date& refPeriodEnd);
+            const Date& refPeriodStart,
+            const Date& refPeriodEnd);
     };
 }
 

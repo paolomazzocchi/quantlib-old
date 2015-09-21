@@ -1,13 +1,18 @@
 
-%pragma(reposit) group="ratehelpers";
-%pragma(reposit) override_obj="true";
+%group(ratehelpers);
+%override;
+
+%insert(ratehelpers_serialization_cpp) %{
+#include <qlo/objmanual_indexes.hpp>
+#include <qlo/obj_termstructures.hpp>
+%}
 
 namespace QuantLib {
 
     class RateHelper {
       public:
-        QuantLib::Date earliestDate();
-        QuantLib::Date latestDate();
+        Date earliestDate();
+        Date latestDate();
     };
 }
 

@@ -1,17 +1,19 @@
 
-%pragma(reposit) group="processes";
+%group(processes);
 
-%pragma(reposit) obj_include=%{
+%insert(processes_library_hpp) %{
 #include <ql/processes/blackscholesprocess.hpp>
 %}
 
-%pragma(reposit) add_include=%{
+%insert(processes_cppaddin_cpp) %{
 #include "qlo/objmanual_quote.hpp"
 #include "qlo/obj_volatilities.hpp"
 %}
 
-%feature("rp:generate_countify") QuantLib::BlackScholesMertonProcess::BlackScholesMertonProcess;
-%feature("rp:generate_cpp") QuantLib::BlackScholesMertonProcess::BlackScholesMertonProcess;
+%insert(processes_serialization_cpp) %{
+#include <qlo/obj_termstructures.hpp>
+#include <qlo/obj_volatilities.hpp>
+%}
 
 namespace QuantLib {
 
@@ -19,11 +21,13 @@ namespace QuantLib {
 
     class BlackScholesMertonProcess : public GeneralizedBlackScholesProcess {
       public:
+        %generate(cpp, BlackScholesMertonProcess);
+        %generate(countify, BlackScholesMertonProcess);
         BlackScholesMertonProcess(
-            const QuantLib::Handle< QuantLib::Quote >& x0,
-            const QuantLib::Handle<QuantLib::YieldTermStructure>& dividendTS,
-            const QuantLib::Handle<QuantLib::YieldTermStructure>& riskFreeTS,
-            const QuantLib::Handle<QuantLib::BlackVolTermStructure>& blackVolTS);
+            const Handle<Quote>& x0,
+            const Handle<YieldTermStructure>& dividendTS,
+            const Handle<YieldTermStructure>& riskFreeTS,
+            const Handle<BlackVolTermStructure>& blackVolTS);
     };
 }
 

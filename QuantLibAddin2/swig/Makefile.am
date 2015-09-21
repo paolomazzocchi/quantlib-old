@@ -10,10 +10,11 @@ SWIG_FILES := \
     functions/exercise.i \
     functions/handles.i \
     functions/indexes.i \
-    functions/indexes2.i \
     functions/instruments.i \
     functions/interpolation.i \
     functions/leg.i \
+    functions/math.i \
+    functions/models.i \
     functions/payoffs.i \
     functions/piecewiseyieldcurve.i \
     functions/prices.i \
@@ -25,6 +26,7 @@ SWIG_FILES := \
     functions/settings.i \
     functions/termstructures.i \
     functions/utilities.i \
+    functions/vanillaswaps.i \
     functions/volatilities.i \
     typemaps/addincountify.i \
     typemaps/addincpp.i \
@@ -38,6 +40,7 @@ SWIG_FILES := \
 
 SWIG_DIR = @swig_dir@
 SWIG_BIN = $(SWIG_DIR)/swig
+SWIG_SWG = $(SWIG_DIR)/Lib/reposit/reposit.swg
 SWIG_CMD = $(SWIG_DIR)/preinst-swig
 #SWIG_DEBUG = -debug-top 4 -debug-tmsearch
 
@@ -57,7 +60,7 @@ SWIG_ARGS += quantlib.i
 .PHONY: SWIG
 SWIG: .time-stamp
 
-.time-stamp: $(SWIG_FILES) $(SWIG_BIN)
+.time-stamp: $(SWIG_FILES) $(SWIG_BIN) $(SWIG_SWG)
 	$(SWIG_CMD) $(SWIG_DEBUG) $(SWIG_ARGS)
 	touch .time-stamp
 

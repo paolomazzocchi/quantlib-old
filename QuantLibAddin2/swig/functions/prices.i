@@ -1,7 +1,7 @@
 
-%pragma(reposit) group="prices";
+%group(prices);
 
-%pragma(reposit) obj_include=%{
+%insert(prices_library_hpp) %{
 #include <ql/prices.hpp>
 %}
 

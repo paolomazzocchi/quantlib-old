@@ -1,14 +1,9 @@
 
-%pragma(reposit) group="calendars";
+%group(calendars);
 
-%pragma(reposit) obj_include=%{
+%insert(calendars_library_hpp) %{
 #include <ql/time/calendar.hpp>
 %}
-
-%feature("rp:loopParameter", "date") QuantLib::Calendar::isEndOfMonth;
-%feature("rp:loopParameter", "date") QuantLib::Calendar::endOfMonth;
-%feature("rp:loopParameter", "period") QuantLib::Calendar::advance;
-%feature("rp:loopParameter", "date") QuantLib::Calendar::adjust;
 
 namespace QuantLib {
 
@@ -16,17 +11,22 @@ namespace QuantLib {
 
     public:
 
-        bool isEndOfMonth(const QuantLib::Date& date) const;
-        QuantLib::Date endOfMonth(const QuantLib::Date& date) const;
+        %loop(isEndOfMonth, date);
+        bool isEndOfMonth(const Date& date) const;
 
-        QuantLib::Date advance(
-            const QuantLib::Date& date,
-            const QuantLib::Period& period,
-            QuantLib::BusinessDayConvention convention,
+        %loop(endOfMonth, date);
+        Date endOfMonth(const Date& date) const;
+
+        %loop(advance, period);
+        Date advance(
+            const Date& date,
+            const Period& period,
+            BusinessDayConvention convention,
             bool endOfMonth) const;
 
-        QuantLib::Date adjust(const QuantLib::Date& date,
-            QuantLib::BusinessDayConvention convention);
+        %loop(adjust, date);
+        Date adjust(const Date& date,
+            BusinessDayConvention convention);
     };
 }
 

@@ -1,51 +1,55 @@
 
-%pragma(reposit) group="instruments";
+%group(instruments);
 
-%pragma(reposit) obj_include=%{
+%insert(instruments_library_hpp) %{
 #include <ql/instruments/vanillaoption.hpp>
 #include <ql/cashflow.hpp>
 #include <ql/instruments/swap.hpp>
 #include <ql/instruments/swaption.hpp>
 %}
 
-%pragma(reposit) add_include=%{
+%insert(instruments_cppaddin_cpp) %{
 #include "qlo/obj_pricingengines.hpp"
 #include "qlo/obj_payoffs.hpp"
 #include "qlo/obj_exercise.hpp"
 %}
 
-%feature("rp:generate_countify") QuantLib::VanillaOption::VanillaOption;
-%feature("rp:generate_countify") QuantLib::Instrument::setPricingEngine;
-%feature("rp:generate_countify") QuantLib::Instrument::NPV;
-%feature("rp:generate_cpp") QuantLib::VanillaOption::VanillaOption;
-%feature("rp:generate_cpp") QuantLib::Instrument::setPricingEngine;
-%feature("rp:generate_cpp") QuantLib::Instrument::NPV;
+%insert(instruments_serialization_cpp) %{
+#include <qlo/obj_payoffs.hpp>
+#include "qlo/obj_exercise.hpp"
+#include "qlo/obj_vanillaswaps.hpp"
+%}
 
 namespace QuantLib {
 
     class Instrument {
       public:
-        //Instrument();
-        void setPricingEngine(const boost::shared_ptr<QuantLib::PricingEngine>& engine);
-        QuantLib::Real NPV();
+        %generate(cpp, setPricingEngine);
+        %generate(countify, setPricingEngine);
+        void setPricingEngine(const boost::shared_ptr<PricingEngine>& engine);
+        %generate(cpp, NPV);
+        %generate(countify, NPV);
+        Real NPV();
     };
 
     class VanillaOption : public Instrument {
       public:
-        VanillaOption(const boost::shared_ptr<QuantLib::StrikedTypePayoff>& payoff,
-                      const boost::shared_ptr<QuantLib::Exercise>& exercise);
+        %generate(cpp, VanillaOption);
+        %generate(countify, VanillaOption);
+        VanillaOption(const boost::shared_ptr<StrikedTypePayoff>& payoff,
+                      const boost::shared_ptr<Exercise>& exercise);
     };
 
     class Swap : public Instrument {
       public:
-        Swap(const std::vector<QuantLib::Leg>& legs,
+        Swap(const std::vector<Leg>& legs,
             const std::vector<bool>& payer);
     };
     
     class Swaption : public /*Option*/Instrument {
       public:
-        Swaption(const boost::shared_ptr<QuantLib::VanillaSwap>& swap,
-                 const boost::shared_ptr<QuantLib::Exercise>& exercise/*,
+        Swaption(const boost::shared_ptr<VanillaSwap>& swap,
+                 const boost::shared_ptr<Exercise>& exercise/*,
                  Settlement::Type delivery = Settlement::Physical*/);
     };
 }

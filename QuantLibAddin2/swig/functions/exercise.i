@@ -1,12 +1,9 @@
 
-%pragma(reposit) group="exercise";
+%group(exercise);
 
-%pragma(reposit) obj_include=%{
+%insert(exercise_library_hpp) %{
 #include <ql/exercise.hpp>
 %}
-
-%feature("rp:generate_countify") QuantLib::EuropeanExercise::EuropeanExercise;
-%feature("rp:generate_cpp") QuantLib::EuropeanExercise::EuropeanExercise;
 
 namespace QuantLib {
 
@@ -14,12 +11,14 @@ namespace QuantLib {
 
     class EuropeanExercise : public Exercise {
       public:
-        EuropeanExercise(const QuantLib::Date& date);
+        %generate(cpp, EuropeanExercise);
+        %generate(countify, EuropeanExercise);
+        EuropeanExercise(const Date& date);
     };
 
     class BermudanExercise : public Exercise {
       public:
-        BermudanExercise(const std::vector<QuantLib::Date>& dates/*,
+        BermudanExercise(const std::vector<Date>& dates/*,
                          bool payoffAtExpiry = false*/);
     };    
 }

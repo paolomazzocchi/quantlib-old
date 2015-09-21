@@ -1,8 +1,8 @@
 
-%pragma(reposit) group="date";
-%pragma(reposit) override_obj="true";
+%group(date);
+%override;
 
-%pragma(reposit) obj_include=%{
+%insert(date_library_hpp) %{
 #include <ql/time/date.hpp>
 %}
 

@@ -1,12 +1,9 @@
 
-%pragma(reposit) group="payoffs";
+%group(payoffs);
 
-%pragma(reposit) obj_include=%{
+%insert(payoffs_library_hpp) %{
 #include <ql/instruments/payoffs.hpp>
 %}
-
-%feature("rp:generate_countify") QuantLib::PlainVanillaPayoff::PlainVanillaPayoff;
-%feature("rp:generate_cpp") QuantLib::PlainVanillaPayoff::PlainVanillaPayoff;
 
 namespace QuantLib {
 
@@ -14,8 +11,10 @@ namespace QuantLib {
 
     class PlainVanillaPayoff : public StrikedTypePayoff {
       public:
-        PlainVanillaPayoff(QuantLib::Option::Type optionType,
-                           QuantLib::Real strike);
+        %feature("rp:generate:countify") PlainVanillaPayoff;
+        %feature("rp:generate:cpp") PlainVanillaPayoff;
+        PlainVanillaPayoff(Option::Type optionType,
+                           Real strike);
     };
 }
 

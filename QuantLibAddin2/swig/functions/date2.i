@@ -1,9 +1,6 @@
 
-%pragma(reposit) group="date2";
-%pragma(reposit) override_obj="true";
-
-%feature("rp:loopParameter", "immCode") QuantLibAddin::IMMdate;
-%feature("rp:loopParameter", "immDate") QuantLibAddin::IMMcode;
+%group(date2);
+%override;
 
 namespace QuantLibAddin {
 
@@ -15,10 +12,12 @@ namespace QuantLibAddin {
         const QuantLib::Date& RefDate,
         const std::vector<bool>& MainCycle);
 
+    %loop(IMMdate, immCode);
     QuantLib::Date IMMdate(
         const std::string& immCode,
         const QuantLib::Date &referenceDate);
 
+    %loop(IMMcode, immDate);
     std::string IMMcode(const QuantLib::Date& immDate);
 
     std::string IMMnextCode(const QuantLib::Date& d,

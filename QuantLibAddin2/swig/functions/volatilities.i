@@ -1,13 +1,11 @@
 
-%pragma(reposit) group="volatilities";
+%group(volatilities);
 
-%pragma(reposit) obj_include=%{
+%insert(volatilities_library_hpp) %{
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <qlo/objmanual_piecewiseyieldcurve.hpp>
 %}
 
-%feature("rp:generate_countify") QuantLib::BlackConstantVol::BlackConstantVol;
-%feature("rp:generate_cpp") QuantLib::BlackConstantVol::BlackConstantVol;
 
 namespace QuantLib {
 
@@ -15,10 +13,12 @@ namespace QuantLib {
 
     class BlackConstantVol : public BlackVolTermStructure {
       public:
-        BlackConstantVol(const QuantLib::Date& referenceDate,
-                         const QuantLib::Calendar& calendar,
-                         QuantLib::Volatility volatility,
-                         const QuantLib::DayCounter& dayCounter);
+        %generate(cpp, BlackConstantVol);
+        %generate(countify, BlackConstantVol);
+        BlackConstantVol(const Date& referenceDate,
+                         const Calendar& calendar,
+                         Volatility volatility,
+                         const DayCounter& dayCounter);
     };
 }
 

@@ -1,6 +1,10 @@
 
-%pragma(reposit) group="indexes";
-%pragma(reposit) override_obj="true";
+%group(indexes);
+%override;
+
+%insert(indexes_serialization_cpp) %{
+#include <qlo/obj_termstructures.hpp>
+%}
 
 // For most of the QuantLib index classes, we have handwritten code in the
 // QuantLibAddin layer to provide custom behavior.  In the QuantLibAddin
@@ -84,21 +88,21 @@ namespace QuantLib {
 
     class Index {
         public:
-            double fixing(const QuantLib::Date& fixingDate,
+            double fixing(const Date& fixingDate,
                                 bool forecastTodaysFixing);
-            QuantLib::Calendar fixingCalendar();
+            Calendar fixingCalendar();
     };
 
     class InterestRateIndex : public Index {
         public:
-            QuantLib::Natural fixingDays();
-            const QuantLib::DayCounter& dayCounter();
-            QuantLib::Date valueDate(const QuantLib::Date& fixingDate);
-            QuantLib::Period tenor();
+            Natural fixingDays();
+            const DayCounter& dayCounter();
+            Date valueDate(const Date& fixingDate);
+            Period tenor();
     };
 
     class IborIndex : public InterestRateIndex {
         public:
-            QuantLib::BusinessDayConvention businessDayConvention();
+            BusinessDayConvention businessDayConvention();
     };
 }

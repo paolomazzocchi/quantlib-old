@@ -1,7 +1,7 @@
 
-%pragma(reposit) group="math";
+%group(math);
 
-%pragma(reposit) obj_include=%{
+%insert(math_library_hpp) %{
 #include <ql/math/optimization/levenbergmarquardt.hpp>
 #include <ql/math/optimization/endcriteria.hpp>
 %}
@@ -9,7 +9,7 @@
 namespace QuantLib {
 
     class OptimizationMethod {};
-    
+
     class LevenbergMarquardt : public OptimizationMethod {
       public:
         LevenbergMarquardt(/*Real epsfcn = 1.0e-8,
@@ -20,10 +20,10 @@ namespace QuantLib {
 
     class EndCriteria {
       public:
-        EndCriteria(QuantLib::Size maxIterations,
-                    QuantLib::Size maxStationaryStateIterations,
-                    QuantLib::Real rootEpsilon,
-                    QuantLib::Real functionEpsilon,
-                    QuantLib::Real gradientNormEpsilon);    
+        EndCriteria(Size maxIterations,
+                    Size maxStationaryStateIterations,
+                    Real rootEpsilon,
+                    Real functionEpsilon,
+                    Real gradientNormEpsilon);
     };
 }

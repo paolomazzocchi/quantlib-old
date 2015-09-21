@@ -426,10 +426,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\qlo\serialization\create\create_calendars.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\qlo\serialization\create\create_calendars.hpp"
 					>
 				</File>
@@ -442,23 +438,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\qlo\serialization\create\create_date.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\qlo\serialization\create\create_date.hpp"
 					>
 				</File>
 				<File
-					RelativePath=".\qlo\serialization\create\create_date2.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\qlo\serialization\create\create_date2.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\qlo\serialization\create\create_daycounters.cpp"
 					>
 				</File>
 				<File
@@ -546,10 +530,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\qlo\serialization\create\create_prices.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\qlo\serialization\create\create_prices.hpp"
 					>
 				</File>
@@ -594,10 +574,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\qlo\serialization\create\create_settings.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\qlo\serialization\create\create_settings.hpp"
 					>
 				</File>
@@ -607,10 +583,6 @@
 				</File>
 				<File
 					RelativePath=".\qlo\serialization\create\create_termstructures.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\qlo\serialization\create\create_utilities.cpp"
 					>
 				</File>
 				<File
@@ -1172,15 +1144,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\qlo\obj_calendars.cpp"
-			>
-		</File>
-		<File
 			RelativePath=".\qlo\obj_calendars.hpp"
-			>
-		</File>
-		<File
-			RelativePath=".\qlo\obj_exercise.cpp"
 			>
 		</File>
 		<File
@@ -1188,15 +1152,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\qlo\obj_instruments.cpp"
-			>
-		</File>
-		<File
 			RelativePath=".\qlo\obj_instruments.hpp"
-			>
-		</File>
-		<File
-			RelativePath=".\qlo\obj_math.cpp"
 			>
 		</File>
 		<File
@@ -1204,15 +1160,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\qlo\obj_models.cpp"
-			>
-		</File>
-		<File
 			RelativePath=".\qlo\obj_models.hpp"
-			>
-		</File>
-		<File
-			RelativePath=".\qlo\obj_payoffs.cpp"
 			>
 		</File>
 		<File
@@ -1228,15 +1176,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\qlo\obj_pricingengines.cpp"
-			>
-		</File>
-		<File
 			RelativePath=".\qlo\obj_pricingengines.hpp"
-			>
-		</File>
-		<File
-			RelativePath=".\qlo\obj_processes.cpp"
 			>
 		</File>
 		<File
@@ -1244,15 +1184,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\qlo\obj_schedule.cpp"
-			>
-		</File>
-		<File
 			RelativePath=".\qlo\obj_schedule.hpp"
-			>
-		</File>
-		<File
-			RelativePath=".\qlo\obj_termstructures.cpp"
 			>
 		</File>
 		<File
@@ -1260,15 +1192,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\qlo\obj_vanillaswaps.cpp"
-			>
-		</File>
-		<File
 			RelativePath=".\qlo\obj_vanillaswaps.hpp"
-			>
-		</File>
-		<File
-			RelativePath=".\qlo\obj_volatilities.cpp"
 			>
 		</File>
 		<File
