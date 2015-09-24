@@ -8,6 +8,8 @@
 %typemap(rp_tm_xll_rtft) QuantLib::Period "char*";
 
 // rp_tm_xll_parm - function parameters (F/C/M)
+%typemap(rp_tm_xll_parm) QuantLib::Date "OPER*";
+%typemap(rp_tm_xll_parm) QuantLib::Date const & "OPER*";
 %typemap(rp_tm_xll_parm) QuantLib::Period "char*";
 %typemap(rp_tm_xll_parm) QuantLib::Handle<QuantLib::YieldTermStructure> const & "OPER*";
 %typemap(rp_tm_xll_parm) QuantLib::Handle<QuantLib::Quote> const & "char*";
@@ -23,6 +25,22 @@
 %typemap(rp_tm_xll_cnvt) QuantLib::Period const & %{
         QuantLib::Period $1_name_cnv;
         QuantLibAddin::cppToLibrary($1_name, $1_name_cnv);
+%}
+
+%typemap(rp_tm_xll_cnvt) QuantLib::Date %{
+        $rp_typedef_base $1_name_cnv = reposit::convert2<$rp_typedef_base>(
+            reposit::ConvertOper(*$1_name), "$1_name", $rp_typedef_base());
+
+        reposit::property_t $1_name_cnv2 = reposit::convert2<reposit::property_t>(
+            reposit::ConvertOper(*$1_name));
+%}
+
+%typemap(rp_tm_xll_cnvt) QuantLib::Date const & %{
+        $rp_typedef_base $1_name_cnv = reposit::convert2<$rp_typedef_base>(
+            reposit::ConvertOper(*$1_name), "$1_name", $rp_typedef_base());
+
+        reposit::property_t $1_name_cnv2 = reposit::convert2<reposit::property_t>(
+            reposit::ConvertOper(*$1_name));
 %}
 
 %typemap(rp_tm_xll_cnvt) QuantLib::Schedule const & %{
@@ -136,6 +154,8 @@
 %}
 
 // rp_tm_xll_argf - arguments to the underlying Library function
+%typemap(rp_tm_xll_argf) QuantLib::Date "$1_name_cnv";
+%typemap(rp_tm_xll_argf) QuantLib::Date const & "$1_name_cnv";
 %typemap(rp_tm_xll_argf) QuantLib::Period "$1_name_cnv";
 %typemap(rp_tm_xll_argf) QuantLib::Period const & "$1_name_cnv";
 %typemap(rp_tm_xll_argf) QuantLib::Schedule const & "*$1_name_cnv";
@@ -210,11 +230,22 @@
 %}
 
 // rp_tm_xll_argfv - arguments to the Value Object constructor (C)
+%typemap(rp_tm_xll_argfv) QuantLib::Date "$1_name_cnv2";
+%typemap(rp_tm_xll_argfv) QuantLib::Date const & "$1_name_cnv2";
 %typemap(rp_tm_xll_argfv) QuantLib::Handle< QuantLib::YieldTermStructure > const & "$1_name_vo";
+
+// rp_tm_xll_cdrt - code to register the return type with Excel
+%typemap(rp_tm_xll_cdrt) QuantLib::Period "C";
+%typemap(rp_tm_xll_cdrt) QuantLib::Date "N";
+%typemap(rp_tm_xll_cdrt) QuantLib::Handle<QuantLib::YieldTermStructure> const & "P";
+%typemap(rp_tm_xll_cdrt) QuantLib::Handle<QuantLib::Quote> const & "C";
+%typemap(rp_tm_xll_cdrt) QuantLib::Handle<QuantLib::BlackVolTermStructure> const & "C";
 
 // rp_tm_xll_code - code to register the parameter with Excel
 %typemap(rp_tm_xll_code) QuantLib::Period "C";
-%typemap(rp_tm_xll_code) QuantLib::Date "N";
+//%typemap(rp_tm_xll_code) QuantLib::Date "N";
+%typemap(rp_tm_xll_code) QuantLib::Date "P";
+%typemap(rp_tm_xll_code) QuantLib::Date const & "P";
 %typemap(rp_tm_xll_code) QuantLib::Handle<QuantLib::YieldTermStructure> const & "P";
 %typemap(rp_tm_xll_code) QuantLib::Handle<QuantLib::Quote> const & "C";
 %typemap(rp_tm_xll_code) QuantLib::Handle<QuantLib::BlackVolTermStructure> const & "C";

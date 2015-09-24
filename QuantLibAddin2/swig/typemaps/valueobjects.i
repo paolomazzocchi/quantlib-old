@@ -4,6 +4,8 @@
 //*****************************************************************************
 
 // rp_tm_vob_parm - Value Object constructor parameters
+%typemap(rp_tm_vob_parm) QuantLib::Date "const reposit::property_t&";
+%typemap(rp_tm_vob_parm) QuantLib::Date const & "const reposit::property_t&";
 %typemap(rp_tm_vob_parm) QuantLib::Period "const std::string&";
 %typemap(rp_tm_vob_parm) QuantLib::Handle< QuantLib::Quote > const & "const std::string &";
 %typemap(rp_tm_vob_parm) QuantLib::Handle< QuantLib::YieldTermStructure > const & "const reposit::property_t&";
@@ -15,6 +17,8 @@
 %typemap(rp_tm_vob_parm) std::vector<QuantLib::Handle<QuantLib::Quote > > const & "const std::vector<reposit::property_t>&";
 
 // rp_tm_vob_mbvr - Value Object class member variables
+%typemap(rp_tm_vob_mbvr) QuantLib::Date "reposit::property_t $1_name_";
+%typemap(rp_tm_vob_mbvr) QuantLib::Date const & "reposit::property_t $1_name_";
 %typemap(rp_tm_vob_mbvr) QuantLib::Period "std::string $1_name_";
 %typemap(rp_tm_vob_mbvr) QuantLib::Handle<QuantLib::Quote > const & "std::string $1_name_";
 %typemap(rp_tm_vob_mbvr) QuantLib::Handle<QuantLib::YieldTermStructure > const & "reposit::property_t $1_name_";
@@ -32,6 +36,8 @@
 // rp_tm_vob_init - vo ctor initializer list
 
 // rp_tm_vob_cnvt - in ValueObject::setSystemProperty, convert value from property_t to native type (C)
+%typemap(rp_tm_vob_cnvt) QuantLib::Date "value";
+%typemap(rp_tm_vob_cnvt) QuantLib::Date const & "value";
 %typemap(rp_tm_vob_cnvt) QuantLib::Period "reposit::convert2<std::string>(value)";
 %typemap(rp_tm_vob_cnvt) QuantLib::Handle<QuantLib::Quote> const & "reposit::convert2<std::string>(value)";
 %typemap(rp_tm_vob_cnvt) QuantLib::Handle<QuantLib::YieldTermStructure> const & "value";

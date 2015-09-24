@@ -10,11 +10,7 @@ namespace QuantLib {
     class Schedule {
       public:
         Schedule(
-                 // FIXME we declare effectiveDate as "const QuantLib::Date&" instead of "QuantLib::Date".
-                 // This is because the typemaps currently work for "const Date&" as an input value
-                 // and for "Date" as a return value but not for "Date" as an input value.
-                 //QuantLib::Date effectiveDate,
-                 const Date& effectiveDate,
+                 Date effectiveDate,
                  const Date& terminationDate,
                  const Period& tenor,
                  const Calendar& calendar,
