@@ -5,13 +5,8 @@
 #include <ql/processes/blackscholesprocess.hpp>
 %}
 
-%insert(processes_cppaddin_cpp) %{
-#include "qlo/objmanual_quote.hpp"
-#include "qlo/obj_volatilities.hpp"
-%}
-
-%insert(processes_serialization_cpp) %{
-#include <qlo/obj_termstructures.hpp>
+%insert(processes_addin_cpp) %{
+#include <qlo/objmanual_quote.hpp>
 #include <qlo/obj_volatilities.hpp>
 %}
 
@@ -21,7 +16,8 @@ namespace QuantLib {
 
     class BlackScholesMertonProcess : public GeneralizedBlackScholesProcess {
       public:
-        %generate(cpp, BlackScholesMertonProcess);
+        %generate(c++, BlackScholesMertonProcess);
+        %generate(c#, BlackScholesMertonProcess);
         %generate(countify, BlackScholesMertonProcess);
         BlackScholesMertonProcess(
             const Handle<Quote>& x0,

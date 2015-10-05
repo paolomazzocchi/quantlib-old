@@ -2,14 +2,7 @@
 %group(quote);
 %override;
 
-%insert(quote_library_hpp) %{
-#include <ql/quotes/simplequote.hpp>
-#include <ql/quotes/lastfixingquote.hpp>
-#include <ql/quotes/futuresconvadjustmentquote.hpp>
-#include <ql/math/comparison.hpp>
-%}
-
-%insert(quote_serialization_cpp) %{
+%insert(quote_addin_cpp) %{
 #include <qlo/objmanual_indexes.hpp>
 %}
 
@@ -25,7 +18,8 @@ namespace QuantLibAddin {
 
     class SimpleQuote : public Quote {
       public:
-        %generate(cpp, SimpleQuote);
+        %generate(c++, SimpleQuote);
+        %generate(c#, SimpleQuote);
         %generate(countify, SimpleQuote);
         // NB: The parameter below must be called "Value" because there
         // is code which updates a property with that name in the value object.

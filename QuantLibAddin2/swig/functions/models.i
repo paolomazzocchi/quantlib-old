@@ -7,9 +7,12 @@
 #include <ql/models/shortrate/twofactormodels/g2.hpp>
 %}
 
-%insert(models_serialization_cpp) %{
+%insert(models_addin_cpp) %{
+#include <qlo/obj_pricingengines.hpp>
+#include <qlo/objmanual_quote.hpp>
 #include <qlo/objmanual_indexes.hpp>
 #include <qlo/obj_termstructures.hpp>
+#include <qlo/obj_math.hpp>
 %}
 
 namespace QuantLib {

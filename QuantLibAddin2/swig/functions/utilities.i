@@ -2,13 +2,18 @@
 %group(utilities);
 %override;
 
+%insert(utilities_addin_cpp) %{
+#include <qlo/objmanual_utilities.hpp>
+%}
+
 namespace QuantLibAddin {
 
-    %generate(cpp, version);
+    %generate(c++, version);
+    %generate(c#, version);
     %generate(countify, version);
     std::string version();
 
-    %generate(cpp, ObjectCount);
+    %generate(c++, ObjectCount);
     %generate(countify, ObjectCount);
     long ObjectCount();
 

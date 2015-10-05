@@ -2,10 +2,11 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="ClientCppDemo"
-	ProjectGUID="{87144B17-16DA-48D6-9283-E3DDF091F4C9}"
+	Name="AddinCSharp"
+	ProjectGUID="{D086C77F-3F5A-4FBE-AF72-D92A12AD097B}"
+	RootNamespace="AddinCSharp"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="0"
+	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
 		<Platform
@@ -19,10 +20,8 @@
 			Name="Debug|Win32"
 			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
+			ConfigurationType="2"
+			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -42,16 +41,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				EnableIntrinsicFunctions="false"
-				AdditionalIncludeDirectories="..\..,..\..\..\reposit,..\..\..\QuantLib"
-				PreprocessorDefinitions="_DEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;"
+				AdditionalIncludeDirectories="..,..\..\..\quantlib\reposit,..\..\..\quantlib\QuantLib"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;ADDINCSHARP_EXPORTS"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				DebugInformationFormat="3"
+				DebugInformationFormat="4"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -64,11 +61,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\bin\ClientCppDemo-vc90-mt-gd.exe"
+				OutputFile=".\bin\AddinCSharp-vc90-mt-gd-1_7_0.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\..\reposit\lib,..\..\..\QuantLib\lib"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -97,10 +93,9 @@
 			Name="Release|Win32"
 			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
+			ConfigurationType="2"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -120,14 +115,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				EnableIntrinsicFunctions="false"
-				AdditionalIncludeDirectories="..\..,..\..\..\reposit,..\..\..\QuantLib"
-				PreprocessorDefinitions="NDEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="..,..\..\..\quantlib\reposit,..\..\..\quantlib\QuantLib"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ADDINCSHARP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -140,11 +135,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\bin\ClientCppDemo-vc90-mt.exe"
+				OutputFile=".\bin\AddinCSharp-vc90-mt-1_7_0.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\..\reposit\lib,..\..\..\QuantLib\lib"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -152,7 +148,6 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				EmbedManifest="false"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -174,10 +169,9 @@
 			Name="Release (static runtime)|Win32"
 			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
+			ConfigurationType="2"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -197,14 +191,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				EnableIntrinsicFunctions="false"
-				AdditionalIncludeDirectories="..\..,..\..\..\reposit,..\..\..\QuantLib"
-				PreprocessorDefinitions="NDEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="..,..\..\..\quantlib\reposit,..\..\..\quantlib\QuantLib"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ADDINCSHARP_EXPORTS"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
-				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -217,11 +211,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\bin\ClientCppDemo-vc90-mt.exe"
+				OutputFile=".\bin\AddinCSharp-vc90-mt-s-1_7_0.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\..\reposit\lib,..\..\..\QuantLib\lib"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -229,7 +224,6 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				EmbedManifest="false"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -251,10 +245,8 @@
 			Name="Debug (static runtime)|Win32"
 			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
+			ConfigurationType="2"
+			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -274,16 +266,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				EnableIntrinsicFunctions="false"
-				AdditionalIncludeDirectories="..\..,..\..\..\reposit,..\..\..\QuantLib"
-				PreprocessorDefinitions="_DEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;"
+				AdditionalIncludeDirectories="..,..\..\..\quantlib\reposit,..\..\..\quantlib\QuantLib"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;ADDINCSHARP_EXPORTS"
+				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				DebugInformationFormat="3"
+				DebugInformationFormat="4"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -296,11 +286,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\bin\ClientCppDemo-vc90-mt-sgd.exe"
+				OutputFile=".\bin\AddinCSharp-vc90-mt-sgd-1_7_0.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\..\reposit\lib,..\..\..\QuantLib\lib"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -330,7 +319,47 @@
 	</References>
 	<Files>
 		<File
-			RelativePath=".\ClientCppDemo.cpp"
+			RelativePath=".\csh_exercise.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_instruments.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_payoffs.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_pricingengines.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_processes.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_quote.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_settings.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_termstructures.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_utilities.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\csh_volatilities.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\init.cpp"
 			>
 		</File>
 	</Files>

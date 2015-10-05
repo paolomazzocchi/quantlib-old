@@ -19,7 +19,6 @@ this_include_HEADERS = \
     obj_exercise.hpp \
     obj_instruments.hpp \
     objmanual_couponvectors.hpp \
-    objmanual_date2.hpp \
     objmanual_date.hpp \
     objmanual_handles.hpp \
     objmanual_indexes.hpp \
@@ -33,7 +32,6 @@ this_include_HEADERS = \
     obj_math.hpp \
     obj_models.hpp \
     obj_payoffs.hpp \
-    obj_prices.hpp \
     obj_pricingengines.hpp \
     obj_processes.hpp \
     obj_schedule.hpp \
@@ -46,7 +44,6 @@ this_include_HEADERS = \
 libAddinObjects_la_SOURCES = \
     init.cpp \
     objmanual_couponvectors.cpp \
-    objmanual_date2.cpp \
     objmanual_date.cpp \
     objmanual_interpolation.cpp \
     objmanual_leg.cpp \
@@ -55,7 +52,6 @@ libAddinObjects_la_SOURCES = \
     objmanual_ratehelpers.cpp \
     objmanual_settings.cpp \
     objmanual_utilities.cpp \
-    obj_prices.cpp \
     yieldtermstructures.cpp
 
 noinst_LTLIBRARIES = libAddinObjects.la
