@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory="..\build\vc90\xlsdk\Release (static runtime)"
-			IntermediateDirectory="..\build\vc90\xlsdk\Release (static runtime)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -97,8 +97,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory="..\build\vc90\xlsdk\Debug (static runtime)"
-			IntermediateDirectory="..\build\vc90\xlsdk\Debug (static runtime)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -175,8 +175,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\build\vc90\xlsdk\Release"
-			IntermediateDirectory="..\build\vc90\xlsdk\Release"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -255,8 +255,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\build\vc90\xlsdk\Debug"
-			IntermediateDirectory="..\build\vc90\xlsdk\Debug"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"

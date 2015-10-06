@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -95,8 +95,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -175,8 +175,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -255,8 +255,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"

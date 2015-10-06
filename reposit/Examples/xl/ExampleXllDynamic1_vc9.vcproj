@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\buildXllDynamic1\vc90\$(ConfigurationName)"
-			IntermediateDirectory=".\buildXllDynamic1\vc90\$(ConfigurationName)"
+			OutputDirectory=".\buildXllDynamic1\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\buildXllDynamic1\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			>
@@ -101,8 +101,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\buildXllDynamic1\vc90\$(ConfigurationName)"
-			IntermediateDirectory=".\buildXllDynamic1\vc90\$(ConfigurationName)"
+			OutputDirectory=".\buildXllDynamic1\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\buildXllDynamic1\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"

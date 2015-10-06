@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
 			>
@@ -84,8 +84,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -148,8 +148,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -212,8 +212,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
 			>
