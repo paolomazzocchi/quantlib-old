@@ -10,14 +10,17 @@
 		<Platform
 			Name="Win32"
 		/>
+		<Platform
+			Name="x64"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -85,8 +88,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -155,8 +158,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -224,8 +227,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -276,6 +279,289 @@
 			<Tool
 				Name="VCLibrarianTool"
 				OutputFile=".\lib\log4cxxs-vc90-mt-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug (static runtime)|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\main\include\log4cxx\win32;..\src\main\include;..\src\apr\include;..\src\apr\include\arch\win32;&quot;..\src\apr-util\include&quot;;&quot;..\src\apr-util\include\private\win32&quot;"
+				PreprocessorDefinitions="_DEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;LOG4CXX_STATIC;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile=".\lib\log4cxxs-vc90-$(PlatformName)-mt-sgd-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release (static runtime)|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\main\include\log4cxx\win32;..\src\main\include;..\src\apr\include;..\src\apr\include\arch\win32;&quot;..\src\apr-util\include&quot;;&quot;..\src\apr-util\include\private\win32&quot;"
+				PreprocessorDefinitions="NDEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;LOG4CXX_STATIC;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile=".\lib\log4cxxs-vc90-$(PlatformName)-mt-s-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\main\include\log4cxx\win32;..\src\main\include;..\src\apr\include;..\src\apr\include\arch\win32;&quot;..\src\apr-util\include&quot;;&quot;..\src\apr-util\include\private\win32&quot;"
+				PreprocessorDefinitions="_DEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;LOG4CXX_STATIC;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile=".\lib\log4cxxs-vc90-$(PlatformName)-mt-gd-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\log4cxx\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\main\include\log4cxx\win32;..\src\main\include;..\src\apr\include;..\src\apr\include\arch\win32;&quot;..\src\apr-util\include&quot;;&quot;..\src\apr-util\include\private\win32&quot;"
+				PreprocessorDefinitions="NDEBUG;_USRDLL;DLL_EXPORTS;LOG4CXX;LOG4CXX_STATIC;APR_DECLARE_STATIC;APU_DECLARE_STATIC;WIN32"
+				StringPooling="false"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="false"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\log4cxx\log4cxx_obj\vc90.pdb"
+				GenerateXMLDocumentationFiles="false"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile=".\lib\log4cxxs-$(PlatformName)-vc90-mt-0_10_0.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"

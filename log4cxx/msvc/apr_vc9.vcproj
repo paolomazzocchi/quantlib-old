@@ -10,14 +10,17 @@
 		<Platform
 			Name="Win32"
 		/>
+		<Platform
+			Name="x64"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\apr\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -41,7 +44,7 @@
 				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
-				PreprocessorDefinitions="_DEBUG;APR_DECLARE_STATIC;WIN32=1"
+				PreprocessorDefinitions="_DEBUG;APR_DECLARE_STATIC;WIN32"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -85,9 +88,80 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Debug (static runtime)|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
+				PreprocessorDefinitions="_DEBUG;APR_DECLARE_STATIC;WIN32"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\apr\apr.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\apr\apr_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="Mswsock.lib"
+				OutputFile=".\lib\apr-vc90-$(PlatformName)-mt-sgd-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\apr\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -111,7 +185,7 @@
 				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
-				PreprocessorDefinitions="NDEBUG;APR_DECLARE_STATIC;WIN32=1"
+				PreprocessorDefinitions="NDEBUG;APR_DECLARE_STATIC;WIN32"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -157,9 +231,82 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Release (static runtime)|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
+				PreprocessorDefinitions="NDEBUG;APR_DECLARE_STATIC;WIN32"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\apr\apr.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\apr\apr_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="Mswsock.lib"
+				OutputFile=".\lib\apr-vc90-$(PlatformName)-mt-s-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\apr\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -183,7 +330,7 @@
 				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
-				PreprocessorDefinitions="_DEBUG;APR_DECLARE_STATIC;WIN32=1"
+				PreprocessorDefinitions="_DEBUG;APR_DECLARE_STATIC;WIN32"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -227,9 +374,80 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Debug|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
+				PreprocessorDefinitions="_DEBUG;APR_DECLARE_STATIC;WIN32"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\apr\apr.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\apr\apr_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="Mswsock.lib"
+				OutputFile=".\lib\apr-vc90-$(PlatformName)-mt-gd-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\build\vc90\$(ConfigurationName)\apr\"
-			IntermediateDirectory=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -253,7 +471,7 @@
 				AdditionalOptions="/MP"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
-				PreprocessorDefinitions="NDEBUG;APR_DECLARE_STATIC;WIN32=1"
+				PreprocessorDefinitions="NDEBUG;APR_DECLARE_STATIC;WIN32"
 				StringPooling="false"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -281,6 +499,79 @@
 				Name="VCLibrarianTool"
 				AdditionalDependencies="Mswsock.lib"
 				OutputFile=".\lib\apr-vc90-mt-0_10_0.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)\apr\"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\src\apr\include;..\src\apr\include\arch;..\src\apr\include\arch\win32;..\src\apr\include\arch\unix"
+				PreprocessorDefinitions="NDEBUG;APR_DECLARE_STATIC;WIN32"
+				StringPooling="false"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\build\vc90\$(ConfigurationName)\apr\apr.pch"
+				AssemblerListingLocation=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ObjectFile=".\build\vc90\$(ConfigurationName)\apr\apr_obj\"
+				ProgramDataBaseFileName=".\build\vc90\$(ConfigurationName)\apr\apr_obj\vc90.pdb"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="Mswsock.lib"
+				OutputFile=".\lib\apr-vc90-$(PlatformName)-mt-0_10_0.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"

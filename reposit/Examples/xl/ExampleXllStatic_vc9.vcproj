@@ -10,6 +10,9 @@
 		<Platform
 			Name="Win32"
 		/>
+		<Platform
+			Name="x64"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
@@ -77,15 +80,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
-				OutputFile="xll\ExampleXLLStatic-vc90-mt-sgd-1_7_0.xll"
+				OutputFile="xll\ExampleXLLStatic-vc90-mt-sgd.xll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-sgd-1_7_0.pdb"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-sgd.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-sgd-1_7_0.lib"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-sgd.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -99,8 +102,6 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -175,14 +176,14 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
-				OutputFile="xll\ExampleXLLStatic-vc90-mt-s-1_7_0.xll"
+				OutputFile="xll\ExampleXLLStatic-vc90-mt-s.xll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
-				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-s-1_7_0.pdb"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-s.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-s-1_7_0.lib"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-s.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -196,8 +197,6 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -272,14 +271,14 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
-				OutputFile="xll\ExampleXLLStatic-vc90-mt-1_7_0.xll"
+				OutputFile="xll\ExampleXLLStatic-vc90-mt.xll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
-				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-1_7_0.pdb"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-1_7_0.lib"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -293,8 +292,6 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -369,15 +366,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
-				OutputFile="xll\ExampleXLLStatic-vc90-mt-gd-1_7_0.xll"
+				OutputFile="xll\ExampleXLLStatic-vc90-mt-gd.xll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-gd-1_7_0.pdb"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-gd.pdb"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-gd-1_7_0.lib"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-gd.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -391,8 +388,388 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug (static runtime)|x64"
+			OutputDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
-				OutputFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.bsc"
+				TargetEnvironment="3"
+				TypeLibraryName=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..,..\.."
+				PreprocessorDefinitions="XLL_STATIC"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.pch"
+				AssemblerListingLocation=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ObjectFile=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ProgramDataBaseFileName=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
+				OutputFile="xll\ExampleXLLStatic-vc90-$(PlatformName)-mt-sgd.xll"
+				LinkIncremental="2"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-sgd.pdb"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-sgd.lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release (static runtime)|x64"
+			OutputDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="..,..\.."
+				PreprocessorDefinitions="XLL_STATIC"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.pch"
+				AssemblerListingLocation=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ObjectFile=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ProgramDataBaseFileName=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
+				OutputFile="xll\ExampleXLLStatic-vc90-$(PlatformName)-mt-s.xll"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-s.pdb"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-s.lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="..,..\.."
+				PreprocessorDefinitions="XLL_STATIC"
+				StringPooling="true"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.pch"
+				AssemblerListingLocation=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ObjectFile=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ProgramDataBaseFileName=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
+				OutputFile="xll\ExampleXLLStatic-vc90-$(PlatformName)-mt.xll"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt.pdb"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt.lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\buildXllStatic\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..,..\.."
+				PreprocessorDefinitions="XLL_STATIC"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXllStatic.pch"
+				AssemblerListingLocation=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ObjectFile=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				ProgramDataBaseFileName=".\buildXllStatic\vc90\$(ConfigurationName)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="odbc32.lib odbccp32.lib Ws2_32.lib advapi32.lib"
+				OutputFile="xll\ExampleXLLStatic-vc90-$(PlatformName)-mt-gd.xll"
+				LinkIncremental="2"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\..\lib,..\..\..\log4cxx\msvc\lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-gd.pdb"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary=".\buildXllStatic\vc90\$(ConfigurationName)\ExampleXLLStatic-vc90-mt-gd.lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
 			/>
 			<Tool
 				Name="VCFxCopTool"
