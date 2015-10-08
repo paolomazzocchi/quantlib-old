@@ -7,8 +7,8 @@
   <Frameworks>
     <Framework name="QuantLibXL" displayName="QuantLibXL" fileName="QuantLibXL">
       <Components>
-        <Component path=".\xll\ObjectHandler-xll-vc110-mt-1_7_0.xll" />
-        <Component path=".\xll\QuantLibXLDynamic-vc110-mt-1_7_0.xll" />
+        <Component path=".\xll\ObjectHandler-xll-vc110-mt.xll" />
+        <Component path=".\xll\QuantLibXLDynamic-vc110-mt.xll" />
         <Component path=".\framework\QuantLibXL.xla" />
       </Components>
       <StartupParameters>
@@ -24,7 +24,7 @@
         <StartupParameter name="Metadata Path" value=".\metadata" />
         <StartupParameter name="Set Evaluation Date" value="False" />
         <StartupParameter name="Evaluation Date" value="2011-10-12" />
-        <StartupParameter name="Default Currency" value="JPY" />
+        <StartupParameter name="Default Currency" value="EUR_DEMO" />
         <StartupParameter name="Initialization Data Source" value="XML" />
         <StartupParameter name="Open Main Checks" value="True" />
         <StartupParameter name="Update Euribor YTD Time Series (xls)" value="False" />
