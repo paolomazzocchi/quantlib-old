@@ -21,11 +21,11 @@
     \brief Class RangeReference - Parse range references in string format
 */
 
-#include <rpxl/rpxldefines.hpp>
+#include <ohxl/ohxldefines.hpp>
 #include <boost/regex.hpp>
 #include <string>
 
-namespace reposit {
+namespace ObjectHandler {
 
     //! A utility class for parsing range references in string format.
     /*! The constructor to this class accepts strings returned from
