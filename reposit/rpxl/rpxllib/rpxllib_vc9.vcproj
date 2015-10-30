@@ -11,14 +11,17 @@
 		<Platform
 			Name="Win32"
 		/>
+		<Platform
+			Name="x64"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -83,8 +86,6 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -95,8 +96,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release (static runtime)|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -163,8 +164,6 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -175,8 +174,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -243,8 +242,6 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -255,8 +252,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug (static runtime)|Win32"
-			OutputDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
-			IntermediateDirectory="..\..\build\vc90\rpxllib\$(ConfigurationName)"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"
@@ -321,8 +318,318 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
+				PreprocessorDefinitions="_DEBUG;_LIB;XLL_STATIC;LOG4CXX_STATIC"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				WarningLevel="3"
 				SuppressStartupBanner="true"
-				OutputFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.bsc"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="..\..\lib\reposit-xllib-vc90-$(PlatformName)-mt-gd-1_7_0.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release (static runtime)|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
+				PreprocessorDefinitions="NDEBUG;_LIB;XLL_STATIC;LOG4CXX_STATIC"
+				StringPooling="true"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="..\..\lib\reposit-xllib-vc90-$(PlatformName)-mt-s-1_7_0.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
+				PreprocessorDefinitions="NDEBUG;_LIB;XLL_STATIC;LOG4CXX_STATIC"
+				StringPooling="true"
+				MinimalRebuild="false"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="..\..\lib\reposit-xllib-vc90-$(PlatformName)-mt-1_7_0.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug (static runtime)|x64"
+			OutputDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory=".\build\vc90\$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\..;..\..\..\log4cxx\src\main\include\log4cxx\win32;..\..\..\log4cxx\src\main\include"
+				PreprocessorDefinitions="_DEBUG;_LIB;XLL_STATIC;LOG4CXX_STATIC"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				RuntimeTypeInfo="true"
+				PrecompiledHeaderFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/rpxllib.pch"
+				AssemblerListingLocation="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ObjectFile="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				ProgramDataBaseFileName="..\..\build\vc90\rpxllib\$(ConfigurationName)/"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2057"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="..\..\lib\reposit-xllib-vc90-$(PlatformName)-mt-sgd-1_7_0.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -374,10 +681,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\rp\rpdefines.hpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\rp\processor.cpp"
 					>
 				</File>
@@ -399,6 +702,10 @@
 				</File>
 				<File
 					RelativePath="..\..\rp\repository.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\rp\rpdefines.hpp"
 					>
 				</File>
 				<File
@@ -686,10 +993,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\rpxldefines.hpp"
-					>
-				</File>
-				<File
 					RelativePath="..\rangereference.cpp"
 					>
 				</File>
@@ -703,6 +1006,10 @@
 				</File>
 				<File
 					RelativePath="..\repositoryxl.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\rpxldefines.hpp"
 					>
 				</File>
 				<File
