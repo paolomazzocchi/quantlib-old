@@ -1,15 +1,14 @@
-Eric's notes to himself for next time.
+
+Eric's notes to himself for packaging releases.
 
 |============================================================
 |system                 | windows               | linux     |
 |============================================================
-|log4cxx                |    (1)                |    (2)    |
+|log4cxx                |   (1)                 |    (2)    |
 |============================================================
-|gensrc                 |  tgz2zip              | make dist |
+|reposit                | tgz2zip               | make dist |
 |============================================================
-|ObjectHandler          |  tgz2zip              | make dist |
-|============================================================
-|QuantLibAddin          |  tgz2zip              | make dist |
+|QuantLibAddin          | tgz2zip               | make dist |
 |============================================================
 |QuantLibXL - binary    | make_zip_binary       |    - -    |
 |============================================================
