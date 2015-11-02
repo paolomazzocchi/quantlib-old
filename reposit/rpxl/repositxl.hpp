@@ -18,7 +18,7 @@
 */
 
 /*! \file
-    \brief #includes for all functionality in reposit
+    \brief includes for all functionality in reposit
 */
 
 #ifndef oh_objecthandlerxl_hpp

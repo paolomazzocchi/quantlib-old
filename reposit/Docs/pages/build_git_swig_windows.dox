@@ -31,7 +31,7 @@ This document explains how to build the reposit C++ and Excel binaries on Window
 
 \section build_git_swig_windows_sec_2 Compiler
 
-The only supported compiler is Visual Studio 2008, also known as VC9.  The only supported configuration is Release, 32 bit.
+The only supported compiler is Visual Studio 2008, also known as VC9.  32- and 64-bit builds are supported.
 
 \section build_git_swig_windows_sec_3 Build Directory
 

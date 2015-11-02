@@ -25,10 +25,19 @@
 
 \section inst_sec_1 Overview
 
-Reposit is still in the development stage and has not yet been released.  The links below explain how to build a prerelease version of the code by cloning the git repository.  The HOWTOs include instructions for building the object repository, the SWIG module to autogenerate addin source code, and examples of all supported features.
+Reposit is still in the development stage and has not yet been released.  The
+links below explain how to build a prerelease version of the code by cloning
+the git repository.  The HOWTOs include instructions for building the object
+repository, the SWIG module to autogenerate addin source code, and examples of
+all supported features.
 
 \ref build_git_swig_windows \n
 \ref build_git_swig_linux \n
+
+
+Here are instructions for building a prerelease snapshot of QuantLibXL 1.7.
+
+\ref build_qlxl \n
 
 */
 
