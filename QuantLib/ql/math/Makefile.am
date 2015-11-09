@@ -28,6 +28,7 @@ this_include_HEADERS = \
 	linearleastsquaresregression.hpp \
 	matrix.hpp \
 	modifiedbessel.hpp \
+	pascaltriangle.hpp \
 	polynomialmathfunction.hpp \
 	primenumbers.hpp \
 	quadratic.hpp \
@@ -48,7 +49,8 @@ libMath_la_SOURCES = \
 	incompletegamma.cpp \
 	matrix.cpp \
 	modifiedbessel.cpp \
-	polynomialmathfunction.cpp \
+	pascaltriangle.cpp \
+        polynomialmathfunction.cpp \
 	primenumbers.cpp \
 	quadratic.cpp \
 	richardsonextrapolation.cpp \

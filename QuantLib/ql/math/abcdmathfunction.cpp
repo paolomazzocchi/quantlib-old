@@ -22,13 +22,36 @@
 */
 
 #include <ql/math/abcdmathfunction.hpp>
-#include <ql/math/tartaglia.hpp>
-
 
 namespace QuantLib {
 
+    void AbcdMathFunction::validate(Real a,
+                                    Real b,
+                                    Real c,
+                                    Real d) {
+        QL_REQUIRE(c>0, "c (" << c << ") must be positive");
+        QL_REQUIRE(d>=0, "d (" << d << ") must be non negative");
+        QL_REQUIRE(a+d>=0,
+                   "a+d (" << a << "+" << d << ") must be non negative");
+
+        if (b>=0.0)
+            return;
+
+        // the one and only stationary point...
+        Time zeroFirstDerivative = 1.0/c-a/b;
+        if (zeroFirstDerivative>=0.0) {
+            // ... is a minimum
+            // must be abcd(zeroFirstDerivative)>=0
+            QL_REQUIRE(b>=-(d*c)/std::exp(c*a/b-1.0),
+                       "b (" << b << ") less than " <<
+                       -(d*c)/std::exp(c*a/b-1.0) << ": negative function"
+                       " value at stationary point " << zeroFirstDerivative);
+        }
+
+    }
+
     void AbcdMathFunction::initialize_() {
-        validateAbcdParameters(a_, b_, c_, d_);
+        validate(a_, b_, c_, d_);
         da_ = b_ - c_*a_;
         db_ = -c_*b_;
         dabcd_[0]=da_;
@@ -45,7 +68,7 @@ namespace QuantLib {
     }
 
     AbcdMathFunction::AbcdMathFunction(Real aa, Real bb, Real cc, Real dd)
-    : abcd_(4), a_(aa), b_(bb), c_(cc), d_(dd), dabcd_(4) {
+    : a_(aa), b_(bb), c_(cc), d_(dd), abcd_(4), dabcd_(4) {
         abcd_[0]=a_;
         abcd_[1]=b_;
         abcd_[2]=c_;
@@ -55,7 +78,6 @@ namespace QuantLib {
 
     AbcdMathFunction::AbcdMathFunction(const std::vector<Real>& abcd)
     : abcd_(abcd), dabcd_(4) {
-        QL_REQUIRE(abcd.size()==4, "input vector must be of size four");
         a_=abcd_[0];
         b_=abcd_[1];
         c_=abcd_[2];

@@ -19,7 +19,7 @@
 */
 
 #include <ql/math/polynomialmathfunction.hpp>
-#include <ql/math/tartaglia.hpp>
+#include <ql/math/pascaltriangle.hpp>
 
 namespace QuantLib {
 
@@ -81,7 +81,7 @@ namespace QuantLib {
             tau = 1.0;
             for (Size j=i; j<order_; ++j) {
                 tau *= dt;
-                eqs_[i][j] = (tau * Tartaglia::get(j + 1)[i]) / (j + 1);
+                eqs_[i][j] = (tau * PascalTriangle::get(j + 1)[i]) / (j + 1);
             }
         }
     }
@@ -89,7 +89,6 @@ namespace QuantLib {
     std::vector<Real> 
          PolynomialFunction::definiteIntegralCoefficients(Time t,
                                                           Time t2) const {
-        Time dt = t2 - t;
         Array k(c_.begin(), c_.end());
         initializeEqs_(t, t2);
         Array coeff = eqs_ * k;
@@ -100,7 +99,6 @@ namespace QuantLib {
     std::vector<Real>
         PolynomialFunction::definiteDerivativeCoefficients(Time t,
                                                            Time t2) const {
-        Time dt = t2 - t;
         Array k(c_.begin(), c_.end());
         initializeEqs_(t, t2);
         Array coeff = inverse(eqs_) * k;

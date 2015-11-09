@@ -1,7 +1,7 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
- Copyright (C) 2006 Ferdinando Ametrano
+ Copyright (C) 2006, 2015 Ferdinando Ametrano
  Copyright (C) 2006 Cristina Duminuco
  Copyright (C) 2005, 2006 Klaus Spanderen
  Copyright (C) 2007 Giorgio Facchinetti
@@ -98,7 +98,7 @@ namespace QuantLib {
       vegaWeighted_(vegaWeighted),
       times_(t), blackVols_(blackVols) {
 
-        validateAbcdParameters(a, b, c, d);
+        AbcdMathFunction::validate(a, b, c, d);
 
         QL_REQUIRE(blackVols.size()==t.size(),
                        "mismatch between number of times (" << t.size() <<
@@ -179,7 +179,7 @@ namespace QuantLib {
             Array transfResult(projectedAbcdCostFunction.include(projectedResult));
 
             Array result = transformation_->direct(transfResult);
-            validateAbcdParameters(a_, b_, c_, d_);
+            AbcdMathFunction::validate(a_, b_, c_, d_);
             a_ = result[0];
             b_ = result[1];
             c_ = result[2];

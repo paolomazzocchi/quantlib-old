@@ -21,6 +21,7 @@
 #include <ql/math/linearleastsquaresregression.hpp>
 #include <ql/math/matrix.hpp>
 #include <ql/math/modifiedbessel.hpp>
+#include <ql/math/pascaltriangle.hpp>
 #include <ql/math/polynomialmathfunction.hpp>
 #include <ql/math/primenumbers.hpp>
 #include <ql/math/quadratic.hpp>
@@ -28,7 +29,6 @@
 #include <ql/math/richardsonextrapolation.hpp>
 #include <ql/math/sampledcurve.hpp>
 #include <ql/math/solver1d.hpp>
-#include <ql/math/tartaglia.hpp>
 #include <ql/math/transformedgrid.hpp>
 
 #include <ql/math/copulas/all.hpp>

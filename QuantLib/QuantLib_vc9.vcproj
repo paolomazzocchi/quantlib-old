@@ -2635,6 +2635,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ql\math\pascaltriangle.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ql\math\pascaltriangle.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ql\math\polynomialmathfunction.cpp"
 				>
 			</File>
@@ -3335,6 +3343,14 @@
 				</File>
 				<File
 					RelativePath=".\ql\math\optimization\endcriteria.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ql\math\optimization\goldstein.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ql\math\optimization\goldstein.hpp"
 					>
 				</File>
 				<File
@@ -5703,6 +5719,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ql\processes\gsrprocesscore.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ql\processes\gsrprocesscore.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ql\processes\hestonprocess.cpp"
 				>
 			</File>
@@ -6987,6 +7011,14 @@
 				</File>
 				<File
 					RelativePath=".\ql\time\calendars\indonesia.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ql\time\calendars\israel.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ql\time\calendars\israel.hpp"
 					>
 				</File>
 				<File

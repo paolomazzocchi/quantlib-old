@@ -133,7 +133,7 @@ namespace QuantLib {
         cIsFixed_ = fixedCoeff[2];
         dIsFixed_ = fixedCoeff[3];
 
-        validateAbcdParameters(a_, b_, c_, d_);
+        AbcdMathFunction::validate(a_, b_, c_, d_);
 
         QL_REQUIRE(t.size() == rates.size(),
             "mismatch between number of t (" << t.size() <<
@@ -227,7 +227,7 @@ namespace QuantLib {
             Array transfResult(projectedAbcdCostFunction.include(projectedResult));
 
             Array result = transformation_->direct(transfResult);
-            validateAbcdParameters(a_, b_, c_, d_);
+            AbcdMathFunction::validate(a_, b_, c_, d_);
             a_ = result[0];
             b_ = result[1];
             c_ = result[2];

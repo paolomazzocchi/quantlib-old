@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-AC_INIT([QuantLib], [1.6],
+AC_INIT([QuantLib], [1.7],
         [quantlib-dev@lists.sourceforge.net],
         [QuantLib])
 AC_PREREQ(2.62)
@@ -276,6 +276,26 @@ AC_ARG_ENABLE([benchmark],
               [ql_install_benchmark=no])
 AM_CONDITIONAL(AUTO_BENCHMARK, test "$ql_install_benchmark" != "no")
 AC_MSG_RESULT([$ql_install_benchmark])
+
+AC_MSG_CHECKING([whether to enable intraday date and daycounters])
+AC_ARG_ENABLE([intraday],
+              AC_HELP_STRING([--enable-intraday],
+                             [If enabled, date objects will support an intraday 
+                              datetime resolution down to microseconds. 
+                              Strickly monotone daycounters (Actual360, 
+                              Actual365Fixed and ActualActual) will take 
+                              the additional information into account 
+                              and allow for accurate intraday pricing. 
+                              If disabled (the default) the smallest 
+                              resolution of date objects will be a single day.
+                              Intraday datetime resolution is experimental.]),
+              [ql_use_intraday=$enableval],
+              [ql_use_intraday=no])
+if test "$ql_use_intraday" = "yes" ; then
+   AC_DEFINE([QL_HIGH_RESOLUTION_DATE],[1],
+             [Define this if you want to enable high resolution date class.])
+fi
+AC_MSG_RESULT([$ql_use_intraday])
 
 
 # manual configurations for specific hosts

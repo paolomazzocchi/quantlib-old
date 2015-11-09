@@ -201,15 +201,15 @@ namespace QuantLib {
                     Real d = params[3];
 
                     try {
-                        validateAbcdParameters(a,b,c,d);
+                        AbcdMathFunction::validate(a, b, c, d);
                         AbcdMathFunction f(a,b,c,d);
                         vector<Real> v;
                         if (isSimple_) {
                             v = f.definiteDerivativeCoefficients(0.0, tau_);
-                            validateAbcdParameters(v[0]*tau_,v[1]*tau_,v[2],v[3]*tau_);
+                            AbcdMathFunction::validate(v[0] * tau_, v[1] * tau_, v[2], v[3] * tau_);
                         } else {
                             v = f.definiteIntegralCoefficients(0.0, tau_);
-                            validateAbcdParameters(a/tau_,b/tau_,c,d/tau_);
+                            AbcdMathFunction::validate(a / tau_, b / tau_, c, d / tau_);
                         }
                         return true;
                     } catch (...) {

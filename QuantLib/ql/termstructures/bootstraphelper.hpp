@@ -3,6 +3,7 @@
 /*
  Copyright (C) 2005, 2006, 2007, 2008 StatPro Italia srl
  Copyright (C) 2007, 2009, 2015 Ferdinando Ametrano
+ Copyright (C) 2015 Paolo Mazzocchi
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -30,6 +31,18 @@
 #include <ql/models/calibrationhelper.hpp>
 
 namespace QuantLib {
+
+    struct Pillar {
+        //! Enumeration for pillar determination alternatives
+        /*! These alternatives specify the determination of the pillar date. */
+        enum Choice {
+            MaturityDate,     //! instruments maturity date
+            LastRelevantDate, //! last date relevant for instrument pricing
+            CustomDate        //! custom choice
+        };
+    };
+
+    std::ostream& operator<<(std::ostream& out, Pillar::Choice type);
 
     //! Base helper class for bootstrapping
     /*! This class provides an abstraction for the instruments used to
@@ -68,16 +81,28 @@ namespace QuantLib {
                      to <b>this</b>, i.e., the term structure itself.
         */
         virtual void setTermStructure(TS*);
+
         //! earliest relevant date
         /*! The earliest date at which data are needed by the
             helper in order to provide a quote.
         */
         virtual Date earliestDate() const;
+
+        //! instrument's maturity date
+        virtual Date maturityDate() const;
+
         //! latest relevant date
-        /*! The latest date at which data are needed by the
-            helper in order to provide a quote. It does not
-            necessarily equal the maturity of the underlying
-            instrument.
+        /*! The latest date at which data are needed by the helper
+            in order to provide a quote. It does not necessarily
+            equal the maturity of the underlying instrument.
+        */
+        virtual Date latestRelevantDate() const;
+
+        //! pillar date
+        virtual Date pillarDate() const;
+
+        //! latest date
+        /*! equal to pillarDate()
         */
         virtual Date latestDate() const;
         //@}
@@ -93,6 +118,7 @@ namespace QuantLib {
         Handle<Quote> quote_;
         TS* termStructure_;
         Date earliestDate_, latestDate_;
+        Date maturityDate_, latestRelevantDate_, pillarDate_;
     };
 
     //! Bootstrap helper with date schedule relative to global evaluation date
@@ -144,7 +170,30 @@ namespace QuantLib {
     }
 
     template <class TS>
+    Date BootstrapHelper<TS>::maturityDate() const {
+        if (maturityDate_ == Date())
+            return latestRelevantDate();
+        return maturityDate_;
+    }
+
+    template <class TS>
+    Date BootstrapHelper<TS>::latestRelevantDate() const {
+        if (latestRelevantDate_ == Date())
+            return latestDate();
+        return latestRelevantDate_;
+    }
+
+    template <class TS>
+    Date BootstrapHelper<TS>::pillarDate() const {
+        if (pillarDate_==Date())
+            return latestDate();
+        return pillarDate_;
+    }
+
+    template <class TS>
     Date BootstrapHelper<TS>::latestDate() const {
+        if (latestDate_ == Date())
+            return pillarDate_;
         return latestDate_;
     }
 
@@ -178,6 +227,20 @@ namespace QuantLib {
         evaluationDate_ = Settings::instance().evaluationDate();
     }
 
+    inline std::ostream& operator<<(std::ostream& out,
+                                    Pillar::Choice t) {
+        switch (t) {
+        case Pillar::MaturityDate:
+            return out << "MaturityPillarDate";
+        case Pillar::LastRelevantDate:
+            return out << "LastRelevantPillarDate";
+        case Pillar::CustomDate:
+            return out << "CustomPillarDate";
+        default:
+            QL_FAIL("unknown Pillar::Choice(" << Integer(t) << ")");
+        }
+    }
+
     namespace detail {
 
         class BootstrapHelperSorter {
@@ -186,7 +249,7 @@ namespace QuantLib {
             bool operator()(
                     const boost::shared_ptr<Helper>& h1,
                     const boost::shared_ptr<Helper>& h2) const {
-                return (h1->latestDate() < h2->latestDate());
+                return (h1->pillarDate() < h2->pillarDate());
             }
         };
 
