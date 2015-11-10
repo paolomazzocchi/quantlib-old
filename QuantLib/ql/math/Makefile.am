@@ -50,7 +50,7 @@ libMath_la_SOURCES = \
 	matrix.cpp \
 	modifiedbessel.cpp \
 	pascaltriangle.cpp \
-        polynomialmathfunction.cpp \
+	polynomialmathfunction.cpp \
 	primenumbers.cpp \
 	quadratic.cpp \
 	richardsonextrapolation.cpp \
