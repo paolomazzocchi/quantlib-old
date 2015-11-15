@@ -26,6 +26,10 @@
 #include <ql/handle.hpp>
 #include <ql/models/model.hpp>
 #include <ql/termstructures/yield/ratehelpers.hpp>
+#include <ql/termstructures/interpolatedcurve.hpp>
+#include <ql/termstructures/iterativebootstrap.hpp>
+#include <ql/termstructures/yield/bootstraptraits.hpp>
+#include <ql/math/interpolations/linearinterpolation.hpp>
 
 namespace QuantLib {
 
@@ -200,6 +204,44 @@ namespace QuantLib {
       private:
         DiscountFactor discountImpl(Time) const;
         boost::shared_ptr<TenorBasis> basis_;
+    };
+
+
+    class DiscountCorrectedTermStructure : public YieldTermStructure,
+                                           protected InterpolatedCurve<Linear>,
+                                           public LazyObject {
+    public:
+        typedef Discount traits_type;
+        typedef Linear interpolator_type;
+        DiscountCorrectedTermStructure(
+            const Handle<YieldTermStructure>& baseCurve,
+            const std::vector<boost::shared_ptr<RateHelper> >& instruments,
+            Real accuracy = 1.0e-12);
+        const Date& referenceDate() const;
+        DayCounter dayCounter() const;
+        Calendar calendar() const;
+        Natural settlementDays() const;
+        Date maxDate() const;
+        const std::vector<Time>& times() const;
+        const std::vector<Date>& dates() const;
+        const std::vector<Real>& data() const;
+        void update();
+    private:
+        DiscountFactor discountImpl(Time) const;
+        void performCalculations() const;
+        // data members
+        Handle<YieldTermStructure> baseCurve_;
+        std::vector<boost::shared_ptr<RateHelper> > instruments_;
+        Real accuracy_;
+        mutable std::vector<Date> dates_;
+
+        // bootstrapper classes are declared as friend to manipulate
+        // the curve data. They might be passed the data instead, but
+        // it would increase the complexity---which is high enough
+        // already.
+        friend class IterativeBootstrap<DiscountCorrectedTermStructure>;
+        friend class BootstrapError<DiscountCorrectedTermStructure>;
+        IterativeBootstrap<DiscountCorrectedTermStructure> bootstrap_;
     };
 
 }

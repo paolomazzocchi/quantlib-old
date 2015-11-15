@@ -382,5 +382,64 @@ namespace QuantLib {
         }
     }
 
+
+    DiscountCorrectedTermStructure::DiscountCorrectedTermStructure(
+        const Handle<YieldTermStructure>& baseCurve,
+        const std::vector<boost::shared_ptr<RateHelper> >& instruments,
+        Real accuracy)
+    : baseCurve_(baseCurve), instruments_(instruments), accuracy_(accuracy) {
+        registerWith(baseCurve_);
+        bootstrap_.setup(this);
+    }
+
+    const Date& DiscountCorrectedTermStructure::referenceDate() const {
+        return baseCurve_->referenceDate();
+    }
+
+    DayCounter DiscountCorrectedTermStructure::dayCounter() const {
+        return baseCurve_->dayCounter();
+    }
+
+    Calendar DiscountCorrectedTermStructure::calendar() const {
+        return baseCurve_->calendar();
+    }
+
+    Natural DiscountCorrectedTermStructure::settlementDays() const{
+        return baseCurve_->settlementDays();
+    }
+
+    Date DiscountCorrectedTermStructure::maxDate() const {
+        return baseCurve_->maxDate();
+    }
+
+    const std::vector<Time>& DiscountCorrectedTermStructure::times() const {
+        calculate();
+        return times_;
+    }
+
+    const std::vector<Date>& DiscountCorrectedTermStructure::dates() const {
+        calculate();
+        return dates_;
+    }
+
+    const std::vector<Real>& DiscountCorrectedTermStructure::data() const {
+        calculate();
+        return data_;
+    }
+
+    void DiscountCorrectedTermStructure::update() {
+        LazyObject::update();
+    }
+
+    DiscountFactor DiscountCorrectedTermStructure::discountImpl(Time t) const {
+        DiscountFactor B = baseCurve_->discount(t, true);
+        Real k = interpolation_(t, true);
+        return k*B;
+    }
+
+    void DiscountCorrectedTermStructure::performCalculations() const {
+        bootstrap_.calculate();
+    }
+
 }
 
