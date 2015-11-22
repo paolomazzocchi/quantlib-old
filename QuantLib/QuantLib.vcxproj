@@ -481,9 +481,11 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ql\experimental\tenorbasis\forwardhelpers.hpp" />
+    <ClInclude Include="ql\experimental\tenorbasis\forwardiborindex.hpp" />
     <ClInclude Include="ql\experimental\tenorbasis\forwardratecurve.hpp" />
-    <ClInclude Include="ql\experimental\tenorbasis\interpolatedforwardcurve.hpp" />
-    <ClInclude Include="ql\experimental\tenorbasis\ratehelpers.hpp" />
+    <ClInclude Include="ql\experimental\tenorbasis\fwdratecurve.hpp" />
+    <ClInclude Include="ql\experimental\tenorbasis\interpolatedforwardratecurve.hpp" />
     <ClInclude Include="ql\rebatedexercise.hpp" />
     <ClInclude Include="ql\experimental\finitedifferences\dynprogvppintrinsicvalueengine.hpp" />
     <ClInclude Include="ql\experimental\finitedifferences\fdextoujumpvanillaengine.hpp" />
@@ -1578,7 +1580,6 @@
     <ClInclude Include="ql\experimental\mcbasket\mcpathbasketengine.hpp" />
     <ClInclude Include="ql\experimental\mcbasket\pathmultiassetoption.hpp" />
     <ClInclude Include="ql\experimental\mcbasket\pathpayoff.hpp" />
-    <ClInclude Include="ql\experimental\tenorbasis\basisratehelpers.hpp" />
     <ClInclude Include="ql\experimental\tenorbasis\tenorbasis.hpp" />
     <ClInclude Include="ql\experimental\tenorbasis\tenorbasiscalibration.hpp" />
     <ClInclude Include="ql\math\ode\all.hpp" />
@@ -1741,8 +1742,9 @@
     <ClInclude Include="ql\volatilitymodel.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ql\experimental\tenorbasis\forwardhelpers.cpp" />
+    <ClCompile Include="ql\experimental\tenorbasis\forwardiborindex.cpp" />
     <ClCompile Include="ql\experimental\tenorbasis\forwardratecurve.cpp" />
-    <ClCompile Include="ql\experimental\tenorbasis\ratehelpers.cpp" />
     <ClCompile Include="ql\rebatedexercise.cpp" />
     <ClInclude Include="ql\experimental\finitedifferences\all.hpp" />
     <ClCompile Include="ql\experimental\finitedifferences\dynprogvppintrinsicvalueengine.cpp" />
@@ -2476,7 +2478,6 @@
     <ClCompile Include="ql\experimental\mcbasket\longstaffschwartzmultipathpricer.cpp" />
     <ClCompile Include="ql\experimental\mcbasket\mcpathbasketengine.cpp" />
     <ClCompile Include="ql\experimental\mcbasket\pathmultiassetoption.cpp" />
-    <ClCompile Include="ql\experimental\tenorbasis\basisratehelpers.cpp" />
     <ClCompile Include="ql\experimental\tenorbasis\tenorbasis.cpp" />
     <ClCompile Include="ql\experimental\tenorbasis\tenorbasiscalibration.cpp" />
     <ClCompile Include="ql\termstructures\volatility\atmadjustedsmilesection.cpp" />

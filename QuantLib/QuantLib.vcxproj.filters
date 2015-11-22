@@ -4018,16 +4018,19 @@
     <ClInclude Include="ql\models\shortrate\onefactormodels\markovfunctional.hpp">
       <Filter>models\shortrate\onefactormodels</Filter>
     </ClInclude>
-    <ClInclude Include="ql\experimental\tenorbasis\basisratehelpers.hpp">
-      <Filter>experimental\tenorbasis</Filter>
-    </ClInclude>
     <ClInclude Include="ql\experimental\tenorbasis\forwardratecurve.hpp">
       <Filter>experimental\tenorbasis</Filter>
     </ClInclude>
-    <ClInclude Include="ql\experimental\tenorbasis\interpolatedforwardcurve.hpp">
+    <ClInclude Include="ql\experimental\tenorbasis\interpolatedforwardratecurve.hpp">
       <Filter>experimental\tenorbasis</Filter>
     </ClInclude>
-    <ClInclude Include="ql\experimental\tenorbasis\ratehelpers.hpp">
+    <ClInclude Include="ql\experimental\tenorbasis\forwardhelpers.hpp">
+      <Filter>experimental\tenorbasis</Filter>
+    </ClInclude>
+    <ClInclude Include="ql\experimental\tenorbasis\forwardiborindex.hpp">
+      <Filter>experimental\tenorbasis</Filter>
+    </ClInclude>
+    <ClInclude Include="ql\experimental\tenorbasis\fwdratecurve.hpp">
       <Filter>experimental\tenorbasis</Filter>
     </ClInclude>
   </ItemGroup>
@@ -6491,13 +6494,13 @@
     <ClCompile Include="ql\models\shortrate\onefactormodels\markovfunctional.cpp">
       <Filter>models\shortrate\onefactormodels</Filter>
     </ClCompile>
-    <ClCompile Include="ql\experimental\tenorbasis\basisratehelpers.cpp">
-      <Filter>experimental\tenorbasis</Filter>
-    </ClCompile>
     <ClCompile Include="ql\experimental\tenorbasis\forwardratecurve.cpp">
       <Filter>experimental\tenorbasis</Filter>
     </ClCompile>
-    <ClCompile Include="ql\experimental\tenorbasis\ratehelpers.cpp">
+    <ClCompile Include="ql\experimental\tenorbasis\forwardhelpers.cpp">
+      <Filter>experimental\tenorbasis</Filter>
+    </ClCompile>
+    <ClCompile Include="ql\experimental\tenorbasis\forwardiborindex.cpp">
       <Filter>experimental\tenorbasis</Filter>
     </ClCompile>
   </ItemGroup>
