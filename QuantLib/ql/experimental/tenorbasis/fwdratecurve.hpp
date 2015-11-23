@@ -91,7 +91,7 @@ namespace QuantLib {
             #if defined(QL_NEGATIVE_RATES)
             // no constraints.
             // We choose as min a value very unlikely to be exceeded.
-            return 0.05;
+            return -0.2;
             #else
             return QL_EPSILON;
             #endif
@@ -112,7 +112,7 @@ namespace QuantLib {
             }
             // no constraints.
             // We choose as max a value very unlikely to be exceeded.
-            return 0.05;
+            return 0.2;
         }
 
         // root-finding update
