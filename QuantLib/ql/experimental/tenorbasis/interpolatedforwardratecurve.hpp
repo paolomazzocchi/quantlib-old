@@ -61,8 +61,6 @@ namespace QuantLib {
         Rate forwardRate(Time t, bool extrapolate = false) const {
                                          return interpolation_(t, extrapolate);
         }
-        // we need it ? 
-        // Rate forwardRate(Time t) const { return forwardRate(t, false); }
         //@}
     protected:
         InterpolatedForwardRateCurve(
@@ -140,7 +138,7 @@ namespace QuantLib {
         const T& interpolator)
     : ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency,
                        fwdFixingCalendar, fwdConvention, fwdEndOfMonth, 
-                       fwdDayCounter), 
+                       fwdDayCounter, fwdDayCounter),
       InterpolatedCurve<T>(interpolator) {}
 
     template <class T>
@@ -158,7 +156,7 @@ namespace QuantLib {
                                         const T& i)
     : ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency,
                        fwdFixingCalendar, fwdConvention, fwdEndOfMonth,
-                       fwdDayCounter),
+                       fwdDayCounter, fwdDayCounter),
       InterpolatedCurve<T>(std::vector<Time>(), forwards, i), dates_(dates)
         {
             initialize();

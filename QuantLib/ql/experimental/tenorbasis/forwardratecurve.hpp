@@ -94,6 +94,8 @@ namespace QuantLib {
                                          bool extrapolate = false) const;
         virtual Rate forwardRate(Time t,
                                  bool extrapolate = false) const = 0;
+        //! the date at which discount = 1.0 and/or variance = 0.0
+        const Date& referenceDate() const;
         //@}
       protected:
         std::string fwdFamilyName_;
@@ -105,6 +107,15 @@ namespace QuantLib {
         bool fwdEndOfMonth_;
         DayCounter fwdDayCounter_;
     };
+
+    inline const Date& ForwardRateCurve::referenceDate() const {
+        Date today = Settings::instance().evaluationDate();
+        if (!updated_) {
+            fwdFixingCalendar_.advance(today, fwdSettlementDays_, Days);
+            updated_ = true;
+        }
+        return fwdFixingCalendar_.advance(today, fwdSettlementDays_, Days);
+    }
 
 }
 
