@@ -43,7 +43,7 @@ namespace QuantLib {
                                      const DayCounter& fwdDayCounter,
                                      const std::vector<Date>& dates,
                                      const std::vector<Rate>& forwards,
-                                     const Interpolator& i = Interpolator())
+                                     const Interpolator& i = Interpolator());
         //! \name TermStructure interface
         //@{
         Date maxDate() const;
@@ -64,6 +64,18 @@ namespace QuantLib {
         // we need it ? 
         // Rate forwardRate(Time t) const { return forwardRate(t, false); }
         //@}
+    protected:
+        InterpolatedForwardRateCurve(
+            const std::string& fwdFamilyName,
+            const Period& fwdTenor,
+            Natural fwdSettlementDays,
+            const Currency& fwdCurrency,
+            const Calendar& fwdFixingCalendar,
+            BusinessDayConvention fwdConvention,
+            bool fwdEndOfMonth,
+            const DayCounter& fwdDayCounter,
+            const Interpolator& interpolator = Interpolator());
+
         mutable std::vector<Date> dates_;
     private:
         void initialize();
@@ -117,6 +129,22 @@ namespace QuantLib {
 
     template <class T>
     InterpolatedForwardRateCurve<T>::InterpolatedForwardRateCurve(
+        const std::string& fwdFamilyName,
+        const Period& fwdTenor,
+        Natural fwdSettlementDays,
+        const Currency& fwdCurrency,
+        const Calendar& fwdFixingCalendar,
+        BusinessDayConvention fwdConvention,
+        bool fwdEndOfMonth,
+        const DayCounter& fwdDayCounter,
+        const T& interpolator)
+    : ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency,
+                       fwdFixingCalendar, fwdConvention, fwdEndOfMonth, 
+                       fwdDayCounter), 
+      InterpolatedCurve<T>(interpolator) {}
+
+    template <class T>
+    InterpolatedForwardRateCurve<T>::InterpolatedForwardRateCurve(
                                         const std::string& fwdFamilyName,
                                         const Period& fwdTenor,
                                         Natural fwdSettlementDays,
@@ -127,7 +155,7 @@ namespace QuantLib {
                                         const DayCounter& fwdDayCounter,
                                         const std::vector<Date>& dates,
                                         const std::vector<Rate>& forwards,
-                                        const Interpolator& i)
+                                        const T& i)
     : ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency,
                        fwdFixingCalendar, fwdConvention, fwdEndOfMonth,
                        fwdDayCounter),

@@ -162,15 +162,14 @@ namespace QuantLib {
               BusinessDayConvention fwdConvention,
               bool fwdEndOfMonth,
               const DayCounter& fwdDayCounter,
-              const std::vector<boost::shared_ptr<typename Traits::helper> >& 
+              const std::vector<boost::shared_ptr<typename traits_type::helper> >&
                                                                    instruments,
               Real accuracy,
               const Interpolator& i = Interpolator(),
               const Bootstrap<this_curve>& bootstrap = Bootstrap<this_curve>())
         : base_curve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency, 
                      fwdFixingCalendar, fwdConvention, fwdEndOfMonth, 
-                     fwdDayCounter, std::vector<Date>(), 
-                     std::vector<Handle<Quote> >(), i),
+                     fwdDayCounter, i),
           instruments_(instruments),
           accuracy_(accuracy), bootstrap_(bootstrap) {
             bootstrap_.setup(this);
@@ -197,7 +196,7 @@ namespace QuantLib {
         void performCalculations() const;
         //@}
         // data members
-        std::vector<boost::shared_ptr<typename Traits::helper> > instruments_;
+        std::vector<boost::shared_ptr<typename traits_type::helper> > instruments_;
         Real accuracy_;
 
         // bootstrapper classes are declared as friend to manipulate
