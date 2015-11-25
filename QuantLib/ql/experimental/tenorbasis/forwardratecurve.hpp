@@ -48,7 +48,7 @@ namespace QuantLib {
                          BusinessDayConvention fwdConvention,
                          bool fwdEndOfMonth,
                          const DayCounter& fwdDayCounter,
-                         const DayCounter& dc = DayCounter());
+                         const DayCounter& dc = Actual365Fixed());
         ForwardRateCurve(const std::string& fwdFamilyName,
                          const Period& fwdTenor,
                          Natural fwdSettlementDays,
@@ -59,7 +59,7 @@ namespace QuantLib {
                          const DayCounter& fwdDayCounter,
                          const Date& referenceDate,
                          const Calendar& cal = Calendar(),
-                         const DayCounter& dc = DayCounter());
+                         const DayCounter& dc = Actual365Fixed());
         ForwardRateCurve(const std::string& fwdFamilyName,
                          const Period& fwdTenor,
                          Natural fwdSettlementDays,
@@ -70,7 +70,7 @@ namespace QuantLib {
                          const DayCounter& fwdDayCounter,
                          Natural settlementDays,
                          const Calendar& cal,
-                         const DayCounter& dc = DayCounter());
+                         const DayCounter& dc = Actual365Fixed());
         //@}
         /*! \name Forward rates
 
@@ -95,7 +95,10 @@ namespace QuantLib {
         virtual Rate forwardRate(Time t,
                                  bool extrapolate = false) const = 0;
         //! the date at which discount = 1.0 and/or variance = 0.0
-        const Date& referenceDate() const;
+        //! date/time conversion
+        //Time timeFromReference(const Date& date) const;
+        //! the date at which discount = 1.0 and/or variance = 0.0
+        //const Date& referenceDate() const;
         //@}
       protected:
         std::string fwdFamilyName_;
@@ -108,14 +111,14 @@ namespace QuantLib {
         DayCounter fwdDayCounter_;
     };
 
-    inline const Date& ForwardRateCurve::referenceDate() const {
-        Date today = Settings::instance().evaluationDate();
-        if (!updated_) {
-            fwdFixingCalendar_.advance(today, fwdSettlementDays_, Days);
-            updated_ = true;
-        }
-        return fwdFixingCalendar_.advance(today, fwdSettlementDays_, Days);
-    }
+    //inline const Date& ForwardRateCurve::referenceDate() const {
+    //    Date today = Settings::instance().evaluationDate();
+    //    if (!updated_) {
+    //        fwdFixingCalendar_.advance(today, fwdSettlementDays_, Days);
+    //        updated_ = true;
+    //    }
+    //    return fwdFixingCalendar_.advance(today, fwdSettlementDays_, Days);
+    //}
 
 }
 

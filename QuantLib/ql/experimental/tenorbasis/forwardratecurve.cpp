@@ -30,7 +30,7 @@ namespace QuantLib {
                                        bool fwdEndOfMonth,
                                        const DayCounter& fwdDayCounter,
                                        const DayCounter& dc)
-    : TermStructure(dc),
+    : TermStructure(fwdSettlementDays, fwdFixingCalendar, dc),
       fwdFamilyName_(fwdFamilyName), fwdTenor_(fwdTenor),
       fwdSettlementDays_(fwdSettlementDays), fwdCurrency_(fwdCurrency),
       fwdFixingCalendar_(fwdFixingCalendar), fwdConvention_(fwdConvention),
