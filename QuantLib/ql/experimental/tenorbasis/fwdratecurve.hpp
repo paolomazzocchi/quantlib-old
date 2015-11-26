@@ -146,7 +146,7 @@ namespace QuantLib {
         : public InterpolatedForwardRateCurve<Interpolator>,
           public LazyObject {
       private:
-          typedef typename InterpolatedForwardRateCurve<Interpolator> base_curve;
+          typedef InterpolatedForwardRateCurve<Interpolator> base_curve;
           typedef FwdRateCurve<Interpolator, Bootstrap> this_curve;
       public:
         typedef ForwardRateTraits traits_type;

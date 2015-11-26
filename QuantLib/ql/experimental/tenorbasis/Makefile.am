@@ -5,11 +5,19 @@ this_includedir=${includedir}/${subdir}
 this_include_HEADERS = \
     all.hpp \
 	basisratehelpers.hpp \
+	forwardhelpers.hpp \
+	forwardiborindex.hpp \
+	forwardratecurve.hpp \
+	fwdratecurve.hpp \
+	interpolatedforwardratecurve.hpp \
 	tenorbasiscalibration.hpp \
 	tenorbasis.hpp
 
 libTenorBasis_la_SOURCES = \
 	basisratehelpers.cpp \
+	forwardhelpers.cpp \
+	forwardiborindex.cpp \
+	forwardratecurve.cpp \
 	tenorbasiscalibration.cpp \
 	tenorbasis.cpp
 
