@@ -481,6 +481,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ql\experimental\tenorbasis\all.hpp" />
     <ClInclude Include="ql\experimental\tenorbasis\forwardhelpers.hpp" />
     <ClInclude Include="ql\experimental\tenorbasis\forwardiborindex.hpp" />
     <ClInclude Include="ql\experimental\tenorbasis\forwardratecurve.hpp" />

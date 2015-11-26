@@ -4033,6 +4033,9 @@
     <ClInclude Include="ql\experimental\tenorbasis\fwdratecurve.hpp">
       <Filter>experimental\tenorbasis</Filter>
     </ClInclude>
+    <ClInclude Include="ql\experimental\tenorbasis\all.hpp">
+      <Filter>experimental\tenorbasis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ql\methods\montecarlo\brownianbridge.cpp">

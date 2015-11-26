@@ -742,6 +742,7 @@ namespace QuantLib {
         shared_ptr<ForwardRateCurve> temp(t, no_deletion);
         termStructureHandle_.linkTo(temp, observer);
         QL_REQUIRE(!(discountHandle_.empty()), "discount term structure not set");
+
         discountRelinkableHandle_.linkTo(*discountHandle_, observer);
 
         RelativeDateForwardHelper::setTermStructure(t);

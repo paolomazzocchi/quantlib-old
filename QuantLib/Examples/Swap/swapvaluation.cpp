@@ -107,6 +107,18 @@ int main(int, char* []) {
         Rate s5yQuote=0.0443;
         Rate s10yQuote=0.05165;
         Rate s15yQuote=0.055175;
+        // OIS
+        Rate ois1wQuote = 0.0382;
+        Rate ois1mQuote = 0.0372;
+        Rate ois3mQuote = 0.0363;
+        Rate ois6mQuote = 0.0353;
+        Rate ois9mQuote = 0.0348;
+        Rate ois1yQuote = 0.0345;
+        Rate ois2yQuote = 0.037125;
+        Rate ois3yQuote = 0.0398;
+        Rate ois5yQuote = 0.0443;
+        Rate ois10yQuote = 0.05165;
+        Rate ois15yQuote = 0.055175;
 
 
         /********************
@@ -127,7 +139,7 @@ int main(int, char* []) {
         // FRAs
         boost::shared_ptr<Quote> fra3x6Rate(new SimpleQuote(fra3x6Quote));
         boost::shared_ptr<Quote> fra6x9Rate(new SimpleQuote(fra6x9Quote));
-        boost::shared_ptr<Quote> fra6x12Rate(new SimpleQuote(fra6x12Quote));
+        boost::shared_ptr<Quote> fra9x12Rate(new SimpleQuote(fra6x12Quote));
         // futures
         boost::shared_ptr<Quote> fut1Price(new SimpleQuote(fut1Quote));
         boost::shared_ptr<Quote> fut2Price(new SimpleQuote(fut2Quote));
@@ -143,10 +155,20 @@ int main(int, char* []) {
         boost::shared_ptr<Quote> s5yRate(new SimpleQuote(s5yQuote));
         boost::shared_ptr<Quote> s10yRate(new SimpleQuote(s10yQuote));
         boost::shared_ptr<Quote> s15yRate(new SimpleQuote(s15yQuote));
-
-
+        // ois
+        boost::shared_ptr<Quote> ois1wRate(new SimpleQuote(ois1wQuote));
+        boost::shared_ptr<Quote> ois1mRate(new SimpleQuote(ois1mQuote));
+        boost::shared_ptr<Quote> ois3mRate(new SimpleQuote(ois3mQuote));
+        boost::shared_ptr<Quote> ois6mRate(new SimpleQuote(ois6mQuote));
+        boost::shared_ptr<Quote> ois9mRate(new SimpleQuote(ois9mQuote));
+        boost::shared_ptr<Quote> ois1yRate(new SimpleQuote(ois1yQuote));
+        boost::shared_ptr<Quote> ois2yRate(new SimpleQuote(ois2yQuote));
+        boost::shared_ptr<Quote> ois3yRate(new SimpleQuote(ois3yQuote));
+        boost::shared_ptr<Quote> ois5yRate(new SimpleQuote(ois5yQuote));
+        boost::shared_ptr<Quote> ois10yRate(new SimpleQuote(ois10yQuote));
+        boost::shared_ptr<Quote> ois15yRate(new SimpleQuote(ois15yQuote));
         /*********************
-         ***  RATE HELPERS ***
+         ***  FORWARD HELPERS ***
          *********************/
 
         // RateHelpers are built from the above quotes together with
@@ -157,50 +179,112 @@ int main(int, char* []) {
         // deposits
         DayCounter depositDayCounter = Actual360();
 
-        boost::shared_ptr<RateHelper> d1w(new DepositRateHelper(
-            Handle<Quote>(d1wRate),
-            1*Weeks, fixingDays,
-            calendar, ModifiedFollowing,
-            true, depositDayCounter));
-        boost::shared_ptr<RateHelper> d1m(new DepositRateHelper(
-            Handle<Quote>(d1mRate),
-            1*Months, fixingDays,
-            calendar, ModifiedFollowing,
-            true, depositDayCounter));
-        boost::shared_ptr<RateHelper> d3m(new DepositRateHelper(
+        // setup ois
+        boost::shared_ptr<Eonia> eonia(new Eonia);
+
+        boost::shared_ptr<RateHelper> ois1w(new OISRateHelper(
+            2, 1 * Weeks, Handle<Quote>(ois1wRate), eonia));
+        boost::shared_ptr<RateHelper> ois1m(new OISRateHelper(
+            2, 1 * Months, Handle<Quote>(ois1mRate), eonia));
+        boost::shared_ptr<RateHelper> ois3m(new OISRateHelper(
+            2, 3 * Months, Handle<Quote>(ois3mRate), eonia));
+        boost::shared_ptr<RateHelper> ois6m(new OISRateHelper(
+            2, 6 * Months, Handle<Quote>(ois6mRate), eonia));
+        boost::shared_ptr<RateHelper> ois9m(new OISRateHelper(
+            2, 9 * Months, Handle<Quote>(ois9mRate), eonia));
+        boost::shared_ptr<RateHelper> ois1y(new OISRateHelper(
+            2, 1 * Years, Handle<Quote>(ois1yRate), eonia));
+        boost::shared_ptr<RateHelper> ois2y(new OISRateHelper(
+            2, 2 * Years, Handle<Quote>(ois2yRate), eonia));
+        boost::shared_ptr<RateHelper> ois3y(new OISRateHelper(
+            2, 3 * Years, Handle<Quote>(ois3yRate), eonia));
+        boost::shared_ptr<RateHelper> ois5y(new OISRateHelper(
+            2, 5 * Years, Handle<Quote>(ois5yRate), eonia));
+        boost::shared_ptr<RateHelper> ois10y(new OISRateHelper(
+            2, 10 * Years, Handle<Quote>(ois10yRate), eonia));
+        boost::shared_ptr<RateHelper> ois15y(new OISRateHelper(
+            2, 15 * Years, Handle<Quote>(ois15yRate), eonia));
+
+        /*********************
+        **  CURVE BUILDING **
+        *********************/
+
+        double tolerance = 1.0e-15;
+
+        // A ois curve
+        std::vector<boost::shared_ptr<RateHelper> > oisInstruments;
+        oisInstruments.push_back(ois1w);
+        oisInstruments.push_back(ois1m);
+        oisInstruments.push_back(ois3m);
+        oisInstruments.push_back(ois6m);
+        oisInstruments.push_back(ois9m);
+        oisInstruments.push_back(ois1y);
+        oisInstruments.push_back(ois2y);
+        oisInstruments.push_back(ois3y);
+        oisInstruments.push_back(ois5y);
+        oisInstruments.push_back(ois10y);
+        oisInstruments.push_back(ois15y);
+        // Any DayCounter would be fine.
+        // ActualActual::ISDA ensures that 30 years is 30.0
+        DayCounter termStructureDayCounter =
+            ActualActual(ActualActual::ISDA);
+
+        boost::shared_ptr<YieldTermStructure> OisTermStructure(
+            new PiecewiseYieldCurve<Discount, LogLinear>(
+                                            todaysDate,
+                                            oisInstruments,
+                                            termStructureDayCounter,
+                                            tolerance));
+
+        // Term structures that will be used for pricing:
+        // the one used for discounting cash flows
+        RelinkableHandle<YieldTermStructure> discountingTermStructure;
+        discountingTermStructure.linkTo(OisTermStructure);
+
+        //boost::shared_ptr<ForwardHelper> d1w(new DepositRateHelper(
+        //    Handle<Quote>(d1wRate),
+        //    1*Weeks, fixingDays,
+        //    calendar, ModifiedFollowing,
+        //    true, depositDayCounter));
+        //boost::shared_ptr<ForwardHelper> d1m(new DepositRateHelper(
+        //    Handle<Quote>(d1mRate),
+        //    1*Months, fixingDays,
+        //    calendar, ModifiedFollowing,
+        //    true, depositDayCounter));
+        boost::shared_ptr<ForwardHelper> d3m(new DepositForwardHelper(
             Handle<Quote>(d3mRate),
             3*Months, fixingDays,
             calendar, ModifiedFollowing,
             true, depositDayCounter));
-        boost::shared_ptr<RateHelper> d6m(new DepositRateHelper(
-            Handle<Quote>(d6mRate),
-            6*Months, fixingDays,
-            calendar, ModifiedFollowing,
-            true, depositDayCounter));
-        boost::shared_ptr<RateHelper> d9m(new DepositRateHelper(
-            Handle<Quote>(d9mRate),
-            9*Months, fixingDays,
-            calendar, ModifiedFollowing,
-            true, depositDayCounter));
-        boost::shared_ptr<RateHelper> d1y(new DepositRateHelper(
-            Handle<Quote>(d1yRate),
-            1*Years, fixingDays,
-            calendar, ModifiedFollowing,
-            true, depositDayCounter));
+        //boost::shared_ptr<ForwardHelper> d6m(new DepositRateHelper(
+        //    Handle<Quote>(d6mRate),
+        //    6*Months, fixingDays,
+        //    calendar, ModifiedFollowing,
+        //    true, depositDayCounter));
+        //boost::shared_ptr<ForwardHelper> d9m(new DepositRateHelper(
+        //    Handle<Quote>(d9mRate),
+        //    9*Months, fixingDays,
+        //    calendar, ModifiedFollowing,
+        //    true, depositDayCounter));
+        //boost::shared_ptr<ForwardHelper> d1y(new DepositRateHelper(
+        //    Handle<Quote>(d1yRate),
+        //    1*Years, fixingDays,
+        //    calendar, ModifiedFollowing,
+        //    true, depositDayCounter));
 
 
         // setup FRAs
-        boost::shared_ptr<RateHelper> fra3x6(new FraRateHelper(
+        boost::shared_ptr<ForwardHelper> fra3x6(new FraForwardHelper(
             Handle<Quote>(fra3x6Rate),
             3, 6, fixingDays, calendar, ModifiedFollowing,
             true, depositDayCounter));
-        boost::shared_ptr<RateHelper> fra6x9(new FraRateHelper(
+        boost::shared_ptr<ForwardHelper> fra6x9(new FraForwardHelper(
             Handle<Quote>(fra6x9Rate),
             6, 9, fixingDays, calendar, ModifiedFollowing,
             true, depositDayCounter));
-        boost::shared_ptr<RateHelper> fra6x12(new FraRateHelper(
-            Handle<Quote>(fra6x12Rate),
-            6, 12, fixingDays, calendar, ModifiedFollowing,
+        boost::shared_ptr<ForwardHelper> fra6x12(new FraForwardHelper(
+            Handle<Quote>(fra9x12Rate),
+            9, 12, fixingDays, calendar, ModifiedFollowing,
             true, depositDayCounter));
 
 
@@ -208,49 +292,49 @@ int main(int, char* []) {
         // Rate convexityAdjustment = 0.0;
         Integer futMonths = 3;
         Date imm = IMM::nextDate(settlementDate);
-        boost::shared_ptr<RateHelper> fut1(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut1(new FuturesForwardHelper(
             Handle<Quote>(fut1Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut2(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut2(new FuturesForwardHelper(
             Handle<Quote>(fut2Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut3(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut3(new FuturesForwardHelper(
             Handle<Quote>(fut3Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut4(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut4(new FuturesForwardHelper(
             Handle<Quote>(fut4Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut5(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut5(new FuturesForwardHelper(
             Handle<Quote>(fut5Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut6(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut6(new FuturesForwardHelper(
             Handle<Quote>(fut6Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut7(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut7(new FuturesForwardHelper(
             Handle<Quote>(fut7Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
             true, depositDayCounter));
         imm = IMM::nextDate(imm+1);
-        boost::shared_ptr<RateHelper> fut8(new FuturesRateHelper(
+        boost::shared_ptr<ForwardHelper> fut8(new FuturesForwardHelper(
             Handle<Quote>(fut8Price),
             imm,
             futMonths, calendar, ModifiedFollowing,
@@ -261,34 +345,36 @@ int main(int, char* []) {
         Frequency swFixedLegFrequency = Annual;
         BusinessDayConvention swFixedLegConvention = Unadjusted;
         DayCounter swFixedLegDayCounter = Thirty360(Thirty360::European);
-        boost::shared_ptr<IborIndex> swFloatingLegIndex(new Euribor6M);
+        boost::shared_ptr<ForwardIborIndex> swFloatingLegIndex(new 
+            ForwardIborIndex("ibor", 3 * Months, 2, EURCurrency(), 
+                             calendar, ModifiedFollowing, true, 
+                             depositDayCounter));
 
-        boost::shared_ptr<RateHelper> s2y(new SwapRateHelper(
+        boost::shared_ptr<ForwardHelper> s2y(new SwapForwardHelper(
             Handle<Quote>(s2yRate), 2*Years,
             calendar, swFixedLegFrequency,
             swFixedLegConvention, swFixedLegDayCounter,
-            swFloatingLegIndex));
-        boost::shared_ptr<RateHelper> s3y(new SwapRateHelper(
+            swFloatingLegIndex, Handle<Quote>(), 0 * Days, discountingTermStructure));
+        boost::shared_ptr<ForwardHelper> s3y(new SwapForwardHelper(
             Handle<Quote>(s3yRate), 3*Years,
             calendar, swFixedLegFrequency,
             swFixedLegConvention, swFixedLegDayCounter,
-            swFloatingLegIndex));
-        boost::shared_ptr<RateHelper> s5y(new SwapRateHelper(
+            swFloatingLegIndex, Handle<Quote>(), 0 * Days, discountingTermStructure));
+        boost::shared_ptr<ForwardHelper> s5y(new SwapForwardHelper(
             Handle<Quote>(s5yRate), 5*Years,
             calendar, swFixedLegFrequency,
             swFixedLegConvention, swFixedLegDayCounter,
-            swFloatingLegIndex));
-        boost::shared_ptr<RateHelper> s10y(new SwapRateHelper(
+            swFloatingLegIndex, Handle<Quote>(), 0 * Days, discountingTermStructure));
+        boost::shared_ptr<ForwardHelper> s10y(new SwapForwardHelper(
             Handle<Quote>(s10yRate), 10*Years,
             calendar, swFixedLegFrequency,
             swFixedLegConvention, swFixedLegDayCounter,
-            swFloatingLegIndex));
-        boost::shared_ptr<RateHelper> s15y(new SwapRateHelper(
+            swFloatingLegIndex, Handle<Quote>(), 0 * Days, discountingTermStructure));
+        boost::shared_ptr<ForwardHelper> s15y(new SwapForwardHelper(
             Handle<Quote>(s15yRate), 15*Years,
             calendar, swFixedLegFrequency,
             swFixedLegConvention, swFixedLegDayCounter,
-            swFloatingLegIndex));
-
+            swFloatingLegIndex, Handle<Quote>(), 0 * Days, discountingTermStructure));
 
         /*********************
          **  CURVE BUILDING **
@@ -296,36 +382,39 @@ int main(int, char* []) {
 
         // Any DayCounter would be fine.
         // ActualActual::ISDA ensures that 30 years is 30.0
-        DayCounter termStructureDayCounter =
-            ActualActual(ActualActual::ISDA);
-
-
-        double tolerance = 1.0e-15;
+        //DayCounter termStructureDayCounter =
+        //    ActualActual(ActualActual::ISDA);
 
         // A depo-swap curve
-        std::vector<boost::shared_ptr<RateHelper> > depoSwapInstruments;
-        depoSwapInstruments.push_back(d1w);
-        depoSwapInstruments.push_back(d1m);
+        std::vector<boost::shared_ptr<ForwardHelper> > depoSwapInstruments;
+        //depoSwapInstruments.push_back(d1w);
+        //depoSwapInstruments.push_back(d1m);
         depoSwapInstruments.push_back(d3m);
-        depoSwapInstruments.push_back(d6m);
-        depoSwapInstruments.push_back(d9m);
-        depoSwapInstruments.push_back(d1y);
+        //depoSwapInstruments.push_back(d6m);
+        //depoSwapInstruments.push_back(d9m);
+        //depoSwapInstruments.push_back(d1y);
         depoSwapInstruments.push_back(s2y);
         depoSwapInstruments.push_back(s3y);
         depoSwapInstruments.push_back(s5y);
         depoSwapInstruments.push_back(s10y);
         depoSwapInstruments.push_back(s15y);
-        boost::shared_ptr<YieldTermStructure> depoSwapTermStructure(
-            new PiecewiseYieldCurve<Discount,LogLinear>(
-                                          settlementDate, depoSwapInstruments,
-                                          termStructureDayCounter,
-                                          tolerance));
+        boost::shared_ptr<ForwardRateCurve> depoSwapTermStructure(
+            new FwdRateCurve<Linear>("ibor",
+                                     3*Months,
+                                     2,
+                                     EURCurrency(),
+                                     calendar,
+                                     ModifiedFollowing,
+                                     true,
+                                     depositDayCounter,
+                                     depoSwapInstruments,
+                                     tolerance));
 
 
         // A depo-futures-swap curve
-        std::vector<boost::shared_ptr<RateHelper> > depoFutSwapInstruments;
-        depoFutSwapInstruments.push_back(d1w);
-        depoFutSwapInstruments.push_back(d1m);
+        std::vector<boost::shared_ptr<ForwardHelper> > depoFutSwapInstruments;
+        //depoFutSwapInstruments.push_back(d1w);
+        //depoFutSwapInstruments.push_back(d1m);
         depoFutSwapInstruments.push_back(fut1);
         depoFutSwapInstruments.push_back(fut2);
         depoFutSwapInstruments.push_back(fut3);
@@ -338,17 +427,23 @@ int main(int, char* []) {
         depoFutSwapInstruments.push_back(s5y);
         depoFutSwapInstruments.push_back(s10y);
         depoFutSwapInstruments.push_back(s15y);
-        boost::shared_ptr<YieldTermStructure> depoFutSwapTermStructure(
-            new PiecewiseYieldCurve<Discount,LogLinear>(
-                                       settlementDate, depoFutSwapInstruments,
-                                       termStructureDayCounter,
-                                       tolerance));
+        boost::shared_ptr<ForwardRateCurve> depoFutSwapTermStructure(
+            new FwdRateCurve<Linear>("ibor",
+                                     3 * Months,
+                                     2,
+                                     EURCurrency(),
+                                     calendar,
+                                     ModifiedFollowing,
+                                     true,
+                                     depositDayCounter,
+                                     depoFutSwapInstruments,
+                                     tolerance));
 
 
         // A depo-FRA-swap curve
-        std::vector<boost::shared_ptr<RateHelper> > depoFRASwapInstruments;
-        depoFRASwapInstruments.push_back(d1w);
-        depoFRASwapInstruments.push_back(d1m);
+        std::vector<boost::shared_ptr<ForwardHelper> > depoFRASwapInstruments;
+        //depoFRASwapInstruments.push_back(d1w);
+        //depoFRASwapInstruments.push_back(d1m);
         depoFRASwapInstruments.push_back(d3m);
         depoFRASwapInstruments.push_back(fra3x6);
         depoFRASwapInstruments.push_back(fra6x9);
@@ -358,18 +453,21 @@ int main(int, char* []) {
         depoFRASwapInstruments.push_back(s5y);
         depoFRASwapInstruments.push_back(s10y);
         depoFRASwapInstruments.push_back(s15y);
-        boost::shared_ptr<YieldTermStructure> depoFRASwapTermStructure(
-            new PiecewiseYieldCurve<Discount,LogLinear>(
-                                       settlementDate, depoFRASwapInstruments,
-                                       termStructureDayCounter,
-                                       tolerance));
+        boost::shared_ptr<ForwardRateCurve> depoFRASwapTermStructure(
+            new FwdRateCurve<Linear>("ibor",
+                                     3 * Months,
+                                     2,
+                                     EURCurrency(),
+                                     calendar,
+                                     ModifiedFollowing,
+                                     true,
+                                     depositDayCounter,
+                                     depoFRASwapInstruments,
+                                     tolerance));
 
 
-        // Term structures that will be used for pricing:
-        // the one used for discounting cash flows
-        RelinkableHandle<YieldTermStructure> discountingTermStructure;
         // the one used for forward rate forecasting
-        RelinkableHandle<YieldTermStructure> forecastingTermStructure;
+        RelinkableHandle<ForwardRateCurve> forecastingTermStructure;
 
 
         /*********************
@@ -388,8 +486,11 @@ int main(int, char* []) {
 
         // floating leg
         Frequency floatingLegFrequency = Semiannual;
-        boost::shared_ptr<IborIndex> euriborIndex(
-                                     new Euribor6M(forecastingTermStructure));
+        boost::shared_ptr<ForwardIborIndex> euriborIndex(
+                    new ForwardIborIndex("ibor", 3 * Months, 2, EURCurrency(),
+                                         calendar, ModifiedFollowing, true,
+                                         depositDayCounter, 
+                                         forecastingTermStructure));
         Spread spread = 0.0;
 
         Integer lenghtInYears = 5;
@@ -474,7 +575,7 @@ int main(int, char* []) {
 
         // Of course, you're not forced to really use different curves
         forecastingTermStructure.linkTo(depoSwapTermStructure);
-        discountingTermStructure.linkTo(depoSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = spot5YearSwap.NPV();
         fairSpread = spot5YearSwap.fairSpread();
@@ -498,7 +599,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFutSwapTermStructure);
-        discountingTermStructure.linkTo(depoFutSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = spot5YearSwap.NPV();
         fairSpread = spot5YearSwap.fairSpread();
@@ -519,7 +620,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFRASwapTermStructure);
-        discountingTermStructure.linkTo(depoFRASwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = spot5YearSwap.NPV();
         fairSpread = spot5YearSwap.fairSpread();
@@ -553,7 +654,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoSwapTermStructure);
-        discountingTermStructure.linkTo(depoSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = oneYearForward5YearSwap.NPV();
         fairSpread = oneYearForward5YearSwap.fairSpread();
@@ -571,7 +672,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFutSwapTermStructure);
-        discountingTermStructure.linkTo(depoFutSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = oneYearForward5YearSwap.NPV();
         fairSpread = oneYearForward5YearSwap.fairSpread();
@@ -589,7 +690,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFRASwapTermStructure);
-        discountingTermStructure.linkTo(depoFRASwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = oneYearForward5YearSwap.NPV();
         fairSpread = oneYearForward5YearSwap.fairSpread();
@@ -634,7 +735,7 @@ int main(int, char* []) {
 
         // now get the updated results
         forecastingTermStructure.linkTo(depoSwapTermStructure);
-        discountingTermStructure.linkTo(depoSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = spot5YearSwap.NPV();
         fairSpread = spot5YearSwap.fairSpread();
@@ -655,7 +756,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFutSwapTermStructure);
-        discountingTermStructure.linkTo(depoFutSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = spot5YearSwap.NPV();
         fairSpread = spot5YearSwap.fairSpread();
@@ -676,7 +777,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFRASwapTermStructure);
-        discountingTermStructure.linkTo(depoFRASwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = spot5YearSwap.NPV();
         fairSpread = spot5YearSwap.fairSpread();
@@ -709,7 +810,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoSwapTermStructure);
-        discountingTermStructure.linkTo(depoSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = oneYearForward5YearSwap.NPV();
         fairSpread = oneYearForward5YearSwap.fairSpread();
@@ -727,7 +828,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFutSwapTermStructure);
-        discountingTermStructure.linkTo(depoFutSwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = oneYearForward5YearSwap.NPV();
         fairSpread = oneYearForward5YearSwap.fairSpread();
@@ -745,7 +846,7 @@ int main(int, char* []) {
 
 
         forecastingTermStructure.linkTo(depoFRASwapTermStructure);
-        discountingTermStructure.linkTo(depoFRASwapTermStructure);
+        discountingTermStructure.linkTo(OisTermStructure);
 
         NPV = oneYearForward5YearSwap.NPV();
         fairSpread = oneYearForward5YearSwap.fairSpread();
