@@ -52,7 +52,7 @@ namespace QuantLib {
         }
         // value at reference date
         static Real initialValue(const ForwardRateCurve*) {
-            return 0.05;
+            return 0.000242;
         }
 
         // guesses
@@ -66,7 +66,7 @@ namespace QuantLib {
                 return c->data()[i];
 
             if (i==1) // first pillar
-                return 0.0;
+                return 0.000242;
 
             // extrapolate
             Date d = c->dates()[i];

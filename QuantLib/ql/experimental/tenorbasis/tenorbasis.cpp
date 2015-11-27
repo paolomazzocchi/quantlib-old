@@ -22,7 +22,6 @@
 #include <ql/indexes/iborindex.hpp>
 #include <ql/math/abcdmathfunction.hpp>
 
-
 using boost::shared_ptr;
 using std::vector;
 
@@ -403,7 +402,8 @@ namespace QuantLib {
                            basis_->iborIndex()->fixingCalendar(),
                            basis_->iborIndex()->businessDayConvention(),
                            basis_->iborIndex()->endOfMonth(),
-                           basis_->iborIndex()->dayCounter()), 
+                           basis_->iborIndex()->dayCounter(),
+                           basis_->iborIndex()->dayCounter()),
                            basis_(basis) {}
 
     const Date& TenorBasisForwardRateCurve::referenceDate() const {
@@ -485,11 +485,21 @@ namespace QuantLib {
     }
 
     ForwardCorrectedTermStructure::ForwardCorrectedTermStructure(
+        const std::string& fwdFamilyName,
+        const Period& fwdTenor,
+        Natural fwdSettlementDays,
+        const Currency& fwdCurrency,
+        const Calendar& fwdFixingCalendar,
+        BusinessDayConvention fwdConvention,
+        bool fwdEndOfMonth,
+        const DayCounter& fwdDayCounter,
         const Handle<ForwardRateCurve>& baseCurve,
         const std::vector<boost::shared_ptr<ForwardHelper> >& instruments,
         Real accuracy)
-    : /*baseCurve_(baseCurve),*/ instruments_(instruments), accuracy_(accuracy) {
-        baseCurve_ = baseCurve;
+    :ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency, 
+                      fwdFixingCalendar, fwdConvention, fwdEndOfMonth, 
+                      fwdDayCounter), 
+     baseCurve_(baseCurve), instruments_(instruments), accuracy_(accuracy) {
         registerWith(baseCurve_);
         bootstrap_.setup(this);
     }

@@ -278,6 +278,14 @@ namespace QuantLib {
         typedef ForwardRateTraits traits_type;
         typedef Linear interpolator_type;
         ForwardCorrectedTermStructure(
+            const std::string& fwdFamilyName,
+            const Period& fwdTenor,
+            Natural fwdSettlementDays,
+            const Currency& fwdCurrency,
+            const Calendar& fwdFixingCalendar,
+            BusinessDayConvention fwdConvention,
+            bool fwdEndOfMonth,
+            const DayCounter& fwdDayCounter,
             const Handle<ForwardRateCurve>& baseCurve,
             const std::vector<boost::shared_ptr<ForwardHelper> >& instruments,
             Real accuracy = 1.0e-12);
