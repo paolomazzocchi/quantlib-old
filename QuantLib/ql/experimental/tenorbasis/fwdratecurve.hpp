@@ -146,7 +146,7 @@ namespace QuantLib {
         : public InterpolatedForwardRateCurve<Interpolator>,
           public LazyObject {
       private:
-          typedef typename InterpolatedForwardRateCurve<Interpolator> base_curve;
+          typedef InterpolatedForwardRateCurve<Interpolator> base_curve;
           typedef FwdRateCurve<Interpolator, Bootstrap> this_curve;
       public:
         typedef ForwardRateTraits traits_type;
@@ -185,7 +185,8 @@ namespace QuantLib {
         const std::vector<Date>& dates() const;
         const std::vector<Real>& data() const;
         std::vector<std::pair<Date, Real> > nodes() const;
-        //@}
+		Rate forwardRate(Time t, bool extrapolate = false) const;
+		//@}
         //! \name Observer interface
         //@{
         void update();
@@ -242,6 +243,13 @@ namespace QuantLib {
         calculate();
         return base_curve::nodes();
     }
+
+	template <class I, template <class> class B>
+	inline Rate FwdRateCurve<I, B>::forwardRate(Time t,
+		                                        bool extrapolate) const {
+		calculate();
+		return base_curve::forwardRate(t, extrapolate);
+	}
 
     template <class I, template <class> class B>
     inline void FwdRateCurve<I, B>::update() {

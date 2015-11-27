@@ -36,7 +36,6 @@ this_include_HEADERS = \
 	richardsonextrapolation.hpp \
 	sampledcurve.hpp \
 	solver1d.hpp \
-	tartaglia.hpp \
 	transformedgrid.hpp
 
 libMath_la_SOURCES = \
@@ -55,8 +54,7 @@ libMath_la_SOURCES = \
 	quadratic.cpp \
 	richardsonextrapolation.cpp \
 	rounding.cpp \
-	sampledcurve.cpp \
-	tartaglia.cpp
+	sampledcurve.cpp
 
 libMath_la_LIBADD = \
     copulas/libCopulas.la \

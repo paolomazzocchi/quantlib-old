@@ -59,7 +59,7 @@ namespace QuantLib {
         //! \name ForwardRateCurve implementation
         //@{
         Rate forwardRate(Time t, bool extrapolate = false) const {
-                                         return interpolation_(t, extrapolate);
+            return this->interpolation_(t, extrapolate);
         }
         //@}
     protected:

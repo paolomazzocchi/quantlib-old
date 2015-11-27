@@ -151,14 +151,12 @@ namespace QuantLib {
     // inline
 
     inline Real BlackIborCouponPricer::swapletPrice() const {
-        // past or future fixing is managed in InterestRateIndex::fixing()
-
-        Real swapletPrice = adjustedFixing() * accrualPeriod_ * discount_;
-        return gearing_ * swapletPrice + spreadLegValue_;
+        QL_REQUIRE(discount_ != Null<Real>(), "no discount curve provided");
+        return swapletRate() * accrualPeriod_ * discount_;
     }
 
     inline Rate BlackIborCouponPricer::swapletRate() const {
-        return swapletPrice()/(accrualPeriod_*discount_);
+        return gearing_ * adjustedFixing() + spread_;
     }
 
     inline Real BlackIborCouponPricer::capletPrice(Rate effectiveCap) const {
@@ -167,6 +165,7 @@ namespace QuantLib {
     }
 
     inline Rate BlackIborCouponPricer::capletRate(Rate effectiveCap) const {
+        QL_REQUIRE(discount_ != Null<Real>(), "no discount curve provided");
         return capletPrice(effectiveCap) / (accrualPeriod_*discount_);
     }
 
@@ -178,6 +177,7 @@ namespace QuantLib {
 
     inline
     Rate BlackIborCouponPricer::floorletRate(Rate effectiveFloor) const {
+        QL_REQUIRE(discount_ != Null<Real>(), "no discount curve provided");
         return floorletPrice(effectiveFloor) / (accrualPeriod_*discount_);
     }
 
