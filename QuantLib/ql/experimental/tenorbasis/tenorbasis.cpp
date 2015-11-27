@@ -162,8 +162,21 @@ namespace QuantLib {
                                    constraint(), weights, fixParameters);
     }
 
-
-
+     void TenorBasis::forwardCalibrate(
+         const std::vector<boost::shared_ptr<ForwardHelper> >& helpers,
+         OptimizationMethod& method,
+         const EndCriteria& endCriteria,
+         const std::vector<Real>& weights,
+         const std::vector<bool>& fixParameters) {
+         TenorBasisForwardRateCurve yts(boost::shared_ptr<TenorBasis>(this, no_deletion));
+         std::vector<boost::shared_ptr<CalibrationHelperBase> > cHelpers(helpers.size());
+         for (Size i = 0; i<helpers.size(); ++i) {
+             helpers[i]->setTermStructure(&yts);
+             cHelpers[i] = helpers[i];
+         }
+         CalibratedModel::calibrate(cHelpers, method, endCriteria,
+             constraint(), weights, fixParameters);
+     }
 
     namespace {
 
@@ -382,6 +395,36 @@ namespace QuantLib {
         }
     }
 
+    TenorBasisForwardRateCurve::TenorBasisForwardRateCurve(const boost::shared_ptr<TenorBasis>& basis)
+        : ForwardRateCurve(basis_->iborIndex()->familyName(),
+                           basis_->iborIndex()->tenor(),
+                           basis_->iborIndex()->fixingDays(),
+                           basis_->iborIndex()->currency(),
+                           basis_->iborIndex()->fixingCalendar(),
+                           basis_->iborIndex()->businessDayConvention(),
+                           basis_->iborIndex()->endOfMonth(),
+                           basis_->iborIndex()->dayCounter()), 
+                           basis_(basis) {}
+
+    const Date& TenorBasisForwardRateCurve::referenceDate() const {
+        return basis_->referenceDate();
+    }
+
+    Calendar TenorBasisForwardRateCurve::calendar() const {
+        return basis_->iborIndex()->fixingCalendar();
+    }
+
+    Natural TenorBasisForwardRateCurve::settlementDays() const {
+        return basis_->iborIndex()->fixingDays();
+    }
+
+    Date TenorBasisForwardRateCurve::maxDate() const {
+        return basis_->baseCurve()->maxDate();
+    }
+
+    Rate TenorBasisForwardRateCurve::forwardRate(Time t, bool extrapolate) const {
+        return basis_->tenorForwardRate(t);
+        }
 
     DiscountCorrectedTermStructure::DiscountCorrectedTermStructure(
         const Handle<YieldTermStructure>& baseCurve,
@@ -440,6 +483,66 @@ namespace QuantLib {
     void DiscountCorrectedTermStructure::performCalculations() const {
         bootstrap_.calculate();
     }
+
+    ForwardCorrectedTermStructure::ForwardCorrectedTermStructure(
+        const Handle<ForwardRateCurve>& baseCurve,
+        const std::vector<boost::shared_ptr<ForwardHelper> >& instruments,
+        Real accuracy)
+    : /*baseCurve_(baseCurve),*/ instruments_(instruments), accuracy_(accuracy) {
+        baseCurve_ = baseCurve;
+        registerWith(baseCurve_);
+        bootstrap_.setup(this);
+    }
+
+    const Date& ForwardCorrectedTermStructure::referenceDate() const {
+        return baseCurve_->referenceDate();
+    }
+
+    DayCounter ForwardCorrectedTermStructure::dayCounter() const {
+        return baseCurve_->dayCounter();
+    }
+
+    Calendar ForwardCorrectedTermStructure::calendar() const {
+        return baseCurve_->calendar();
+    }
+
+    Natural ForwardCorrectedTermStructure::settlementDays() const{
+        return baseCurve_->settlementDays();
+    }
+
+    Date ForwardCorrectedTermStructure::maxDate() const {
+        return baseCurve_->maxDate();
+    }
+
+    const std::vector<Time>& ForwardCorrectedTermStructure::times() const {
+        calculate();
+        return times_;
+    }
+
+    const std::vector<Date>& ForwardCorrectedTermStructure::dates() const {
+        calculate();
+        return dates_;
+    }
+
+    const std::vector<Real>& ForwardCorrectedTermStructure::data() const {
+        calculate();
+        return data_;
+    }
+
+    void ForwardCorrectedTermStructure::update() {
+        LazyObject::update();
+    }
+
+    Rate ForwardCorrectedTermStructure::forwardRate(Time t, bool extrapolate) const {
+        Rate F = baseCurve_->forwardRate(t, true);
+        Real k = interpolation_(t, true);
+        return k*F;
+    }
+
+    void ForwardCorrectedTermStructure::performCalculations() const {
+        bootstrap_.calculate();
+    }
+
 
 }
 

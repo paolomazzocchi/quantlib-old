@@ -30,6 +30,9 @@
 #include <ql/termstructures/iterativebootstrap.hpp>
 #include <ql/termstructures/yield/bootstraptraits.hpp>
 #include <ql/math/interpolations/linearinterpolation.hpp>
+#include <ql/experimental/tenorbasis/forwardhelpers.hpp>
+#include <ql/experimental/tenorbasis/fwdratecurve.hpp>
+
 
 namespace QuantLib {
 
@@ -90,11 +93,21 @@ namespace QuantLib {
         const Handle<YieldTermStructure>& baseCurve() const;
         //@}
 
+        // calibration on pseudo-discount factor
         void calibrate(
             const std::vector<boost::shared_ptr<RateHelper> >&,
             OptimizationMethod& method,
             const EndCriteria& endCriteria 
                              = EndCriteria(1000, 100, 1.0e-8, 0.3e-4, 0.3e-4),
+            const std::vector<Real>& weights = std::vector<Real>(),
+            const std::vector<bool>& fixParameters = std::vector<bool>());
+
+        // calibration on forward rate
+        void forwardCalibrate(
+            const std::vector<boost::shared_ptr<ForwardHelper> >&,
+            OptimizationMethod& method,
+            const EndCriteria& endCriteria
+            = EndCriteria(1000, 100, 1.0e-8, 0.3e-4, 0.3e-4),
             const std::vector<Real>& weights = std::vector<Real>(),
             const std::vector<bool>& fixParameters = std::vector<bool>());
 
@@ -193,7 +206,7 @@ namespace QuantLib {
         bool isSimple_;
     };
 
-
+    //! Helper class for the calibration through the pseudo-discount factors
     class TenorBasisYieldTermStructure : public YieldTermStructure {
       public:
         TenorBasisYieldTermStructure(const boost::shared_ptr<TenorBasis>& basis);
@@ -206,7 +219,20 @@ namespace QuantLib {
         boost::shared_ptr<TenorBasis> basis_;
     };
 
+    //! Helper class for the calibration directly on forward rates
+    class TenorBasisForwardRateCurve : public ForwardRateCurve {
+    public:
+        TenorBasisForwardRateCurve(const boost::shared_ptr<TenorBasis>& basis);
+        const Date& referenceDate() const;
+        Calendar calendar() const;
+        Natural settlementDays() const;
+        Date maxDate() const;
+    private:
+        Rate forwardRate(Time t, bool extrapolate = false) const;
+        boost::shared_ptr<TenorBasis> basis_;
+    };
 
+    //! continuous basis k bootstrapping
     class DiscountCorrectedTermStructure : public YieldTermStructure,
                                            protected InterpolatedCurve<Linear>,
                                            public LazyObject {
@@ -243,6 +269,45 @@ namespace QuantLib {
         friend class BootstrapError<DiscountCorrectedTermStructure>;
         IterativeBootstrap<DiscountCorrectedTermStructure> bootstrap_;
     };
+
+    //! continuous basis k bootstrapping
+    class ForwardCorrectedTermStructure : public ForwardRateCurve  ,
+        protected InterpolatedCurve<Linear>,
+        public LazyObject {
+    public:
+        typedef ForwardRateTraits traits_type;
+        typedef Linear interpolator_type;
+        ForwardCorrectedTermStructure(
+            const Handle<ForwardRateCurve>& baseCurve,
+            const std::vector<boost::shared_ptr<ForwardHelper> >& instruments,
+            Real accuracy = 1.0e-12);
+        const Date& referenceDate() const;
+        DayCounter dayCounter() const;
+        Calendar calendar() const;
+        Natural settlementDays() const;
+        Date maxDate() const;
+        const std::vector<Time>& times() const;
+        const std::vector<Date>& dates() const;
+        const std::vector<Real>& data() const;
+        void update();
+    private:
+        Rate forwardRate(Time t, bool extrapolate = false) const;
+        void performCalculations() const;
+        // data members
+        Handle<ForwardRateCurve> baseCurve_;
+        std::vector<boost::shared_ptr<ForwardHelper> > instruments_;
+        Real accuracy_;
+        mutable std::vector<Date> dates_;
+
+        // bootstrapper classes are declared as friend to manipulate
+        // the curve data. They might be passed the data instead, but
+        // it would increase the complexity---which is high enough
+        // already.
+        friend class IterativeBootstrap<ForwardCorrectedTermStructure>;
+        friend class BootstrapError<ForwardCorrectedTermStructure>;
+        IterativeBootstrap<ForwardCorrectedTermStructure> bootstrap_;
+    };
+
 
 }
 
