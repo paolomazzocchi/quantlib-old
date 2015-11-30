@@ -35,7 +35,11 @@
 
 namespace QuantLib {
 
-    
+    namespace detail {
+        const Real initialRate = 0.000242;
+        const Real delta = 0.001;
+    }
+
     //! Forward-Rate-curve traits
     struct ForwardRateTraits {
         // interpolated curve type
@@ -52,7 +56,7 @@ namespace QuantLib {
         }
         // value at reference date
         static Real initialValue(const ForwardRateCurve*) {
-            return 0.000242;
+            return detail::initialRate;
         }
 
         // guesses
@@ -65,8 +69,9 @@ namespace QuantLib {
             if (validData) // previous iteration value
                 return c->data()[i];
 
-            if (i==1) // first pillar
-                return 0.000242;
+            //return c->data()[i-1];
+            if (i == 1) // first pillar
+                return detail::initialRate;
 
             // extrapolate
             Date d = c->dates()[i];
@@ -81,12 +86,10 @@ namespace QuantLib {
                                   Size) // firstAliveHelper
         {
             if (validData) {
-                Real r = *(std::min_element(c->data().begin(), c->data().end()));
-                #if defined(QL_NEGATIVE_RATES)
-                return r<0.0 ? r*2.0 : r / 2.0;
-                #else
-                return r/2.0;
-                #endif
+                if (i == 0) return detail::initialRate;
+                Real r = c->data()[i];
+                Real deltaR = std::max(detail::delta, std::abs(r)*0.5);
+                return r - deltaR;
             }
             #if defined(QL_NEGATIVE_RATES)
             // no constraints.
@@ -103,12 +106,10 @@ namespace QuantLib {
                                   Size) // firstAliveHelper
         {
             if (validData) {
-                Real r = *(std::max_element(c->data().begin(), c->data().end()));
-                #if defined(QL_NEGATIVE_RATES)
-                return r<0.0 ? r/2.0 : r*2.0;
-                #else
-                return r*2.0;
-                #endif
+                if (i == 0) return detail::initialRate;
+                Real r = c->data()[i];
+                Real deltaR = std::max(detail::delta, std::abs(r)*0.5);
+                return r + deltaR;
             }
             // no constraints.
             // We choose as max a value very unlikely to be exceeded.

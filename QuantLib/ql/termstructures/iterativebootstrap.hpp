@@ -237,6 +237,8 @@ namespace QuantLib {
                             "pillar " << errors_[i]->helper()->pillarDate() <<
                             ", maturity " << errors_[i]->helper()->maturityDate() <<
                             ", reference date " << ts_->dates_[0] <<
+                            ", guess " << guess <<
+                            ", prev. value " << previousData_[i] <<
                             ": " << e.what());
                 }
             }

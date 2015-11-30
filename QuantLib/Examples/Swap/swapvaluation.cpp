@@ -241,37 +241,11 @@ int main(int, char* []) {
         RelinkableHandle<YieldTermStructure> discountingTermStructure;
         discountingTermStructure.linkTo(OisTermStructure);
 
-        //boost::shared_ptr<ForwardHelper> d1w(new DepositRateHelper(
-        //    Handle<Quote>(d1wRate),
-        //    1*Weeks, fixingDays,
-        //    calendar, ModifiedFollowing,
-        //    true, depositDayCounter));
-        //boost::shared_ptr<ForwardHelper> d1m(new DepositRateHelper(
-        //    Handle<Quote>(d1mRate),
-        //    1*Months, fixingDays,
-        //    calendar, ModifiedFollowing,
-        //    true, depositDayCounter));
         boost::shared_ptr<ForwardHelper> d3m(new DepositForwardHelper(
             Handle<Quote>(d3mRate),
             3*Months, fixingDays,
             calendar, ModifiedFollowing,
             true, depositDayCounter));
-        //boost::shared_ptr<ForwardHelper> d6m(new DepositRateHelper(
-        //    Handle<Quote>(d6mRate),
-        //    6*Months, fixingDays,
-        //    calendar, ModifiedFollowing,
-        //    true, depositDayCounter));
-        //boost::shared_ptr<ForwardHelper> d9m(new DepositRateHelper(
-        //    Handle<Quote>(d9mRate),
-        //    9*Months, fixingDays,
-        //    calendar, ModifiedFollowing,
-        //    true, depositDayCounter));
-        //boost::shared_ptr<ForwardHelper> d1y(new DepositRateHelper(
-        //    Handle<Quote>(d1yRate),
-        //    1*Years, fixingDays,
-        //    calendar, ModifiedFollowing,
-        //    true, depositDayCounter));
-
 
         // setup FRAs
         boost::shared_ptr<ForwardHelper> fra3x6(new FraForwardHelper(
@@ -485,7 +459,7 @@ int main(int, char* []) {
         DayCounter floatingLegDayCounter = Actual360();
 
         // floating leg
-        Frequency floatingLegFrequency = Semiannual;
+        Frequency floatingLegFrequency = Quarterly;
         boost::shared_ptr<ForwardIborIndex> euriborIndex(
                     new ForwardIborIndex("ibor", 3 * Months, 2, EURCurrency(),
                                          calendar, ModifiedFollowing, true,
@@ -529,6 +503,23 @@ int main(int, char* []) {
             fwdFloatSchedule, euriborIndex, spread,
             floatingLegDayCounter);
 
+        //int n;
+        //std::cin >> n;
+
+        boost::shared_ptr<TenorBasis> tenorBasis(
+            new AbcdTenorBasis(euriborIndex,
+                               discountingTermStructure,
+                               settlementDate,
+                               true,
+                               {0.001,0.0002,0.0019,0.002}));
+
+        boost::shared_ptr<TenorBasisForwardRateCurve> 
+                    tenorBasisForwardRateCurve(
+                    new TenorBasisForwardRateCurve(tenorBasis));
+
+        std::cout << "TenorBasisForwardRateCurve calendar = "
+            << tenorBasisForwardRateCurve->calendar() 
+            << std::endl;
 
         /***************
         * SWAP PRICING *

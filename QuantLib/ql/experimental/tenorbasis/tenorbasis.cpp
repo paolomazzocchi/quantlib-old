@@ -395,15 +395,15 @@ namespace QuantLib {
     }
 
     TenorBasisForwardRateCurve::TenorBasisForwardRateCurve(const boost::shared_ptr<TenorBasis>& basis)
-        : ForwardRateCurve(basis_->iborIndex()->familyName(),
-                           basis_->iborIndex()->tenor(),
-                           basis_->iborIndex()->fixingDays(),
-                           basis_->iborIndex()->currency(),
-                           basis_->iborIndex()->fixingCalendar(),
-                           basis_->iborIndex()->businessDayConvention(),
-                           basis_->iborIndex()->endOfMonth(),
-                           basis_->iborIndex()->dayCounter(),
-                           basis_->iborIndex()->dayCounter()),
+        : ForwardRateCurve(basis->iborIndex()->familyName(),
+                           basis->iborIndex()->tenor(),
+                           basis->iborIndex()->fixingDays(),
+                           basis->iborIndex()->currency(),
+                           basis->iborIndex()->fixingCalendar(),
+                           basis->iborIndex()->businessDayConvention(),
+                           basis->iborIndex()->endOfMonth(),
+                           basis->iborIndex()->dayCounter(),
+                           basis->iborIndex()->dayCounter()),
                            basis_(basis) {}
 
     const Date& TenorBasisForwardRateCurve::referenceDate() const {
