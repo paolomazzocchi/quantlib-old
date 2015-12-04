@@ -96,7 +96,7 @@ make install
 
 \section build_release_swig_linux_sec_6 SWIG
 
-Download swig-reposit-1.7.0.tgz to $REPOSIT_DIR.
+Download swig-1.7.0.tar.gz to $REPOSIT_DIR.
 
 Configure and build SWIG.
 
