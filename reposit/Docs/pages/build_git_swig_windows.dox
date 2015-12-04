@@ -35,7 +35,9 @@ The only supported compiler is Visual Studio 2008, also known as VC9.  32- and 6
 
 \section build_git_swig_windows_sec_3 Build Directory
 
-Create a directory on your hard drive where you will do the build.  This document refers to your build directory as $REPOSIT_DIR but you do not need an environment variable by that name.
+Create a directory on your hard drive where you will do the build.  This
+document refers to your build directory as $REPOSIT_DIR but you do not need an
+environment variable by that name.
 
 \section build_git_swig_windows_sec_4 Boost
 

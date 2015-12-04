@@ -21,7 +21,7 @@
  The members of the QuantLib Group are listed in the QuantLib License
 */
 
-/*! \page build_qlxl Build QuantLibXL From Source Code
+/*! \page build_release_swig_windows Build - Compiling reposit On Windows From A Release
 
 <div align="center"><small><a href="build_overview.html">back to installation index</a></small></div>
 
