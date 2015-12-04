@@ -1,0 +1,183 @@
+
+/*
+ Copyright (C) 2015 Eric Ehlers
+
+ This file is part of QuantLib, a free-software/open-source library
+ for financial quantitative analysts and developers - http://quantlib.org/
+
+ QuantLib is free software developed by the QuantLib Group; you can
+ redistribute it and/or modify it under the terms of the QuantLib License;
+ either version 1.0, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ QuantLib License for more details.
+
+ You should have received a copy of the QuantLib License along with this
+ program; if not, please email quantlib-dev@lists.sf.net
+
+ The QuantLib License is also available at <http://quantlib.org/license.shtml>
+ The members of the QuantLib Group are listed in the QuantLib License
+*/
+
+/*! \page build_release_swig_linux Build - Compiling reposit On Linux From A Release
+
+<div align="center"><small><a href="build_overview.html">back to installation index</a></small></div>
+
+\section build_release_swig_linux_sec_1 Overview
+
+This document explains how to build the reposit C++ binaries on Linux.
+
+The files for boost are available from the boost project.
+
+The QuantLib tarball is available from the
+<a href="http://sourceforge.net/projects/quantlib/files/QuantLib/1.7/">QuantLib downloads page</a>.
+
+The remaining files required to build reposit are available from the
+<a href="http://sourceforge.net/projects/quantlib/files/reposit/1.7/">reposit downloads page</a>.
+
+\section build_release_swig_linux_sec_2 Build Directory
+
+Create a directory on your hard drive where you will do the build.  Set the REPOSIT_DIR environment variable equal to the new directory.
+
+\section build_release_swig_linux_sec_3 Boost
+
+Download boost_1_58_0.tar.gz to $REPOSIT_DIR.
+
+Configure and build boost.
+
+\verbatim
+cd $REPOSIT_DIR
+tar xzvf boost_1_58_0.tar.gz
+cd $REPOSIT_DIR/boost_1_58_0
+./bootstrap.sh --prefix=$REPOSIT_DIR/install
+./b2 install
+\endverbatim
+
+\section build_release_swig_linux_sec_4 reposit
+
+Download reposit-1.7.0.tar.gz to $REPOSIT_DIR.
+
+Configure and build reposit.
+
+\verbatim
+cd $REPOSIT_DIR
+tar xzvf reposit-1.7.0.tar.gz
+cd $REPOSIT_DIR/reposit-1.7.0
+./configure --without-log4cxx \
+    --prefix=$REPOSIT_DIR/install \
+    CPPFLAGS=-I$REPOSIT_DIR/install/include \
+    LDFLAGS=-L$REPOSIT_DIR/install/lib \
+    CXXFLAGS=-Wno-unused-local-typedefs
+make install
+\endverbatim
+
+Test.
+
+\verbatim
+cd $REPOSIT_DIR/quantlib/reposit/Examples/C++
+./ExampleCpp
+\endverbatim
+
+\section build_release_swig_linux_sec_5 PCRE
+
+Download pcre-8.35.tar.gz to $REPOSIT_DIR.
+
+Configure and build pcre.
+
+\verbatim
+cd $REPOSIT_DIR
+tar xzvf pcre-8.35.tar.gz
+cd $REPOSIT_DIR/pcre-8.35
+./configure --prefix=$REPOSIT_DIR/install
+make install
+\endverbatim
+
+\section build_release_swig_linux_sec_6 SWIG
+
+Download swig-reposit-1.7.0.tgz to $REPOSIT_DIR.
+
+Configure and build SWIG.
+
+\verbatim
+cd $REPOSIT_DIR
+tar xzvf swig-reposit-1.7.0.tgz
+cd $REPOSIT_DIR/swig
+./autogen.sh
+./configure --prefix=$REPOSIT_DIR/install \
+    PCRE_CONFIG=$REPOSIT_DIR/install/bin/pcre-config \
+    CPPFLAGS=-I$REPOSIT_DIR/install/include \
+    LDFLAGS=-L$REPOSIT_DIR/install/lib
+make
+#make install
+\endverbatim
+
+\subsection build_release_swig_linux_sec_7 Example - Simple
+
+\verbatim
+cd $REPOSIT_DIR/swig/Examples/reposit/simple
+export LD_LIBRARY_PATH=$REPOSIT_DIR/install/lib:$REPOSIT_DIR/swig/Examples/reposit/simple/lib
+make SWIG
+make
+cd $REPOSIT_DIR/swig/Examples/simple/Main
+./mainSimpleLibAddin
+\endverbatim
+
+\subsection build_release_swig_linux_sec_8 Example - Complex
+
+\verbatim
+cd $REPOSIT_DIR/swig/Examples/reposit/complex
+export LD_LIBRARY_PATH=$REPOSIT_DIR/install/lib:$REPOSIT_DIR/swig/Examples/reposit/complex/lib
+make SWIG
+make
+cd $REPOSIT_DIR/swig/Examples/reposit/complex/ComplexLibAddin/Main
+./mainComplexLibAddin
+\endverbatim
+
+\section build_release_swig_linux_sec_9 QuantLib
+
+Download QuantLib-1.7.tar.gz to $REPOSIT_DIR.
+
+Configure and build QuantLib.
+
+\verbatim
+cd $REPOSIT_DIR
+tar xzvf QuantLib-1.7.tar.gz
+cd $REPOSIT_DIR/QuantLib-1.7
+./configure --prefix=$REPOSIT_DIR/install \
+    --with-boost-include=$REPOSIT_DIR/install/include \
+    --with-boost-lib=$REPOSIT_DIR/install/lib
+make install
+\endverbatim
+
+\section build_release_swig_linux_sec_10 QuantLibAddin
+
+Download QuantLibAddin-1.7.0.tar.gz to $REPOSIT_DIR.
+
+Configure and build QuantLibAddin.
+
+\verbatim
+cd $REPOSIT_DIR
+tar xzvf QuantLibAddin-1.7.0.tar.gz
+cd $REPOSIT_DIR/QuantLibAddin-1.7.0
+./configure \
+    --prefix=$REPOSIT_DIR/install \
+    --with-boost-include=$REPOSIT_DIR/install/include \
+    --with-boost-lib=$REPOSIT_DIR/install/lib \
+    --with-swig=$REPOSIT_DIR/swig \
+    --enable-addin-cpp
+export LD_LIBRARY_PATH=$REPOSIT_DIR/install/lib
+make SWIG
+make
+\endverbatim
+
+Run the C++ executable.
+
+\verbatim
+cd $REPOSIT_DIR/reposit/quantlib/QuantLibAddin2/Clients/Cpp
+./ClientCppDemo
+\endverbatim
+
+*/
+
