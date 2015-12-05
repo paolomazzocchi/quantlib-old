@@ -211,6 +211,13 @@ Run the executable:
 C:\build_ql_1_7_0\reposit\Examples\C++\bin\ExampleCpp-vc90-mt-s.exe
 \endverbatim
 
+Start Excel and load the addin and workbook:
+
+\verbatim
+C:\build_ql_1_7_0\reposit\Examples\xl\xll\ExampleXLLStatic-vc90-mt-s.xll
+C:\build_ql_1_7_0\reposit\Examples\xl\exampleStatic.xls
+\endverbatim
+
 \section build_release_swig_windows_sec_08 8 SimpleLib
 
 Build the solution, configuration Release:
