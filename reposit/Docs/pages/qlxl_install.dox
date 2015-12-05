@@ -23,8 +23,8 @@
 
 /*! \page qlxl_install QuantLibXL Installation
 
-This document explains how to install an early prerelease binary of QuantLibXL
-1.7 built on the new reposit platform.  32- and 64-bit XLLs are provided.
+This document explains how to install QuantLibXL.  32- and 64-bit XLLs are
+provided.
 
 Download 
 <a href="https://dl.dropboxusercontent.com/u/75778595/QuantLibXL-1.7.0-bin.zip">QuantLibXL-1.7.0-bin.zip</a>.
