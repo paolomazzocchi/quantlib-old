@@ -31,7 +31,8 @@ This document explains how to build the reposit C++ and Excel binaries on Window
 
 \section build_git_swig_windows_sec_2 Compiler
 
-The only supported compiler is Visual Studio 2008, also known as VC9.  32- and 64-bit builds are supported.
+The only supported compiler is Visual Studio 2008, also known as VC9.  32- and
+64-bit builds are supported.
 
 \section build_git_swig_windows_sec_3 Build Directory
 
@@ -60,7 +61,7 @@ $REPOSIT_DIR\pcre-8.35\build
 And open a DOS prompt in that directory and do:
 
 \verbatim
-"C:\Program Files (x86)\CMake\bin\cmake.exe" $REPOSIT_DIR\pcre-8.35
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -G "Visual Studio 9 2008" $REPOSIT_DIR\pcre-8.35
 \endverbatim
 
 Build the solution:
@@ -170,19 +171,9 @@ Build the solution:
 $REPOSIT_DIR\quantlib\QuantLibXL2\QuantLibXL_full_vc9.sln
 \endverbatim
 
-Start Excel and load the addin and workbook:
+For instructions on how to use the XLL, please refer to the following document:
 
-\verbatim
-$REPOSIT_DIR\quantlib\QuantLibXL2\xll\QuantLibXL-vc90-mt-1_7_0.xll
-$REPOSIT_DIR\quantlib\QuantLibXL2\Workbooks\EquityOption.xlsx
-\endverbatim
-
-The Excel VBA Framework is working:
-
-\verbatim
-$REPOSIT_DIR\quantlib\QuantLibXL2\session_file.EUR-s-static.bat
-$REPOSIT_DIR\quantlib\QuantLibXL2\Data2\XLS\EUR\EURSwap.xlsx
-\endverbatim
+\ref qlxl_install \n
 
 \section build_git_swig_windows_sec_12 Adding new functions to the addin
 

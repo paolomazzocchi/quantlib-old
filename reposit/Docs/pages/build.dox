@@ -38,8 +38,9 @@ Below are various possibilities for compiling reposit from source code.  These
 HOWTOs include instructions for building the object repository, the SWIG module
 to autogenerate addin source code, and examples of all supported features.
 
-The Windows builds include QuantLibXL (32-bit Excel only).  The only supported
-compiler on Windows is Microsoft Visual Studio 2008, also known as VC9.  
+The Windows builds include QuantLibXL.  The only supported compiler on Windows
+is Microsoft Visual Studio 2008, also known as VC9.  32- and 64-bit builds are
+supported.
 
 To compile reposit from the latest release:
 

@@ -23,6 +23,22 @@
 
 /*! \page history Version History
 
+<strong>Release 1.7.0 - December 2015</strong>
+
+FUNCTIONALITY
+
+- Renamed from ObjectHandler to reposit.
+- Removed dependency on gensrc.
+- Implemented a customized SWIG module to generate source code for
+  reposit-based addins.
+
+REQUIRED PACKAGES
+
+- Boost version 1.34.1 or later
+- log4cxx version 0.10.0f5 (optional on linux)
+- reposit SWIG module
+- PCRE (a prerequeisite of SWIG)
+
 <strong>Release 1.6.0 - August 2015</strong>
 
 FUNCTIONALITY
