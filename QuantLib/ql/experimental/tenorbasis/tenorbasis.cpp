@@ -151,8 +151,10 @@ namespace QuantLib {
                 const EndCriteria& endCriteria,
                 const std::vector<Real>& weights,
                 const std::vector<bool>& fixParameters) {
-        TenorBasisYieldTermStructure yts(boost::shared_ptr<TenorBasis>(this, no_deletion));
-        std::vector<boost::shared_ptr<CalibrationHelperBase> > cHelpers(helpers.size());
+        TenorBasisYieldTermStructure 
+                          yts(boost::shared_ptr<TenorBasis>(this, no_deletion));
+        std::vector<boost::shared_ptr<CalibrationHelperBase> > 
+                                                      cHelpers(helpers.size());
         for (Size i = 0; i<helpers.size(); ++i) {
             helpers[i]->setTermStructure(&yts);
             cHelpers[i] = helpers[i];
@@ -167,8 +169,10 @@ namespace QuantLib {
          const EndCriteria& endCriteria,
          const std::vector<Real>& weights,
          const std::vector<bool>& fixParameters) {
-         TenorBasisForwardRateCurve yts(boost::shared_ptr<TenorBasis>(this, no_deletion));
-         std::vector<boost::shared_ptr<CalibrationHelperBase> > cHelpers(helpers.size());
+         TenorBasisForwardRateCurve 
+                         yts(boost::shared_ptr<TenorBasis>(this, no_deletion));
+         std::vector<boost::shared_ptr<CalibrationHelperBase> > 
+                                                      cHelpers(helpers.size());
          for (Size i = 0; i<helpers.size(); ++i) {
              helpers[i]->setTermStructure(&yts);
              cHelpers[i] = helpers[i];
@@ -193,7 +197,8 @@ namespace QuantLib {
         std::vector<Real> inverse(const std::vector<Real>& x) {
             std::vector<Real> y(4);
             y[2] = std::log(x[2]);
-            y[3] = std::sqrt((x[3] == 0 ? -std::log(QL_EPSILON) : -std::log(x[3])));
+            y[3] = std::sqrt((x[3] == 0 ? -std::log(QL_EPSILON) 
+                                                           : -std::log(x[3])));
             y[0] = std::sqrt(x[0] + x[3]);
             y[1] = std::sqrt(x[1]);
             return y;
@@ -205,7 +210,8 @@ namespace QuantLib {
                 Real tau_;
                 bool isSimple_;
               public:
-                Impl(Real tau, bool isSimple) : tau_(tau), isSimple_(isSimple) {}
+                Impl(Real tau, bool isSimple) 
+                    : tau_(tau), isSimple_(isSimple) {}
                 bool test(const Array& params) const {
                     Real a = params[0];
                     Real b = params[1];
@@ -218,10 +224,16 @@ namespace QuantLib {
                         vector<Real> v;
                         if (isSimple_) {
                             v = f.definiteDerivativeCoefficients(0.0, tau_);
-                            AbcdMathFunction::validate(v[0] * tau_, v[1] * tau_, v[2], v[3] * tau_);
+                            AbcdMathFunction::validate(v[0] * tau_, 
+                                                       v[1] * tau_, 
+                                                       v[2], 
+                                                       v[3] * tau_);
                         } else {
                             v = f.definiteIntegralCoefficients(0.0, tau_);
-                            AbcdMathFunction::validate(a / tau_, b / tau_, c, d / tau_);
+                            AbcdMathFunction::validate(a / tau_, 
+                                                       b / tau_, 
+                                                       c, 
+                                                       d / tau_);
                         }
                         return true;
                     } catch (...) {
@@ -363,7 +375,8 @@ namespace QuantLib {
     }
 
 
-    TenorBasisYieldTermStructure::TenorBasisYieldTermStructure(const boost::shared_ptr<TenorBasis>& basis)
+    TenorBasisYieldTermStructure::TenorBasisYieldTermStructure(
+                                    const boost::shared_ptr<TenorBasis>& basis)
     : YieldTermStructure(Actual365Fixed()), basis_(basis) {}
 
     const Date& TenorBasisYieldTermStructure::referenceDate() const {
@@ -394,7 +407,8 @@ namespace QuantLib {
         }
     }
 
-    TenorBasisForwardRateCurve::TenorBasisForwardRateCurve(const boost::shared_ptr<TenorBasis>& basis)
+    TenorBasisForwardRateCurve::TenorBasisForwardRateCurve(
+                                    const boost::shared_ptr<TenorBasis>& basis)
         : ForwardRateCurve(basis->iborIndex()->familyName(),
                            basis->iborIndex()->tenor(),
                            basis->iborIndex()->fixingDays(),
@@ -422,7 +436,8 @@ namespace QuantLib {
         return basis_->baseCurve()->maxDate();
     }
 
-    Rate TenorBasisForwardRateCurve::forwardRate(Time t, bool extrapolate) const {
+    Rate TenorBasisForwardRateCurve::forwardRate(
+                                              Time t, bool extrapolate) const {
         return basis_->tenorForwardRate(t);
         }
 
@@ -543,7 +558,8 @@ namespace QuantLib {
         LazyObject::update();
     }
 
-    Rate ForwardCorrectedTermStructure::forwardRate(Time t, bool extrapolate) const {
+    Rate ForwardCorrectedTermStructure::forwardRate(
+                                              Time t, bool extrapolate) const {
         Rate F = baseCurve_->forwardRate(t, true);
         Real k = interpolation_(t, true);
         return k*F;

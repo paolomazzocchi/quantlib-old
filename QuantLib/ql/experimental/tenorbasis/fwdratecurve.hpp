@@ -38,6 +38,7 @@ namespace QuantLib {
     namespace detail {
         const Real initialRate = 0.000242;
         const Real delta = 0.001;
+        const Real deltaK = 0.5;
     }
 
     //! Forward-Rate-curve traits
@@ -121,6 +122,74 @@ namespace QuantLib {
                                 Real rate,
                                 Size i) {
             data[i] = rate;
+        }
+        // upper bound for convergence loop
+        static Size maxIterations() { return 100; }
+    };
+
+    //! k-curve traits
+    struct CorrectionFactorTraits {
+        // interpolated curve type
+        template <class Interpolator>
+        struct curve {
+            typedef InterpolatedForwardRateCurve<Interpolator> type;
+        };
+        // helper class
+        typedef BootstrapHelper<ForwardRateCurve> helper;
+
+        // start of curve data
+        static Date initialDate(const ForwardRateCurve* c) {
+            return c->referenceDate();
+        }
+        // value at reference date
+        static Real initialValue(const ForwardRateCurve*) {
+            return 1.0;
+        }
+
+        // guesses
+        template <class C>
+        static Real guess(Size i,
+            const C* c,
+            bool validData,
+            Size) // firstAliveHelper
+        {
+            if (validData) // previous iteration value
+                return c->data()[i];
+            else
+                return 1.0;
+        }
+
+        // possible constraints based on previous values
+        template <class C>
+        static Real minValueAfter(Size i,
+            const C* c,
+            bool validData,
+            Size) // firstAliveHelper
+        {
+            if (validData) {
+                return *(std::min_element(c->data().begin(),
+                    c->data().end())) / 2.0;
+            }
+            return 1.0 - detail::deltaK;
+        }
+        template <class C>
+        static Real maxValueAfter(Size i,
+            const C* c,
+            bool validData,
+            Size) // firstAliveHelper
+        {
+            if (validData) {
+                return *(std::max_element(c->data().begin(),
+                    c->data().end())) * 2.0;
+            }
+            return 1.0 + detail::deltaK;
+        }
+
+        // root-finding update
+        static void updateGuess(std::vector<Real>& data,
+            Real k,
+            Size i) {
+            data[i] = k;
         }
         // upper bound for convergence loop
         static Size maxIterations() { return 100; }

@@ -275,7 +275,7 @@ namespace QuantLib {
         protected InterpolatedCurve<Linear>,
         public LazyObject {
     public:
-        typedef ForwardRateTraits traits_type;
+        typedef CorrectionFactorTraits traits_type;
         typedef Linear interpolator_type;
         ForwardCorrectedTermStructure(
             const std::string& fwdFamilyName,
