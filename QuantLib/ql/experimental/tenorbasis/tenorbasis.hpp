@@ -53,6 +53,11 @@ namespace QuantLib {
         //! tenor (simple) basis as function of Time
         virtual Spread value(Time t) const = 0;
 
+        //! tenor (continuous) basis as function of Date
+        Spread instBasisValue(Date d) const;
+        //! tenor (continuous) basis as function of Time
+        virtual Spread instBasisValue(Time t) const = 0;
+
         //! fixed tenor forward rate obtained from simple basis
         Rate tenorForwardRate(Date d) const;
         //! fixed tenor forward rate obtained from simple basis
@@ -76,7 +81,7 @@ namespace QuantLib {
         //! \name Dates and Time
         //@{
         //! the day counter used for date/time conversion
-        DayCounter dayCounter() const { return dc_; }
+        DayCounter dayCounter() const { return dateTimeDC_; }
         //! date-to-time conversion
         Time timeFromReference(Date d) const;
         //! time-to-date conversion
@@ -136,12 +141,13 @@ namespace QuantLib {
         Handle<YieldTermStructure> baseCurve_;
         Date referenceDate_;
 
-        DayCounter dc_;
+        DayCounter dateTimeDC_, dc_;
         BusinessDayConvention bdc_;
         bool eom_;
         Calendar cal_;
         Period tenor_;
         Time tau_;
+        Real sign_;
     };
 
     class AbcdTenorBasis : public TenorBasis {
@@ -154,6 +160,7 @@ namespace QuantLib {
         //! \name TenorBasis Interface
         //@{
         Spread value(Time t) const { return (*basis_)(t); }
+        Spread instBasisValue(Time t) const { return (*instBasis_)(t); }
         const std::vector<Real>& coefficients() const;
         const std::vector<Real>& instCoefficients() const;
         //@}
@@ -164,6 +171,12 @@ namespace QuantLib {
         Spread maximumValue() const;
         //! long term simple tenor basis
         Spread longTermValue() const { return basis_->d(); }
+        //! date at which the continuous tenor basis reaches maximum, if any
+        Date instBasisMaximumLocation() const;
+        //! maximum values for the continuous tenor basis, if any
+        Spread instBasisMaximumValue() const;
+        //! long term continuous tenor basis
+        Spread instBasisLongTermValue() const { return instBasis_->d(); }
       protected:
         //! \name TenorBasis Interface
         //@{
@@ -189,6 +202,7 @@ namespace QuantLib {
         //! \name TenorBasis Interface
         //@{
         Spread value(Time t) const { return (*basis_)(t); }
+        Spread instBasisValue(Time t) const { return (*instBasis_)(t); }
         const std::vector<Real>& coefficients() const;
         const std::vector<Real>& instCoefficients() const;
         //@}
@@ -240,7 +254,7 @@ namespace QuantLib {
         typedef Discount traits_type;
         typedef Linear interpolator_type;
         DiscountCorrectedTermStructure(
-            const Handle<YieldTermStructure>& baseCurve,
+            const Handle<YieldTermStructure>& bestFitCurve,
             const std::vector<boost::shared_ptr<RateHelper> >& instruments,
             Real accuracy = 1.0e-12);
         const Date& referenceDate() const;
@@ -256,7 +270,7 @@ namespace QuantLib {
         DiscountFactor discountImpl(Time) const;
         void performCalculations() const;
         // data members
-        Handle<YieldTermStructure> baseCurve_;
+        Handle<YieldTermStructure> bestFitCurve_;
         std::vector<boost::shared_ptr<RateHelper> > instruments_;
         Real accuracy_;
         mutable std::vector<Date> dates_;
@@ -286,7 +300,7 @@ namespace QuantLib {
             BusinessDayConvention fwdConvention,
             bool fwdEndOfMonth,
             const DayCounter& fwdDayCounter,
-            const Handle<ForwardRateCurve>& baseCurve,
+            const Handle<ForwardRateCurve>& bestFitCurve,
             const std::vector<boost::shared_ptr<ForwardHelper> >& instruments,
             Real accuracy = 1.0e-12);
         const Date& referenceDate() const;
@@ -302,7 +316,7 @@ namespace QuantLib {
         Rate forwardRate(Time t, bool extrapolate = false) const;
         void performCalculations() const;
         // data members
-        Handle<ForwardRateCurve> baseCurve_;
+        Handle<ForwardRateCurve> bestFitCurve_;
         std::vector<boost::shared_ptr<ForwardHelper> > instruments_;
         Real accuracy_;
         mutable std::vector<Date> dates_;

@@ -37,7 +37,10 @@ namespace QuantLib {
                            const Handle<YieldTermStructure>& baseCurve,
                            Date referenceDate)
     : CalibratedModel(nArguments),
-      index_(iborIndex), baseCurve_(baseCurve), referenceDate_(referenceDate) {
+      index_(iborIndex), baseCurve_(baseCurve), referenceDate_(referenceDate),
+      // Actual365Fixed is hardcoded: it must be an invertible DayCounter.
+      // If changed, TenorBasis::dateFromTime(Time) must be updated
+      dateTimeDC_(Actual365Fixed()), sign_(1.0) {
         
         QL_REQUIRE(iborIndex!=0, "empty iborIndex");
         if (referenceDate_ == Date()) {
@@ -60,6 +63,11 @@ namespace QuantLib {
         return value(t);
     }
 
+    Spread TenorBasis::instBasisValue(Date d) const {
+        Time t = timeFromReference(d);
+        return instBasisValue(t);
+    }
+
     Rate TenorBasis::tenorForwardRate(Date d1) const {
         Date d2 = cal_.advance(d1, tenor_, bdc_, eom_);
         // baseCurve must be a discounting curve...
@@ -69,7 +77,7 @@ namespace QuantLib {
         Rate baseFwd = (accrFactor - 1.0) / dt;
 
         Rate basis = value(d1);
-        return baseFwd + basis;
+        return baseFwd + sign_*basis;
     }
 
     Rate TenorBasis::tenorForwardRate(Time t1) const {
@@ -90,7 +98,7 @@ namespace QuantLib {
         // baseCurve must be a discounting curve...
         // otherwise it could not provide fwd(t1, t2) with t2-t1!=tau_
         Real accrFactor = baseCurve_->discount(d1) / baseCurve_->discount(d2);
-        Real instContBasisIntegral = integrate_(d1, d2);
+        Real instContBasisIntegral = sign_ * integrate_(d1, d2);
         accrFactor *= std::exp(instContBasisIntegral);
 
         Time dt = dc_.yearFraction(d1, d2);
@@ -106,13 +114,14 @@ namespace QuantLib {
     }
 
     Time TenorBasis::timeFromReference(Date d) const {
-        // Actual365Fixed is hardcoded. It must be an invertible DayCounter
+        // Actual365Fixed is hardcoded at construction time.
         // see also TenorBasis::dateFromTime(Time t)
-        return Actual365Fixed().yearFraction(referenceDate_, d);
+        return dateTimeDC_.yearFraction(referenceDate_, d);
     }
 
     Date TenorBasis::dateFromTime(Time t) const {
-        // Actual365Fixed is hardcoded. It must be an invertible DayCounter
+        // Actual365Fixed is hardcoded at construction time.
+        // It must be an invertible DayCounter,
         // see also TenorBasis::timeFromReference(Date d)
         BigInteger result =
             referenceDate_.serialNumber() + BigInteger(t*365.0);
@@ -317,6 +326,16 @@ namespace QuantLib {
         return TenorBasis::value(d);
     }
 
+    Date AbcdTenorBasis::instBasisMaximumLocation() const {
+        Time maximumLocation = instBasis_->maximumLocation();
+        return dateFromTime(maximumLocation);
+    }
+
+    Spread AbcdTenorBasis::instBasisMaximumValue() const {
+        Date d = maximumLocation();
+        return TenorBasis::instBasisValue(d);
+    }
+
     Real AbcdTenorBasis::integrate_(Time t1,
                                     Time t2) const {
         return instBasis_->definiteIntegral(t1, t2);
@@ -377,7 +396,7 @@ namespace QuantLib {
 
     TenorBasisYieldTermStructure::TenorBasisYieldTermStructure(
                                     const boost::shared_ptr<TenorBasis>& basis)
-    : YieldTermStructure(Actual365Fixed()), basis_(basis) {}
+    : YieldTermStructure(basis->dayCounter()), basis_(basis) {}
 
     const Date& TenorBasisYieldTermStructure::referenceDate() const {
         return basis_->referenceDate();
@@ -417,7 +436,7 @@ namespace QuantLib {
                            basis->iborIndex()->businessDayConvention(),
                            basis->iborIndex()->endOfMonth(),
                            basis->iborIndex()->dayCounter(),
-                           basis->iborIndex()->dayCounter()),
+                           basis->dayCounter()),
                            basis_(basis) {}
 
     const Date& TenorBasisForwardRateCurve::referenceDate() const {
@@ -442,32 +461,32 @@ namespace QuantLib {
         }
 
     DiscountCorrectedTermStructure::DiscountCorrectedTermStructure(
-        const Handle<YieldTermStructure>& baseCurve,
+        const Handle<YieldTermStructure>& bestFitCurve,
         const std::vector<boost::shared_ptr<RateHelper> >& instruments,
         Real accuracy)
-    : baseCurve_(baseCurve), instruments_(instruments), accuracy_(accuracy) {
-        registerWith(baseCurve_);
+    : bestFitCurve_(bestFitCurve), instruments_(instruments), accuracy_(accuracy) {
+        registerWith(bestFitCurve_);
         bootstrap_.setup(this);
     }
 
     const Date& DiscountCorrectedTermStructure::referenceDate() const {
-        return baseCurve_->referenceDate();
+        return bestFitCurve_->referenceDate();
     }
 
     DayCounter DiscountCorrectedTermStructure::dayCounter() const {
-        return baseCurve_->dayCounter();
+        return bestFitCurve_->dayCounter();
     }
 
     Calendar DiscountCorrectedTermStructure::calendar() const {
-        return baseCurve_->calendar();
+        return bestFitCurve_->calendar();
     }
 
     Natural DiscountCorrectedTermStructure::settlementDays() const{
-        return baseCurve_->settlementDays();
+        return bestFitCurve_->settlementDays();
     }
 
     Date DiscountCorrectedTermStructure::maxDate() const {
-        return baseCurve_->maxDate();
+        return bestFitCurve_->maxDate();
     }
 
     const std::vector<Time>& DiscountCorrectedTermStructure::times() const {
@@ -490,9 +509,9 @@ namespace QuantLib {
     }
 
     DiscountFactor DiscountCorrectedTermStructure::discountImpl(Time t) const {
-        DiscountFactor B = baseCurve_->discount(t, true);
+        DiscountFactor d = bestFitCurve_->discount(t, true);
         Real k = interpolation_(t, true);
-        return k*B;
+        return k*d;
     }
 
     void DiscountCorrectedTermStructure::performCalculations() const {
@@ -508,35 +527,35 @@ namespace QuantLib {
         BusinessDayConvention fwdConvention,
         bool fwdEndOfMonth,
         const DayCounter& fwdDayCounter,
-        const Handle<ForwardRateCurve>& baseCurve,
+        const Handle<ForwardRateCurve>& bestFitCurve,
         const std::vector<boost::shared_ptr<ForwardHelper> >& instruments,
         Real accuracy)
-    :ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency, 
+    : ForwardRateCurve(fwdFamilyName, fwdTenor, fwdSettlementDays, fwdCurrency, 
                       fwdFixingCalendar, fwdConvention, fwdEndOfMonth, 
-                      fwdDayCounter), 
-     baseCurve_(baseCurve), instruments_(instruments), accuracy_(accuracy) {
-        registerWith(baseCurve_);
+                      fwdDayCounter),
+      bestFitCurve_(bestFitCurve), instruments_(instruments), accuracy_(accuracy) {
+        registerWith(bestFitCurve_);
         bootstrap_.setup(this);
     }
 
     const Date& ForwardCorrectedTermStructure::referenceDate() const {
-        return baseCurve_->referenceDate();
+        return bestFitCurve_->referenceDate();
     }
 
     DayCounter ForwardCorrectedTermStructure::dayCounter() const {
-        return baseCurve_->dayCounter();
+        return bestFitCurve_->dayCounter();
     }
 
     Calendar ForwardCorrectedTermStructure::calendar() const {
-        return baseCurve_->calendar();
+        return bestFitCurve_->calendar();
     }
 
     Natural ForwardCorrectedTermStructure::settlementDays() const{
-        return baseCurve_->settlementDays();
+        return bestFitCurve_->settlementDays();
     }
 
     Date ForwardCorrectedTermStructure::maxDate() const {
-        return baseCurve_->maxDate();
+        return bestFitCurve_->maxDate();
     }
 
     const std::vector<Time>& ForwardCorrectedTermStructure::times() const {
@@ -558,9 +577,9 @@ namespace QuantLib {
         LazyObject::update();
     }
 
-    Rate ForwardCorrectedTermStructure::forwardRate(
-                                              Time t, bool extrapolate) const {
-        Rate F = baseCurve_->forwardRate(t, true);
+    Rate ForwardCorrectedTermStructure::forwardRate(Time t, 
+                                                    bool extrapolate) const {
+        Rate F = bestFitCurve_->forwardRate(t, true);
         Real k = interpolation_(t, true);
         return k*F;
     }
@@ -571,4 +590,3 @@ namespace QuantLib {
 
 
 }
-
