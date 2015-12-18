@@ -41,7 +41,8 @@ Download boost_1_58_0.tar.gz to $REPOSIT_DIR.
 cd $REPOSIT_DIR
 tar xzvf boost_1_58_0.tar.gz
 cd $REPOSIT_DIR/boost_1_58_0
-./bootstrap.sh --prefix=$REPOSIT_DIR/install
+./bootstrap.sh --prefix=$REPOSIT_DIR/install \
+    --with-libraries=filesystem,regex,serialization,system
 ./b2 install
 \endverbatim
 
@@ -51,25 +52,26 @@ Clone the repo.
 
 \verbatim
 cd $REPOSIT_DIR
-git clone https://github.com/eehlers/quantlib.git
+git clone https://github.com/eehlers/reposit.git
 \endverbatim
 
-Configure and build reposit.
+Configure and build.
 
 \verbatim
-cd $REPOSIT_DIR/quantlib/reposit
+cd $REPOSIT_DIR/reposit
 ./autogen.sh
 ./configure --without-log4cxx \
     --prefix=$REPOSIT_DIR/install \
     CPPFLAGS=-I$REPOSIT_DIR/install/include \
-    LDFLAGS=-L$REPOSIT_DIR/install/lib
+    LDFLAGS=-L$REPOSIT_DIR/install/lib \
+    CXXFLAGS=-Wno-unused-local-typedefs
 make install
 \endverbatim
 
 Test.
 
 \verbatim
-cd $REPOSIT_DIR/quantlib/reposit/Examples/C++
+cd $REPOSIT_DIR/reposit/Examples/C++
 ./ExampleCpp
 \endverbatim
 
@@ -77,7 +79,7 @@ cd $REPOSIT_DIR/quantlib/reposit/Examples/C++
 
 Download pcre-8.35.tar.gz to $REPOSIT_DIR.
 
-Configure and build pcre.
+Configure and build.
 
 \verbatim
 cd $REPOSIT_DIR
@@ -96,7 +98,7 @@ cd $REPOSIT_DIR
 git clone https://github.com/eehlers/swig.git
 \endverbatim
 
-Configure and build SWIG.
+Configure and build.
 
 \verbatim
 cd $REPOSIT_DIR/swig
@@ -133,23 +135,38 @@ cd $REPOSIT_DIR/swig/Examples/reposit/complex/ComplexLibAddin/Main
 
 \section build_git_swig_linux_sec_9 QuantLib
 
-Configure and build QuantLib.
+Clone the repo.
 
 \verbatim
-cd $REPOSIT_DIR/quantlib/QuantLib
+cd $REPOSIT_DIR
+git clone https://github.com/eehlers/QuantLib.git
+\endverbatim
+
+Configure and build.
+
+\verbatim
+cd $REPOSIT_DIR/QuantLib
 ./autogen.sh
 ./configure --prefix=$REPOSIT_DIR/install \
     --with-boost-include=$REPOSIT_DIR/install/include \
     --with-boost-lib=$REPOSIT_DIR/install/lib
+cd $REPOSIT_DIR/QuantLib/ql
 make install
 \endverbatim
 
 \section build_git_swig_linux_sec_10 QuantLibAddin
 
-Configure and build QuantLibAddin.
+Clone the repo.
 
 \verbatim
-cd $REPOSIT_DIR/quantlib/QuantLibAddin2
+cd $REPOSIT_DIR
+git clone https://github.com/eehlers/QuantLibAddin.git
+\endverbatim
+
+Configure and build.
+
+\verbatim
+cd $REPOSIT_DIR/QuantLibAddin
 ./autogen.sh
 ./configure \
     --enable-addin-cpp \
@@ -165,7 +182,7 @@ make
 Run the C++ executable.
 
 \verbatim
-cd $REPOSIT_DIR/reposit/quantlib/QuantLibAddin2/Clients/Cpp
+cd $REPOSIT_DIR/reposit/QuantLibAddin/Clients/Cpp
 ./ClientCppDemo
 \endverbatim
 

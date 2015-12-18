@@ -36,8 +36,8 @@ The table below summarizes the differences between the two builds as of the 1.7 
 <tr><td colspan="3"><b>Code Autogeneration</b></td></tr>
 <tr><td>Object Wrappers</td><td><img src="images/mark_x.png"></td><td><img src="images/mark_check.png"></td></tr>
 <tr><td>Addin Functions</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>
-<tr><td>Enumerations</td><td><img src="images/mark_x.png"></td><td><img src="images/mark_x.png"></td></tr>
-<tr><td>Documentation</td><td><img src="images/mark_x.png"></td><td><img src="images/mark_x.png"></td></tr>
+<tr><td>Enumerations</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_x.png"></td></tr>
+<tr><td>Documentation</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_x.png"></td></tr>
 <tr><td colspan="3"><b>Platforms Supported</b></td></tr>
 <tr><td>C++</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>
 <tr><td>Excel</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>

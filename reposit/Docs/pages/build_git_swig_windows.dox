@@ -25,32 +25,65 @@
 
 <div align="center"><small><a href="build_overview.html">back to installation index</a></small></div>
 
-\section build_git_swig_windows_sec_1 Overview
+\section build_git_swig_windows_sec_01 1. Overview
 
 This document explains how to build the reposit C++ and Excel binaries on Windows.
 
-\section build_git_swig_windows_sec_2 Compiler
+\section build_git_swig_windows_sec_02 2. Compiler
 
 The only supported compiler is Visual Studio 2008, also known as VC9.  32- and
 64-bit builds are supported.
 
-\section build_git_swig_windows_sec_3 Build Directory
+\section build_git_swig_windows_sec_03 3. Boost
+
+Download boost_1_58_0.7z to your hard drive and uncompress it.
+
+Open a Visual Studio command prompt, cd to the boost directory, and build boost.
+
+\verbatim
+.\b2 toolset=msvc-9.0 address-model=32 --stagedir=stage32 --build-type=complete --with-regex --with-serialization --with-system --with-filesystem
+\endverbatim
+
+Configure Visual Studio to find the boost include and lib directories.
+
+\section build_git_swig_windows_sec_04 4. Build Directory
 
 Create a directory on your hard drive where you will do the build.  This
 document refers to your build directory as $REPOSIT_DIR but you do not need an
 environment variable by that name.
 
-\section build_git_swig_windows_sec_4 Boost
+\section build_git_swig_windows_sec_05 5. Source Code
 
-Build Boost and configure VC9 to find it.
-
-\section build_git_swig_windows_sec_5 PCRE
-
-Download pcre-8.35.zip to $REPOSIT_DIR and uncompress:
+Open a git bash prompt in $REPOSIT_DIR and clone the required repos:
 
 \verbatim
-$REPOSIT_DIR\pcre-8.35
+git clone https://github.com/eehlers/swig.git
+git clone https://github.com/eehlers/reposit.git
+git clone https://github.com/eehlers/QuantLib.git
+git clone https://github.com/eehlers/QuantLibAddin.git
+git clone https://github.com/eehlers/QuantLibXL.git
 \endverbatim
+
+Go to the 
+<a href=http://sourceforge.net/projects/quantlib/files/reposit/1.7/>reposit downloads page</a>.
+
+Download pcre-8.35.zip to $REPOSIT_DIR and uncompress.
+
+Download log4cxx-0.10.0f5.zip to $REPOSIT_DIR and uncompress.
+
+Your build directory should now look like this:
+
+\verbatim
+$REPOSIT_DIR\log4cxx
+$REPOSIT_DIR\pcre-8.35
+$REPOSIT_DIR\QuantLib
+$REPOSIT_DIR\QuantLibAddin
+$REPOSIT_DIR\QuantLibXL
+$REPOSIT_DIR\reposit
+$REPOSIT_DIR\swig
+\endverbatim
+
+\section build_git_swig_windows_sec_06 6. PCRE
 
 You need cmake in order to build the PCRE project files.  Create a new directory:
 
@@ -58,7 +91,7 @@ You need cmake in order to build the PCRE project files.  Create a new directory
 $REPOSIT_DIR\pcre-8.35\build
 \endverbatim
 
-And open a DOS prompt in that directory and do:
+Open a DOS prompt in that directory and do:
 
 \verbatim
 "C:\Program Files (x86)\CMake\bin\cmake.exe" -G "Visual Studio 9 2008" $REPOSIT_DIR\pcre-8.35
@@ -70,27 +103,16 @@ Build the solution:
 $REPOSIT_DIR\pcre-8.35\build\PCRE.sln
 \endverbatim
 
-\section build_git_swig_windows_sec_6 SWIG
+<br>
+<table border="1" bgcolor="lightsteelblue">
+<tr>
+<td><b>NB:</b> Each of the remaining builds is optional.  If you are only interested in building QuantLibXL, you can
+<a href=#build_git_swig_windows_sec_10>skip ahead to that section</a>.
+</td>
+</tr>
+</table>
 
-Open a git bash prompt in $REPOSIT_DIR and clone the repo:
-
-\verbatim
-git clone https://github.com/eehlers/swig.git
-\endverbatim
-
-Build the solution:
-
-\verbatim
-$REPOSIT_DIR\swig\swig_vc9.sln
-\endverbatim
-
-\section build_git_swig_windows_sec_7 reposit
-
-Open a git bash prompt in $REPOSIT_DIR and clone the repo:
-
-\verbatim
-git clone https://github.com/eehlers/quantlib.git
-\endverbatim
+\section build_git_swig_windows_sec_07 7. reposit
 
 Build the solution:
 
@@ -98,16 +120,21 @@ Build the solution:
 $REPOSIT_DIR\quantlib\reposit\reposit_vc9.sln
 \endverbatim
 
-<br>
-<table border="1" bgcolor="lightsteelblue">
-<tr>
-<td><b>NB:</b> Each of the remaining builds is optional.  If you are only interested in building QuantLibXL, you can
-<a href=#build_git_swig_windows_sec_11>skip ahead to that section</a>.
-</td>
-</tr>
-</table>
+Run the executable:
 
-\section build_git_swig_windows_sec_8 Example - SimpleLib
+\verbatim
+$REPOSIT_DIR\quantlib\reposit\reposit\Examples\C++\bin\ExampleCpp-vc90-mt.exe
+\endverbatim
+
+\section build_git_swig_windows_sec_08 8. SWIG
+
+Build the solution:
+
+\verbatim
+$REPOSIT_DIR\swig\swig_vc9.sln
+\endverbatim
+
+\subsection build_git_swig_windows_sec_08_01 8.1 Example - SimpleLib
 
 Build the solution:
 
@@ -128,7 +155,7 @@ $REPOSIT_DIR\swig\Examples\reposit\simple\Release\AddinXl.xll
 $REPOSIT_DIR\swig\Examples\reposit\simple\AddinXl\AddinXl.xlsx
 \endverbatim
 
-\section build_git_swig_windows_sec_9 Example - ComplexLib
+\subsection build_git_swig_windows_sec_08_02 8.2 Example - ComplexLib
 
 Build the solution:
 
@@ -149,7 +176,7 @@ $REPOSIT_DIR\swig\Examples\reposit\complex\Release\AddinXl.xll
 $REPOSIT_DIR\swig\Examples\reposit\complex\ComplexLibXL\Workbooks\AddinXl.xlsx
 \endverbatim
 
-\section build_git_swig_windows_sec_10 QuantLibAddin
+\section build_git_swig_windows_sec_09 9. QuantLibAddin
 
 Build the solution:
 
@@ -163,7 +190,7 @@ Run the executable:
 $REPOSIT_DIR\quantlib\QuantLibAddin2\Release\MainQuantLibAddin.exe
 \endverbatim
 
-\section build_git_swig_windows_sec_11 QuantLibXL
+\section build_git_swig_windows_sec_10 10. QuantLibXL
 
 Build the solution:
 
@@ -175,7 +202,7 @@ For instructions on how to use the XLL, please refer to the following document:
 
 \ref qlxl_install \n
 
-\section build_git_swig_windows_sec_12 Adding new functions to the addin
+\section build_git_swig_windows_sec_11 11. Adding new functions to the addin
 
 Here is an example of how to export additional QuantLib functions to
 QuantLibXL.  We are going to copy the definition of function
