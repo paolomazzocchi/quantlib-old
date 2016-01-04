@@ -79,6 +79,7 @@
     <None Include="metadata\functions\bonds.xml" />
     <None Include="metadata\functions\btp.xml" />
     <None Include="metadata\functions\calendar.xml" />
+    <None Include="metadata\functions\calibrationhelpers.xml" />
     <None Include="metadata\functions\capfloor.xml" />
     <None Include="metadata\functions\capletvolstructure.xml" />
     <None Include="metadata\functions\cmsmarket.xml" />

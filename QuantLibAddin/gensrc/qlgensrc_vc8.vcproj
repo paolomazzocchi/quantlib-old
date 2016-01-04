@@ -119,6 +119,10 @@
 				>
 			</File>
 			<File
+				RelativePath="metadata\functions\calibrationhelpers.xml"
+				>
+			</File>
+			<File
 				RelativePath="metadata\functions\capfloor.xml"
 				>
 			</File>

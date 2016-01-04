@@ -79,6 +79,7 @@
     <None Include="metadata\functions\bonds.xml" />
     <None Include="metadata\functions\btp.xml" />
     <None Include="metadata\functions\calendar.xml" />
+    <None Include="metadata\functions\calibrationhelpers.xml" />
     <None Include="metadata\functions\capfloor.xml" />
     <None Include="metadata\functions\capletvolstructure.xml" />
     <None Include="metadata\functions\cmsmarket.xml" />
@@ -163,11 +164,6 @@
     <None Include="stubs\stub.excel.includes" />
     <None Include="stubs\stub.serialization.includes" />
     <None Include="Makefile.vc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="metadata\functions\calibrationhelpers.xml">
-      <SubType>Designer</SubType>
-    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -120,6 +120,9 @@
     <ClCompile Include="qlo\valueobjects\vo_btp.cpp">
       <Filter>valueobjects</Filter>
     </ClCompile>
+    <ClCompile Include="qlo\valueobjects\vo_calibrationhelpers.cpp">
+      <Filter>valueobjects</Filter>
+    </ClCompile>
     <ClCompile Include="qlo\valueobjects\vo_capfloor.cpp">
       <Filter>valueobjects</Filter>
     </ClCompile>
@@ -360,6 +363,9 @@
     <ClCompile Include="qlo\shortratemodels.cpp">
       <Filter>ShortRateModels</Filter>
     </ClCompile>
+    <ClCompile Include="qlo\calibrationhelpers.cpp">
+      <Filter>ShortRateModels</Filter>
+    </ClCompile>
     <ClCompile Include="qlo\conundrumpricer.cpp">
       <Filter>CashFlows</Filter>
     </ClCompile>
@@ -472,6 +478,9 @@
       <Filter>serialization\create</Filter>
     </ClCompile>
     <ClCompile Include="qlo\serialization\create\create_btp.cpp">
+      <Filter>serialization\create</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\create\create_calibrationhelpers.cpp">
       <Filter>serialization\create</Filter>
     </ClCompile>
     <ClCompile Include="qlo\serialization\create\create_capfloor.cpp">
@@ -637,6 +646,9 @@
       <Filter>serialization\register</Filter>
     </ClCompile>
     <ClCompile Include="qlo\serialization\register\serialization_btp.cpp">
+      <Filter>serialization\register</Filter>
+    </ClCompile>
+    <ClCompile Include="qlo\serialization\register\serialization_calibrationhelpers.cpp">
       <Filter>serialization\register</Filter>
     </ClCompile>
     <ClCompile Include="qlo\serialization\register\serialization_capfloor.cpp">
@@ -899,6 +911,9 @@
     <ClInclude Include="qlo\valueobjects\vo_btp.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
+    <ClInclude Include="qlo\valueobjects\vo_calibrationhelpers.hpp">
+      <Filter>valueobjects</Filter>
+    </ClInclude>
     <ClInclude Include="qlo\valueobjects\vo_capfloor.hpp">
       <Filter>valueobjects</Filter>
     </ClInclude>
@@ -1151,6 +1166,9 @@
     <ClInclude Include="qlo\shortratemodels.hpp">
       <Filter>ShortRateModels</Filter>
     </ClInclude>
+    <ClInclude Include="qlo\calibrationhelpers.hpp">
+      <Filter>ShortRateModels</Filter>
+    </ClInclude>
     <ClInclude Include="qlo\conundrumpricer.hpp">
       <Filter>CashFlows</Filter>
     </ClInclude>
@@ -1343,6 +1361,9 @@
     <ClInclude Include="qlo\serialization\create\create_btp.hpp">
       <Filter>serialization\create</Filter>
     </ClInclude>
+    <ClInclude Include="qlo\serialization\create\create_calibrationhelpers.hpp">
+      <Filter>serialization\create</Filter>
+    </ClInclude>
     <ClInclude Include="qlo\serialization\create\create_capfloor.hpp">
       <Filter>serialization\create</Filter>
     </ClInclude>
@@ -1509,6 +1530,9 @@
       <Filter>serialization\register</Filter>
     </ClInclude>
     <ClInclude Include="qlo\serialization\register\serialization_btp.hpp">
+      <Filter>serialization\register</Filter>
+    </ClInclude>
+    <ClInclude Include="qlo\serialization\register\serialization_calibrationhelpers.hpp">
       <Filter>serialization\register</Filter>
     </ClInclude>
     <ClInclude Include="qlo\serialization\register\serialization_capfloor.hpp">
@@ -1712,6 +1736,7 @@
     <ClInclude Include="qlo\handle.hpp" />
     <ClInclude Include="qlo\handleimpl.hpp" />
     <ClInclude Include="qlo\index.hpp" />
+    <ClInclude Include="qlo\models.hpp" />
     <ClInclude Include="qlo\processes.hpp" />
     <ClInclude Include="qlo\qladdin.hpp" />
     <ClInclude Include="qlo\qladdindefines.hpp" />

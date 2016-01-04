@@ -1198,6 +1198,14 @@
 				RelativePath="qlo\shortratemodels.hpp"
 				>
 			</File>
+			<File
+				RelativePath="qlo\calibrationhelpers.cpp"
+				>
+			</File>
+			<File
+				RelativePath="qlo\calibrationhelpers.hpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="CashFlows"
@@ -2653,6 +2661,10 @@
 		</File>
 		<File
 			RelativePath="qlo\index.hpp"
+			>
+		</File>
+		<File
+			RelativePath="qlo\models.hpp"
 			>
 		</File>
 		<File

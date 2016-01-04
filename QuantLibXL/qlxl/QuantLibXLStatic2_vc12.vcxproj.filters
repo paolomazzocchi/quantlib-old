@@ -45,6 +45,9 @@
     <ClCompile Include="register\register_calendar.cpp">
       <Filter>register</Filter>
     </ClCompile>
+    <ClCompile Include="register\register_calibrationhelpers.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
     <ClCompile Include="register\register_capfloor.cpp">
       <Filter>register</Filter>
     </ClCompile>
@@ -232,6 +235,9 @@
       <Filter>functions</Filter>
     </ClCompile>
     <ClCompile Include="functions\calendar.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
+    <ClCompile Include="functions\calibrationhelpers.cpp">
       <Filter>functions</Filter>
     </ClCompile>
     <ClCompile Include="functions\capfloor.cpp">
