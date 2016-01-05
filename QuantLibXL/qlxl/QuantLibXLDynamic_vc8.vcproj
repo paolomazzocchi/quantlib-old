@@ -257,6 +257,10 @@
 				>
 			</File>
 			<File
+				RelativePath="functions\calibrationhelpers.cpp"
+				>
+			</File>
+			<File
 				RelativePath="functions\calendar.cpp"
 				>
 			</File>
@@ -530,6 +534,10 @@
 			</File>
 			<File
 				RelativePath=".\register\register_btp.cpp"
+				>
+			</File>
+			<File
+				RelativePath="register\register_calibrationhelpers.cpp"
 				>
 			</File>
 			<File

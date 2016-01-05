@@ -84,6 +84,9 @@
     <None Include="metadata\functions\calendar.xml">
       <Filter>functions</Filter>
     </None>
+    <None Include="metadata\functions\calibrationhelpers.xml">
+      <Filter>functions</Filter>
+    </None>
     <None Include="metadata\functions\capfloor.xml">
       <Filter>functions</Filter>
     </None>
@@ -322,10 +325,5 @@
       <Filter>stubs</Filter>
     </None>
     <None Include="Makefile.vc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="metadata\functions\calibrationhelpers.xml">
-      <Filter>functions</Filter>
-    </Xml>
   </ItemGroup>
 </Project>
