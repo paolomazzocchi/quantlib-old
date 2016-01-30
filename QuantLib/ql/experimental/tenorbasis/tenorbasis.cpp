@@ -1,8 +1,8 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
- Copyright (C) 2015 Ferdinando Ametrano
- Copyright (C) 2015 Paolo Mazzocchi
+ Copyright (C) 2015, 2016 Ferdinando Ametrano
+ Copyright (C) 2015, 2016 Paolo Mazzocchi
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -34,10 +34,11 @@ namespace QuantLib {
 
     TenorBasis::TenorBasis(Size nArguments,
                            shared_ptr<IborIndex> iborIndex,
-                           const Handle<YieldTermStructure>& baseCurve,
+                           boost::shared_ptr<IborIndex> baseIborIndex,
                            Date referenceDate)
     : CalibratedModel(nArguments),
-      index_(iborIndex), baseCurve_(baseCurve), referenceDate_(referenceDate),
+      iborIndex_(iborIndex), baseIborIndex_(baseIborIndex),
+      referenceDate_(referenceDate),
       // Actual365Fixed is hardcoded: it must be an invertible DayCounter.
       // If changed, TenorBasis::dateFromTime(Time) must be updated
       dateTimeDC_(Actual365Fixed()), sign_(1.0) {
@@ -49,13 +50,18 @@ namespace QuantLib {
             // avoid the following as the Hande could be empty
             //referenceDate_ = baseCurve_->referenceDate();
         }
-        dc_ = index_->dayCounter();
-        bdc_ = index_->businessDayConvention();
-        eom_ = index_->endOfMonth();
-        cal_ = index_->fixingCalendar();
-        tenor_ = index_->tenor();
+        dc_ = iborIndex_->dayCounter();
+        bdc_ = iborIndex_->businessDayConvention();
+        eom_ = iborIndex_->endOfMonth();
+        cal_ = iborIndex_->fixingCalendar();
+        tenor_ = iborIndex_->tenor();
         Date endDate = cal_.advance(referenceDate_, tenor_, bdc_, eom_);
         tau_ = dc_.yearFraction(referenceDate_, endDate);
+
+        QL_REQUIRE(baseIborIndex != 0, "empty base iborIndex");
+        if (baseIborIndex_->tenor() > tenor_)
+            sign_=-1.0;
+        registerWith(baseIborIndex_);
     }
 
     Spread TenorBasis::value(Date d) const {
@@ -72,7 +78,9 @@ namespace QuantLib {
         Date d2 = cal_.advance(d1, tenor_, bdc_, eom_);
         // baseCurve must be a discounting curve...
         // otherwise it could not provide fwd(d1, d2) with d2-d1!=tau
-        Real accrFactor = baseCurve_->discount(d1) / baseCurve_->discount(d2);
+        Handle<YieldTermStructure> baseCurve =
+                                    baseIborIndex_->forwardingTermStructure();
+        Real accrFactor = baseCurve->discount(d1) / baseCurve->discount(d2);
         Time dt = dc_.yearFraction(d1, d2);
         Rate baseFwd = (accrFactor - 1.0) / dt;
 
@@ -86,6 +94,27 @@ namespace QuantLib {
         return tenorForwardRate(d1);
     }
 
+    Rate TenorBasis::accrualFactor(Date d1,
+                                   Date d2) const {
+        QL_REQUIRE(d1 <= d2,
+                   "d2 (" << d2 << ") cannot be before d1 (" << d1 << ")");
+        // baseCurve must be a discounting curve...
+        // otherwise it could not provide fwd(t1, t2) with t2-t1!=tau_
+        Handle<YieldTermStructure> baseCurve =
+                                    baseIborIndex_->forwardingTermStructure();
+        Real accrFactor = baseCurve->discount(d1) / baseCurve->discount(d2);
+        Real instContBasisIntegral = sign_ * integrate_(d1, d2);
+        accrFactor *= std::exp(instContBasisIntegral);
+        return accrFactor;
+    }
+
+    Rate TenorBasis::accrualFactor(Time t1,
+                                   Time t2) const {
+        Date d1 = dateFromTime(t1);
+        Date d2 = dateFromTime(t2);
+        return accrualFactor(d1, d2);
+    }
+
     Rate TenorBasis::forwardRate(Date d1) const {
         Date d2 = cal_.advance(d1, tenor_, bdc_, eom_);
         return forwardRate(d1, d2);
@@ -93,14 +122,7 @@ namespace QuantLib {
 
     Rate TenorBasis::forwardRate(Date d1,
                                  Date d2) const {
-        QL_REQUIRE(d1 < d2,
-                   "d2 (" << d2 << ") <= d1 (" << d1 << ")");
-        // baseCurve must be a discounting curve...
-        // otherwise it could not provide fwd(t1, t2) with t2-t1!=tau_
-        Real accrFactor = baseCurve_->discount(d1) / baseCurve_->discount(d2);
-        Real instContBasisIntegral = sign_ * integrate_(d1, d2);
-        accrFactor *= std::exp(instContBasisIntegral);
-
+        Real accrFactor = accrualFactor(d1, d2);
         Time dt = dc_.yearFraction(d1, d2);
         Rate fwd = (accrFactor - 1.0) / dt;
         return fwd;
@@ -123,19 +145,19 @@ namespace QuantLib {
         // Actual365Fixed is hardcoded at construction time.
         // It must be an invertible DayCounter,
         // see also TenorBasis::timeFromReference(Date d)
-        BigInteger result =
-            referenceDate_.serialNumber() + BigInteger(t*365.0);
+        BigInteger days = BigInteger(t*365.0 + 0.5);
+        BigInteger result = referenceDate_.serialNumber() + days;
         if (result >= Date::maxDate().serialNumber())
             return Date::maxDate();
         return Date(result);
     }
 
     const shared_ptr<IborIndex>& TenorBasis::iborIndex() const {
-        return index_;
+        return iborIndex_;
     }
 
-    const Handle<YieldTermStructure>& TenorBasis::baseCurve() const {
-        return baseCurve_;
+    const boost::shared_ptr<IborIndex>& TenorBasis::baseIborIndex() const {
+        return baseIborIndex_;
     }
 
     Constraint TenorBasis::constraint() const {
@@ -259,11 +281,11 @@ namespace QuantLib {
     }
 
     AbcdTenorBasis::AbcdTenorBasis(shared_ptr<IborIndex> iborIndex,
-                                   const Handle<YieldTermStructure>& baseCurve,
+                                   boost::shared_ptr<IborIndex> baseIborIndex,
                                    Date referenceDate,
                                    bool isSimple,
                                    const std::vector<Real>& coeff)
-    : TenorBasis(4, iborIndex, baseCurve, referenceDate) {
+    : TenorBasis(4, iborIndex, baseIborIndex, referenceDate) {
         //std::vector<Real> y = inverse(coeff);
         std::vector<Real> y = coeff;
         arguments_[0] = ConstantParameter(y[0], NoConstraint());
@@ -344,11 +366,11 @@ namespace QuantLib {
 
     PolynomialTenorBasis::PolynomialTenorBasis(
                                 shared_ptr<IborIndex> iborIndex,
-                                const Handle<YieldTermStructure>& baseCurve,
+                                shared_ptr<IborIndex> baseIborIndex,
                                 Date referenceDate,
                                 bool isSimple,
                                 const std::vector<Real>& coeff)
-    : TenorBasis(coeff.size(), iborIndex, baseCurve, referenceDate),
+    : TenorBasis(coeff.size(), iborIndex, baseIborIndex, referenceDate),
       isSimple_(isSimple) {
         for (Size i = 0; i<coeff.size(); ++i)
             arguments_[i] = ConstantParameter(coeff[i], NoConstraint());
@@ -411,19 +433,14 @@ namespace QuantLib {
     }
 
     Date TenorBasisYieldTermStructure::maxDate() const {
-        return basis_->baseCurve()->maxDate();
+        return basis_->baseIborIndex()->forwardingTermStructure()->maxDate();
     }
 
     DiscountFactor TenorBasisYieldTermStructure::discountImpl(Time t) const {
-        if (t == 0)
-            return 1.0;
-        else{
-           Date d1 = referenceDate();
-           Date d2 = basis_->dateFromTime(t);
-           Rate fwd = basis_->forwardRate(d1, d2);
-           Time tau = basis_->iborIndex()->dayCounter().yearFraction(d1, d2);
-           return 1.0 / (1.0 + fwd*tau);
-        }
+        Date ref = referenceDate();
+        Date d = basis_->dateFromTime(t);
+        Real accrFactor = basis_->accrualFactor(ref, d);
+        return 1.0 / accrFactor;
     }
 
     TenorBasisForwardRateCurve::TenorBasisForwardRateCurve(
@@ -452,7 +469,9 @@ namespace QuantLib {
     }
 
     Date TenorBasisForwardRateCurve::maxDate() const {
-        return basis_->baseCurve()->maxDate();
+        Handle<YieldTermStructure> baseCurve =
+            basis_->baseIborIndex()->forwardingTermStructure();
+        return baseCurve->maxDate();
     }
 
     Rate TenorBasisForwardRateCurve::forwardRate(

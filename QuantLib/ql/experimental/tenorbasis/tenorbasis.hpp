@@ -1,8 +1,8 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
- Copyright (C) 2015 Ferdinando Ametrano
- Copyright (C) 2015 Paolo Mazzocchi
+ Copyright (C) 2015, 2016 Ferdinando Ametrano
+ Copyright (C) 2015, 2016 Paolo Mazzocchi
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -44,7 +44,7 @@ namespace QuantLib {
       public:
           TenorBasis(Size nArguments,
                      boost::shared_ptr<IborIndex> iborIndex,
-                     const Handle<YieldTermStructure>& baseCurve,
+                     boost::shared_ptr<IborIndex> baseIborIndex,
                      Date referenceDate = Date());
         //! \name Interface
         //@{
@@ -72,6 +72,13 @@ namespace QuantLib {
         Rate forwardRate(Time t1,
                          Time t2) const;
 
+        // accrual factor obtained as integral of inst. cont. basis
+        Rate accrualFactor(Date d1,
+                           Date d2) const;
+        // accrual factor obtained as integral of inst. cont. basis
+        Rate accrualFactor(Time t1,
+                           Time t2) const;
+
         //! simple basis parametrization coefficients
         virtual const std::vector<Real>& coefficients() const = 0;
         //! instantaneous continuous basis parametrization coefficients
@@ -94,8 +101,8 @@ namespace QuantLib {
         const Date& referenceDate() const { return referenceDate_; }
         //! IborIndex proving the forwarding curve
         const boost::shared_ptr<IborIndex>& iborIndex() const;
-        //! Base curve used as reference for the basis
-        const Handle<YieldTermStructure>& baseCurve() const;
+        //! Base IborIndex whose forwarding curve is used as basis
+        const boost::shared_ptr<IborIndex>& baseIborIndex() const;
         //@}
 
         // calibration on pseudo-discount factor
@@ -137,8 +144,7 @@ namespace QuantLib {
                                 Time t2) const = 0;
         //@}
         virtual Constraint constraint() const;
-        boost::shared_ptr<IborIndex> index_;
-        Handle<YieldTermStructure> baseCurve_;
+        boost::shared_ptr<IborIndex> iborIndex_, baseIborIndex_;
         Date referenceDate_;
 
         DayCounter dateTimeDC_, dc_;
@@ -153,7 +159,7 @@ namespace QuantLib {
     class AbcdTenorBasis : public TenorBasis {
       public:
         AbcdTenorBasis(boost::shared_ptr<IborIndex> iborIndex,
-                       const Handle<YieldTermStructure>& baseCurve,
+                       boost::shared_ptr<IborIndex> baseIborIndex,
                        Date referenceDate,
                        bool isSimple,
                        const std::vector<Real>& coeff);
@@ -195,7 +201,7 @@ namespace QuantLib {
     class PolynomialTenorBasis : public TenorBasis {
       public:
         PolynomialTenorBasis(boost::shared_ptr<IborIndex> iborIndex,
-                             const Handle<YieldTermStructure>& baseCurve,
+                             boost::shared_ptr<IborIndex> baseIborIndex,
                              Date referenceDate,
                              bool isSimple,
                              const std::vector<Real>& coeff);
