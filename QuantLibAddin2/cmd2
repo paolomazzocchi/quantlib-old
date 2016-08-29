@@ -1,0 +1,15 @@
+
+IDIR=/home/countify/install
+SWIG_DIR=/home/countify/projects/swig
+CFY_DIR=/home/countify/sdk/Eric-SDK
+
+./configure \
+    CXXFLAGS=-Wno-unused-local-typedefs \
+    --prefix=$IDIR \
+    --with-boost-include=$IDIR/include \
+    --with-boost-lib=$IDIR/lib \
+    --with-swig=$SWIG_DIR \
+    --with-countify=$CFY_DIR \
+    --enable-addin-cpp \
+    --enable-addin-cfy
+

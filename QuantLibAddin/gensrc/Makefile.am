@@ -24,6 +24,7 @@ GENSRC_METADATA :=  metadata/addins/calc.xml \
                     metadata/functions/bonds.xml \
                     metadata/functions/browniangenerators.xml \
                     metadata/functions/calendar.xml \
+                    metadata/functions/calibrationhelpers.xml \
                     metadata/functions/capfloor.xml \
                     metadata/functions/capletvolstructure.xml \
                     metadata/functions/cmsmarketcalibration.xml \

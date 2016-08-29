@@ -78,21 +78,22 @@ QuantLibAddin::FuturesRateHelper::FuturesRateHelper(
     quoteName_ = f(properties->getSystemProperty("Price"));
 }
 
-//SwapRateHelper::SwapRateHelper(
-//        const shared_ptr<ValueObject>& properties,
-//        const QuantLib::Handle<QuantLib::Quote>& rate,
-//        const shared_ptr<QuantLib::SwapIndex>& swapIndex,
-//        const QuantLib::Handle<QuantLib::Quote>& spread,
-//        const QuantLib::Period& forwardStart,
-//        const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
-//        bool permanent)
-//: RateHelper(properties, permanent) {
-//    libraryObject_ = shared_ptr<QuantLib::RateHelper>(new
-//        QuantLib::SwapRateHelper(rate,
-//                                 swapIndex,
-//                                 spread, forwardStart, discount));
-//    quoteName_ = f(properties->getSystemProperty("Rate"));
-//}
+QuantLibAddin::SwapRateHelper::SwapRateHelper(
+        const boost::shared_ptr<reposit::ValueObject>& properties,
+        const QuantLib::Handle<QuantLib::Quote>& rate,
+        const boost::shared_ptr<QuantLib::SwapIndex>& swapIndex,
+        const QuantLib::Handle<QuantLib::Quote>& spread,
+        const QuantLib::Period& forwardStart,
+        const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
+        QuantLib::Pillar::Choice pillarChoice,
+        QuantLib::Date customPillar,
+        bool permanent)
+: RateHelper(properties, permanent) {
+    libraryObject_ = boost::shared_ptr<QuantLib::RateHelper>(new
+        QuantLib::SwapRateHelper(rate, swapIndex, spread, forwardStart,
+        discount, pillarChoice, customPillar));
+    quoteName_ = f(properties->getSystemProperty("Rate"));
+}
 
 QuantLibAddin::SwapRateHelper::SwapRateHelper(
         const boost::shared_ptr<reposit::ValueObject>& properties,
@@ -107,12 +108,14 @@ QuantLibAddin::SwapRateHelper::SwapRateHelper(
         const QuantLib::Handle<QuantLib::Quote>& spread,
         const QuantLib::Period& forwardStart,
         const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
+        QuantLib::Pillar::Choice pillarChoice,
+        QuantLib::Date customPillar,
         bool permanent)
 : RateHelper(properties, permanent) {
     libraryObject_ = boost::shared_ptr<QuantLib::RateHelper>(new
-        QuantLib::SwapRateHelper(rate,
-                                 p, cal, fixFreq, fixConv, fixDC, ibor,
-                                 spread, forwardStart, discount, settlementDays));
+        QuantLib::SwapRateHelper(rate, p, cal, fixFreq, fixConv, fixDC,
+        ibor, spread, forwardStart, discount, settlementDays, pillarChoice,
+        customPillar));
     quoteName_ = f(properties->getSystemProperty("Rate"));
 }
 
@@ -121,13 +124,34 @@ QuantLibAddin::FraRateHelper::FraRateHelper(
         const QuantLib::Handle<QuantLib::Quote>& rate,
         QuantLib::Period periodToStart,
         const boost::shared_ptr<QuantLib::IborIndex>& iborIndex,
+        QuantLib::Pillar::Choice pillarChoice,
+        QuantLib::Date customPillar,
         bool permanent)
 : RateHelper(properties, permanent) {
     libraryObject_ = boost::shared_ptr<QuantLib::RateHelper>(new
-        QuantLib::FraRateHelper(rate, periodToStart, iborIndex));
+        QuantLib::FraRateHelper(rate, periodToStart, iborIndex, pillarChoice, customPillar));
     quoteName_ = f(properties->getSystemProperty("Rate"));
 }
 
+QuantLibAddin::FraRateHelper::FraRateHelper(
+            const boost::shared_ptr<reposit::ValueObject>& properties,
+            const QuantLib::Handle<QuantLib::Quote>& rate,
+            QuantLib::Period periodToStart,
+            QuantLib::Natural lengthInMonths,
+            QuantLib::Natural fixingDays,
+            const QuantLib::Calendar& calendar,
+            QuantLib::BusinessDayConvention convention,
+            bool endOfMonth,
+            const QuantLib::DayCounter& dayCounter,
+            QuantLib::Pillar::Choice pillarChoice,
+            QuantLib::Date customPillar,
+            bool permanent)
+: RateHelper(properties, permanent) {
+    libraryObject_ = boost::shared_ptr<QuantLib::RateHelper>(new
+        QuantLib::FraRateHelper(rate, periodToStart, lengthInMonths, fixingDays,
+        calendar, convention, endOfMonth, dayCounter, pillarChoice, customPillar));
+    quoteName_ = f(properties->getSystemProperty("Rate"));
+}
 
 QuantLibAddin::OISRateHelper::OISRateHelper(
                     const boost::shared_ptr<reposit::ValueObject>& properties,

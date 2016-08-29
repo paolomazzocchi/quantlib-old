@@ -477,6 +477,10 @@
 				>
 			</File>
 			<File
+				RelativePath="register\register_calibrationhelpers.cpp"
+				>
+			</File>
+			<File
 				RelativePath="register\register_capfloor.cpp"
 				>
 			</File>
@@ -730,6 +734,10 @@
 			</File>
 			<File
 				RelativePath="functions\calendar.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\functions\calibrationhelpers.cpp"
 				>
 			</File>
 			<File

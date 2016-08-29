@@ -36,6 +36,9 @@
     <ClCompile Include="functions\btp.cpp">
       <Filter>functions</Filter>
     </ClCompile>
+    <ClCompile Include="functions\calibrationhelpers.cpp">
+      <Filter>functions</Filter>
+    </ClCompile>
     <ClCompile Include="functions\calendar.cpp">
       <Filter>functions</Filter>
     </ClCompile>
@@ -232,6 +235,9 @@
       <Filter>register</Filter>
     </ClCompile>
     <ClCompile Include="register\register_btp.cpp">
+      <Filter>register</Filter>
+    </ClCompile>
+    <ClCompile Include="register\register_calibrationhelpers.cpp">
       <Filter>register</Filter>
     </ClCompile>
     <ClCompile Include="register\register_calendar.cpp">

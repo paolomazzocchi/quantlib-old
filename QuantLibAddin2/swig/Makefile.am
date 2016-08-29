@@ -27,15 +27,24 @@ SWIG_FILES := \
     functions/utilities.i \
     functions/vanillaswaps.i \
     functions/volatilities.i \
+    typedefs/all.i \
     typemaps/addincountify.i \
     typemaps/addincpp.i \
+    typemaps/addincsharp.i \
     typemaps/addinexcel.i \
     typemaps/all.i \
     typemaps/apply.i \
+    typemaps/handles.i \
     typemaps/libraryobjects.i \
     typemaps/serialization.i \
     typemaps/shared.i \
     typemaps/valueobjects.i
+
+EXTRA_DIST = \
+    $(SWIG_FILES) \
+    Makefile.vc \
+    swigrun_cpp_vc9.vcproj \
+    swigrun_xl_vc9.vcproj
 
 SWIG_DIR = @swig_dir@
 SWIG_BIN = $(SWIG_DIR)/swig
@@ -43,7 +52,7 @@ SWIG_SWG = $(SWIG_DIR)/Lib/reposit/reposit.swg
 SWIG_CMD = $(SWIG_DIR)/preinst-swig
 #SWIG_DEBUG = -debug-top 4 -debug-tmsearch
 
-SWIG_ARGS = -c++ -reposit -prefix ql
+SWIG_ARGS = -c++ -reposit -legacy -prefix ql
 if BUILD_CPP
     SWIG_ARGS += -genc++
 endif
@@ -53,7 +62,7 @@ endif
 if BUILD_CFY
     SWIG_ARGS += -gencfy
 endif
-SWIG_ARGS += -genxll
+#SWIG_ARGS += -genxll
 SWIG_ARGS += quantlib.i
 
 .PHONY: SWIG

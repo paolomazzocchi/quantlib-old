@@ -23,12 +23,11 @@
 
 /*! \page qlxl_install QuantLibXL Installation
 
-This document explains how to install an early prerelease binary of QuantLibXL
-1.7 built on the new reposit platform.  At present only 32-bit Excel is
-supported.
+This document explains how to install QuantLibXL.  32- and 64-bit XLLs are
+provided.
 
 Download 
-<a href="https://dl.dropboxusercontent.com/u/75778595/QuantLibXL-1.7.0-bin.zip">QuantLibXL-1.7.0-bin.zip</a>.
+<a href="http://sourceforge.net/projects/quantlib/files/reposit/1.7/QuantLibXL-1.7.0-bin.zip">QuantLibXL-1.7.0-bin.zip</a>.
 
 Copy the zip file to your hard drive and uncompress it.
 
@@ -46,20 +45,24 @@ Workbooks\EquityOption.xlsx
 \endverbatim
 \li Hit <tt>Ctrl-Alt-F9</tt> to force a full recalculation
 
-\section qlxl_install_demo1 Bermudan Swaption Demo
+\section qlxl_install_demo1 DOS Batch Files
 
-Invoke the following DOS batch file:
+Alternatively you can use the DOS batch files which are provided to initialize the environment:
 
 \verbatim
+Workbooks\EquityOption.bat
 Workbooks\BermudanSwaption.bat
 \endverbatim
 
-This batch file should:
+Each batch file should:
 \li Start up a new instance of Excel
 \li Load the XLL
-\li Load example workbook BermudanSwaption.xlsm which replicates the behavior of the QuantLib Bermudan Swaption example.
+\li Load the relevant example workbook
 
-Hit <tt>Ctrl-Shift-X</tt> to exit the demo.
+A couple of keyboard shortcuts are provided:
+
+\li <b>Ctrl-Shift-E</b>: If a QuantLibXL function fails and returns #NUM, highlight the relevant cell and use this shortcut to display the error message.
+\li <b>Ctrl-Shift-X</b>: Close all workbooks without saving them and exit Excel.
 
 \section qlxl_install_demo2 GBP Market Demo
 

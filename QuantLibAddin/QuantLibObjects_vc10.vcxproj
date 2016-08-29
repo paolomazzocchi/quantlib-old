@@ -233,6 +233,7 @@
     <ClCompile Include="qlo\valueobjects\vo_bonds.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_browniangenerators.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_btp.cpp" />
+    <ClCompile Include="qlo\valueobjects\vo_calibrationhelpers.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_capfloor.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_capletvolstructure.cpp" />
     <ClCompile Include="qlo\valueobjects\vo_cmsmarket.cpp" />
@@ -297,6 +298,7 @@
     <ClCompile Include="qlo\baseinstruments.cpp" />
     <ClCompile Include="qlo\bonds.cpp" />
     <ClCompile Include="qlo\btp.cpp" />
+    <ClCompile Include="qlo\calibrationhelpers.cpp" />
     <ClCompile Include="qlo\capfloor.cpp" />
     <ClCompile Include="qlo\cliquetoption.cpp" />
     <ClCompile Include="qlo\dividendvanillaoption.cpp" />
@@ -351,6 +353,7 @@
     <ClCompile Include="qlo\serialization\create\create_bonds.cpp" />
     <ClCompile Include="qlo\serialization\create\create_browniangenerators.cpp" />
     <ClCompile Include="qlo\serialization\create\create_btp.cpp" />
+    <ClCompile Include="qlo\serialization\create\create_calibrationhelpers.cpp" />
     <ClCompile Include="qlo\serialization\create\create_capfloor.cpp" />
     <ClCompile Include="qlo\serialization\create\create_capletvolstructure.cpp" />
     <ClCompile Include="qlo\serialization\create\create_cmsmarket.cpp" />
@@ -406,6 +409,7 @@
     <ClCompile Include="qlo\serialization\register\serialization_bonds.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_browniangenerators.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_btp.cpp" />
+    <ClCompile Include="qlo\serialization\register\serialization_calibrationhelpers.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_capfloor.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_capletvolstructure.cpp" />
     <ClCompile Include="qlo\serialization\register\serialization_cmsmarket.cpp" />
@@ -500,6 +504,7 @@
     <ClInclude Include="qlo\valueobjects\vo_bonds.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_browniangenerators.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_btp.hpp" />
+    <ClInclude Include="qlo\valueobjects\vo_calibrationhelpers.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_capfloor.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_capletvolstructure.hpp" />
     <ClInclude Include="qlo\valueobjects\vo_cmsmarket.hpp" />
@@ -567,6 +572,7 @@
     <ClInclude Include="qlo\baseinstruments.hpp" />
     <ClInclude Include="qlo\bonds.hpp" />
     <ClInclude Include="qlo\btp.hpp" />
+    <ClInclude Include="qlo\calibrationhelpers.hpp" />
     <ClInclude Include="qlo\capfloor.hpp" />
     <ClInclude Include="qlo\cliquetoption.hpp" />
     <ClInclude Include="qlo\dividendvanillaoption.hpp" />
@@ -648,6 +654,7 @@
     <ClInclude Include="qlo\serialization\create\create_bonds.hpp" />
     <ClInclude Include="qlo\serialization\create\create_browniangenerators.hpp" />
     <ClInclude Include="qlo\serialization\create\create_btp.hpp" />
+    <ClInclude Include="qlo\serialization\create\create_calibrationhelpers.hpp" />
     <ClInclude Include="qlo\serialization\create\create_capfloor.hpp" />
     <ClInclude Include="qlo\serialization\create\create_capletvolstructure.hpp" />
     <ClInclude Include="qlo\serialization\create\create_cmsmarket.hpp" />
@@ -705,6 +712,7 @@
     <ClInclude Include="qlo\serialization\register\serialization_browniangenerators.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_btp.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_capfloor.hpp" />
+    <ClInclude Include="qlo\serialization\register\serialization_calibrationhelpers.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_capletvolstructure.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_cmsmarket.hpp" />
     <ClInclude Include="qlo\serialization\register\serialization_cmsmarketcalibration.hpp" />
@@ -775,6 +783,7 @@
     <ClInclude Include="qlo\handle.hpp" />
     <ClInclude Include="qlo\handleimpl.hpp" />
     <ClInclude Include="qlo\index.hpp" />
+    <ClInclude Include="qlo\models.hpp" />
     <ClInclude Include="qlo\processes.hpp" />
     <ClInclude Include="qlo\qladdin.hpp" />
     <ClInclude Include="qlo\qladdindefines.hpp" />

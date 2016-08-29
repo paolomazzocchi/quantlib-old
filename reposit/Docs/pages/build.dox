@@ -25,7 +25,30 @@
 
 \section inst_sec_1 Overview
 
-Reposit is still in the development stage and has not yet been released.  The links below explain how to build a prerelease version of the code by cloning the git repository.  The HOWTOs include instructions for building the object repository, the SWIG module to autogenerate addin source code, and examples of all supported features.
+This page is the index to all available documentation for compiling and
+installing various configurations of reposit.
+
+Here is the documentation for installing and running the binary release of
+QuantLibXL:
+
+\ref qlxl_install \n
+
+
+Below are various possibilities for compiling reposit from source code.  These
+HOWTOs include instructions for building the object repository, the SWIG module
+to autogenerate addin source code, and examples of all supported features.
+
+The Windows builds include QuantLibXL.  The only supported compiler on Windows
+is Microsoft Visual Studio 2008, also known as VC9.  32- and 64-bit builds are
+supported.
+
+To compile reposit from the latest release:
+
+\ref build_release_swig_windows \n
+\ref build_release_swig_linux \n
+
+
+To compile reposit from the latest snapshot of the source code in the git repository:
 
 \ref build_git_swig_windows \n
 \ref build_git_swig_linux \n

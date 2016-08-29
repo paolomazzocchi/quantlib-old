@@ -21,12 +21,16 @@ namespace QuantLib {
         %generate(c++, referenceDate);
         %generate(countify, referenceDate);
         Date referenceDate();
+        Date maxDate();
     };
 
     class YieldTermStructure : public TermStructure {
       public:
         %generate(c++, discount);
         %generate(countify, discount);
+        // For purposes of backward compatibility we use the %alias directive to export this function twice,
+        // once under its old name (qlYieldTSDiscount) and once under its new name (qlYieldTermStructureDiscount)
+        %alias(discount, YieldTSDiscount);
         DiscountFactor discount(
             const Date& d,
             bool extrapolate);

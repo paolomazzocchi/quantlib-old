@@ -8,6 +8,7 @@ EXTRA_DIST = \
     AddinExcelStatic.vcproj \
     date.cpp \
     calendar.cpp \
+    calibrationhelpers.cpp \
     capfloor.cpp \
     couponvectors.cpp \
     conversions.cpp \

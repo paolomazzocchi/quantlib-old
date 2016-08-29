@@ -8,20 +8,8 @@ EXTRA_DIST = \
     Contributors.txt \
     LICENSE.TXT \
     NEWS.txt \
-    reposit.nsi \
-    reposit_vc8.sln \
     reposit_vc9.sln \
-    reposit_vc10.sln \
-    reposit_vc11.sln \
-    reposit_vc12.sln \
-    rplib_vc8.vcproj \
     rplib_vc9.vcproj \
-    rplib_vc10.vcxproj \
-    rplib_vc10.vcxproj.filters \
-    rplib_vc11.vcxproj \
-    rplib_vc11.vcxproj.filters \
-    rplib_vc12.vcxproj \
-    rplib_vc12.vcxproj.filters \
     README.txt \
     TODO.txt
 

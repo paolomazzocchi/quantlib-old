@@ -15,6 +15,7 @@ namespace QuantLib {
         Date earliestDate();
         Date latestDate();
         Real impliedQuote();
+        Date pillarDate();
     };
 }
 
@@ -55,6 +56,16 @@ namespace QuantLibAddin {
     class SwapRateHelper : public RateHelper {
       public:
         SwapRateHelper(
+            const QuantLib::Handle<QuantLib::Quote>& quote,
+            const boost::shared_ptr<QuantLib::SwapIndex>& swapIndex,
+            const QuantLib::Handle<QuantLib::Quote>& spread,
+            const QuantLib::Period& forwardStart,
+            const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
+            QuantLib::Pillar::Choice pillarChoice,
+            QuantLib::Date customPillar);
+        // Overloaded ctors; the directive below causes the second to be called qlSwapRateHelper2().
+        %rename(SwapRateHelper2) SwapRateHelper;
+        SwapRateHelper(
             const QuantLib::Handle<QuantLib::Quote>& rate,
             QuantLib::Natural settlementDays,
             const QuantLib::Period& tenor,
@@ -65,7 +76,9 @@ namespace QuantLibAddin {
             const boost::shared_ptr<QuantLib::IborIndex>& iborIndex,
             const QuantLib::Handle<QuantLib::Quote>& spread,
             const QuantLib::Period& forwardStart,
-            const QuantLib::Handle<QuantLib::YieldTermStructure>& discount);
+            const QuantLib::Handle<QuantLib::YieldTermStructure>& discount,
+            QuantLib::Pillar::Choice pillarChoice,
+            QuantLib::Date customPillar);
      };
 
     class FraRateHelper : public RateHelper {
@@ -73,7 +86,22 @@ namespace QuantLibAddin {
         FraRateHelper(
             const QuantLib::Handle<QuantLib::Quote>& rate,
             QuantLib::Period periodToStart,
-            const boost::shared_ptr<QuantLib::IborIndex>& iborIndex);
+            const boost::shared_ptr<QuantLib::IborIndex>& iborIndex,
+            QuantLib::Pillar::Choice pillarChoice,
+            QuantLib::Date customPillar);
+        // Overloaded ctors; the directive below causes the second to be called qlSwapRateHelper2().
+        %rename(FraRateHelper2) FraRateHelper;
+        FraRateHelper(
+            const QuantLib::Handle<QuantLib::Quote>& rate,
+            QuantLib::Period periodToStart,
+            QuantLib::Natural lengthInMonths,
+            QuantLib::Natural fixingDays,
+            const QuantLib::Calendar& calendar,
+            QuantLib::BusinessDayConvention convention,
+            bool endOfMonth,
+            const QuantLib::DayCounter& dayCounter,
+            QuantLib::Pillar::Choice pillarChoice,
+            QuantLib::Date customPillar);            
     };
 
     class OISRateHelper : public RateHelper {

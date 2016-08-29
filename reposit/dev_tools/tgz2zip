@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# 'tgz2zip ObjectHandler 1.4.0' converts ObjectHandler-1.4.0.tar.gz into ObjectHandler-1.4.0.zip,
+# 'tgz2zip reposit 1.7.0' converts reposit-1.7.0.tar.gz into reposit-1.7.0.zip,
 #  removing the version number from the name of the zipped directory,
 #  and converting Unix end-of-line to DOS in the process.
 

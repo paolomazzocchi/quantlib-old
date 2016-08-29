@@ -1,0 +1,50 @@
+
+/*
+ Copyright (C) 2006, 2007, 2008 Eric Ehlers
+
+ This file is part of QuantLib, a free-software/open-source library
+ for financial quantitative analysts and developers - http://quantlib.org/
+
+ QuantLib is free software developed by the QuantLib Group; you can
+ redistribute it and/or modify it under the terms of the QuantLib License;
+ either version 1.0, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ QuantLib License for more details.
+
+ You should have received a copy of the QuantLib License along with this
+ program; if not, please email quantlib-dev@lists.sf.net
+
+ The QuantLib License is also available at <http://quantlib.org/license.shtml>
+ The members of the QuantLib Group are listed in the QuantLib License
+*/
+
+/*! \page comparison Comparison of Old and New QuantLibXL Builds
+
+The old QuantLibXL build is based on ObjectHandler and gensrc.  This build is stable.
+
+The new QuantLibXL build is based on reposit.  This build is a work in progress and is unstable.
+
+The table below summarizes the differences between the two builds as of the 1.7 release.
+
+<table summary="omparison" border="1" cellpadding="5">
+<tr><th>Feature</th><th>Old Build</th><th>New Build</th></tr>
+<tr><td><b>Number of Addin Functions Supported</b></td><td>1,080</td><td>111</td></tr>
+<tr><td><b>Support for Rate Curve Framework</b></td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>
+<tr><td colspan="3"><b>Code Autogeneration</b></td></tr>
+<tr><td>Object Wrappers</td><td><img src="images/mark_x.png"></td><td><img src="images/mark_check.png"></td></tr>
+<tr><td>Addin Functions</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>
+<tr><td>Enumerations</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_x.png"></td></tr>
+<tr><td>Documentation</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_x.png"></td></tr>
+<tr><td colspan="3"><b>Platforms Supported</b></td></tr>
+<tr><td>C++</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>
+<tr><td>Excel</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_check.png"></td></tr>
+<tr><td>LibreOffice Calc</td><td><img src="images/mark_check.png"></td><td><img src="images/mark_x.png"></td></tr>
+<tr><td>C#</td><td><img src="images/mark_x.png"></td><td><img src="images/mark_check.png"></td></tr>
+<tr><td>=countify</td><td><img src="images/mark_x.png"></td><td><img src="images/mark_check.png"></td></tr>
+</table>
+
+*/
+

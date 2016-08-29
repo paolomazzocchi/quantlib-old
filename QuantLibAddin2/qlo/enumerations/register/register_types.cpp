@@ -334,6 +334,7 @@ namespace QuantLibAddin {
             create.registerType("360/360", new QuantLib::Thirty360(QuantLib::Thirty360::BondBasis));
             create.registerType("A/360", new QuantLib::Actual360());
             create.registerType("A/365", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
+            create.registerType("QuantLib::Actual365Fixed()", new QuantLib::Actual365Fixed());
             create.registerType("A/365 (Fixed)", new QuantLib::Actual365Fixed());
             create.registerType("A/365F", new QuantLib::Actual365Fixed());
             create.registerType("Act/360", new QuantLib::Actual360());
@@ -466,6 +467,13 @@ namespace QuantLibAddin {
             reposit::Create<QuantLib::OvernightIndexedSwap::Type> create;
             create.registerType("Payer", new QuantLib::OvernightIndexedSwap::Type(QuantLib::OvernightIndexedSwap::Payer));
             create.registerType("Receiver", new QuantLib::OvernightIndexedSwap::Type(QuantLib::OvernightIndexedSwap::Receiver));
+        }
+
+        {
+            reposit::Create<QuantLib::Pillar::Choice> create;
+            create.registerType("CustomDate", new QuantLib::Pillar::Choice(QuantLib::Pillar::CustomDate));
+            create.registerType("LastRelevantDate", new QuantLib::Pillar::Choice(QuantLib::Pillar::LastRelevantDate));
+            create.registerType("MaturityDate", new QuantLib::Pillar::Choice(QuantLib::Pillar::MaturityDate));
         }
 
         {

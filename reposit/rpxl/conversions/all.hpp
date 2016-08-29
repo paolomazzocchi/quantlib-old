@@ -18,7 +18,7 @@
 */
 
 /*! \file
-    \brief #includes for all Excel conversion functions
+    \brief includes for all Excel conversion functions
 */
 
 #ifndef ohxl_conversions_all_hpp

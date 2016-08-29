@@ -28,6 +28,12 @@ implementation of QuantLibAddin.  For a summary of updates to the core
 QuantLibAddin project, please refer to
 <a href="http://www.quantlibaddin.org/history.html">http://www.quantlibaddin.org/history.html</a>
 
+<strong>Release 1.7.0 - December 2015</strong>
+
+- 30 new functions / 1,110 in total
+- This release includes the updated VBA Framework application (at present this
+  does not work correctly under 64-bit Excel).
+
 <strong>Release 1.6.0 - August 2015</strong>
 
 - 8 new functions / 1,080 in total
